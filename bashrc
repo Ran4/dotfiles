@@ -4,10 +4,12 @@ alias l='ls -CF'
 alias logout='gnome-session-quit --force'
 alias gits='git status'
 alias gcam='git commit -am'
-set r rate 240 40
+alias cd..='cd ..'
 alias kth='ssh ransin@u-shell.csc.kth.se'
 
-alias vim3='-c "vert resize 80" -c "wincmd w" -c "vert resize 80" -c "wincmd W" -O3'
+set r rate 240 40
+
+alias vim3='vim -c "vert resize 80" -c "wincmd w" -c "vert resize 80" -c "wincmd W" -O3'
 alias vim4="vim -c 'bel vert sbuf 2' -c '1wincmd w' -c 'bel sbuf 3' -c '3wincmd w' -c 'bel sbuf 4'"
 alias vims='vim -S .vimsession'
 
