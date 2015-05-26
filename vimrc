@@ -76,7 +76,7 @@ nnoremap ' `
 vnoremap ` '
 vnoremap ' `
 
-" Easier indentation
+" Easier indentation in visual mode
 vnoremap < <gv
 vnoremap > >gv
 
