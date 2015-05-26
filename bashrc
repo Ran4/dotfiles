@@ -6,6 +6,8 @@ alias gits='git status'
 alias gcam='git commit -am'
 alias cd..='cd ..'
 alias kth='ssh ransin@u-shell.csc.kth.se'
+alias xterm='xterm tmux'
+alias uxterm='uxterm tmux'
 
 set r rate 240 40
 
