@@ -6,10 +6,11 @@ alias gits='git status'
 alias gcam='git commit -am'
 alias cd..='cd ..'
 alias kth='ssh ransin@u-shell.csc.kth.se'
-alias xterm='xterm tmux'
-alias uxterm='uxterm tmux'
+alias xterm='xterm tmux -2'
+alias uxterm='uxterm tmux -2'
 
 set r rate 240 40
+xset r rate 240 40
 
 alias vim3='vim -c "vert resize 80" -c "wincmd w" -c "vert resize 80" -c "wincmd W" -O3'
 alias vim4="vim -c 'bel vert sbuf 2' -c '1wincmd w' -c 'bel sbuf 3' -c '3wincmd w' -c 'bel sbuf 4'"

@@ -40,8 +40,8 @@ nnoremap ,.<Space> k?\n\s*\n<CR>$
 vnoremap ,.<Space> k?\n\s*\n<CR>$
 inoremap ,.<Space> <Space>
 
-inoremap <C-h> b
-inoremap <C-l> w
+" inoremap <C-h> b
+" inoremap <C-l> w
 
 " Characters to use with ¨ and shift+¨
 " ẅëẗÿüï¨ḧ̈́̈́ẍ^f

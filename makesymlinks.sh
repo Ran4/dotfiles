@@ -30,4 +30,12 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
+echo ""
+echo "Loading X resources (xrdb -load ~/.Xresources)"
 xrdb -load ~/.Xresources
+echo "...done"
+
+echo ""
+echo "Sourcing tmux (tmux source-file ~/.tmux.conf)"
+tmux source-file ~/.tmux.conf
+echo "...done"
