@@ -21,6 +21,7 @@ let mapleader = ","
 " Quickly edit vimrc
 nnoremap <Leader>ev :vert split $MYVIMRC<CR>:wincmd r<CR>
 nnoremap <Leader>Ev :split $MYVIMRC<CR>:wincmd r<CR>
+nnoremap <Leader>EV :split $MYVIMRC<CR>:wincmd r<CR>
 " set bs=2 "Fix backspace. Uncomment this if needed...
 
 set incsearch
@@ -31,7 +32,7 @@ nnoremap o o.<Esc>"_x<Esc>
 nnoremap O O.<Esc>"_x<Esc>
 nnoremap <Space> /\n\s*\n<CR>$
 vnoremap <Space> /\n\s*\n<CR>$
-nnoremap <leader>Space> k?\n\s*\n<CR>$
+nnoremap <leader><Space> k?\n\s*\n<CR>$
 vnoremap <leader><Space> k?\n\s*\n<CR>$
 
 " Fix for shift+space
