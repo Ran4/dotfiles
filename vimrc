@@ -99,8 +99,14 @@ set timeoutlen=3500 " used with leader
 " mkdir -p ~/.vim/colors
 " cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
-" t_co = 256
-" color wombat256mod
+color wombat256mod
+
+" syntax enable
+" set background=dark
+" colorscheme solarized
+
+
+set t_Co=256
 
 " Change in brackets function, since ci( initially doesn't work
 function New_cib()
