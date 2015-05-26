@@ -6,6 +6,8 @@ cnoremap ö /
 cnoremap ä /
 imap kl <esc>
 vmap kl <esc>
+" imap jk <esc>
+" vmap jk <esc>
 nnoremap :W :w
 nnoremap :Qa<CR> :qa<CR>
 
@@ -15,7 +17,10 @@ set clipboard=unnamed
 
 "let mapleader = "-"
 let mapleader = ","
-nnoremap <Leader>ev :split $MYVIMRC<CR>
+
+" Quickly edit vimrc
+nnoremap <Leader>ev :vert split $MYVIMRC<CR>:wincmd r<CR>
+nnoremap <Leader>Ev :split $MYVIMRC<CR>:wincmd r<CR>
 " set bs=2 "Fix backspace. Uncomment this if needed...
 
 set incsearch
