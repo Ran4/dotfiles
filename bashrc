@@ -8,6 +8,7 @@ alias cd..='cd ..'
 alias kth='ssh ransin@u-shell.csc.kth.se'
 alias xterm='xterm tmux -2'
 alias uxterm='uxterm tmux -2'
+alias tmux='tmux -2'
 
 set r rate 240 40
 xset r rate 240 40
@@ -15,10 +16,9 @@ xset r rate 240 40
 alias vim3='vim -c "vert resize 80" -c "wincmd w" -c "vert resize 80" -c "wincmd W" -O3'
 alias vim4="vim -c 'bel vert sbuf 2' -c '1wincmd w' -c 'bel sbuf 3' -c '3wincmd w' -c 'bel sbuf 4'"
 alias vims='vim -S .vimsession'
+alias rmswp='rm .*.swp'
 
 alias manvim='function _domanvim() { man $1 | vim -R -; }; _domanvim'
-
-alias tmux='tmux -2'
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
