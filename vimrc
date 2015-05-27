@@ -11,6 +11,11 @@ vmap kl <esc>
 nnoremap :W :w
 nnoremap :Qa<CR> :qa<CR>
 
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " Better copy & paste
 set pastetoggle=<F2>
 set clipboard=unnamed
@@ -19,10 +24,14 @@ set clipboard=unnamed
 let mapleader = ","
 
 " Quickly edit vimrc
-nnoremap <Leader>ev :vert split $MYVIMRC<CR>:wincmd r<CR>
-nnoremap <Leader>Ev :split $MYVIMRC<CR>:wincmd r<CR>
-nnoremap <Leader>EV :split $MYVIMRC<CR>:wincmd r<CR>
+nnoremap <Leader>ev :vert split $MYVIMRC<CR>
+nnoremap <Leader>Ev :split $MYVIMRC<CR>
+nnoremap <Leader>EV :split $MYVIMRC<CR>
+
 " set bs=2 "Fix backspace. Uncomment this if needed...
+
+set splitbelow 
+set splitright
 
 set incsearch
 set ignorecase
