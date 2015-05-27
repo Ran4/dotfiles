@@ -1,13 +1,19 @@
 " :help map-which-keys    " is helpful!
 filetype plugin indent on 
-nnoremap ö /
+"nnoremap ö /
 nnoremap ä /
-cnoremap ö /
+"cnoremap ö /
 cnoremap ä /
 imap kl <esc>
 vmap kl <esc>
 " imap jk <esc>
 " vmap jk <esc>
+" nnoremap j h
+" nnoremap k j
+" nnoremap l k
+" nnoremap ö l
+nnoremap m h
+nnoremap M m
 nnoremap :W :w
 nnoremap :Qa<CR> :qa<CR>
 
@@ -36,6 +42,14 @@ set splitright
 set incsearch
 set ignorecase
 set mouse=a
+
+" Move top/bottom but leave 4 lines above/below
+nnoremap zT zt4<C-y>
+nnoremap zB zb4<C-e>
+vnoremap zT zt4<C-y>
+vnoremap zB zb4<C-e>
+inoremap zT <esc>zt4<C-y>i
+inoremap zB <esc>zb4<C-e>i
 
 nnoremap o o.<Esc>"_x<Esc>
 nnoremap O O.<Esc>"_x<Esc>
