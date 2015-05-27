@@ -137,8 +137,8 @@ color wombat256mod
 
 set t_Co=256
 
-" Change in brackets function, since ci( initially doesn't work
-function New_cib()
+" Change in paranthesis function, since ci( initially doesn't work
+function New_cip()
     if search("(","bn") == line(".")
         sil exe "normal! f)ci("
         sil exe "normal! l"
@@ -150,5 +150,40 @@ function New_cib()
     endif
 endfunction
 
-nnoremap ci( :call New_cib()<CR>
-nnoremap cib :call New_cib()<CR>
+nnoremap ci( :call New_cip()<CR>
+nnoremap cip :call New_cip()<CR>
+
+" Change in square brackets function, since ci[ initially doesn't work
+function New_cisb()
+    if search("[","bn") == line(".")
+        sil exe "normal! f]ci["
+        sil exe "normal! l"
+        startinsert
+    else
+        sil exe "normal! f[ci]"
+        sil exe "normal! l"
+        startinsert
+    endif
+endfunction
+
+nnoremap ci[ :call New_cisb()<CR>
+nnoremap ci] :call New_cisb()<CR>
+nnoremap cib :call New_cisb()<CR>
+
+
+" Change in squigly brackets function, since ci{ initially doesn't work
+function New_cisqb()
+    if search("{","bn") == line(".")
+        sil exe "normal! f}ci{"
+        sil exe "normal! l"
+        startinsert
+    else
+        sil exe "normal! f{ci}"
+        sil exe "normal! l"
+        startinsert
+    endif
+endfunction
+
+nnoremap ci{ :call New_cisqb()<CR>
+nnoremap ci} :call New_cisqb()<CR>
+nnoremap cis :call New_cisqb()<CR>
