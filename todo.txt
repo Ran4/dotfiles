@@ -1,0 +1,3 @@
+
+vim:
+check out vimux to automate tests
