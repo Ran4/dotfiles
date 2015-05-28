@@ -1,11 +1,13 @@
 " :help map-which-keys    " is helpful!
 filetype plugin indent on 
-"nnoremap ö /
+nnoremap ö /
 nnoremap ä /
-"cnoremap ö /
+cnoremap ö /
 cnoremap ä /
-imap kl <esc>
-vmap kl <esc>
+"imap kl <esc>
+"vmap kl <esc>
+imap jk  <esc>
+vmap jk  <esc>
 " imap jk <esc>
 " vmap jk <esc>
 " nnoremap j h
@@ -16,6 +18,13 @@ nnoremap m h
 nnoremap M m
 nnoremap :W :w
 nnoremap :Qa<CR> :qa<CR>
+
+" _ is used more often than -, so make it easier to use
+nnoremap - _
+nnoremap _ -
+
+nnoremap + <C-a>
+nnoremap _ <C-x>
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -28,6 +37,8 @@ set clipboard=unnamed
 
 "let mapleader = "-"
 let mapleader = ","
+
+nmap ä ,
 
 " Quickly edit vimrc
 nnoremap <Leader>ev :vert split $MYVIMRC<CR>
@@ -53,8 +64,8 @@ inoremap zB <esc>zb4<C-e>i
 
 nnoremap o o.<Esc>"_x<Esc>
 nnoremap O O.<Esc>"_x<Esc>
-nnoremap <Space> /\n\s*\n<CR>$
-vnoremap <Space> /\n\s*\n<CR>$
+"nnoremap <Space> /\n\s*\n<CR>$
+"vnoremap <Space> /\n\s*\n<CR>$
 nnoremap <leader><Space> k?\n\s*\n<CR>$
 vnoremap <leader><Space> k?\n\s*\n<CR>$
 
