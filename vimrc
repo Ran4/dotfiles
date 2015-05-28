@@ -19,9 +19,11 @@ nnoremap M m
 nnoremap :W :w
 nnoremap :Qa<CR> :qa<CR>
 
-" _ is used more often than -, so make it easier to use
+"_ is used more often than -, so make it easier to use
 nnoremap - _
 nnoremap _ -
+
+nnoremap <Space> h
 
 nnoremap + <C-a>
 nnoremap _ <C-x>
