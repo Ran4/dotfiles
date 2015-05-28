@@ -97,12 +97,12 @@ vnoremap q 0<C-v>I#~ <ESC>
 vnoremap Q 0<C-v>x..<ESC>
 
 " Adds characters around word
-nnoremap ," viw<ESC>a"<ESC>hbi"<ESC>lelbb
-nnoremap ,' viw<ESC>a'<ESC>hbi'<ESC>lelbb
-nnoremap ,[ viw<ESC>a]<ESC>hbi[<ESC>lelbb
-nnoremap ,] viw<ESC>a]<ESC>hbi[<ESC>lelbb
-vnoremap ," <ESC>`>a"<ESC>`<i"<ESC>
-vnoremap ,' <ESC>`>a'<ESC>`<i'<ESC>
+nnoremap <Leader>" viw<ESC>a"<ESC>hbi"<ESC>lel
+nnoremap <Leader>' viw<ESC>a'<ESC>hbi'<ESC>lel
+vnoremap <Leader>" <ESC>`>a"<ESC>`<i"<ESC>
+vnoremap <Leader>' <ESC>`>a'<ESC>`<i'<ESC>
+nnoremap <Leader>[ viw<ESC>a]<ESC>hbi[<ESC>%
+nnoremap <Leader>] viw<ESC>a]<ESC>hbi[<ESC>%
 
 " Jump directly to a spot instead of just to that line
 nnoremap ` '
