@@ -9,6 +9,7 @@ alias kth='ssh ransin@u-shell.csc.kth.se'
 alias xterm='xterm tmux -2'
 alias uxterm='uxterm tmux -2'
 alias tmux='tmux -2'
+alias xr='xmodmap ~/.xmodmap_swap_caps_and_escape'
 
 set r rate 240 40
 xset r rate 240 40
