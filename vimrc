@@ -25,8 +25,13 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Better copy & paste
-set pastetoggle=<F2>
-set clipboard=unnamed
+"set pastetoggle=<F2>
+"set clipboard=unnamed
+
+" Key to insert mode with paste using F2 key  
+map <F2> :set paste<CR>i  
+" Leave paste mode on exit  
+au InsertLeave * set nopaste  
 
 "let mapleader = "-"
 let mapleader = ","
@@ -37,6 +42,12 @@ nmap ä ,
 nnoremap <leader>ev :vert split $MYVIMRC<CR>
 nnoremap <leader>Ev :split $MYVIMRC<CR>
 nnoremap <leader>EV :split $MYVIMRC<CR>
+
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
 
 " set bs=2 "Fix backspace. Uncomment this if needed...
 
@@ -189,3 +200,5 @@ endfunction
 nnoremap ci{ :call New_cisqb()<CR>
 nnoremap ci} :call New_cisqb()<CR>
 nnoremap cis :call New_cisqb()<CR>
+
+
