@@ -116,10 +116,11 @@ vnoremap ' `
 vnoremap < <gv
 vnoremap > >gv
 
-nnoremap <leader>d /def <CR>zz
-vnoremap <leader>d /def <CR>zz
-nnoremap <leader>D ?def <CR>zz
-vnoremap <leader>D ?def <CR>zz
+nnoremap <leader>d [mzz
+vnoremap <leader>d ]mzz
+nnoremap <leader>D ]mzz
+vnoremap <leader>D ]mzz
+nnoremap <leader>c /class <CR>zz
 nnoremap <leader>c /class <CR>zz
 nnoremap <leader>C ?class <CR>zz
 nnoremap <leader>w :wincmd w<CR>
