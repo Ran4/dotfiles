@@ -4,17 +4,8 @@ nnoremap ö /
 nnoremap ä /
 cnoremap ö /
 cnoremap ä /
-"imap kl <esc>
-"vmap kl <esc>
-imap jk  <esc>
-vmap jk  <esc>
-" imap jk <esc>
-" vmap jk <esc>
-" nnoremap j h
-" nnoremap k j
-" nnoremap l k
-" nnoremap ö l
-nnoremap m h
+imap jk <esc>
+vmap jk <esc>
 nnoremap M m
 nnoremap :W :w
 nnoremap :Qa<CR> :qa<CR>
@@ -43,9 +34,9 @@ let mapleader = ","
 nmap ä ,
 
 " Quickly edit vimrc
-nnoremap <Leader>ev :vert split $MYVIMRC<CR>
-nnoremap <Leader>Ev :split $MYVIMRC<CR>
-nnoremap <Leader>EV :split $MYVIMRC<CR>
+nnoremap <leader>ev :vert split $MYVIMRC<CR>
+nnoremap <leader>Ev :split $MYVIMRC<CR>
+nnoremap <leader>EV :split $MYVIMRC<CR>
 
 " set bs=2 "Fix backspace. Uncomment this if needed...
 
@@ -75,9 +66,6 @@ vnoremap <leader><Space> k?\n\s*\n<CR>$
 nnoremap ,.<Space> k?\n\s*\n<CR>$
 vnoremap ,.<Space> k?\n\s*\n<CR>$
 inoremap ,.<Space> <Space>
-
-" inoremap <C-h> b
-" inoremap <C-l> w
 
 " Characters to use with ¨ and shift+¨
 " ẅëẗÿüï¨ḧ̈́̈́ẍ^f
@@ -116,13 +104,13 @@ vnoremap ' `
 vnoremap < <gv
 vnoremap > >gv
 
-nnoremap <leader>d [mzz
-vnoremap <leader>d ]mzz
-nnoremap <leader>D ]mzz
-vnoremap <leader>D ]mzz
-nnoremap <leader>c /class <CR>zz
-nnoremap <leader>c /class <CR>zz
-nnoremap <leader>C ?class <CR>zz
+" nnoremap <leader>d [mzz
+" vnoremap <leader>d ]mzz
+" nnoremap <leader>D ]mzz
+" vnoremap <leader>D ]mzz
+" nnoremap <leader>c /class <CR>zz
+" nnoremap <leader>c /class <CR>zz
+" nnoremap <leader>C ?class <CR>zz
 nnoremap <leader>w :wincmd w<CR>
 nnoremap <leader>W :wincmd W<CR>
 nnoremap <leader>q :wincmd W<CR>
