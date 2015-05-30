@@ -132,7 +132,7 @@ set timeoutlen=3500 " used with leader
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 color wombat256mod
 
-" syntax enable
+syntax enable
 " set background=dark
 " colorscheme solarized
 
