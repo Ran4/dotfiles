@@ -1,5 +1,5 @@
 " :help map-which-keys    " is helpful!
-filetype plugin indent on 
+filetype plugin indent on
 nnoremap ö /
 nnoremap ä /
 cnoremap ö /
@@ -28,10 +28,10 @@ nnoremap <C-H> <C-W><C-H>
 "set pastetoggle=<F2>
 "set clipboard=unnamed
 
-" Key to insert mode with paste using F2 key  
-map <F2> :set paste<CR>i  
-" Leave paste mode on exit  
-au InsertLeave * set nopaste  
+" Key to insert mode with paste using F2 key
+map <F2> :set paste<CR>i
+" Leave paste mode on exit
+au InsertLeave * set nopaste
 
 "let mapleader = "-"
 let mapleader = ","
@@ -43,20 +43,33 @@ nnoremap <leader>ev :vert split $MYVIMRC<CR>
 nnoremap <leader>Ev :split $MYVIMRC<CR>
 nnoremap <leader>EV :split $MYVIMRC<CR>
 
-" Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
-
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
 " set bs=2 "Fix backspace. Uncomment this if needed...
 
-set splitbelow 
+set splitbelow
 set splitright
 
 set incsearch
 set ignorecase
 set mouse=a
+
+" highlight trailing spaces in annoying red
+"highlight ExtraWhitespace ctermbg=darkmagenta
+"match ExtraWhitespace /\s\+$/
+"match ExtraWhiteSpace /\S\(\s\+\)$/
+"autocmd BufWinEnter * match ExtraWhitespace /\S\(\s\+\)$/
+"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+"autocmd BufWinLeave * call clearmatches()
+"
+" Shortcut to rapidly toggle `set list`
+"nmap <leader>l :set list!<CR>:highlight ExtraWhitespace ctermbg=red<CR>:match ExtraWhiteSpace /\S\(\s\+\)$/<CR>
+nmap <leader>l :highlight ExtraWhitespace ctermbg=red<CR>:match ExtraWhiteSpace /\S\(\s\+\)$/<CR>
+"autocmd CursorMoved * match ExtraWhitespace //
+autocmd InsertLeave * match ExtraWhitespace //
+
 
 " Move top/bottom but leave 4 lines above/below
 nnoremap zT zt4<C-y>

@@ -27,6 +27,7 @@ vnoremap <silent> <buffer> <leader>d :call <SID>Python_jump('/^\s*\(class\\|def\
 vnoremap <silent> <buffer> <leader>D :call <SID>Python_jump('?^\s*\(class\\|def\)')<cr>zz
 
 
+highlight ExtraWhitespace ctermbg=darkmagenta
 
 
 if exists('*<SID>Python_jump') | finish | endif
