@@ -16,8 +16,8 @@ nnoremap ö /
 nnoremap ä /
 cnoremap ö /
 cnoremap ä /
-imap jk <esc>
-vmap jk <esc>
+inoremap jk <esc>
+"vnoremap jk <esc>
 nnoremap M m
 nnoremap :W :w
 nnoremap :Qa<CR> :qa<CR>
