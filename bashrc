@@ -17,8 +17,8 @@ alias vims='vim -S .vimsession'
 alias rmswp='rm .*.swp'
 alias manvim='function _domanvim() { man $1 | vim -R -; }; _domanvim'
 
-set r rate 240 40
-#xset r rate 240 40
+set r rate 200 60
+xset r rate 200 60
 
 xmodmap ~/.xmodmap_swap_caps_and_ctrl
 
