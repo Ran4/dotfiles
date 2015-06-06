@@ -5,8 +5,8 @@ nnoremap ä /
 cnoremap ö /
 cnoremap ä /
 imap jk <esc>
-vmap jk <esc>
-nnoremap M m
+"vmap jk <esc>
+"nnoremap M m
 nnoremap :W :w
 nnoremap :Qa<CR> :qa<CR>
 
@@ -217,4 +217,5 @@ nnoremap ci{ :call New_cisqb()<CR>
 nnoremap ci} :call New_cisqb()<CR>
 nnoremap cis :call New_cisqb()<CR>
 
+execute pathogen#infect()
 
