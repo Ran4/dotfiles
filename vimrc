@@ -1,3 +1,15 @@
+if has("win32")
+    cd c:\pyy\
+else
+    if has("unix")
+        let s:uname = system("uname")
+	if s:uname == "Darwin\n"
+            " Mac options here
+	endif
+	    " Linux things here
+    endif
+endif
+
 " :help map-which-keys    " is helpful!
 filetype plugin indent on
 nnoremap ö /

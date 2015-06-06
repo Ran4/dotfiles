@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc vim xmodmap_swap_caps_and_ctrl Xresources tmux.conf"    # list of files/folders to symlink in homedir
+files="bashrc vimrc vim xmodmap_swap_caps_and_escape Xresources tmux.conf"    # list of files/folders to symlink in homedir
 
 ##########
 
