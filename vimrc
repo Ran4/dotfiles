@@ -7,52 +7,9 @@ else
             " Mac options here
 	endif
 	    " Linux things here
+	    " echo "Linux detected!" 
     endif
 endif
-
-" :help map-which-keys    " is helpful!
-filetype plugin indent on
-nnoremap ö /
-nnoremap ä /
-cnoremap ö /
-cnoremap ä /
-imap jk <esc>
-"vmap jk <esc>
-"nnoremap M m
-nnoremap :W :w
-
-"_ is used more often than -, so make it easier to use
-nnoremap - _
-nnoremap _ -
-
-nnoremap <Space> h
-
-nnoremap + <C-a>
-nnoremap _ <C-x>
-
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" Better copy & paste
-"set pastetoggle=<F2>
-"set clipboard=unnamed
-
-" Key to insert mode with paste using F2 key
-map <F2> :set paste<CR>i
-" Leave paste mode on exit
-au InsertLeave * set nopaste
-
-"let mapleader = "-"
-let mapleader = ","
-
-nmap ä ,
-
-" Quickly edit vimrc
-nnoremap <leader>ev :vert split $MYVIMRC<CR>
-nnoremap <leader>Ev :split $MYVIMRC<CR>
-nnoremap <leader>EV :split $MYVIMRC<CR>
 
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
@@ -66,29 +23,47 @@ set incsearch
 set ignorecase
 set mouse=a
 
-" highlight trailing spaces in annoying red
-"highlight ExtraWhitespace ctermbg=darkmagenta
-"match ExtraWhitespace /\s\+$/
-"match ExtraWhiteSpace /\S\(\s\+\)$/
-"autocmd BufWinEnter * match ExtraWhitespace /\S\(\s\+\)$/
-"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-"autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-"autocmd BufWinLeave * call clearmatches()
-"
-" Shortcut to rapidly toggle `set list`
-"nmap <leader>l :set list!<CR>:highlight ExtraWhitespace ctermbg=red<CR>:match ExtraWhiteSpace /\S\(\s\+\)$/<CR>
-nmap <leader>l :highlight ExtraWhitespace ctermbg=red<CR>:match ExtraWhiteSpace /\S\(\s\+\)$/<CR>
-"autocmd CursorMoved * match ExtraWhitespace //
-autocmd InsertLeave * match ExtraWhitespace //
+set timeoutlen=3500 " used with leader
+
+filetype plugin indent on
+
+" :help map-which-keys    " is helpful!
+nnoremap ö /
+cnoremap ö /
+cnoremap ä /
+imap jk <esc>
+nnoremap :W :w
+
+"let mapleader = "-"
+let mapleader = ","
+
+nmap ä ,
+
+"_ is used more often than -, so make it easier to use
+nnoremap - _
+nnoremap _ -
+
+nnoremap + <C-a>
+nnoremap _ <C-x>
+
+" Jump directly to a spot instead of just to that line
+nnoremap ` '
+nnoremap ' `
+vnoremap ` '
+vnoremap ' `
+
+"set clipboard=unnamed
+" Key to insert mode with paste using F2 key
+map <F2> :set paste<CR>i
+" Leave paste mode on exit
+au InsertLeave * set nopaste
 
 
-" Move top/bottom but leave 4 lines above/below
-nnoremap zT zt4<C-y>
-nnoremap zB zb4<C-e>
-vnoremap zT zt4<C-y>
-vnoremap zB zb4<C-e>
-inoremap zT <esc>zt4<C-y>i
-inoremap zB <esc>zb4<C-e>i
+"Quickly move between windows
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 nnoremap o o.<Esc>"_x<Esc>
 nnoremap O O.<Esc>"_x<Esc>
@@ -108,7 +83,13 @@ inoremap ,.<Space> <Space>
 nnoremap ü i<CR><Esc>k$
 nnoremap ë :vert resize 80<CR>
 
-nnoremap :Q :q
+" Move top/bottom but leave 4 lines above/below
+nnoremap zT zt4<C-y>
+nnoremap zB zb4<C-e>
+vnoremap zT zt4<C-y>
+vnoremap zB zb4<C-e>
+inoremap zT <esc>zt4<C-y>i
+inoremap zB <esc>zb4<C-e>i
 
 " Replace helper: press ,vname/newname<CR> to replace globally
 nnoremap <leader>v :%s//gc<Left><Left><Left>
@@ -129,11 +110,10 @@ vnoremap <Leader>' <ESC>`>a'<ESC>`<i'<ESC>
 nnoremap <Leader>[ viw<ESC>a]<ESC>hbi[<ESC>%
 nnoremap <Leader>] viw<ESC>a]<ESC>hbi[<ESC>%
 
-" Jump directly to a spot instead of just to that line
-nnoremap ` '
-nnoremap ' `
-vnoremap ` '
-vnoremap ' `
+" Quickly edit vimrc
+nnoremap <leader>ev :vert split $MYVIMRC<CR>
+nnoremap <leader>Ev :split $MYVIMRC<CR>
+nnoremap <leader>EV :split $MYVIMRC<CR>
 
 " Easier indentation in visual mode
 vnoremap < <gv
@@ -156,14 +136,6 @@ nnoremap <leader>n :Se<CR>
 nnoremap <leader>N :Ve<CR>:wincmd x<CR>:wincmd w<CR>
 
 
-set timeoutlen=3500 " used with leader
-
-
-" Show whitespace
-" MUST be inserted BEFORE the colorscheme command
-" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-" au InsertLeave * match ExtraWhitespace /\s\+$/
-
 " Color scheme
 " mkdir -p ~/.vim/colors
 " cd ~/.vim/colors
@@ -174,8 +146,12 @@ syntax enable
 " set background=dark
 " colorscheme solarized
 
-
 set t_Co=256
+
+" highlight trailing spaces 
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :highlight ExtraWhitespace ctermbg=red<CR>:match ExtraWhiteSpace /\S\(\s\+\)$/<CR>
+autocmd InsertLeave * match ExtraWhitespace //
 
 " Change in paranthesis function, since ci( initially doesn't work
 function New_cip()
@@ -209,7 +185,6 @@ endfunction
 nnoremap ci[ :call New_cisb()<CR>
 nnoremap ci] :call New_cisb()<CR>
 nnoremap cib :call New_cisb()<CR>
-
 
 " Change in squigly brackets function, since ci{ initially doesn't work
 function New_cisqb()
