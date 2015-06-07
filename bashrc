@@ -1,5 +1,5 @@
 if [ -f ~/.bash_aliases ]; then
-	. ~/bash_aliases
+	. ~/.bash_aliases
 fi
 
 set r rate 200 60
