@@ -1,21 +1,6 @@
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias logout='gnome-session-quit --force'
-alias gits='git status'
-alias gcam='git commit -am'
-alias cd..='cd ..'
-alias kth='ssh ransin@u-shell.csc.kth.se'
-alias xterm='xterm tmux -2'
-alias uxterm='uxterm tmux -2'
-alias tmux='tmux -2'
-alias xr='xmodmap ~/.xmodmap_swap_caps_and_escape'
-
-alias vim3='vim -c "vert resize 80" -c "wincmd w" -c "vert resize 80" -c "wincmd W" -O3'
-alias vim4="vim -c 'bel vert sbuf 2' -c '1wincmd w' -c 'bel sbuf 3' -c '3wincmd w' -c 'bel sbuf 4'"
-alias vims='vim -S .vimsession'
-alias rmswp='rm .*.swp'
-alias manvim='function _domanvim() { man $1 | vim -R -; }; _domanvim'
+if [ -f ~/.bash_aliases ]; then
+	. ~/bash_aliases
+fi
 
 set r rate 200 60
 xset r rate 200 60

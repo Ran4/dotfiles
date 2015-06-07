@@ -228,6 +228,11 @@ nnoremap ci{ :call New_cisqb()<CR>
 nnoremap ci} :call New_cisqb()<CR>
 nnoremap cis :call New_cisqb()<CR>
 
+if has("autocmd")
+    augroup bashalias
+        autocmd BufRead,BufNewFile .bash_aliases,bash_aliases set filetype=sh
+    augroup END
+endif
 
 
 " Start pathogen
