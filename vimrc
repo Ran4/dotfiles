@@ -20,7 +20,6 @@ imap jk <esc>
 "vmap jk <esc>
 "nnoremap M m
 nnoremap :W :w
-nnoremap :Qa<CR> :qa<CR>
 
 "_ is used more often than -, so make it easier to use
 nnoremap - _
@@ -229,5 +228,10 @@ nnoremap ci{ :call New_cisqb()<CR>
 nnoremap ci} :call New_cisqb()<CR>
 nnoremap cis :call New_cisqb()<CR>
 
+
+
+" Start pathogen
 execute pathogen#infect()
 
+" For NERDTree
+nnoremap § :NERDTree<CR>
