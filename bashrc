@@ -1,6 +1,9 @@
 set r rate 200 60
 xset r rate 200 60
 
+set editing-mode vi
+set keymap vi-command
+
 xmodmap ~/.xmodmap_swap_caps_and_ctrl
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
