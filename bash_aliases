@@ -11,6 +11,7 @@ alias uxterm='uxterm tmux -2'
 alias tmux='tmux -2'
 alias xr='xmodmap ~/.xmodmap_swap_caps_and_escape'
 
+alias vims='vim -S .vimsession'
 alias vim3='vim -c "vert resize 80" -c "wincmd w" -c "vert resize 80" -c "wincmd W" -O3'
 alias vim4="vim -c 'bel vert sbuf 2' -c '1wincmd w' -c 'bel sbuf 3' -c '3wincmd w' -c 'bel sbuf 4'"
 alias vims='vim -S .vimsession'
