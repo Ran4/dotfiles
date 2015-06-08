@@ -91,6 +91,10 @@ vnoremap zB zb4<C-e>
 inoremap zT <esc>zt4<C-y>i
 inoremap zB <esc>zb4<C-e>i
 
+" Move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+
 " Replace helper: press ,vname/newname<CR> to replace globally
 nnoremap <leader>v :%s//gc<Left><Left><Left>
 
