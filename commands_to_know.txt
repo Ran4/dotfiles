@@ -11,3 +11,7 @@ awk - An entire programming language designed for constructing filters. Extremel
 
 echo $PS1
 ${debian_chroot:+($debian_chroot)}\u@\h:\w\$
+
+
+Setup for lxde key bindings (and many other things):
+/home/ran/.config/openbox/lubuntu-rc.xml
