@@ -4,8 +4,11 @@
 # Found at
 # http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
 
-########## Variables
+#ORANGE='\033[0;33m'
+LBLUE='\033[1;34m'
+NC='\033[0m'
 
+########## Variables
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
@@ -14,12 +17,12 @@ files="bashrc bash_aliases bash_setprompt vimrc vim xmodmap_swap_caps_and_escape
 ##########
 
 # create dotfiles_old in homedir
-echo "Creating $olddir for backup of any existing dotfiles in ~"
+echo -e "${LBLUE}Creating $olddir for backup of any existing dotfiles in ~${NC}"
 mkdir -p $olddir
 echo "...done"
 
 # change to the dotfiles directory
-echo "Changing to the $dir directory"
+echo -e "${LBLUE}Changing to the $dir directory${NC}"
 cd $dir
 echo "...done"
 
@@ -31,18 +34,20 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
-echo ""
-echo "Loading X resources (xrdb -load ~/.Xresources)"
+
+echo -e "${LBLUE}Reloading bash${NC}"
+. ~/.bashrc
+echo "...done"
+
+echo -e "${LBLUE}Loading X resources (xrdb -load ~/.Xresources)${NC}"
 xrdb -load ~/.Xresources
 echo "...done"
 
-echo ""
-echo "Sourcing tmux (tmux source-file ~/.tmux.conf)"
+echo -e "${LBLUE}Sourcing tmux (tmux source-file ~/.tmux.conf)${NC}"
 tmux source-file ~/.tmux.conf
 echo "...done"
 
-echo ""
-echo "Calling xmodmap .xmodmap_swap_caps_and_escape and .xmodmap_swap_caps_and_ctrl"
+echo -e "${LBLUE}Calling xmodmap .xmodmap_swap_caps_and_escape and .xmodmap_swap_caps_and_ctrl${NC}"
 xmodmap ~/.xmodmap_swap_caps_and_escape
 xmodmap ~/.xmodmap_swap_caps_and_ctrl
 echo "...done"
