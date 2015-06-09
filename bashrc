@@ -1,8 +1,10 @@
+#Help function to see if a command exists
+command_exists () {
+    type "$1" &> /dev/null ;
+}
+
 set r rate 220 60
 xset r rate 220 60
-
-#default value is 111, at least on the HP Mini 110
-synclient VertScrollDelta=200
 
 set editing-mode vi
 set -o vi
@@ -128,4 +130,9 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+fi
+
+if command_exists synclient ; then
+    #default value is 111, at least on the HP Mini 110
+    synclient VertScrollDelta=200
 fi
