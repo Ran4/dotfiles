@@ -1,6 +1,9 @@
 set r rate 220 60
 xset r rate 220 60
 
+#default value is 111, at least on the HP Mini 110
+synclient VertScrollDelta=200
+
 set editing-mode vi
 set -o vi
 set keymap vi-command
