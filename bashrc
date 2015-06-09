@@ -101,6 +101,11 @@ if [ -f ~/.bash_setprompt ]; then
     . ~/.bash_setprompt
 fi
 
+
+if [ -f ~/.bash_setprompt_custom ]; then
+    . ~/.bash_setprompt_custom
+fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
