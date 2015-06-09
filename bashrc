@@ -6,6 +6,11 @@ command_exists () {
 set r rate 220 60
 xset r rate 220 60
 
+if command_exists synclient ; then
+    #default value is 111, at least on the HP Mini 110
+    synclient VertScrollDelta=200 &> /dev/null ;
+fi
+
 set editing-mode vi
 set -o vi
 set keymap vi-command
@@ -132,7 +137,3 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if command_exists synclient ; then
-    #default value is 111, at least on the HP Mini 110
-    synclient VertScrollDelta=200
-fi
