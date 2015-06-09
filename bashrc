@@ -4,7 +4,7 @@ command_exists () {
 }
 
 set r rate 220 60
-xset r rate 220 60
+xset r rate 220 60 &> /dev/null ;
 
 if command_exists synclient ; then
     #default value is 111, at least on the HP Mini 110
