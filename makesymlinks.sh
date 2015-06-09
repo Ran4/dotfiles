@@ -9,7 +9,7 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="bashrc bash_aliases bash_setprompt vimrc vim xmodmap_swap_caps_and_escape Xresources tmux.conf"
+files="bashrc bash_aliases bash_setprompt vimrc vim xmodmap_swap_caps_and_escape xmodmap_swap_caps_and_ctrl Xresources tmux.conf"
 
 ##########
 
@@ -40,3 +40,10 @@ echo ""
 echo "Sourcing tmux (tmux source-file ~/.tmux.conf)"
 tmux source-file ~/.tmux.conf
 echo "...done"
+
+echo ""
+echo "Calling xmodmap .xmodmap_swap_caps_and_escape and .xmodmap_swap_caps_and_ctrl"
+xmodmap ~/.xmodmap_swap_caps_and_escape
+xmodmap ~/.xmodmap_swap_caps_and_ctrl
+echo "...done"
+
