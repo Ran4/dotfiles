@@ -34,6 +34,11 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
+echo -e "${LBLUE}Creating ~/.custom and ~/.identifiers folders and copying files to ~/.custom${NC}"
+mkdir -p ~/.identifiers
+mkdir -p ~/.custom
+cp -r custom/* ~/.custom
+echo "...done"
 
 echo -e "${LBLUE}Reloading bash${NC}"
 . ~/.bashrc
