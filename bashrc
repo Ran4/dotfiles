@@ -108,10 +108,11 @@ fi
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+
+
 if [ -f ~/.bash_setprompt ]; then
     . ~/.bash_setprompt
 fi
-
 
 
 # Alias definitions.
@@ -148,3 +149,4 @@ fi
 if [ -f ~/.identifiers/ranmini ]; then
     . ~/.custom/ranmini_bash_setprompt
 fi
+
