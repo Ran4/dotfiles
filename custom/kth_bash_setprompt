@@ -1,0 +1,2 @@
+PS1="\[\033[1;38m\]\w\[\033[1;32m\]\$\[\033[0m\] "
+# [1;36m is with this xterm config same as blue(?)
