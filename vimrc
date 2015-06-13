@@ -102,6 +102,11 @@ nnoremap <leader>v :%s//gc<Left><Left><Left>
 vnoremap <leader>v :s/\%V/gc<Left><Left><Left>
 vnoremap <leader>v :s/\%V/gc<Left><Left><Left>
 
+" Call python
+nnoremap <leader>p :!python %<CR>
+nnoremap <leader>i :!python -i %<CR>
+
+
 " q in visual mode appends '#~ ' to marked lines, Q removes them
 vnoremap q 0<C-v>I#~ <ESC>
 vnoremap Q 0<C-v>x..<ESC>
