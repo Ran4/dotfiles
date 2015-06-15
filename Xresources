@@ -25,6 +25,7 @@ xterm*saveLines: 20000
 *xterm*renderFont: true
 !*xterm*faceName: VeraMono
 !*xterm*faceSize: 10
+xterm*borderWidth: 0
 
 ! Without the vt100, the size of ctrl+left/middle/right mouse click menu will be set to 80x35 px
 xterm*vt100*geometry: 80x35
