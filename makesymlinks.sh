@@ -41,7 +41,7 @@ cp -r custom/* ~/.custom
 echo "...done"
 
 echo -e "${LBLUE}Reloading bash${NC}"
-. ~/.bashrc
+source ~/.bashrc
 echo "...done"
 
 echo -e "${LBLUE}Loading X resources (xrdb -load ~/.Xresources)${NC}"

@@ -135,14 +135,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-#~ if [ -f ~/.bash_setprompt_custom ]; then
-#~     . ~/.bash_setprompt_custom
-#~ fi
-
-
 if [ -f ~/.identifiers/ranubuntu ]; then
     . ~/.custom/ranubuntu_bash_setprompt
+fi
+
+if [ -f ~/.identifiers/ranlubuntu ]; then
+    . ~/.custom/ranlubuntu_bash_setprompt
 fi
 
 
