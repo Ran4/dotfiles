@@ -145,6 +145,10 @@ nnoremap <leader>n :Se<CR>
 nnoremap <leader>N :Ve<CR>:wincmd x<CR>:wincmd w<CR>
 
 
+" Download NERDTree
+"cd ~/.vim/bundle
+"git clone https://github.com/scrooloose/nerdtree.git
+
 " Color scheme
 " mkdir -p ~/.vim/colors
 " cd ~/.vim/colors
