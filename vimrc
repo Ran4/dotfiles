@@ -106,6 +106,9 @@ vnoremap <leader>v :s/\%V/gc<Left><Left><Left>
 nnoremap <leader>p :!python %<CR>
 nnoremap <leader>i :!python -i %<CR>
 
+" Prepends # to line and goes down, Q removes then
+nnoremap <Leader>q I#<esc>j
+nnoremap <Leader>Q kx
 
 " q in visual mode appends '#~ ' to marked lines, Q removes them
 vnoremap q 0<C-v>I#~ <ESC>
@@ -137,7 +140,7 @@ vnoremap > >gv
 " nnoremap <leader>C ?class <CR>zz
 nnoremap <leader>w :wincmd w<CR>
 nnoremap <leader>W :wincmd W<CR>
-nnoremap <leader>q :wincmd W<CR>
+"nnoremap <leader>q :wincmd W<CR>
 nnoremap <leader>r :vert resize 80<CR>
 " nnoremap <leader>n :Se<CR>:wincmd r<CR>
 " nnoremap <leader>N :Ve<CR>:wincmd r<CR>
