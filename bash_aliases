@@ -20,3 +20,5 @@ alias manvim='function _domanvim() { man $1 | vim -R -; }; _domanvim'
 
 #alias wanip='curl -s http://whatismijnip.nl |cut -d " " -f 5'
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias tmuxs='~/dotfiles/defaulttmuxsession.sh'
+alias ts='~/dotfiles/defaulttmuxsession.sh'
