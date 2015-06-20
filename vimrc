@@ -32,7 +32,6 @@ nnoremap ö /
 cnoremap ö /
 cnoremap ä /
 imap jk <esc>
-nnoremap :W :w
 
 "let mapleader = "-"
 let mapleader = ","
