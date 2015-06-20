@@ -143,6 +143,9 @@ if [ -f ~/.identifiers/ranlubuntu ]; then
     . ~/.custom/ranlubuntu_bash_setprompt
 fi
 
+if [ -f ~/.identifiers/ranvb ]; then
+    . ~/.custom/ranvb_bash_setprompt
+fi
 
 if [ -f ~/.identifiers/ranmini ]; then
     . ~/.custom/ranmini_bash_setprompt
