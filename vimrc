@@ -35,6 +35,7 @@ imap jk <esc>
 
 "let mapleader = "-"
 let mapleader = ","
+nnoremap ,, ,
 
 nmap ä ,
 
