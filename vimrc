@@ -102,8 +102,8 @@ vnoremap <leader>v :s/\%V/gc<Left><Left><Left>
 vnoremap <leader>v :s/\%V/gc<Left><Left><Left>
 
 " Call python
-nnoremap <leader>p :!python %<CR>
-nnoremap <leader>i :!python -i %<CR>
+nnoremap <leader>p :!clear && python %<CR>
+nnoremap <leader>i :!clear && python -i %<CR>
 
 " Prepends # to line and goes down, Q removes then
 nnoremap <Leader>q I#<esc>j
