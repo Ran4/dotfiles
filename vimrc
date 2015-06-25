@@ -61,6 +61,7 @@ map <F2> :set paste<CR>i
 " Leave paste mode on exit
 au InsertLeave * set nopaste
 
+nnoremap <CR> :
 
 "Quickly move between windows
 nnoremap <C-J> <C-W><C-J>
