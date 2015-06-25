@@ -141,10 +141,7 @@ nnoremap <leader>w :wincmd w<CR>
 nnoremap <leader>W :wincmd W<CR>
 "nnoremap <leader>q :wincmd W<CR>
 nnoremap <leader>r :vert resize 80<CR>
-" nnoremap <leader>n :Se<CR>:wincmd r<CR>
-" nnoremap <leader>N :Ve<CR>:wincmd r<CR>
-nnoremap <leader>n :Se<CR>
-nnoremap <leader>N :Ve<CR>:wincmd x<CR>:wincmd w<CR>
+nnoremap <leader>n :set number!<CR>
 
 
 " Download NERDTree
