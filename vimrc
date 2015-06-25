@@ -46,6 +46,9 @@ nnoremap _ -
 nnoremap + <C-a>
 nnoremap _ <C-x>
 
+" More reasonable use of Y
+nnoremap Y y$
+
 " Jump directly to a spot instead of just to that line
 nnoremap ` '
 nnoremap ' `
