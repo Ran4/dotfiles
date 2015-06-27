@@ -38,6 +38,7 @@ let mapleader = ","
 nnoremap ,, ,
 
 nmap ä ,
+noremap <space> :
 
 "_ is used more often than -, so make it easier to use
 nnoremap - _
