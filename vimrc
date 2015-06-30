@@ -171,6 +171,16 @@ set t_Co=256
 nmap <leader>l :highlight ExtraWhitespace ctermbg=red<CR>:match ExtraWhiteSpace /\S\(\s\+\)$/<CR>
 autocmd InsertLeave * match ExtraWhitespace //
 
+if exists('+colorcolumn')
+    set colorcolumn=81
+    " Colorcolumn color is very dark grey
+    highlight colorcolumn ctermbg=0
+    
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+else 
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif	
+
 " Change in paranthesis function, since ci( initially doesn't work
 function New_cip()
     if search("(","bn") == line(".")
