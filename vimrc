@@ -30,7 +30,7 @@ filetype plugin indent on
 " :help map-which-keys    " is helpful!
 nnoremap ö /
 cnoremap ö /
-cnoremap ä /
+vnoremap ö /
 imap jk <esc>
 
 "let mapleader = "-"
