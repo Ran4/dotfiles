@@ -104,8 +104,8 @@ nnoremap k gk
 nnoremap <leader>v :%s//gc<Left><Left><Left>
 
 " visual mode replace helper
-vnoremap <leader>v :s/\%V/gc<Left><Left><Left>
-vnoremap <leader>v :s/\%V/gc<Left><Left><Left>
+"vnoremap <leader>v :s/\%V/g<Left><Left><Left>
+vnoremap <leader>v :s/\%V/g<Left><Left><Left>
 
 " Call python
 nnoremap <leader>p :!clear && python %<CR>
@@ -126,6 +126,11 @@ vnoremap <Leader>" <ESC>`>a"<ESC>`<i"<ESC>
 vnoremap <Leader>' <ESC>`>a'<ESC>`<i'<ESC>
 nnoremap <Leader>[ viw<ESC>a]<ESC>hbi[<ESC>%
 nnoremap <Leader>] viw<ESC>a]<ESC>hbi[<ESC>%
+
+" Append to in-commands
+nnoremap <Leader>a" f";i
+nnoremap <Leader>a' f';i
+nnoremap <Leader>a) f)i
 
 " Quickly edit vimrc
 nnoremap <leader>ev :vert split $MYVIMRC<CR>
@@ -170,8 +175,8 @@ set t_Co=256
 " highlight trailing spaces
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :highlight ExtraWhitespace ctermbg=red<CR>:match ExtraWhiteSpace /\S\(\s\+\)$/<CR>
-"autocmd InsertEnter * set cul! | match ExtraWhitespace //
-autocmd InsertEnter * set cul!
+autocmd InsertEnter * set cul! | match ExtraWhitespace //
+"autocmd InsertEnter * set cul!
 autocmd InsertLeave * set cul! | call HighlightExtraWhitespace()
 
 function HighlightExtraWhitespace()
