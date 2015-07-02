@@ -7,7 +7,7 @@ else
             " Mac options here
 	endif
 	    " Linux things here
-	    " echo "Linux detected!" 
+	    " echo "Linux detected!"
     endif
 endif
 
@@ -167,10 +167,19 @@ syntax enable
 
 set t_Co=256
 
-" highlight trailing spaces 
+" highlight trailing spaces
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :highlight ExtraWhitespace ctermbg=red<CR>:match ExtraWhiteSpace /\S\(\s\+\)$/<CR>
-autocmd InsertLeave * match ExtraWhitespace //
+"autocmd InsertEnter * set cul! | match ExtraWhitespace //
+autocmd InsertEnter * set cul!
+autocmd InsertLeave * set cul! | call HighlightExtraWhitespace()
+
+function HighlightExtraWhitespace()
+    "highlight ExtraWhitespace ctermbg=red
+    "6 is a blue color?
+    highlight ExtraWhitespace ctermbg=6
+    match ExtraWhiteSpace /\S\(\s\+\)$/
+endfunction
 
 if exists('+colorcolumn')
     set colorcolumn=81
@@ -178,9 +187,9 @@ if exists('+colorcolumn')
     highlight colorcolumn ctermbg=0
     
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-else 
+else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif	
+endif
 
 " Change in paranthesis function, since ci( initially doesn't work
 function New_cip()
@@ -236,6 +245,8 @@ if has("autocmd")
     augroup bashalias
         autocmd BufRead,BufNewFile .bash_aliases,bash_aliases set filetype=sh
     augroup END
+    
+    autocmd BufRead,BufNewFile * call HighlightExtraWhitespace()
 endif
 
 
