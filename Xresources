@@ -4,7 +4,7 @@
 *xterm*foreground: #d0d0d0
 *xterm*cursorColor: #d0d0d0
 *xterm*color0: #101010
-!this is what git used for not staged/untracked files!*xterm*color1: #960050 
+!this is what git used for not staged/untracked files!*xterm*color1: #960050
 *xterm*color1: #ff0066
 *xterm*color2: #66aa11
 *xterm*color3: #c47f2c
@@ -32,3 +32,8 @@ xterm*borderWidth: 0
 xterm*vt100*geometry: 80x35
 
 *xterm*metaSendsEscape: true
+
+! Avoid bold fonts
+!xterm*font: fixed
+!xterm*boldFont: fixed
+xterm*allowBoldFonts: false
