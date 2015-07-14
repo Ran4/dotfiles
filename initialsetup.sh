@@ -6,6 +6,7 @@ sudo apt-get -y install curl
 
 git config --global user.email "rasmus.ansin@gmail.com"
 git config --global user.name "Rasmus Ansin"
+git config --global push.default simple
 
 #Remove annoying folders that come with ubuntu
 rmdir ~/Music
