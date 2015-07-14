@@ -8,7 +8,11 @@ set splitright
 
 set incsearch
 set ignorecase
-set mouse=c
+if has("gui_running")
+    set mouse=c
+else
+    set mouse=a
+endif
 
 set timeoutlen=3500 " used with leader
 
@@ -64,11 +68,6 @@ nnoremap O O.<Esc>"_x<Esc>
 nnoremap <leader><Space> k?\n\s*\n<CR>$
 vnoremap <leader><Space> k?\n\s*\n<CR>$
 
-" Fix for shift+space
-nnoremap ,.<Space> k?\n\s*\n<CR>$
-vnoremap ,.<Space> k?\n\s*\n<CR>$
-inoremap ,.<Space> <Space>
-
 " Characters to use with ¨ and shift+¨
 " ẅëẗÿüï¨ḧ̈́̈́ẍ^f
 " âĉêĝĥîĵôŝûŵŷẑ
@@ -87,7 +86,7 @@ inoremap zB <esc>zb4<C-e>i
 nnoremap j gj
 nnoremap k gk
 
-" Replace helper: press ,vname/newname<CR> to replace globally
+" Substitution  helper: press ,vname/newname<CR> to replace globally
 nnoremap <leader>v :%s//gc<Left><Left><Left>
 
 " visual mode replace helper

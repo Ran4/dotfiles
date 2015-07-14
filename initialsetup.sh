@@ -8,6 +8,9 @@ git config --global user.email "rasmus.ansin@gmail.com"
 git config --global user.name "Rasmus Ansin"
 git config --global push.default simple
 
+#Make a copy of the default ssh config
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
+
 #Remove annoying folders that come with ubuntu
 rmdir ~/Music
 rmdir ~/Pictures
