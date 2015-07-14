@@ -8,7 +8,7 @@ set splitright
 
 set incsearch
 set ignorecase
-set mouse=a
+set mouse=c
 
 set timeoutlen=3500 " used with leader
 
