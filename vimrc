@@ -141,9 +141,6 @@ nnoremap <leader>r :vert resize 80<CR>
 nnoremap <leader>n :set number!<CR>
 
 
-" Download NERDTree
-"cd ~/.vim/bundle
-"git clone https://github.com/scrooloose/nerdtree.git
 
 " Color scheme
 " mkdir -p ~/.vim/colors
@@ -240,6 +237,14 @@ if has("autocmd")
     autocmd BufRead,BufNewFile * call HighlightExtraWhitespace()
 endif
 
+
+" Download NERDTree
+"cd ~/.vim/bundle
+"git clone https://github.com/scrooloose/nerdtree.git
+
+" Download vim-exchange in order to get the cx operator
+"cd ~/.vim/bundle
+"git clone git://github.com/tommcdo/vim-exchange.git
 
 " Start pathogen
 execute pathogen#infect()
