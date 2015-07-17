@@ -1,8 +1,7 @@
-sudo apt-get -y install git
-sudo apt-get -y install openssh-server
-sudo apt-get -y install vim-gnome
-sudo apt-get -y install tmux
-sudo apt-get -y install curl
+sudo apt-get -y install git openssh-server vim-gnome tmux curl
+sudo apt-get -y install python-pip
+sudo apt-get -y install texlive texlive-latex-base # Around 300 MB?
+#sudo apt-get -y install texlive-full  # 3 GB...
 
 git config --global user.email "rasmus.ansin@gmail.com"
 git config --global user.name "Rasmus Ansin"

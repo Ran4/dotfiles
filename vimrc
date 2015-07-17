@@ -24,6 +24,11 @@ cnoremap ö /
 vnoremap ö /
 imap jk <esc>
 
+"Fix accidentally holding shift while trying to quite vim
+command Q q
+command Qa qa
+command QA qa
+
 "let mapleader = "-"
 let mapleader = ","
 nnoremap ,, ,
