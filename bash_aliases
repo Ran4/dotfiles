@@ -1,6 +1,7 @@
-alias ll='ls -alF'
+alias ll='ls -l'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls -C'
+alias lah='ls -lAh'
 alias logout='gnome-session-quit --force'
 
 alias gits='git status'
