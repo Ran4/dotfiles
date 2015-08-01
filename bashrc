@@ -155,3 +155,4 @@ if [ -f ~/.identifiers/kth ]; then
     . ~/.custom/kth_bash_setprompt
     cp ~/.custom/kth_tmux.conf ~/.tmux.conf
 fi
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

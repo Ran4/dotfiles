@@ -257,3 +257,6 @@ execute pathogen#infect()
 " For NERDTree
 nnoremap § :NERDTree<CR>
 nnoremap <TAB> :NERDTree<CR>
+
+" Add fzf to RunTimePath
+set rtp+=~/.fzf

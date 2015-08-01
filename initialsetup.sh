@@ -25,3 +25,6 @@ cd ~/pyy
 
 #sudo apt-get -y install python-tk #used for clip.py
 
+#FZF, a Fuzzy file finder
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
