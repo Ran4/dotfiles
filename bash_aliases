@@ -9,6 +9,7 @@ alias gits='git status'
 alias gl='git log -n 8 --graph --pretty=format:"%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
 alias gs='git status'
 alias gc='git commit'
+alias gp='git push'
 alias gcm='git commit -m'
 alias gcam='git commit -am'
 
