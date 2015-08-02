@@ -12,7 +12,7 @@ NC='\033[0m'
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="bashrc bash_aliases bash_setprompt vimrc vim xmodmap_swap_caps_and_escape xmodmap_swap_caps_and_ctrl Xresources tmux.conf"
+files="bashrc bash_aliases bash_setprompt gitconfig vimrc vim xmodmap_swap_caps_and_escape xmodmap_swap_caps_and_ctrl Xresources tmux.conf"
 
 ##########
 
