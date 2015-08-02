@@ -35,6 +35,9 @@ nnoremap ,, ,
 
 nmap ä ,
 noremap <space> i<space><esc>l
+"
+"jump backward in jumplist, inverse of tab
+nnoremap <bs> <c-o>
 
 "_ is used more often than -, so make it easier to use
 nnoremap - _
@@ -68,8 +71,9 @@ nnoremap <C-H> <C-W><C-H>
 
 nnoremap o o.<Esc>"_x<Esc>
 nnoremap O O.<Esc>"_x<Esc>
-"nnoremap <Space> /\n\s*\n<CR>$
-"vnoremap <Space> /\n\s*\n<CR>$
+
+nnoremap <Space> /\n\s*\n<CR>$
+vnoremap <Space> /\n\s*\n<CR>$
 nnoremap <leader><Space> k?\n\s*\n<CR>$
 vnoremap <leader><Space> k?\n\s*\n<CR>$
 
@@ -179,7 +183,7 @@ if exists('+colorcolumn')
     " Colorcolumn color is very dark grey
     highlight colorcolumn ctermbg=0
     
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+    "au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
@@ -245,18 +249,21 @@ endif
 
 " Download NERDTree
 "cd ~/.vim/bundle
-"git clone https://github.com/scrooloose/nerdtree.git
+"!git clone https://github.com/scrooloose/nerdtree.git
 
 " Download vim-exchange in order to get the cx operator
 "cd ~/.vim/bundle
-"git clone git://github.com/tommcdo/vim-exchange.git
+"!git clone git://github.com/tommcdo/vim-exchange.git
+
+"cd ~/.vim/bundle
+"!git clone git://github.com/tpope/vim-surround.git
 
 " Start pathogen
 execute pathogen#infect()
 
 " For NERDTree
-nnoremap § :NERDTree<CR>
-nnoremap <TAB> :NERDTree<CR>
+"nnoremap § :NERDTree<CR>
+"nnoremap <TAB> :NERDTree<CR>
 
 " Add fzf to RunTimePath
 set rtp+=~/.fzf
