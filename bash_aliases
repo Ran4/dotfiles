@@ -13,6 +13,8 @@ alias gp='git push'
 alias gcm='git commit -m'
 alias gcam='git commit -am'
 
+alias g='grep'
+
 alias cd..='cd ..'
 alias ..='cd ..'
 
