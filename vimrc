@@ -55,6 +55,10 @@ nnoremap ' `
 vnoremap ` '
 vnoremap ' `
 
+" Quick record
+nnoremap Q qq
+nnoremap <leader>q @q
+
 "set clipboard=unnamed
 " Key to insert mode with paste using F2 key
 map <F2> :set paste<CR>i
