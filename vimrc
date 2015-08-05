@@ -262,6 +262,10 @@ endif
 "cd ~/.vim/bundle
 "!git clone git://github.com/tpope/vim-surround.git
 
+" Download vim-tbone, allowing tmux commands
+"cd ~/.vim/bundle
+"!git clone git://github.com/tpope/vim-tbone.git
+
 " Start pathogen
 execute pathogen#infect()
 
