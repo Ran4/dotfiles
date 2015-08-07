@@ -34,7 +34,7 @@ let mapleader = ","
 nnoremap ,, ,
 
 nmap ä ,
-noremap <space> i<space><esc>l
+"noremap <space> i<space><esc>l
 "
 "jump backward in jumplist, inverse of tab
 nnoremap <bs> <c-o>
@@ -76,10 +76,14 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap o o.<Esc>"_x<Esc>
 nnoremap O O.<Esc>"_x<Esc>
 
+" Move to the last character before a newline
 nnoremap <Space> /\n\s*\n<CR>$
 vnoremap <Space> /\n\s*\n<CR>$
 nnoremap <leader><Space> k?\n\s*\n<CR>$
 vnoremap <leader><Space> k?\n\s*\n<CR>$
+" This only works in gvim... use the <leader><space> above in the terminal
+nnoremap <S-Space> k?\n\s*\n<CR>$
+vnoremap <S-Space> k?\n\s*\n<CR>$
 
 " Characters to use with ¨ and shift+¨
 " ẅëẗÿüï¨ḧ̈́̈́ẍ^f
