@@ -3,8 +3,9 @@ command_exists () {
     type "$1" &> /dev/null ;
 }
 
-set r rate 220 60
-xset r rate 220 60 &> /dev/null ;
+#msDelay (higher=longer), rate (quicker=faster)
+set r rate 230 70
+xset r rate 230 70 &> /dev/null ;
 
 if command_exists synclient ; then
     #default value is 111, at least on the HP Mini 110
