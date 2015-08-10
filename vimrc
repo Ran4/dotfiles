@@ -9,9 +9,9 @@ set splitright
 set incsearch
 set ignorecase
 if has("gui_running")
-    set mouse=c
-else
     set mouse=a
+else
+    set mouse=n
 endif
 
 set timeout
@@ -196,7 +196,7 @@ endfunction
 if exists('+colorcolumn')
     set colorcolumn=81
     " Colorcolumn color is very dark grey
-    highlight colorcolumn ctermbg=0
+    highlight colorcolumn ctermbg=0 guibg=black
     
     "au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 else
