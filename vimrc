@@ -14,7 +14,15 @@ else
     set mouse=a
 endif
 
-set timeoutlen=3500 " used with leader
+set timeout
+set timeoutlen=2500 " used with e.g. leader
+set ttimeoutlen=10
+
+"Don't wait as long in insert mode (to enable us to quickly type j and k)
+augroup FastEscape
+    au InsertEnter * set timeoutlen=350
+    au InsertLeave * set timeoutlen=2500
+augroup END
 
 filetype plugin indent on
 
