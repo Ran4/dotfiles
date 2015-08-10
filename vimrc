@@ -20,6 +20,7 @@ filetype plugin indent on
 
 " :help map-which-keys    " is helpful!
 nnoremap ö /
+nnoremap dö d/
 cnoremap ö /
 vnoremap ö /
 imap jk <esc>
