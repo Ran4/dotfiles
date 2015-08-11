@@ -20,7 +20,7 @@ set ttimeoutlen=10
 
 "Don't wait as long in insert mode (to enable us to quickly type j and k)
 augroup FastEscape
-    au InsertEnter * set timeoutlen=350
+    au InsertEnter * set timeoutlen=450
     au InsertLeave * set timeoutlen=2500
 augroup END
 
