@@ -9,8 +9,7 @@ cd ~
 tmux new-session -s "$sn" -d
 
 cd ~/dotfiles
-tmux new-window -n dotfiles 
-#tmux new-window -n "myname"
+tmux new-window -n dotfiles
 
 # Select window #1 and attach to the session
 tmux select-window -t "$sn:1"
