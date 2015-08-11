@@ -16,7 +16,7 @@ set editing-mode vi
 set -o vi
 set keymap vi-command
 
-xmodmap ~/.xmodmap_swap_caps_and_ctrl
+xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -154,6 +154,8 @@ fi
 
 if [ -f ~/.identifiers/kth ]; then
     . ~/.custom/kth_bash_setprompt
-    cp ~/.custom/kth_tmux.conf ~/.tmux.conf
+    #cp ~/.custom/kth_tmux.conf ~/.tmux.conf
+    unlink ~/.tmux.conf
+    ln -s ~/.custom/kth_tmux.conf ~/.tmux.conf
 fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

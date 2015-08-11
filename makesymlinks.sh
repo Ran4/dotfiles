@@ -12,7 +12,7 @@ NC='\033[0m'
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="bashrc bash_aliases bash_setprompt gitconfig vimrc vim xmodmap_swap_caps_and_escape xmodmap_swap_caps_and_ctrl Xresources tmux.conf"
+files="bashrc bash_aliases bash_setprompt gitconfig vimrc vim xmodmap_swap_caps_and_escape xmodmap_swap_caps_and_ctrl Xresources tmux.conf custom/kth_tmux.conf"
 
 ##########
 
@@ -26,7 +26,7 @@ echo -e "${LBLUE}Changing to the $dir directory${NC}"
 cd $dir
 echo "...done"
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
+# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file $olddir
