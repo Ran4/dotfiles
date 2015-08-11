@@ -1,6 +1,6 @@
 #Help function to see if a command exists
 command_exists () {
-    type "$1" &> /dev/null ;
+  type "$1" >/dev/null 2>/dev/null
 }
 
 #msDelay (higher=longer), rate (quicker=faster)
@@ -16,7 +16,9 @@ set editing-mode vi
 set -o vi
 set keymap vi-command
 
-xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
+if ! command_exists xcape ; then
+    xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
+fi
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
