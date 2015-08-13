@@ -16,7 +16,9 @@ set editing-mode vi
 set -o vi
 set keymap vi-command
 
-if ! command_exists xcape ; then
+if command_exists xcape ; then
+    . ~/.xcape_config
+else
     xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
 fi
 

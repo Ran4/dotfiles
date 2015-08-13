@@ -15,6 +15,15 @@ alias gcam='git commit -am'
 
 alias g='grep'
 
+function __cdls {
+    cd $1
+    ls
+}
+alias c='__cdls'
+alias c..='__cdls ..'
+alias cl='__cdls'
+alias cdl='__cdls'
+alias cdls='__cdls'
 alias cd..='cd ..'
 alias ..='cd ..'
 
@@ -35,3 +44,6 @@ alias manvim='function _domanvim() { man $1 | vim -R -; }; _domanvim'
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias tmuxs='~/dotfiles/defaulttmuxsession.sh'
 alias ts='~/dotfiles/defaulttmuxsession.sh'
+
+#temporary: used to quickly edit i3 config
+alias ei='vim ~/.i3/config'
