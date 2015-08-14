@@ -12,6 +12,7 @@ if command_exists synclient ; then
     synclient VertScrollDelta=200 &> /dev/null ;
 fi
 
+#Set vim mode for bash
 set editing-mode vi
 set -o vi
 set keymap vi-command
@@ -21,10 +22,6 @@ if command_exists xcape ; then
 else
     xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
 fi
-
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
 
 # If not running interactively, don't do anything
 case $- in
