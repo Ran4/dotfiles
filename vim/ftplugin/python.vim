@@ -26,9 +26,11 @@ vnoremap <silent> <buffer> <leader>C :call <SID>Python_jump('?^\(class\\|def\)')
 vnoremap <silent> <buffer> <leader>d :call <SID>Python_jump('/^\s*\(class\\|def\)')<cr>zz
 vnoremap <silent> <buffer> <leader>D :call <SID>Python_jump('?^\s*\(class\\|def\)')<cr>zz
 
+nnoremap <silent> <buffer> å :call <SID>Python_jump('/^\s*\(class\\|def\)')<cr>zz
+nnoremap <silent> <buffer> Å :call <SID>Python_jump('?^\s*\(class\\|def\)')<cr>zz
+
 
 highlight ExtraWhitespace ctermbg=darkmagenta
-
 
 if exists('*<SID>Python_jump') | finish | endif
 
@@ -43,3 +45,6 @@ fun! <SID>Python_jump(motion) range
     call histdel('/', -1)
     let @/ = save    " restore last search pattern
 endfun
+
+"Start file with all folds open
+autocmd BufWinEnter *.py :%foldopen!
