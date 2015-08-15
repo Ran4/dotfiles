@@ -46,4 +46,4 @@ alias tmuxs='~/dotfiles/defaulttmuxsession.sh'
 alias ts='~/dotfiles/defaulttmuxsession.sh'
 
 #temporary: used to quickly edit i3 config
-alias ei='vim ~/.i3/config'
+alias eh='vim ~/.config/herbstluftwm/autostart'
