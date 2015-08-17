@@ -31,7 +31,7 @@ xterm*borderWidth: 0
 ! Without the vt100, the size of ctrl+left/middle/right mouse click menu will be set to 80x35 px
 xterm*vt100*geometry: 130x55
 
-#*xterm*metaSendsEscape: true
+!*xterm*metaSendsEscape: true
 
 ! Avoid bold fonts
 !xterm*font: fixed

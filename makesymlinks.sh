@@ -4,6 +4,11 @@
 # Found at
 # http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
 
+#Help function to see if a command exists
+command_exists () {
+  type "$1" >/dev/null 2>/dev/null
+}
+
 #ORANGE='\033[0;33m'
 LBLUE='\033[1;34m'
 NC='\033[0m'
@@ -52,10 +57,15 @@ echo -e "${LBLUE}Sourcing tmux (tmux source-file ~/.tmux.conf)${NC}"
 tmux source-file ~/.tmux.conf
 echo "...done"
 
-
 echo -e "${LBLUE}Building lesskey (lesskey -o ~/.less ~/.lesskey)${NC}"
 lesskey -o ~/.less ~/.lesskey
 echo "...done"
+
+if command_exists i3 ; then
+	echo -e "${LBLUE}Creating symlink to i3 config (ln -s ~/.i3/config i3config)${NC}"
+	ln -s ~/.i3/config i3config
+	echo "...done"
+fi
 
 echo -e "${LBLUE}Calling xmodmap .xmodmap_swap_caps_and_escape and .xmodmap_swap_caps_and_ctrl${NC}"
 xmodmap ~/.xmodmap_swap_caps_and_escape
