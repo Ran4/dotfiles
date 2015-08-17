@@ -8,6 +8,8 @@ sudo apt-get -y install python-pip
 git config --global user.email "rasmus.ansin@gmail.com"
 git config --global user.name "Rasmus Ansin"
 git config --global push.default simple
+#use less as a pager, but only if output is longer than the screen
+git config --global --replace-all core.pager "less -F -X"
 
 #Make a copy of the default ssh config
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
