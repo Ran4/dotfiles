@@ -110,12 +110,10 @@ inoremap zB <esc>zb4<C-e>i
 nnoremap j gj
 nnoremap k gk
 
-" Substitution  helper: press ,vname/newname<CR> to replace globally
+" Substitution  helper: press <leader>vname/newname<CR> to replace globally
 nnoremap <leader>v :%s//gc<Left><Left><Left>
-
 " visual mode replace helper
-"vnoremap <leader>v :s/\%V/g<Left><Left><Left>
-vnoremap <leader>v :s/\%V/g<Left><Left><Left>
+vnoremap <leader>v :s/\%V/g<Left><Left>
 
 " Call python
 nnoremap <leader>p :!clear && python %<CR>

@@ -19,6 +19,7 @@ set keymap vi-command
 
 if command_exists xcape ; then
     . ~/.xcape_config
+    #echo "Not running xcape config!"
 else
     xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
 fi
