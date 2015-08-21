@@ -67,8 +67,8 @@ if command_exists i3 ; then
 	echo "...done"
 fi
 
-echo -e "${LBLUE}Calling xmodmap .xmodmap_swap_caps_and_escape and .xmodmap_swap_caps_and_ctrl${NC}"
+#echo -e "${LBLUE}Calling xmodmap .xmodmap_swap_caps_and_escape and .xmodmap_swap_caps_and_ctrl${NC}"
 #xmodmap ~/.xmodmap_swap_caps_and_escape
 #xmodmap ~/.xmodmap_swap_caps_and_ctrl
-echo "...done"
+#echo "...done"
 

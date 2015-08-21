@@ -154,6 +154,10 @@ if [ -f ~/.identifiers/ranmini ]; then
     . ~/.custom/ranmini_bash_setprompt
 fi
 
+if [ -f ~/.identifiers/ranl412 ]; then
+    . ~/.custom/ranl412_bash_setprompt
+fi
+
 if [ -f ~/.identifiers/kth ]; then
     . ~/.custom/kth_bash_setprompt
     #cp ~/.custom/kth_tmux.conf ~/.tmux.conf
