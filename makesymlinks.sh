@@ -63,12 +63,12 @@ echo "...done"
 
 if command_exists i3 ; then
 	echo -e "${LBLUE}Creating symlink to i3 config (ln -s ~/.i3/config i3config)${NC}"
-	ln -s ~/.i3/config i3config
+	ln -s $dir/i3config ~/.i3/config
 	echo "...done"
 fi
 
 echo -e "${LBLUE}Calling xmodmap .xmodmap_swap_caps_and_escape and .xmodmap_swap_caps_and_ctrl${NC}"
-xmodmap ~/.xmodmap_swap_caps_and_escape
-xmodmap ~/.xmodmap_swap_caps_and_ctrl
+#xmodmap ~/.xmodmap_swap_caps_and_escape
+#xmodmap ~/.xmodmap_swap_caps_and_ctrl
 echo "...done"
 

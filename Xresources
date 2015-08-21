@@ -37,3 +37,6 @@ xterm*vt100*geometry: 130x55
 !xterm*font: fixed
 !xterm*boldFont: fixed
 xterm*allowBoldFonts: false
+!END of mine
+
+
