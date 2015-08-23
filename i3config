@@ -179,6 +179,5 @@ bar {
 
 #Programs to run at start
 #exec --no-startup-id xterm
-#exec xterm
-exec urxvt
+exec xterm
 exec . setupscreens.sh

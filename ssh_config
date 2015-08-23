@@ -1,0 +1,6 @@
+Host kth
+	HostName u-shell.csc.kth.se
+	User ransin
+Host l412
+	HostName 192.168.2.11
+	User ran

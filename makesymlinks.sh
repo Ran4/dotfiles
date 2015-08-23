@@ -61,8 +61,12 @@ echo -e "${LBLUE}Building lesskey (lesskey -o ~/.less ~/.lesskey)${NC}"
 lesskey -o ~/.less ~/.lesskey
 echo "...done"
 
+echo -e "${LBLUE}Creating symlink to ~/.ssh/config (ln -s $dir/ssh_config ~/.ssh/config)${NC}"
+ln -s $dir/ssh_config ~/.ssh/config
+echo "...done"
+
 if command_exists i3 ; then
-	echo -e "${LBLUE}Creating symlink to i3 config (ln -s ~/.i3/config i3config)${NC}"
+	echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3config ~/.i3/config)${NC}"
 	ln -s $dir/i3config ~/.i3/config
 	echo "...done"
 fi
