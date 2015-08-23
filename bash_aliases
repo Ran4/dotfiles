@@ -44,9 +44,9 @@ alias manvim='function _domanvim() { man $1 | vim -R -; }; _domanvim'
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias tmuxs='~/dotfiles/defaulttmuxsession.sh'
 alias ts='~/dotfiles/defaulttmuxsession.sh'
+alias tskth='ts && tmux source-file ~/dotfiles/custom/kth_tmux.conf'
 
 #temporary: used to quickly edit i3 config
 alias ei='vim ~/.i3/config'
-#alias eh='vim ~/.config/herbstluftwm/autostart'
 #alias kxt="ps aux | grep -i xterm | awk {'print $2'} | xargs kill -9" #kill xterm, please remove me once you've figured out the problem with i3
 alias kxt="kill -9 $(pidof xterm)" #kill all xterm windows, please remove me once you've figured out the problem with i3
