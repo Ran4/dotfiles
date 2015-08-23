@@ -275,6 +275,9 @@ endif
 "cd ~/.vim/bundle
 "!git clone git://github.com/tpope/vim-tbone.git
 
+" targets.vim, allows movements like cin" (change in next ") and da,
+"git clone git://github.com/wellle/targets.vim.git ~/.vim/bundle/targets.vim
+
 " Start pathogen
 execute pathogen#infect()
 
