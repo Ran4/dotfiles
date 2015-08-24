@@ -152,6 +152,9 @@ fi
 
 if [ -f ~/.identifiers/ranl412 ]; then
     . ~/.custom/ranl412_bash_setprompt
+    unlink ~/.tmux.conf
+    ln -s ~/.custom/ranl412_tmux.conf ~/.tmux.conf
+    
     #Disable TouchPad:
     declare -i ID
     ID=`xinput list | grep -Eo 'TouchPad\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}'`
