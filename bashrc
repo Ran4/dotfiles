@@ -155,11 +155,18 @@ fi
 
 if [ -f ~/.identifiers/ranl412 ]; then
     . ~/.custom/ranl412_bash_setprompt
+    unlink ~/.tmux.conf
+    ln -s ~/.custom/ranl412_tmux.conf ~/.tmux.conf
+    
     #Disable TouchPad:
     declare -i ID
     ID=`xinput list | grep -Eo 'TouchPad\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}'`
     xinput set-prop $ID "Device Enabled" 0
     #echo 'Touchpad has been disabled.'
+    
+    #Increase speed of trackpoint. Default is 1.0, 0.8 is faster
+    TRACKPOINT_NAME=$(xinput --list --name-only | g -i trackpoint)
+    xinput --set-prop "$TRACKPOINT_NAME" "Device Accel Constant Deceleration" 0.8
 fi
 
 if [ -f ~/.identifiers/kth ]; then
