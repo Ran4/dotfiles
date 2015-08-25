@@ -232,7 +232,6 @@ endfunction
 
 nnoremap ci[ :call New_cisb()<CR>
 nnoremap ci] :call New_cisb()<CR>
-nnoremap cib :call New_cisb()<CR>
 
 " Change in squigly brackets function, since ci{ initially doesn't work
 function New_cisqb()
