@@ -14,6 +14,7 @@ alias gcm='git commit -m'
 alias gcam='git commit -am'
 
 alias g='grep'
+alias gi='grep -i' #case-insensitive grep
 
 function __cdls {
     cd $1
