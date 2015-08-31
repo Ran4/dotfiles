@@ -2,7 +2,6 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -C'
 alias lah='ls -lAh'
-alias logout='gnome-session-quit --force'
 
 alias gits='git status'
 #eg. '* 3624854 (HEAD, master) Added gitconfig (23 minutes ago) <Rasmus Ansin>' but colored
@@ -27,6 +26,9 @@ alias cdl='__cdls'
 alias cdls='__cdls'
 alias cd..='cd ..'
 alias ..='cd ..'
+
+alias logo='lxsession'
+alias logout='lxsession'
 
 alias kth='ssh ransin@u-shell.csc.kth.se'
 #alias xterm='xterm tmux -2'

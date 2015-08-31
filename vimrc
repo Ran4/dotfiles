@@ -84,8 +84,9 @@ nnoremap o o.<Esc>"_x<Esc>
 nnoremap O O.<Esc>"_x<Esc>
 
 " Move to the last character before a newline
-nnoremap <Space> /\n\s*\n<CR>$
-vnoremap <Space> /\n\s*\n<CR>$
+"nnoremap <Space> /\n\s*\n<CR>$
+nnoremap <Space> :w<cr>
+"vnoremap <Space> /\n\s*\n<CR>$
 nnoremap <leader><Space> k?\n\s*\n<CR>$
 vnoremap <leader><Space> k?\n\s*\n<CR>$
 " This only works in gvim... use the <leader><space> above in the terminal
