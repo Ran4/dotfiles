@@ -50,6 +50,7 @@ alias ts='~/dotfiles/defaulttmuxsession.sh'
 alias tskth='ts && tmux source-file ~/dotfiles/custom/kth_tmux.conf'
 
 alias reset='reset && tmux clear-history'
+alias clear='clear && tmux clear-history'
 
 #temporary: used to quickly edit i3 config
 alias ei='vim ~/.i3/config'
