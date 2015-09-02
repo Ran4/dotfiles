@@ -49,6 +49,8 @@ alias tmuxs='~/dotfiles/defaulttmuxsession.sh'
 alias ts='~/dotfiles/defaulttmuxsession.sh'
 alias tskth='ts && tmux source-file ~/dotfiles/custom/kth_tmux.conf'
 
+alias reset='reset && tmux clear-history'
+
 #temporary: used to quickly edit i3 config
 alias ei='vim ~/.i3/config'
 #alias kxt="ps aux | grep -i xterm | awk {'print $2'} | xargs kill -9" #kill xterm, please remove me once you've figured out the problem with i3
