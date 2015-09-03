@@ -120,6 +120,9 @@ vnoremap <leader>v :s/\%V/g<Left><Left>
 nnoremap <leader>p :!clear && python %<CR>
 nnoremap <leader>i :!clear && python -i %<CR>
 
+" Call C/C++, assuming that there is an outfile with the output name %:r.out
+nnoremap <f5> :!clear && make && echo "    //// Output ////" && ./%:r.out<cr>
+
 " Prepends # to line and goes down, Q removes then
 nnoremap <Leader>q I#<esc>j
 nnoremap <Leader>Q kx
