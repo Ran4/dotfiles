@@ -18,6 +18,9 @@ set timeout
 set timeoutlen=2500 " used with e.g. leader
 set ttimeoutlen=10
 
+"Don't auto-add comments after typing <CR> in insert mode
+set formatoptions-=r
+
 "Don't wait as long in insert mode (to enable us to quickly type j and k)
 augroup FastEscape
     au InsertEnter * set timeoutlen=450
