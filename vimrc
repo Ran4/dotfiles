@@ -98,6 +98,9 @@ vnoremap <S-Space> k?\n\s*\n<CR>$
 " âĉêĝĥîĵôŝûŵŷẑ
 nnoremap ü i<CR><Esc>k$
 nnoremap ë :vert resize 80<CR>
+"Key that is right of + on Swedish keyboards plus key gives these
+nnoremap ẃ :mksession! .vimsession<cr>
+nnoremap ŕ :source .vimsession<cr>
 
 " Move top/bottom but leave 4 lines above/below
 nnoremap zT zt4<C-y>
