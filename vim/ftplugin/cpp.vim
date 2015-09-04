@@ -48,14 +48,17 @@ function! Iab (ab, full)
 endfunction
 
 "call Iab('#d', '#define ')
-"call Iab('#i', '#include <><Left>')
-"call Iab('#I', '#include ""<Left>')
+call Iab('#i', '#include <><Left>')
+call Iab('#I', '#include ""<Left>')
 "call Iab('printf', 'printf ("\n");<C-O>?\<CR>')
-call Iab('if', 'if ()<CR>{<CR>}<Left><C-O>?)<CR>')
+"call Iab('if', 'if ()<CR>{<CR>}<Left><C-O>?)<CR>')
+call Iab('if', 'if () {<CR>}<Left><C-O>?)<CR>')
 "call Iab('for', 'for (;;)<CR>{<CR>}<C-O>?;;<CR>')
 call Iab('for', 'for ()<CR>{<CR>}<C-O>?()<CR><RIGHT>')
 call Iab('while', 'while ()<CR>{<CR>}<C-O>?)<CR>')
-"call Iab('else', 'else<CR>{<CR>x;<CR>}<C-O>?x;<CR><Del><Del>')
+call Iab('else', 'else {<CR>x;<CR>}<C-O>?x;<CR><Del><Del>')
+"call Iab('elseif', 'else if () {<CR>}<C-O>) {<CR>')
+call Iab('elseif', 'else if () {<CR>}<C-O>?)<CR>')
 "call Iab('ifelse', 'if ()<CR>{<CR>}<CR>else<CR>{<CR>}<C-O>?)<CR>')
-"call Iab('intmain', 'int<CR>main (int argc, char **argv)<CR>'.
+call Iab('intmain', 'int main (int argc, char **argv)<CR>'.
  \ '{<CR>x;<CR>return 0;<CR>}<CR><C-O>?x;<CR><Del><Del>')
