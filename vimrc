@@ -287,6 +287,10 @@ endif
 " targets.vim, allows movements like cin" (change in next ") and da,
 "git clone git://github.com/wellle/targets.vim.git ~/.vim/bundle/targets.vim
 
+" syntastic, for syntax higlighting
+" GIT CLONE LINK GOES HERE?
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
 " Start pathogen
 execute pathogen#infect()
 
