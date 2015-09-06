@@ -62,3 +62,6 @@ call Iab('elseif', 'else if () {<CR>}<C-O>?)<CR>')
 "call Iab('ifelse', 'if ()<CR>{<CR>}<CR>else<CR>{<CR>}<C-O>?)<CR>')
 call Iab('intmain', 'int main (int argc, char **argv)<CR>'.
  \ '{<CR>x;<CR>return 0;<CR>}<CR><C-O>?x;<CR><Del><Del>')
+
+
+call Iab('cout', 'std::cout <<  << std::endl;<C-O>13h')

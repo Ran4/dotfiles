@@ -289,7 +289,7 @@ endif
 
 " syntastic, for syntax higlighting
 " GIT CLONE LINK GOES HERE?
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++ -g -Wall'
 
 " Start pathogen
 execute pathogen#infect()
