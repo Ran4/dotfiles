@@ -11,6 +11,10 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+"peda stuff
+nnoremap <BS> <nop>
+colo darkblue
+
 let g:syntastic_check_on_open = 1
 
 let g:syntastic_always_populate_loc_list = 1
@@ -19,6 +23,7 @@ let g:syntastic_check_on_wq = 0
 
 "nnoremap <leader>p :!clear && (make \|\| echo "    **** FAIL ****" && exit 1) && echo "    //// Output ////" && ./%:r.out<cr>
 nnoremap <leader>p :!clear && make && echo "    //// Output ////" && ./%:r.out<cr>
+nnoremap <leader>P :!clear && make && echo "    //// Output ////" && ./main.out<cr>
 
 nnoremap <leader>q mzI//<esc>`zll
 nnoremap <leader>Q 2hmz^2x`z
@@ -61,7 +66,7 @@ call Iab('#I', '#include ""<Left>')
 "call Iab('if', 'if ()<CR>{<CR>}<Left><C-O>?)<CR>')
 call Iab('if', 'if () {<CR>}<Left><C-O>?)<CR>')
 "call Iab('for', 'for (;;)<CR>{<CR>}<C-O>?;;<CR>')
-call Iab('for', 'for ()<CR>{<CR>}<C-O>?()<CR><RIGHT>')
+call Iab('for', 'for () {<CR>}<C-O>?()<CR><RIGHT>')
 call Iab('while', 'while ()<CR>{<CR>}<C-O>?)<CR>')
 call Iab('else', 'else {<CR>x;<CR>}<C-O>?x;<CR><Del><Del>')
 "call Iab('elseif', 'else if () {<CR>}<C-O>) {<CR>')
@@ -69,6 +74,5 @@ call Iab('elseif', 'else if () {<CR>}<C-O>?)<CR>')
 "call Iab('ifelse', 'if ()<CR>{<CR>}<CR>else<CR>{<CR>}<C-O>?)<CR>')
 call Iab('intmain', 'int main (int argc, char **argv)<CR>'.
  \ '{<CR>x;<CR>return 0;<CR>}<CR><C-O>?x;<CR><Del><Del>')
-
 
 call Iab('cout', 'std::cout <<  << std::endl;<C-O>13h')
