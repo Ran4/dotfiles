@@ -18,6 +18,8 @@ set timeout
 set timeoutlen=2500 " used with e.g. leader
 set ttimeoutlen=10
 
+set wildmode=longest,list,full
+
 "Don't auto-add comments after typing <CR> in insert mode
 set formatoptions-=r
 
@@ -41,22 +43,22 @@ command Q q
 command Qa qa
 command QA qa
 
-"let mapleader = "-"
-let mapleader = ","
+let mapleader = "ä"
+nmap , ä
 nnoremap ,, ,
 
-nmap ä ,
 "noremap <space> i<space><esc>l
 "
 "jump backward in jumplist, inverse of tab
 nnoremap <bs> <c-o>
 
-"_ is used more often than -, so make it easier to use
-nnoremap - _
-nnoremap _ -
-
 nnoremap + <C-a>
-nnoremap _ <C-x>
+nnoremap - <C-x>
+
+"0 is much easier to reach than ^
+nnoremap 0 ^
+nnoremap d0 d^
+nnoremap y0 y^
 
 " More reasonable use of Y
 nnoremap Y y$

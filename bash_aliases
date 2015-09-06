@@ -26,6 +26,8 @@ alias cdl='__cdls'
 alias cdls='__cdls'
 alias cd..='cd ..'
 alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 alias logo='lxsession'
 alias logout='lxsession'
