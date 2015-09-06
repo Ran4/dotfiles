@@ -29,6 +29,9 @@ vnoremap <silent> <buffer> <leader>D :call <SID>Python_jump('?^\s*\(class\\|def\
 nnoremap <silent> <buffer> å :call <SID>Python_jump('/^\s*\(class\\|def\)')<cr>zz
 nnoremap <silent> <buffer> Å :call <SID>Python_jump('?^\s*\(class\\|def\)')<cr>zz
 
+" q in visual mode appends '#~ ' to marked lines, Q removes them
+vnoremap q 0<C-v>I#~ <ESC>
+vnoremap Q 0<C-v>x..<ESC>
 
 highlight ExtraWhitespace ctermbg=darkmagenta
 

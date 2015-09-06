@@ -69,7 +69,7 @@ vnoremap ' `
 
 " Quick record
 nnoremap Q qq
-nnoremap <leader>q @q
+"nnoremap <leader>q @q
 
 "set clipboard=unnamed
 " Key to insert mode with paste using F2 key
@@ -132,10 +132,6 @@ nnoremap <f5> :!clear && make && echo "    //// Output ////" && ./%:r.out<cr>
 " Prepends # to line and goes down, Q removes then
 nnoremap <Leader>q I#<esc>j
 nnoremap <Leader>Q kx
-
-" q in visual mode appends '#~ ' to marked lines, Q removes them
-vnoremap q 0<C-v>I#~ <ESC>
-vnoremap Q 0<C-v>x..<ESC>
 
 " Adds characters around word
 nnoremap <Leader>" viw<ESC>a"<ESC>hbi"<ESC>lel

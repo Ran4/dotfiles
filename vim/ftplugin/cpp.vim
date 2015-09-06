@@ -16,7 +16,10 @@ let g:syntastic_check_on_open = 1
 "nnoremap <leader>p :!clear && (make \|\| echo "    **** FAIL ****" && exit 1) && echo "    //// Output ////" && ./%:r.out<cr>
 nnoremap <leader>p :!clear && make && echo "    //// Output ////" && ./%:r.out<cr>
 
-
+nnoremap <leader>q mzI//<esc>`zll
+nnoremap <leader>Q 2hmz^2x`z
+vnoremap äq :norm I//<CR>
+vnoremap äQ :norm ^xx<CR>
 
 
 """""""""""""""""""""
