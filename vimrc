@@ -143,6 +143,13 @@ vnoremap <Leader>' <ESC>`>a'<ESC>`<i'<ESC>
 nnoremap <Leader>[ viw<ESC>a]<ESC>hbi[<ESC>%
 nnoremap <Leader>] viw<ESC>a]<ESC>hbi[<ESC>%
 
+" Inverse of join (J)
+function! BreakHere()
+    s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
+    call histdel("/", -1)
+endfunction
+nnoremap K :call BreakHere()<CR>
+
 " Append to in-commands
 nnoremap <Leader>a" f";i
 nnoremap <Leader>a' f';i
