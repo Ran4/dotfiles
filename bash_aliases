@@ -44,6 +44,10 @@ alias vim4="vim -c 'bel vert sbuf 2' -c '1wincmd w' -c 'bel sbuf 3' -c '3wincmd 
 alias vims='vim -S .vimsession'
 alias rmswp='rm .*.swp'
 alias manvim='function _domanvim() { man $1 | vim -R -; }; _domanvim'
+alias :q='exit'
+alias :Q='exit'
+alias :qa='exit'
+alias :Qa='exit'
 
 #alias wanip='curl -s http://whatismijnip.nl |cut -d " " -f 5'
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
