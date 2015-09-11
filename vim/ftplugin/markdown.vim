@@ -1,3 +1,5 @@
+set colorcolumn=120
+
 " Vim filetype plugin
 " Language:		Markdown
 " Maintainer:		Tim Pope <vimNOSPAM@tpope.org>

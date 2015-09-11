@@ -17,13 +17,15 @@ set editing-mode vi
 set -o vi
 set keymap vi-command
 
-if command_exists xcape ; then
-    #. ~/.xcape_config
-    echo "Not running xcape config!"
-else
-    #xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
-    echo "Not running xmodmap!"
-fi
+#xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null &
+xmodmap ~/.xmodmap_swap_caps_and_ctrl
+#if command_exists xcape ; then
+#    #. ~/.xcape_config
+#    echo "Not running xcape config!"
+#else
+#    #xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
+#    echo "Not running xmodmap!"
+#fi
 
 # If not running interactively, don't do anything
 case $- in

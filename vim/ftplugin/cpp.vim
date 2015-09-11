@@ -11,6 +11,8 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+set colorcolumn=120
+
 "peda stuff
 nnoremap <BS> <nop>
 colo darkblue
