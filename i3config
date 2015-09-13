@@ -28,6 +28,7 @@ bindsym $mod+Return exec xterm
 # installed.
 bindsym $mod+d exec pcmanfm
 #bindsym $mod+x exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+x [class="(?i)xterm"] kill
 bindsym $mod+Shift+Return exec --no-startup-id i3-dmenu-desktop
 
 # movement

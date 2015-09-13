@@ -17,16 +17,6 @@ set editing-mode vi
 set -o vi
 set keymap vi-command
 
-#xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null &
-xmodmap ~/.xmodmap_swap_caps_and_ctrl
-#if command_exists xcape ; then
-#    #. ~/.xcape_config
-#    echo "Not running xcape config!"
-#else
-#    #xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
-#    echo "Not running xmodmap!"
-#fi
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -179,3 +169,15 @@ if [ -f ~/.identifiers/kth ]; then
     ln -s ~/.custom/kth_tmux.conf ~/.tmux.conf
 fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+#xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null &
+#sleep to avoid the "please release the following keys within 2 seconds" thing
+sleep 2 && xmodmap ~/.xmodmap_swap_caps_and_ctrl
+#if command_exists xcape ; then
+#    #. ~/.xcape_config
+#    echo "Not running xcape config!"
+#else
+#    #xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
+#    echo "Not running xmodmap!"
+#fi
+
