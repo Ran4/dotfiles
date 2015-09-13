@@ -123,6 +123,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+if [ -f ~/.hhighlighter.sh ]; then
+    . ~/.hhighlighter.sh
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -172,7 +176,8 @@ fi
 
 #xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null &
 #sleep to avoid the "please release the following keys within 2 seconds" thing
-sleep 2 && xmodmap ~/.xmodmap_swap_caps_and_ctrl
+#sleep 0.2 && xmodmap ~/.xmodmap_swap_caps_and_ctrl
+xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null
 #if command_exists xcape ; then
 #    #. ~/.xcape_config
 #    echo "Not running xcape config!"

@@ -17,13 +17,15 @@ sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
 
 mkdir -p ~/.ssh
 
+#Download hhighlighter, an ack-based highlighter (e.g. ./a.out | h -i warning)
+curl -s https://raw.githubusercontent.com/paoloantinori/hhighlighter/master/h.sh -o hhighlighter.sh
+
 #Remove annoying folders that come with ubuntu
 rmdir ~/Music
 rmdir ~/Pictures
 rmdir ~/Documents
 rmdir ~/Videos
 rmdir ~/Desktop
-
 
 mkdir -p ~/pyy
 #cd ~/pyy
