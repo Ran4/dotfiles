@@ -170,24 +170,49 @@ new_window pixel 1
 
 ########################################
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+#colors copied from http://textuploader.com/aqpma
+set $unfocused  "#3D4341"
+set $text       "#000000"
+set $bar        "#FBF1E5"
+set $focused    "#EF0173"
+set $focusedframe    "#4c7899"
+
 bar {
         status_command i3status
-
-    #using default colors
-    #colors {
-    #    background #000000
-    #    statusline #ffffff #default
-    #    separator #666666 #default
-
-    #    #colorclass <border> <background> <text>
-    #    focused_workspace  #4c7899 #285577 #ffffff
-    #    active_workspace   #333333 #5f676a #ffffff
-    #    inactive_workspace #333333 #222222 #888888
-    #    urgent_workspace   #2f343a #900000 #ffffff
-    #}
+        colors {
+                background         #050E2D
+                focused_workspace  #000000 $focused  #FFFFFF
+                active_workspace   #000000 #CE7AB6   #f50E2D
+                inactive_workspace #000000 #3B4EDE   #FFFFFF
+                statusline         $bar
+                separator          $bar
+        }
 }
+# outline color
+for_window [class="^.*"] border pixel 1
+client.focused          #000000 $focusedframe    $text
+client.unfocused        #000000 $unfocused  $text
+client.focused_inactive #000000 $unfocused  $text
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+#bar {
+#        status_command i3status
+#
+#    #using default colors
+#    #colors {
+#    #    background #000000
+#    #    statusline #ffffff #default
+#    #    separator #666666 #default
+#
+#    #    #colorclass <border> <background> <text>
+#    #    focused_workspace  #4c7899 #285577 #ffffff
+#    #    active_workspace   #333333 #5f676a #ffffff
+#    #    inactive_workspace #333333 #222222 #888888
+#    #    urgent_workspace   #2f343a #900000 #ffffff
+#    #}
+#}
 
 #Programs to run at start
 #exec --no-startup-id xterm
