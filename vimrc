@@ -1,5 +1,6 @@
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
+set expandtab
 
 " set bs=2 "Fix backspace. Uncomment this if needed...
 
@@ -46,11 +47,6 @@ command QA qa
 let mapleader = "ä"
 nmap , ä
 nnoremap ,, ,
-
-"noremap <space> i<space><esc>l
-"
-"jump backward in jumplist, inverse of tab
-nnoremap <bs> <c-o>
 
 nnoremap + <C-a>
 nnoremap - <C-x>
