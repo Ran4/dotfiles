@@ -12,6 +12,9 @@ if command_exists synclient ; then
     synclient VertScrollDelta=200 &> /dev/null ;
 fi
 
+#prevent <c-s> from stopping the terminal
+stty stop undef
+
 #Set vim mode for bash
 set editing-mode vi
 set -o vi

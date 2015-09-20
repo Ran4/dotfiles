@@ -14,6 +14,8 @@ alias gcam='git commit -am'
 
 alias g='grep'
 alias gi='grep -i' #case-insensitive grep
+alias grepi='grep -i'
+alias acki='ack -i'
 
 function __cdls {
     cd $1
@@ -65,3 +67,4 @@ alias clear='clear && tmux clear-history'
 alias ei='vim ~/.i3/config'
 #alias kxt="ps aux | grep -i xterm | awk {'print $2'} | xargs kill -9" #kill xterm, please remove me once you've figured out the problem with i3
 alias kxt="kill -9 $(pidof xterm)" #kill all xterm windows, please remove me once you've figured out the problem with i3
+
