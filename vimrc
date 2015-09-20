@@ -1,3 +1,150 @@
+let mapleader = "ä"
+nmap , ä
+nnoremap ,, ,
+
+" Adds characters around word
+nnoremap <leader>" viw<ESC>a"<ESC>hbi"<ESC>lel
+nnoremap <leader>' viw<ESC>a'<ESC>hbi'<ESC>lel
+vnoremap <leader>" <ESC>`>a"<ESC>`<i"<ESC>
+vnoremap <leader>' <ESC>`>a'<ESC>`<i'<ESC>
+nnoremap <leader>[ viw<ESC>a]<ESC>hbi[<ESC>%
+nnoremap <leader>] viw<ESC>a]<ESC>hbi[<ESC>%
+nnoremap <leader>( viw<ESC>a)<ESC>hbi(<ESC>%
+nnoremap <leader>) viw<ESC>a)<ESC>hbi(<ESC>%
+
+nnoremap <space> :w<CR>
+
+" Append to in-commands
+nnoremap <leader>a" f";i
+nnoremap <leader>a' f';i
+nnoremap <leader>a) f)i
+
+" Quickly edit vimrc
+nnoremap <leader>ev :vert split $MYVIMRC<CR>
+nnoremap <leader>Ev :split $MYVIMRC<CR>
+nnoremap <leader>EV :split $MYVIMRC<CR>
+"yank current line and enter it into command mode without pressing enter
+nnoremap <leader>: "xy:<c-r>x<bs>
+
+nnoremap <leader>n :set number!<CR>
+
+" Call python
+nnoremap <leader>p :!clear && python %<CR>
+
+" Prepends # to line and goes down, Q removes then
+nnoremap <leader>q I#<esc>j
+nnoremap <leader>Q kx
+
+" Substitution  helper: press <leader>vname/newname<CR> to replace globally
+nnoremap <leader>s :%s//gc<Left><Left><Left>
+" visual mode replace helper
+vnoremap <leader>s :s/\%V/g<Left><Left>
+vnoremap <leader>s :s//g<Left><Left>
+
+"Move around to next window and resizing it
+nnoremap <leader>w :wincmd w<CR>
+nnoremap <leader>W :wincmd W<CR>
+nnoremap <leader>r :vert resize 80<CR>
+
+" :help map-which-keys    " is helpful to find new mappings
+imap jk <esc>
+nnoremap ö /
+nnoremap dö d/
+cnoremap ö /
+vnoremap ö /
+nnoremap E $
+
+"Don't wait as long in insert mode (to enable us to quickly type j and k)
+augroup FastEscape
+    au InsertEnter * set timeoutlen=450
+    au InsertLeave * set timeoutlen=2500
+augroup END
+
+"Fix accidentally holding shift while trying to quite vim, e.g. :Q -> :q
+command Q q
+command Qa qa
+command QA qa
+
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+"0 is much easier to reach than ^ on many non-US layouts
+nnoremap 0 ^
+nnoremap d0 d^
+nnoremap y0 y^
+
+" More reasonable use of Y (as opposed to being identical to yy)
+nnoremap Y y$
+
+" Jump directly to a spot instead of just to that line
+nnoremap ` '
+nnoremap ' `
+vnoremap ` '
+vnoremap ' `
+
+" Quick record
+nnoremap Q qq
+
+"Quickly move between windows with ctrl+hjkl
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" o and O doesn't go into insert mode
+nnoremap o o.<Esc>"_x<Esc>
+nnoremap O O.<Esc>"_x<Esc>
+
+" Characters to use with ¨ and shift+¨
+" ẅëẗÿüï¨ḧ̈́̈́ẍ^f
+" âĉêĝĥîĵôŝûŵŷẑ
+nnoremap ü i<CR><Esc>k$
+nnoremap ë :vert resize 80<CR>
+"Key that is right of + on Swedish keyboards plus key gives these
+nnoremap ẃ :mksession! .vimsession<cr>
+nnoremap ŕ :source .vimsession<cr>
+
+" Move top/bottom but leave 4 lines above/below
+nnoremap zT zt4<C-y>
+nnoremap zB zb4<C-e>
+vnoremap zT zt4<C-y>
+vnoremap zB zb4<C-e>
+inoremap zT <esc>zt4<C-y>i
+inoremap zB <esc>zb4<C-e>i
+
+" Move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+
+" Call C/C++, assuming that there is an outfile with the output name %:r.out
+nnoremap <f5> :!clear && make && echo "    //// Output ////" && ./%:r.out<cr>
+
+" Inverse of join (J)
+function! BreakHere()
+    s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
+    call histdel("/", -1)
+endfunction
+nnoremap K :call BreakHere()<CR>
+
+" Easier indentation in visual mode
+vnoremap < <gv
+vnoremap > >gv
+
+" nnoremap <leader>d [mzz
+" vnoremap <leader>d ]mzz
+" nnoremap <leader>D ]mzz
+" vnoremap <leader>D ]mzz
+" nnoremap <leader>c /class <CR>zz
+" nnoremap <leader>c /class <CR>zz
+" nnoremap <leader>C ?class <CR>zz
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""" SET OPTIONS
+""""
+
+filetype plugin indent on
+
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 set expandtab
@@ -21,160 +168,9 @@ set ttimeoutlen=10
 
 set wildmode=longest,list,full
 
-"Don't auto-add comments after typing <CR> in insert mode
-set formatoptions-=r
-
-"Don't wait as long in insert mode (to enable us to quickly type j and k)
-augroup FastEscape
-    au InsertEnter * set timeoutlen=450
-    au InsertLeave * set timeoutlen=2500
-augroup END
-
-filetype plugin indent on
-
-" :help map-which-keys    " is helpful!
-nnoremap ö /
-nnoremap dö d/
-cnoremap ö /
-vnoremap ö /
-imap jk <esc>
-
-"Fix accidentally holding shift while trying to quite vim
-command Q q
-command Qa qa
-command QA qa
-
-let mapleader = "ä"
-nmap , ä
-nnoremap ,, ,
-
-nnoremap + <C-a>
-nnoremap - <C-x>
-
-"0 is much easier to reach than ^
-nnoremap 0 ^
-nnoremap d0 d^
-nnoremap y0 y^
-
-" More reasonable use of Y
-nnoremap Y y$
-
-" Jump directly to a spot instead of just to that line
-nnoremap ` '
-nnoremap ' `
-vnoremap ` '
-vnoremap ' `
-
-" Quick record
-nnoremap Q qq
-"nnoremap <leader>q @q
-
-"set clipboard=unnamed
-" Key to insert mode with paste using F2 key
-map <F2> :set paste<CR>i
-" Leave paste mode on exit
-au InsertLeave * set nopaste
-
-"Quickly move between windows
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-nnoremap o o.<Esc>"_x<Esc>
-nnoremap O O.<Esc>"_x<Esc>
-
-" Move to the last character before a newline
-"nnoremap <Space> /\n\s*\n<CR>$
-nnoremap <Space> :w<cr>
-"vnoremap <Space> /\n\s*\n<CR>$
-nnoremap <leader><Space> k?\n\s*\n<CR>$
-vnoremap <leader><Space> k?\n\s*\n<CR>$
-" This only works in gvim... use the <leader><space> above in the terminal
-nnoremap <S-Space> k?\n\s*\n<CR>$
-vnoremap <S-Space> k?\n\s*\n<CR>$
-
-" Characters to use with ¨ and shift+¨
-" ẅëẗÿüï¨ḧ̈́̈́ẍ^f
-" âĉêĝĥîĵôŝûŵŷẑ
-nnoremap ü i<CR><Esc>k$
-nnoremap ë :vert resize 80<CR>
-"Key that is right of + on Swedish keyboards plus key gives these
-nnoremap ẃ :mksession! .vimsession<cr>
-nnoremap ŕ :source .vimsession<cr>
-
-" Move top/bottom but leave 4 lines above/below
-nnoremap zT zt4<C-y>
-nnoremap zB zb4<C-e>
-vnoremap zT zt4<C-y>
-vnoremap zB zb4<C-e>
-inoremap zT <esc>zt4<C-y>i
-inoremap zB <esc>zb4<C-e>i
-
-" Move vertically by visual line
-nnoremap j gj
-nnoremap k gk
-
-" Substitution  helper: press <leader>vname/newname<CR> to replace globally
-nnoremap <leader>v :%s//gc<Left><Left><Left>
-" visual mode replace helper
-vnoremap <leader>v :s/\%V/g<Left><Left>
-
-" Call python
-nnoremap <leader>p :!clear && python %<CR>
-nnoremap <leader>i :!clear && python -i %<CR>
-
-" Call C/C++, assuming that there is an outfile with the output name %:r.out
-nnoremap <f5> :!clear && make && echo "    //// Output ////" && ./%:r.out<cr>
-
-" Prepends # to line and goes down, Q removes then
-nnoremap <Leader>q I#<esc>j
-nnoremap <Leader>Q kx
-
-" Adds characters around word
-nnoremap <Leader>" viw<ESC>a"<ESC>hbi"<ESC>lel
-nnoremap <Leader>' viw<ESC>a'<ESC>hbi'<ESC>lel
-vnoremap <Leader>" <ESC>`>a"<ESC>`<i"<ESC>
-vnoremap <Leader>' <ESC>`>a'<ESC>`<i'<ESC>
-nnoremap <Leader>[ viw<ESC>a]<ESC>hbi[<ESC>%
-nnoremap <Leader>] viw<ESC>a]<ESC>hbi[<ESC>%
-
-" Inverse of join (J)
-function! BreakHere()
-    s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
-    call histdel("/", -1)
-endfunction
-nnoremap K :call BreakHere()<CR>
-
-" Append to in-commands
-nnoremap <Leader>a" f";i
-nnoremap <Leader>a' f';i
-nnoremap <Leader>a) f)i
-
-" Quickly edit vimrc
-nnoremap <leader>ev :vert split $MYVIMRC<CR>
-nnoremap <leader>Ev :split $MYVIMRC<CR>
-nnoremap <leader>EV :split $MYVIMRC<CR>
-
-" Easier indentation in visual mode
-vnoremap < <gv
-vnoremap > >gv
-
-" nnoremap <leader>d [mzz
-" vnoremap <leader>d ]mzz
-" nnoremap <leader>D ]mzz
-" vnoremap <leader>D ]mzz
-" nnoremap <leader>c /class <CR>zz
-" nnoremap <leader>c /class <CR>zz
-" nnoremap <leader>C ?class <CR>zz
-nnoremap <leader>w :wincmd w<CR>
-nnoremap <leader>W :wincmd W<CR>
-"nnoremap <leader>q :wincmd W<CR>
-nnoremap <leader>r :vert resize 80<CR>
-nnoremap <leader>n :set number!<CR>
-
-
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""" COLORS
+""""
 " Color scheme
 " mkdir -p ~/.vim/colors
 " cd ~/.vim/colors
@@ -270,6 +266,10 @@ if has("autocmd")
 endif
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""" PLUGINS
+""""
+
 " Download NERDTree
 "cd ~/.vim/bundle
 "!git clone https://github.com/scrooloose/nerdtree.git
@@ -296,10 +296,6 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 " Start pathogen
 execute pathogen#infect()
-
-" For NERDTree
-"nnoremap § :NERDTree<CR>
-"nnoremap <TAB> :NERDTree<CR>
 
 " Add fzf to RunTimePath
 set rtp+=~/.fzf
