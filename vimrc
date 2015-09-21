@@ -11,6 +11,8 @@ nnoremap <leader>[ viw<ESC>a]<ESC>hbi[<ESC>%
 nnoremap <leader>] viw<ESC>a]<ESC>hbi[<ESC>%
 nnoremap <leader>( viw<ESC>a)<ESC>hbi(<ESC>%
 nnoremap <leader>) viw<ESC>a)<ESC>hbi(<ESC>%
+nnoremap <leader>< viw<ESC>a><ESC>hbi<<ESC>%
+nnoremap <leader>> viw<ESC>a><ESC>hbi<<ESC>%
 
 nnoremap <space> :w<CR>
 
@@ -53,11 +55,12 @@ nnoremap dö d/
 cnoremap ö /
 vnoremap ö /
 nnoremap E $
+cnoremap <c-a> <home>
 
 "Don't wait as long in insert mode (to enable us to quickly type j and k)
 augroup FastEscape
-    au InsertEnter * set timeoutlen=450
-    au InsertLeave * set timeoutlen=2500
+au InsertEnter * set timeoutlen=450
+au InsertLeave * set timeoutlen=2500
 augroup END
 
 "Fix accidentally holding shift while trying to quite vim, e.g. :Q -> :q
@@ -145,6 +148,9 @@ vnoremap > >gv
 
 filetype plugin indent on
 
+set shiftwidth=4
+set softtabstop=4
+
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 set expandtab
@@ -167,6 +173,8 @@ set timeoutlen=2500 " used with e.g. leader
 set ttimeoutlen=10
 
 set wildmode=longest,list,full
+
+set laststatus=2 "always show statusbar. 1 means 'only when 2+ windows open'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" COLORS
@@ -287,6 +295,25 @@ endif
 
 " targets.vim, allows movements like cin" (change in next ") and da,
 "git clone git://github.com/wellle/targets.vim.git ~/.vim/bundle/targets.vim
+
+" Usage :
+":Ack [options] {pattern} [{directories}]
+"!git clone https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
+
+"!git clone https://github.com/easymotion/vim-easymotion ~/.vim/bundle/vim-easymotion
+
+nnoremap S s
+if exists('g:EasyMotion_loaded')
+    nmap s <Plug>(easymotion-s)
+    map / <Plug>(easymotion-sn)
+    map ö <Plug>(easymotion-sn)
+    map n <Plug>(easymotion-next)
+    map N <Plug>(easymotion-prev)
+    "map <cr> <Plug>(easymotion-w)
+    " default except ; key which is hard to type
+    "let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
+    let g:EasyMotion_keys = 'asdghklqwertuiopzxcvbnmfj1234890'
+endif
 
 " syntastic, for syntax higlighting
 " GIT CLONE LINK GOES HERE?

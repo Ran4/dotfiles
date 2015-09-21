@@ -27,6 +27,7 @@ bindsym $mod+Return exec xterm
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 bindsym $mod+d exec pcmanfm
+bindsym $mod+Shift+f exec firefox
 #bindsym $mod+x exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+x [class="(?i)xterm"] kill
 bindsym $mod+Shift+Return exec --no-startup-id i3-dmenu-desktop
@@ -160,14 +161,15 @@ bindsym $mod+Shift+Right resize grow width 2 px or 2 ppt
 #Color stuff
 # class                 border  backgr. text    indicator
 #client.focused          #4c7899 #285577 #ffffff #2e9ef4 #default, blue
-client.focused          #412458 #512888 #ffffff #2e9ef4 #KSU Purple
+#client.focused          #412458 #512888 #ffffff #2e9ef4 #KSU Purple
+client.focused          #412458 #c12888 #ffffff #fe5ef4
 #colorclass client.focused_inactive #333333 #5f676a #ffffff #484e50
 #colorclass client.unfocused        #333333 #222222 #888888 #292d2e
 client.unfocused        #333333 #222222 #888888 #292d2e
 #colorclass client.urgent           #2f343a #900000 #ffffff #900000
 #colorclass client.placeholder      #000000 #0c0c0c #ffffff #000000
 #Thickness of border. Default is 2, 1 is enough!
-new_window pixel 1
+new_window pixel 8
 
 ########################################
 
@@ -192,7 +194,7 @@ bar {
 }
 # outline color
 for_window [class="^.*"] border pixel 1
-client.focused          #000000 $focusedframe    $text
+#client.focused          #000000 $focusedframe    $text
 client.unfocused        #000000 $unfocused  $text
 client.focused_inactive #000000 $unfocused  $text
 
