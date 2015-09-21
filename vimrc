@@ -303,17 +303,17 @@ endif
 "!git clone https://github.com/easymotion/vim-easymotion ~/.vim/bundle/vim-easymotion
 
 nnoremap S s
-if exists('g:EasyMotion_loaded')
-    nmap s <Plug>(easymotion-s)
-    map / <Plug>(easymotion-sn)
-    map ö <Plug>(easymotion-sn)
-    map n <Plug>(easymotion-next)
-    map N <Plug>(easymotion-prev)
-    "map <cr> <Plug>(easymotion-w)
-    " default except ; key which is hard to type
-    "let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
-    let g:EasyMotion_keys = 'asdghklqwertuiopzxcvbnmfj1234890'
-endif
+"if exists('g:EasyMotion_loaded')
+nmap s <Plug>(easymotion-s)
+map / <Plug>(easymotion-sn)
+map ö <Plug>(easymotion-sn)
+map n <Plug>(easymotion-next)
+map N <Plug>(easymotion-prev)
+"map <cr> <Plug>(easymotion-w)
+" default except ; key which is hard to type
+"let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
+let g:EasyMotion_keys = 'asdghklqwertuiopzxcvbnmfj1234890'
+"endif
 
 " syntastic, for syntax higlighting
 " GIT CLONE LINK GOES HERE?
