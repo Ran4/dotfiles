@@ -6,7 +6,7 @@ sn=s0
 #   This will also be the default cwd for new windows created
 #   via a binding unless overridden with default-path.
 cd ~
-tmux new-session -s "$sn" -d
+tmux -2 attach || tmux new-session -s "$sn" -d
 
 cd ~/dotfiles
 tmux new-window -n dotfiles
