@@ -60,6 +60,9 @@ alias tmuxs='~/dotfiles/defaulttmuxsession.sh'
 alias ts='~/dotfiles/defaulttmuxsession.sh'
 alias tskth='ts && tmux source-file ~/dotfiles/custom/kth_tmux.conf'
 
+#show battery level
+alias bat='cat /sys/class/power_supply/BAT1/capacity'
+
 alias reset='reset && tmux clear-history'
 alias clear='clear && tmux clear-history'
 
@@ -67,4 +70,3 @@ alias clear='clear && tmux clear-history'
 alias ei='vim ~/.i3/config'
 #alias kxt="ps aux | grep -i xterm | awk {'print $2'} | xargs kill -9" #kill xterm, please remove me once you've figured out the problem with i3
 alias kxt="kill -9 $(pidof xterm)" #kill all xterm windows, please remove me once you've figured out the problem with i3
-
