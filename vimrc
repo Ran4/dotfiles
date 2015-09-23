@@ -199,7 +199,7 @@ set t_Co=256
 nmap <leader>l :highlight ExtraWhitespace ctermbg=red<CR>:match ExtraWhiteSpace /\S\(\s\+\)$/<CR>
 autocmd InsertEnter * set cul! | match ExtraWhitespace //
 "autocmd InsertEnter * set cul!
-autocmd InsertLeave * set cul! | call HighlightExtraWhitespace()
+"autocmd InsertLeave * set cul! | call HighlightExtraWhitespace()
 
 function HighlightExtraWhitespace()
     "highlight ExtraWhitespace ctermbg=red
@@ -212,7 +212,7 @@ if exists('+colorcolumn')
     set colorcolumn=81
     " Colorcolumn color is very dark grey
     highlight colorcolumn ctermbg=0 guibg=black
-    
+
     "au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
@@ -271,7 +271,7 @@ if has("autocmd")
     augroup bashalias
         autocmd BufRead,BufNewFile .bash_aliases,bash_aliases set filetype=sh
     augroup END
-    
+
     autocmd BufRead,BufNewFile * call HighlightExtraWhitespace()
 endif
 
@@ -299,6 +299,10 @@ endif
 "!git clone https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
 
 "!git clone https://github.com/easymotion/vim-easymotion ~/.vim/bundle/vim-easymotion
+
+"!git clone https://github.com/rhysd/clever-f.vim
+
+"!git clone https://github.com/bronson/vim-trailing-whitespace ~/.vim/bundle/vim-trailing-whitespace
 
 nnoremap S s
 "if exists('g:EasyMotion_loaded')
