@@ -28,6 +28,8 @@ nnoremap <leader>EV :split $MYVIMRC<CR>
 "yank current line and enter it into command mode without pressing enter
 nnoremap <leader>: "xy:<c-r>x<bs>
 
+nnoremap <leader>ei :vert split ~/.i3/config<CR>
+
 nnoremap <leader>n :set number!<CR>
 
 " Call python
@@ -277,10 +279,6 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" PLUGINS
 """"
-
-" Download NERDTree
-"cd ~/.vim/bundle
-"!git clone https://github.com/scrooloose/nerdtree.git
 
 " Download vim-exchange in order to get the cx operator
 "cd ~/.vim/bundle
