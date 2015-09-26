@@ -157,6 +157,9 @@ set softtabstop=4
 set listchars=tab:▸\ ,eol:¬
 set expandtab
 
+"set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize
+set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
+
 " set bs=2 "Fix backspace. Uncomment this if needed...
 
 set splitbelow
