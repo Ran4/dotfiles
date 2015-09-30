@@ -147,6 +147,7 @@ fi
 
 if [ -f ~/.identifiers/ranlubuntu ]; then
     . ~/.custom/ranlubuntu_bash_setprompt
+    alias m='/etc/init.d/ran_mount_vb.sh'
 fi
 
 if [ -f ~/.identifiers/ranvb ]; then

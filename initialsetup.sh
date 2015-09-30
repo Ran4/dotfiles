@@ -37,3 +37,6 @@ mkdir -p ~/pyy
 #FZF, a Fuzzy file finder
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
+#sudo apt-get --reinstall install msttcorefonts
+#sudo apt-get --reinstall install ttf-mscorefonts-installer
