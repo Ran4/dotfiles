@@ -123,6 +123,7 @@ nnoremap k gk
 
 " Call C/C++, assuming that there is an outfile with the output name %:r.out
 nnoremap <f5> :!clear && make && echo "    //// Output ////" && ./%:r.out<cr>
+map <F8> :setlocal spell! spelllang=en_gb<CR>
 
 " Inverse of join (J)
 function! BreakHere()
@@ -156,6 +157,8 @@ set softtabstop=4
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 set expandtab
+
+highlight SpellBad ctermbg=5
 
 "set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize
 set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
@@ -276,6 +279,20 @@ if has("autocmd")
     augroup END
 
     autocmd BufRead,BufNewFile * call HighlightExtraWhitespace()
+endif
+
+if has("gui_running")
+    set guioptions-=T "removes toolbar
+    set guioptions-=m "removes menu
+    set guioptions-=l "removes always-on left-hand scrollbar
+    set guioptions-=r "removes always-on right-hand scrollbar
+    set guifont=Terminus\ 10
+    nnoremap <leader><leader>1 :set guifont=Terminus\ 9<cr>
+    nnoremap <leader><leader>2 :set guifont=Terminus\ 10<cr>
+    nnoremap <leader><leader>3 :set guifont=Terminus\ 11<cr>
+    nnoremap <leader><leader>4 :set guifont=Terminus\ 13<cr>
+    nnoremap <leader><leader>5 :set guifont=Terminus\ 14<cr>
+    nnoremap <leader><leader>6 :set guifont=Terminus\ 16<cr>
 endif
 
 
