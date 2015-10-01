@@ -324,6 +324,8 @@ endif
 
 "!git clone https://github.com/bronson/vim-trailing-whitespace ~/.vim/bundle/vim-trailing-whitespace
 
+"!git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
+
 nnoremap S s
 "if exists('g:EasyMotion_loaded')
 nmap s <Plug>(easymotion-s)
