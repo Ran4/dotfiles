@@ -38,7 +38,7 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-setlocal foldmethod=syntax
+"setlocal foldmethod=syntax
 "autocmd BufWinEnter * silent! :%foldopen!
 
 syn keyword pythonStatement	break continue del
