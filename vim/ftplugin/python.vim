@@ -50,4 +50,4 @@ fun! <SID>Python_jump(motion) range
 endfun
 
 "Start file with all folds open
-autocmd BufWinEnter *.py :%foldopen!
+"autocmd BufWinEnter *.py :%foldopen!
