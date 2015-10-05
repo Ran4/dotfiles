@@ -184,6 +184,9 @@ set wildmode=longest,list,full
 
 set laststatus=2 "always show statusbar. 1 means 'only when 2+ windows open'
 
+"always keep at a few lines at the top/bottom shown when moving around
+set scrolloff=4
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" COLORS
 """"

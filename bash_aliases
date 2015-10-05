@@ -2,6 +2,7 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -C'
 alias lah='ls -lAh'
+alias lg='ls -lAh | ack -i'
 
 alias gits='git status'
 #eg. '* 3624854 (HEAD, master) Added gitconfig (23 minutes ago) <Rasmus Ansin>' but colored
