@@ -1,1 +1,0 @@
-/home/ran/dotfiles/oh-my-zsh/plugins/git.plugin.zsh
