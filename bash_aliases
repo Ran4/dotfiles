@@ -18,6 +18,10 @@ alias gi='grep -i' #case-insensitive grep
 alias grepi='grep -i'
 alias acki='ack -i'
 
+run() {
+    ($@ &> /dev/null &)
+}
+
 function __cdls {
     cd $1
     ls
