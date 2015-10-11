@@ -151,12 +151,15 @@ vnoremap > >gv
 
 filetype plugin indent on
 
+set number "show line numbers
+set relativenumber
+
 set shiftwidth=4
-set softtabstop=4
+set softtabstop=4 "Number of spaces in tab when editing
 
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
-set expandtab
+set expandtab "Expands tabs into spaces
 
 highlight SpellBad ctermbg=5
 
@@ -168,8 +171,8 @@ set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
 set splitbelow
 set splitright
 
-set incsearch
-set ignorecase
+set incsearch "search as characters are entered
+set ignorecase "ignore case when searching
 if has("gui_running")
     set mouse=a
 else
@@ -206,9 +209,11 @@ set t_Co=256
 " highlight trailing spaces
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :highlight ExtraWhitespace ctermbg=red<CR>:match ExtraWhiteSpace /\S\(\s\+\)$/<CR>
-autocmd InsertEnter * set cul! | match ExtraWhitespace //
-"autocmd InsertEnter * set cul!
-"autocmd InsertLeave * set cul! | call HighlightExtraWhitespace()
+"highlight current line in insert mode, also don't match extrawhitespace until
+"after leaving insertmode
+autocmd InsertEnter * set cursorline! | match ExtraWhitespace //
+autocmd InsertLeave * set cursorline! | call HighlightExtraWhitespace()
+
 
 function HighlightExtraWhitespace()
     "highlight ExtraWhitespace ctermbg=red
