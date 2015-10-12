@@ -334,9 +334,9 @@ endif
 
 "!git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 
-nnoremap S s
+"nnoremap S s
 "if exists('g:EasyMotion_loaded')
-nmap s <Plug>(easymotion-s)
+nmap S <Plug>(easymotion-s)
 map / <Plug>(easymotion-sn)
 map ö <Plug>(easymotion-sn)
 map n <Plug>(easymotion-next)
@@ -358,3 +358,13 @@ execute pathogen#infect()
 
 " Add fzf to RunTimePath
 set rtp+=~/.fzf
+
+function! s:AppendCharEOL()
+    "echo 'Append Char EOL: '
+    let c = nr2char(getchar())
+    let v = winsaveview()
+    execute 'keepjumps normal! ' . v:count1 . 'A' . c . "\<Esc>"
+    call winrestview(v)
+endfunction
+
+nnoremap <silent> R :<C-u>call <SID>AppendCharEOL()<CR>
