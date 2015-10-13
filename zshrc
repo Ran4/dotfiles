@@ -54,7 +54,7 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 source $ZSH/oh-my-zsh.sh
 bindkey '^r' history-incremental-search-backward
 bindkey -M viins 'jk' vi-cmd-mode
-export KEYTIMEOUT=4 #this is in 10 ms steps, so e.g. 20 = 200 ms
+export KEYTIMEOUT=5 #this is in 10 ms steps, so e.g. 20 = 200 ms
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -66,5 +66,17 @@ export KEYTIMEOUT=4 #this is in 10 ms steps, so e.g. 20 = 200 ms
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh #command line fuzzy file finder
+
+#Help function to see if a command exists
+command_exists () {
+  type "$1" >/dev/null 2>/dev/null
+}
+
+if command_exists xcape ; then
+    . ~/.xcape_config
+    #echo "Not running xcape config!"
+else
+    xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
+    #echo "Not running xmodmap!"
+fi
