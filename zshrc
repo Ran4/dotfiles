@@ -68,10 +68,25 @@ export KEYTIMEOUT=5 #this is in 10 ms steps, so e.g. 20 = 200 ms
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh #command line fuzzy file finder
 
+
 #Help function to see if a command exists
 command_exists () {
   type "$1" >/dev/null 2>/dev/null
 }
+
+
+#disable touchpad on thinkpad computers
+if [ -f ~/.identifiers/ranl412 ]; then
+    #Disable TouchPad:
+    declare -i ID
+    ID=`xinput list | grep -Eo 'TouchPad\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}'`
+    xinput set-prop $ID "Device Enabled" 0
+    #echo 'Touchpad has been disabled.'
+    
+    #Increase speed of trackpoint. Default is 1.0, 0.9 is faster
+    TRACKPOINT_NAME=$(xinput --list --name-only | g -i trackpoint)
+    xinput --set-prop "$TRACKPOINT_NAME" "Device Accel Constant Deceleration" 0.9
+fi
 
 if command_exists xcape ; then
     . ~/.xcape_config
@@ -80,3 +95,4 @@ else
     xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
     #echo "Not running xmodmap!"
 fi
+
