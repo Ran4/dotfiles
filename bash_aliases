@@ -22,6 +22,10 @@ run() {
     ($@ &> /dev/null &)
 }
 
+o() {
+    (xdg-open $@ &> /dev/null &)
+}
+
 function __cdls {
     cd $1
     ls
