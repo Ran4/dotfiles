@@ -11,6 +11,9 @@ set tabstop=4
 
 set colorcolumn=120
 
+nnoremap äq maI--<esc>`a2l
+nnoremap äQ ma0xx`a2h
+
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
 if version < 600
