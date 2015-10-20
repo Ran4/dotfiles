@@ -4,6 +4,14 @@ nnoremap ,, ,
 
 nnoremap <b :b <c-d>
 
+map å [
+map ¨ ]
+map åå [[
+map ¨¨ ]]
+
+imap å [
+imap ¨ ]
+
 " Adds characters around word
 nnoremap <leader>" viw<ESC>a"<ESC>hbi"<ESC>lel
 nnoremap <leader>' viw<ESC>a'<ESC>hbi'<ESC>lel
@@ -71,6 +79,9 @@ augroup END
 command Q q
 command Qa qa
 command QA qa
+cmap Q! q!
+cmap Qa! qa!
+cmap QA! qa!
 
 nnoremap + <C-a>
 nnoremap - <C-x>
