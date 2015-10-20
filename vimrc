@@ -2,6 +2,8 @@ let mapleader = "ä"
 nmap , ä
 nnoremap ,, ,
 
+nnoremap <b :b <c-d>
+
 " Adds characters around word
 nnoremap <leader>" viw<ESC>a"<ESC>hbi"<ESC>lel
 nnoremap <leader>' viw<ESC>a'<ESC>hbi'<ESC>lel
@@ -175,6 +177,17 @@ set incsearch "search as characters are entered
 set ignorecase "ignore case when searching
 if has("gui_running")
     set mouse=a
+    set guioptions-=T "removes toolbar
+    set guioptions-=m "removes menu
+    set guioptions-=l "removes always-on left-hand scrollbar
+    set guioptions-=r "removes always-on right-hand scrollbar
+    set guifont=Terminus\ 10
+    nnoremap <leader><leader>1 :set guifont=Terminus\ 9<cr>
+    nnoremap <leader><leader>2 :set guifont=Terminus\ 10<cr>
+    nnoremap <leader><leader>3 :set guifont=Terminus\ 11<cr>
+    nnoremap <leader><leader>4 :set guifont=Terminus\ 13<cr>
+    nnoremap <leader><leader>5 :set guifont=Terminus\ 14<cr>
+    nnoremap <leader><leader>6 :set guifont=Terminus\ 16<cr>
 else
     set mouse=n
 endif
@@ -289,20 +302,6 @@ if has("autocmd")
     autocmd BufRead,BufNewFile * call HighlightExtraWhitespace()
 endif
 
-if has("gui_running")
-    set guioptions-=T "removes toolbar
-    set guioptions-=m "removes menu
-    set guioptions-=l "removes always-on left-hand scrollbar
-    set guioptions-=r "removes always-on right-hand scrollbar
-    set guifont=Terminus\ 10
-    nnoremap <leader><leader>1 :set guifont=Terminus\ 9<cr>
-    nnoremap <leader><leader>2 :set guifont=Terminus\ 10<cr>
-    nnoremap <leader><leader>3 :set guifont=Terminus\ 11<cr>
-    nnoremap <leader><leader>4 :set guifont=Terminus\ 13<cr>
-    nnoremap <leader><leader>5 :set guifont=Terminus\ 14<cr>
-    nnoremap <leader><leader>6 :set guifont=Terminus\ 16<cr>
-endif
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" PLUGINS
@@ -334,9 +333,9 @@ endif
 
 "!git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 
-"nnoremap S s
+nnoremap S s
 "if exists('g:EasyMotion_loaded')
-nmap S <Plug>(easymotion-s)
+nmap s <Plug>(easymotion-s)
 map / <Plug>(easymotion-sn)
 map ö <Plug>(easymotion-sn)
 map n <Plug>(easymotion-next)

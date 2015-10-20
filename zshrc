@@ -75,6 +75,12 @@ command_exists () {
 }
 
 
+#msDelay (higher=longer), rate (quicker=faster)
+set r rate 230 70
+if command_exists xset ; then
+    xset r rate 230 70 &> /dev/null ;
+fi
+
 #disable touchpad on thinkpad computers
 if [ -f ~/.identifiers/ranl412 ]; then
     #Disable TouchPad:
