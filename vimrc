@@ -3,6 +3,9 @@ nmap , ä
 nnoremap ,, ,
 
 nnoremap <b :b <c-d>
+nnoremap <n :bn<cr>
+nnoremap <p :bp<cr>
+nnoremap <d :bd<cr>
 
 map å [
 map ¨ ]

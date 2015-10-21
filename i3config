@@ -130,10 +130,10 @@ mode "resize" {
 # Pressing right will grow the window’s width.
 # Pressing up will shrink the window’s height.
 # Pressing down will grow the window’s height.
-    bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+bindsym h resize shrink width 10 px or 10 ppt
+bindsym j resize grow height 10 px or 10 ppt
+bindsym k resize shrink height 10 px or 10 ppt
+bindsym l resize grow width 10 px or 10 ppt
 
 # same bindings, but for the arrow keys
         bindsym Left resize shrink width 2 px or 2 ppt
@@ -158,6 +158,9 @@ bindsym $mod+Shift+Down resize grow height 2 px or 2 ppt
 bindsym $mod+Shift+Up resize shrink height 2 px or 2 ppt
 bindsym $mod+Shift+Right resize grow width 2 px or 2 ppt
 
+#hide_edge_borders horizontal
+hide_edge_borders both
+
 #Color stuff
 # class                 border  backgr. text    indicator
 #client.focused          #4c7899 #285577 #ffffff #2e9ef4 #default, blue
@@ -181,17 +184,31 @@ set $focused    "#EF0173"
 set $focusedframe    "#4c7899"
 
 bar {
-        status_command i3status
-        colors {
-		#colorclass <border> <background> <text>
-                background         #050E2D
-                focused_workspace  #000000 $focused  #FFFFFF
-                active_workspace   #000000 #AE7AB6   #FFFFFF  #last one is inactive workspace...
-                inactive_workspace #000000 #3B4EDE   #FFFFFF
-                statusline         $bar
-                separator          $bar
-        } ##7ace92
+    #mode hide
+    #modifier mod4
+    status_command i3status
+    colors {
+        #colorclass <border> <background> <text>
+        background         #050E2D
+        focused_workspace  #000000 $focused  #FFFFFF
+        active_workspace   #000000 #AE7AB6   #FFFFFF  #last one is inactive workspace...
+        inactive_workspace #000000 #3B4EDE   #FFFFFF
+        statusline         $bar
+        separator          $bar
+    } ##7ace92
+
+    #font pango:DejaVu Sans Mono, Icons 6
+    #See https://en.wikipedia.org/wiki/Fixed_%28typeface%29
+    #5x7:
+    #font -Misc-Fixed-Medium-R-Normal--7-70-75-75-C-50-ISO10646-1
+    #5x8:
+    #font -Misc-Fixed-Medium-R-Normal--8-80-75-75-C-50-ISO10646-1
+    #6x9:
+    #font -Misc-Fixed-Medium-R-Normal--9-90-75-75-C-60-ISO10646-1
+    #6x10:
+    font -Misc-Fixed-Medium-R-Normal--10-100-75-75-C-60-ISO10646-1
 }
+
 # outline color
 for_window [class="^.*"] border pixel 1
 #client.focused          #000000 $focusedframe    $text
@@ -221,4 +238,4 @@ client.focused_inactive #000000 $unfocused  $text
 #Programs to run at start
 #exec --no-startup-id xterm
 exec xterm
-exec . setupscreens.sh
+exec . ~/.screenlayout/setupscreens.sh
