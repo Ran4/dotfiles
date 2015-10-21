@@ -18,7 +18,7 @@ font -misc-fixed-small-r-normal--13-120-75-75-C-70-iso10646-1
 bindsym $mod+q kill
 
 # start a terminal
-bindsym $mod+Return exec xterm
+bindsym $mod+Return exec xterm -fn 7x14
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
@@ -237,5 +237,5 @@ client.focused_inactive #000000 $unfocused  $text
 
 #Programs to run at start
 #exec --no-startup-id xterm
-exec xterm
+exec xterm -fn 7x14
 exec . ~/.screenlayout/setupscreens.sh
