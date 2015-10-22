@@ -4,6 +4,10 @@ sudo apt-get -y install curl ack-grep
 sudo apt-get -y install xsel #xsel -p to get primary, pipe to it to set primary
 sudo apt-get -y install zsh
 
+sudo apt-get -y install zathura #pdf viewer with vim keybindings
+ZATHRCFILE=/etc/zathurarc
+[ ! -f $ZATHRCFILE ] && echo "writing to $ZATHRCFILE" && echo "set scroll-step 100" > $ZATHRCFILE
+
 sudo apt-get -y install python-pip
 #sudo apt-get -y install texlive texlive-latex-base # Around 300 MB?
 #sudo apt-get -y install texlive-full  # 3 GB...
@@ -16,7 +20,6 @@ git config --global --replace-all core.pager "less -F -X"
 
 #Make a copy of the default ssh config
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
-
 mkdir -p ~/.ssh
 
 #Download hhighlighter, an ack-based highlighter (e.g. ./a.out | h -i warning)
@@ -37,8 +40,7 @@ mkdir -p ~/pyy
 #sudo apt-get -y install python-tk #used for clip.py
 
 #FZF, a Fuzzy file finder
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 
 #sudo apt-get --reinstall install msttcorefonts
 #sudo apt-get --reinstall install ttf-mscorefonts-installer
