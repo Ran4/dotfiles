@@ -91,6 +91,7 @@ nnoremap - <C-x>
 
 "0 is much easier to reach than ^ on many non-US layouts
 nnoremap 0 ^
+nnoremap ^ 0
 nnoremap d0 d^
 nnoremap y0 y^
 
@@ -190,7 +191,7 @@ set splitright
 set incsearch "search as characters are entered
 set ignorecase "ignore case when searching
 if has("gui_running")
-    set mouse=a
+    set mouse=a "use mouse in all modes
     set guioptions-=T "removes toolbar
     set guioptions-=m "removes menu
     set guioptions-=l "removes always-on left-hand scrollbar
@@ -203,7 +204,7 @@ if has("gui_running")
     nnoremap <leader><leader>5 :set guifont=Terminus\ 14<cr>
     nnoremap <leader><leader>6 :set guifont=Terminus\ 16<cr>
 else
-    set mouse=n
+    set mouse=v "only use mouse in visual mode
 endif
 
 set timeout
@@ -321,31 +322,34 @@ endif
 """" PLUGINS
 """"
 
-" Download vim-exchange in order to get the cx operator
 "cd ~/.vim/bundle
-"!git clone git://github.com/tommcdo/vim-exchange.git
 
-"cd ~/.vim/bundle
-"!git clone git://github.com/tpope/vim-surround.git
-
-" Download vim-tbone, allowing tmux commands
-"cd ~/.vim/bundle
-"!git clone git://github.com/tpope/vim-tbone.git
-
-" targets.vim, allows movements like cin" (change in next ") and da,
-"git clone git://github.com/wellle/targets.vim.git ~/.vim/bundle/targets.vim
-
-" Usage :
-":Ack [options] {pattern} [{directories}]
+""Ack plugin for vim, usagE: :Ack [options] {pattern} [{directories}]
 "!git clone https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
+
+""Clever-f allows f/F to be pressed to repeat previous f/F search
+"!git clone https://github.com/rhysd/clever-f.vim
+
+""supertab, adds <Tab> for tab completion
+"!git clone git://github.com/ervandew/supertab ~/.vim/bundle/supertab
+
+""targets.vim allows movements like cin" (change in next ") and da,
+"git clone git://github.com/wellle/targets.vim.git ~/.vim/bundle/targets.vim
 
 "!git clone https://github.com/easymotion/vim-easymotion ~/.vim/bundle/vim-easymotion
 
-"!git clone https://github.com/rhysd/clever-f.vim
+""vim-exchange: add the cx operator. I.e. cxe on one word, then cxe to exchange
+"!git clone git://github.com/tommcdo/vim-exchange.git
+
+""vim-fugitive is a git plugin
+"!git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
+
+"!git clone git://github.com/tpope/vim-surround.git
+
+""vim-tbone allows tmux commands
+"!git clone git://github.com/tpope/vim-tbone.git
 
 "!git clone https://github.com/bronson/vim-trailing-whitespace ~/.vim/bundle/vim-trailing-whitespace
-
-"!git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 
 nnoremap S s
 "if exists('g:EasyMotion_loaded')
