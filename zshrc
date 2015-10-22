@@ -102,3 +102,4 @@ else
     #echo "Not running xmodmap!"
 fi
 
+setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"

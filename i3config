@@ -237,5 +237,5 @@ client.focused_inactive #000000 $unfocused  $text
 
 #Programs to run at start
 #exec --no-startup-id xterm
-exec xterm -fn 7x14
+exec xterm -fn 7x14 -e ~/dotfiles/defaulttmuxsession.sh
 exec . ~/.screenlayout/setupscreens.sh
