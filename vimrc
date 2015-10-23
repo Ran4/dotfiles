@@ -28,6 +28,7 @@ nnoremap <leader>< viw<ESC>a><ESC>hbi<<ESC>%
 nnoremap <leader>> viw<ESC>a><ESC>hbi<<ESC>%
 
 nnoremap <space> :w<CR>
+nnoremap <bs> <nop>
 
 " Append to in-commands
 nnoremap <leader>a" f";i
@@ -70,6 +71,8 @@ nnoremap dö d/
 cnoremap ö /
 vnoremap ö /
 nnoremap E $
+nnoremap L $
+nnoremap H ^
 cnoremap <c-a> <home>
 
 "Don't wait as long in insert mode (to enable us to quickly type j and k)
@@ -91,6 +94,7 @@ nnoremap - <C-x>
 
 "0 is much easier to reach than ^ on many non-US layouts
 nnoremap 0 ^
+nnoremap ´ ^
 nnoremap ^ 0
 nnoremap d0 d^
 nnoremap y0 y^
@@ -189,7 +193,8 @@ set splitbelow
 set splitright
 
 set incsearch "search as characters are entered
-set ignorecase "ignore case when searching
+"set ignorecase "ignore case when searching
+set smartcase "ignore case when searching, except if we start with a capital
 if has("gui_running")
     set mouse=a "use mouse in all modes
     set guioptions-=T "removes toolbar
@@ -204,7 +209,7 @@ if has("gui_running")
     nnoremap <leader><leader>5 :set guifont=Terminus\ 14<cr>
     nnoremap <leader><leader>6 :set guifont=Terminus\ 16<cr>
 else
-    set mouse=v "only use mouse in visual mode
+    set mouse=n "only use mouse in visual mode
 endif
 
 set timeout
@@ -355,6 +360,7 @@ nnoremap S s
 "if exists('g:EasyMotion_loaded')
 nmap s <Plug>(easymotion-s)
 map / <Plug>(easymotion-sn)
+"map ? <Plug>(easymotion-tn)
 map ö <Plug>(easymotion-sn)
 map n <Plug>(easymotion-next)
 map N <Plug>(easymotion-prev)
@@ -362,6 +368,8 @@ map N <Plug>(easymotion-prev)
 " default except ; key which is hard to type
 "let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
 let g:EasyMotion_keys = 'asdghklqwertuiopzxcvbnmfj1234890'
+"'Type Enter or Space key and jump to first match.'
+let g:EasyMotion_enter_jump_first = 1
 "endif
 
 " syntastic, for syntax higlighting

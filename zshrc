@@ -54,7 +54,10 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 source $ZSH/oh-my-zsh.sh
 bindkey '^r' history-incremental-search-backward
 bindkey -M viins 'jk' vi-cmd-mode
-export KEYTIMEOUT=5 #this is in 10 ms steps, so e.g. 20 = 200 ms
+export KEYTIMEOUT=1 #this is in 10 ms steps, so e.g. 20 = 200 ms
+#Found at: http://superuser.com/questions/476532/how-can-i-make-zshs-vi-mode-behave-more-like-bashs-vi-mode
+bindkey -sM vicmd '^[' '^G'
+bindkey -rM viins '^X'
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -66,7 +69,7 @@ export KEYTIMEOUT=5 #this is in 10 ms steps, so e.g. 20 = 200 ms
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh #command line fuzzy file finder
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh #command line fuzzy file finder
 
 
 #Help function to see if a command exists
