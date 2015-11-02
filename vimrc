@@ -68,7 +68,7 @@ nnoremap ö /
 nnoremap dö d/
 cnoremap ö /
 vnoremap ö /
-nnoremap E $
+"nnoremap E $
 "noremap L $
 "nnoremap H ^
 cnoremap <c-a> <home>
@@ -171,7 +171,7 @@ vnoremap > >gv
 filetype plugin indent on
 
 set number "show line numbers
-set relativenumber
+"set relativenumber
 
 set shiftwidth=4
 set softtabstop=4 "Number of spaces in tab when editing
