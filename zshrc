@@ -70,6 +70,8 @@ bindkey -rM viins '^X'
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh #command line fuzzy file finder
+[ -f ~/git/z/z.sh ] && source ~/git/z/z.sh
+
 
 
 #Help function to see if a command exists

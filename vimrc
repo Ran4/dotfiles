@@ -2,6 +2,7 @@ let mapleader = "ä"
 nmap , ä
 nnoremap ,, ,
 
+"Buffer shortcuts: open new, next, prev, delete
 nnoremap <b :b <c-d>
 nnoremap <n :bn<cr>
 nnoremap <p :bp<cr>
@@ -11,9 +12,6 @@ map å [
 map ¨ ]
 map åå [[
 map ¨¨ ]]
-
-imap å [
-imap ¨ ]
 
 " Adds characters around word
 nnoremap <leader>" viw<ESC>a"<ESC>hbi"<ESC>lel
@@ -71,8 +69,8 @@ nnoremap dö d/
 cnoremap ö /
 vnoremap ö /
 nnoremap E $
-nnoremap L $
-nnoremap H ^
+"noremap L $
+"nnoremap H ^
 cnoremap <c-a> <home>
 
 "Don't wait as long in insert mode (to enable us to quickly type j and k)
@@ -222,6 +220,9 @@ set laststatus=2 "always show statusbar. 1 means 'only when 2+ windows open'
 
 "always keep at a few lines at the top/bottom shown when moving around
 set scrolloff=4
+
+"Disable Bram's start message
+set shortmess+=I
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" COLORS

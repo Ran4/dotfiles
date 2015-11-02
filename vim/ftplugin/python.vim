@@ -1,3 +1,9 @@
+imap å [
+imap ¨ ]
+
+set makeprg=python\ -u\ %
+nnoremap <f5> :w:Make<cr>
+
 set tabstop=8
 set expandtab
 set shiftwidth=4
