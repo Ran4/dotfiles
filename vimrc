@@ -4,6 +4,7 @@ nnoremap ,, ,
 
 "Buffer shortcuts: open new, next, prev, delete
 nnoremap <b :b <c-d>
+nnoremap <l :ls<cr>
 nnoremap <n :bn<cr>
 nnoremap <p :bp<cr>
 nnoremap <d :bd<cr>
@@ -369,6 +370,8 @@ map N <Plug>(easymotion-prev)
 " default except ; key which is hard to type
 "let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
 let g:EasyMotion_keys = 'asdghklqwertuiopzxcvbnmfj1234890'
+"use smartcase, e.g. case-insensitive search unless search starts with a capital
+let g:EasyMotion_smartcase = 1
 "'Type Enter or Space key and jump to first match.'
 let g:EasyMotion_enter_jump_first = 1
 "endif
