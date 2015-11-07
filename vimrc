@@ -360,7 +360,7 @@ endif
 
 nnoremap S s
 "if exists('g:EasyMotion_loaded')
-nmap s <Plug>(easymotion-s)
+map s <Plug>(easymotion-s)
 map / <Plug>(easymotion-sn)
 "map ? <Plug>(easymotion-tn)
 map ö <Plug>(easymotion-sn)

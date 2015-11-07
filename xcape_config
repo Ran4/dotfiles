@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-setxkbmap -option 'caps:ctrl_modifier'
+setxkbmap -option 'caps:ctrl_modifier' -layout "se" -variant "nodeadkeys"
 #xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 xcape -e 'Caps_Lock=Escape'
