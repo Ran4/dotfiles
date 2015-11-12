@@ -211,6 +211,14 @@ else
     set mouse=n "only use mouse in visual mode
 endif
 
+"Prevent auto-comments
+"c: Auto-wrap comments using textwidth, autoinserting the current comment leader
+"r: Autoinsert the current comment leader after hitting <CR> in Insert mode.
+"o: Autoinsert the current comment leader after hitting o/O in Normal mode.
+autocmd BufNewFile,BufWinEnter * setlocal formatoptions-=cro
+"set formatoptions-=cro "this won't work, will be owerwritten, see this link:
+"http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
+
 set timeout
 set timeoutlen=2500 " used with e.g. leader
 set ttimeoutlen=10
