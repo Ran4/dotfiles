@@ -18,6 +18,7 @@ alias g='grep'
 alias gi='grep -i' #case-insensitive grep
 alias grepi='grep -i'
 alias acki='ack -i'
+alias agi='ag -i'
 
 run() {
     ($@ &> /dev/null &)
