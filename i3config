@@ -18,7 +18,8 @@ font -misc-fixed-small-r-normal--13-120-75-75-C-70-iso10646-1
 bindsym $mod+q kill
 
 # start a terminal
-bindsym $mod+Return exec xterm -fn 7x14
+#bindsym $mod+Return exec xterm -fn 7x14
+bindsym $mod+Return exec xterm
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run

@@ -23,7 +23,7 @@
 
 xterm*saveLines: 20000
 
-*xterm*renderFont: true
+!*xterm*renderFont: true
 !*xterm*faceName: VeraMono
 !*xterm*faceSize: 10
 xterm*borderWidth: 0
@@ -39,4 +39,5 @@ xterm*vt100*geometry: 130x55
 xterm*allowBoldFonts: false
 !END of mine
 
-
+xterm*font: -proggytiny-*-*-*-*-8-*-*-*-*-*-*-*
+!xterm*font: -*-clean-*-*-*-*-*-*-*-*-*-70-*-*

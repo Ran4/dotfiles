@@ -5,10 +5,10 @@ nnoremap ,, ,
 "Buffer shortcuts: open new, next, prev, delete
 nnoremap <b :b <c-d>
 nnoremap <l :ls<cr>
-"nnoremap <n :bn<cr>
-"nnoremap <p :bp<cr>
-nnoremap <n :cn<cr>
-nnoremap <p :cp<cr>
+nnoremap <n :bn<cr>
+nnoremap <p :bp<cr>
+"nnoremap <n :cn<cr>
+"nnoremap <p :cp<cr>
 nnoremap <d :bd<cr>
 
 map å [
@@ -28,6 +28,9 @@ nnoremap <leader>) viw<ESC>a)<ESC>hbi(<ESC>%
 nnoremap <leader>< viw<ESC>a><ESC>hbi<<ESC>%
 nnoremap <leader>> viw<ESC>a><ESC>hbi<<ESC>%
 
+nnoremap <leader>n :cn<cr>
+nnoremap <leader>N :cp<cr>
+
 nnoremap <space> :w<CR>
 nnoremap <bs> <nop>
 
@@ -45,7 +48,7 @@ nnoremap <leader>: "xy:<c-r>x<bs>
 
 nnoremap <leader>ei :vert split ~/.i3/config<CR>
 
-nnoremap <leader>n :set number!<CR>
+nnoremap <leader><leader>n :set number!<CR>
 
 " Call python
 nnoremap <leader>p :!clear && python %<CR>
