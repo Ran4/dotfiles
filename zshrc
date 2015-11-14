@@ -91,7 +91,7 @@ if [ -f ~/.identifiers/ranl412 ]; then
 fi
 
 if [ -f ~/.identifiers/ranlubuntu ]; then
-    alias m='~/ovrigt/mount_vbshare.m'
+    alias m='~/ovrigt/mount_vbshare.sh'
 fi
 
 if command_exists xcape ; then
