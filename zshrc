@@ -39,6 +39,7 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 
 source $ZSH/oh-my-zsh.sh
 bindkey '^r' history-incremental-search-backward
+bindkey '^f' accept-line
 bindkey -M viins 'jk' vi-cmd-mode
 export KEYTIMEOUT=1 #this is in 10 ms steps, so e.g. 20 = 200 ms
 #Found at: http://superuser.com/questions/476532/how-can-i-make-zshs-vi-mode-behave-more-like-bashs-vi-mode

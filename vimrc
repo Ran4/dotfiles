@@ -5,8 +5,10 @@ nnoremap ,, ,
 "Buffer shortcuts: open new, next, prev, delete
 nnoremap <b :b <c-d>
 nnoremap <l :ls<cr>
-nnoremap <n :bn<cr>
-nnoremap <p :bp<cr>
+"nnoremap <n :bn<cr>
+"nnoremap <p :bp<cr>
+nnoremap <n :cn<cr>
+nnoremap <p :cp<cr>
 nnoremap <d :bd<cr>
 
 map å [
@@ -339,8 +341,13 @@ endif
 
 "cd ~/.vim/bundle
 
-""Ack plugin for vim, usagE: :Ack [options] {pattern} [{directories}]
+"Ack plugin for vim, usagE: :Ack [options] {pattern} [{directories}]
 "!git clone https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
+"Change default size of copen window in ag from 10 to 7
+let g:ag_qhandler="copen 7"
+
+""Ag plugin for vim, usagE: :Ag [options] {pattern} [{directories}]
+"!git clone https://github.com/rking/ag.vim ~/.vim/bundle/ag.vim
 
 ""Clever-f allows f/F to be pressed to repeat previous f/F search
 "!git clone https://github.com/rhysd/clever-f.vim
@@ -365,6 +372,8 @@ endif
 "!git clone git://github.com/tpope/vim-tbone.git
 
 "!git clone https://github.com/bronson/vim-trailing-whitespace ~/.vim/bundle/vim-trailing-whitespace
+"Rebuild help tags (comes with pathogen): should be done after any new install (?)
+":Helptags
 
 nnoremap S s
 "if exists('g:EasyMotion_loaded')
