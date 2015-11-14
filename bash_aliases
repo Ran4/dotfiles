@@ -10,6 +10,7 @@ alias gl='git log -n 10 --graph --pretty=format:"%Cred%h%Creset%C(yellow)%d%Cres
 alias gs='git status'
 alias gc='git commit'
 alias gp='git push'
+alias gu='git pull'
 alias gcm='git commit -m'
 alias gcam='git commit -am'
 

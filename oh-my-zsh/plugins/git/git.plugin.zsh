@@ -45,8 +45,6 @@ function work_in_progress() {
 # (sorted alphabetically)
 #
 
-#alias g='git'
-#
 #alias ga='git add'
 #alias gaa='git add --all'
 #alias gapa='git add --patch'
@@ -139,21 +137,16 @@ ggu() {
 git pull --rebase origin "${b:=$1}"
 }
 compdef _git ggu=git-checkout
-alias ggpur='ggu'
+#alias ggpur='ggu'
 compdef _git ggpur=git-checkout
 
-alias gignore='git update-index --assume-unchanged'
-alias gignored='git ls-files -v | grep "^[[:lower:]]"'
-alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
 compdef git-svn-dcommit-push=git
 
-alias gk='\gitk --all --branches'
 compdef _git gk='gitk'
-alias gke='\gitk --all $(git log -g --pretty=format:%h)'
 compdef _git gke='gitk'
 
 #alias gl='git pull'
-alias gu='git pull' #Ansin added this
+#alias gu='git pull' #Ansin added this
 #alias glg='git log --stat --color'
 #alias glgp='git log --stat --color -p'
 #alias glgg='git log --graph --color'
