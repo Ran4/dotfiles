@@ -1,4 +1,4 @@
-set tabstop=8
+set tabstop=4
 set expandtab
 set shiftwidth=4
 set softtabstop=4
@@ -6,7 +6,7 @@ set wildignore+=*.out
 set number
 set formatoptions-=r
 
-set colorcolumn=140
+set colorcolumn=110
 
 "syntastic settings
 set statusline+=%#warningmsg#
