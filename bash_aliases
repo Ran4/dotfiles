@@ -11,6 +11,7 @@ alias gs='git status'
 alias gc='git commit'
 alias gp='git push'
 alias gu='git pull'
+alias gb='git branch -v' #(verbose)
 alias gcm='git commit -m'
 alias gcam='git commit -am'
 

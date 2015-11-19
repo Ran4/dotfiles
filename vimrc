@@ -355,6 +355,10 @@ let g:ag_qhandler="copen 7"
 ""Clever-f allows f/F to be pressed to repeat previous f/F search
 "!git clone https://github.com/rhysd/clever-f.vim
 
+
+""ctrl-p is a fuzzy file finder
+"!git clone https://github.com/kien/ctrlp.vim ~/.vim/bundle/ctrlp.vim
+
 ""supertab, adds <Tab> for tab completion
 "!git clone git://github.com/ervandew/supertab ~/.vim/bundle/supertab
 
