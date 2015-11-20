@@ -1,14 +1,15 @@
 let mapleader = "ä"
 nmap , ä
+nmap ö ä
 nnoremap ,, ,
 
 "Buffer shortcuts: open new, next, prev, delete
 nnoremap <b :b <c-d>
 nnoremap <l :ls<cr>
-nnoremap <n :bn<cr>
-nnoremap <p :bp<cr>
-"nnoremap <n :cn<cr>
-"nnoremap <p :cp<cr>
+"nnoremap <n :bn<cr>
+"nnoremap <p :bp<cr>
+nnoremap <n :cn<cr>
+nnoremap <p :cp<cr>
 nnoremap <d :bd<cr>
 
 map å [
@@ -70,10 +71,10 @@ nnoremap <leader>r :vert resize 80<CR>
 
 " :help map-which-keys    " is helpful to find new mappings
 imap jk <esc>
-nnoremap ö /
-nnoremap dö d/
-cnoremap ö /
-vnoremap ö /
+"nnoremap ö /
+"nnoremap dö d/
+"cnoremap ö /
+"vnoremap ö /
 "nnoremap E $
 "noremap L $
 "nnoremap H ^
@@ -382,12 +383,15 @@ let g:ag_qhandler="copen 7"
 "Rebuild help tags (comes with pathogen): should be done after any new install (?)
 ":Helptags
 
+"use CtrlP to quickly switch between buffers
+nnoremap <b :CtrlPBuffer<cr>
+
 nnoremap S s
 "if exists('g:EasyMotion_loaded')
 map s <Plug>(easymotion-s)
 map / <Plug>(easymotion-sn)
 "map ? <Plug>(easymotion-tn)
-map ö <Plug>(easymotion-sn)
+"map ö <Plug>(easymotion-sn)
 map n <Plug>(easymotion-next)
 map N <Plug>(easymotion-prev)
 "map <cr> <Plug>(easymotion-w)
