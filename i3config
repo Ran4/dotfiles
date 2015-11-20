@@ -159,30 +159,31 @@ bindsym $mod+Shift+Down resize grow height 2 px or 2 ppt
 bindsym $mod+Shift+Up resize shrink height 2 px or 2 ppt
 bindsym $mod+Shift+Right resize grow width 2 px or 2 ppt
 
-#hide_edge_borders horizontal
-hide_edge_borders both
+hide_edge_borders horizontal
+#hide_edge_borders both
 
 #Color stuff
-# class                 border  backgr. text    indicator
-#client.focused          #4c7899 #285577 #ffffff #2e9ef4 #default, blue
+# class                 border  backgr   text    indicator
+client.focused          #4c7899 #285577 #ffffff #2e9ef4 #default, blue
 #client.focused          #412458 #512888 #ffffff #2e9ef4 #KSU Purple
-client.focused          #412458 #c12888 #ffffff #fe5ef4
+#client.focused          #412458 #c12888 #ffffff #fe5ef4
+#client.focused          #412458 $activebordercolor #ffffff #fe5ef4
 #colorclass client.focused_inactive #333333 #5f676a #ffffff #484e50
 #colorclass client.unfocused        #333333 #222222 #888888 #292d2e
 client.unfocused        #333333 #222222 #888888 #292d2e
 #colorclass client.urgent           #2f343a #900000 #ffffff #900000
 #colorclass client.placeholder      #000000 #0c0c0c #ffffff #000000
-#Thickness of border. Default is 2, 1 is enough!
-new_window pixel 8
 
 ########################################
 
 #colors copied from http://textuploader.com/aqpma
-set $unfocused  "#3D4341"
-set $text       "#000000"
-set $bar        "#FBF1E5"
-set $focused    "#EF0173"
-set $focusedframe    "#4c7899"
+set $unfocused    "#3D4341"
+#set $unfocused    "#EF8173"
+set $text         "#000000"
+set $bartextcolor "#FBA1E5" #bar text color, pink-ish
+set $focused      "#EF0173"
+#set $focused      "#EF8173"
+set $focusedframe "#4c7899"
 
 bar {
     #mode hide
@@ -191,12 +192,14 @@ bar {
     status_command i3status
     colors {
         #colorclass <border> <background> <text>
-        background         #050E2D
+        #background         #050E2D
+        background         #020202 #bar color
         focused_workspace  #000000 $focused  #FFFFFF
         active_workspace   #000000 #AE7AB6   #FFFFFF  #last one is inactive workspace...
-        inactive_workspace #000000 #3B4EDE   #FFFFFF
-        statusline         $bar
-        separator          $bar
+        inactive_workspace #000000 $unfocused   #FFFFFF
+        #statusline         $bartextcolor
+        statusline         $bartextcolor
+        separator          $bartextcolor
     } ##7ace92
 
     #font pango:DejaVu Sans Mono, Icons 6
