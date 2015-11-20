@@ -8,6 +8,7 @@
 
 [core]
 	pager = less -F -X
+	excludesfile = "~/.gitignore_global"
 [difftool]
 	prompt = false
 [diff]

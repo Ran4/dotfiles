@@ -17,7 +17,7 @@ NC='\033[0m'
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="bashrc bash_aliases bash_setprompt gitconfig vimrc vim xcape_config xmodmap_swap_caps_and_escape xmodmap_swap_caps_and_ctrl Xresources lesskey tmux.conf i3status.conf hhighlighter.sh custom/kth_tmux.conf custom/ranl412_tmux.conf zshrc oh-my-zsh/plugins/git/git.plugin.zsh oh-my-zsh/themes/sunrise-modified-ran.zsh-theme fonts"
+files="bashrc bash_aliases bash_setprompt gitconfig gitignore_global vimrc vim xcape_config xmodmap_swap_caps_and_escape xmodmap_swap_caps_and_ctrl Xresources lesskey tmux.conf i3status.conf hhighlighter.sh custom/kth_tmux.conf custom/ranl412_tmux.conf zshrc oh-my-zsh/plugins/git/git.plugin.zsh oh-my-zsh/themes/sunrise-modified-ran.zsh-theme fonts"
 
 ##########
 
