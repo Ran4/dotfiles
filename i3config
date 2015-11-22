@@ -49,8 +49,14 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # split in vertical/hhorizontal orientation
-bindsym $mod+s split v
-bindsym $mod+v split h
+#bindsym $mod+s split v
+#bindsym $mod+v split h
+
+#quickly open xterm/other with mod-s/v (shift for other)
+bindsym $mod+Shift+s split v; exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+Shift+v split h; exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+s split v; exec xterm
+bindsym $mod+v split h; exec xterm
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen

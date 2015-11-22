@@ -71,6 +71,7 @@ nnoremap <leader>r :vert resize 80<CR>
 
 " :help map-which-keys    " is helpful to find new mappings
 imap jk <esc>
+imap Jk <esc>
 "nnoremap ö /
 "nnoremap dö d/
 "cnoremap ö /
