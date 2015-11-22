@@ -272,7 +272,7 @@ function HighlightExtraWhitespace()
 endfunction
 
 if exists('+colorcolumn')
-    set colorcolumn=81
+    set colorcolumn=110
     " Colorcolumn color is very dark grey
     highlight colorcolumn ctermbg=0 guibg=black
 

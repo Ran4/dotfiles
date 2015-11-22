@@ -3,7 +3,7 @@ sudo apt-get -y install git xcape openssh-server vim-gnome tmux
 sudo apt-get -y install curl ack-grep silversearcher-ag
 sudo apt-get install silversearcher-ag
 
-sudo apt-get -y install xsel #xsel -p to get primary, pipe to it to set primary
+sudo apt-get -y install xsel #xsel -p to get primary clipboard, pipe to it to set primary
 sudo apt-get -y install zsh
 
 sudo apt-get -y install zathura #pdf viewer with vim keybindings
@@ -24,8 +24,7 @@ git config --global --replace-all core.pager "less -F -X"
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
 mkdir -p ~/.ssh
 
-#Download hhighlighter, an ack-based highlighter (e.g. ./a.out | h -i warning)
-curl -s https://raw.githubusercontent.com/paoloantinori/hhighlighter/master/h.sh -o hhighlighter.sh
+mkdir -p ~/git/other
 
 #Remove annoying folders that come with ubuntu
 rmdir ~/Music
@@ -41,11 +40,8 @@ mkdir -p ~/pyy
 
 #sudo apt-get -y install python-tk #used for clip.py
 
-#FZF, a Fuzzy file finder
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
-
 #sudo apt-get --reinstall install msttcorefonts
 #sudo apt-get --reinstall install ttf-mscorefonts-installer
 
-#Installing oh-my-zsh
-#sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+#i3-gaps. Needs i3 first!
+#cd git/other/ && git clone https://www.github.com/Airblader/i3 i3-gaps && cd i3-gaps && make && sudo make install

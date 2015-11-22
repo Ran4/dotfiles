@@ -1,6 +1,10 @@
 imap å [
 imap ¨ ]
 
+if exists('+colorcolumn')
+    set colorcolumn=81
+endif
+
 set makeprg=python\ -u\ %
 nnoremap <f5> :w:Make<cr>
 
