@@ -244,3 +244,8 @@ client.focused_inactive #000000 $unfocused  $text
 #exec --no-startup-id xterm
 exec xterm -fn 7x14 -e ~/dotfiles/defaulttmuxsession.sh
 exec . ~/.screenlayout/setupscreens.sh
+
+#i3-gaps specific
+gaps inner 4
+gaps outer -5 #higher than inner, so no gap when there's just a single window
+

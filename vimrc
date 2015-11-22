@@ -353,6 +353,9 @@ let g:ag_qhandler="copen 7"
 ""Ag plugin for vim, usagE: :Ag [options] {pattern} [{directories}]
 "!git clone https://github.com/rking/ag.vim ~/.vim/bundle/ag.vim
 
+""vim airline is a lightweight alternative to powerline, written in pure ViML
+"!git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
+
 ""Clever-f allows f/F to be pressed to repeat previous f/F search
 "!git clone https://github.com/rhysd/clever-f.vim
 
