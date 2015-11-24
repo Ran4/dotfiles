@@ -68,6 +68,7 @@ echo "...done"
 if command_exists i3 ; then
 	echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3config ~/.i3/config)${NC}"
 	ln -s $dir/i3config ~/.i3/config
+	#ln -s $dir/i3config ~/.config/i3/config #use this if using the XDG directory scheme
 	echo "...done"
 fi
 
