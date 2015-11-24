@@ -1,7 +1,12 @@
 sudo apt-get update
-sudo apt-get -y install git xcape openssh-server vim-gnome tmux
-sudo apt-get -y install curl ack-grep silversearcher-ag
-sudo apt-get install silversearcher-ag
+sudo apt-get -y install git
+sudo apt-get -y install xcape
+sudo apt-get -y install openssh-server
+sudo apt-get -y install vim-gnome
+sudo apt-get -y install tmux
+sudo apt-get -y install curl
+sudo apt-get -y install ack-grep
+sudo apt-get -y install silversearcher-ag
 
 sudo apt-get -y install xsel #xsel -p to get primary clipboard, pipe to it to set primary
 sudo apt-get -y install zsh
