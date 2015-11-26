@@ -363,6 +363,9 @@ let g:ag_qhandler="copen 7"
 ""targets.vim allows movements like cin" (change in next ") and da,
 "git clone git://github.com/wellle/targets.vim.git ~/.vim/bundle/targets.vim
 
+""vim-tmux-navigator allows seamless navigation between vim and tmux splits
+"!git clone https://github.com/christoomey/vim-tmux-navigator ~/.vim/bundle/vim-tmux-navigator
+
 "!git clone https://github.com/easymotion/vim-easymotion ~/.vim/bundle/vim-easymotion
 
 ""vim-exchange: add the cx operator. I.e. cxe on one word, then cxe to exchange
