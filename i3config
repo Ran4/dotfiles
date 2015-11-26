@@ -188,7 +188,8 @@ client.unfocused        #333333 #222222 #888888 #292d2e
 set $unfocused    "#3D4341"
 #set $unfocused    "#EF8173"
 set $text         "#000000"
-set $bartextcolor "#FBA1E5" #bar text color, pink-ish
+#set $bartextcolor "#FBA1E5" #bar text color, pink-ish
+set $bartextcolor "#FB1135" #bar text color, red-pink-ish
 set $focused      "#EF0173"
 #set $focused      "#EF8173"
 set $focusedframe "#4c7899"
@@ -213,13 +214,13 @@ bar {
     #font pango:DejaVu Sans Mono, Icons 6
     #See https://en.wikipedia.org/wiki/Fixed_%28typeface%29
     #5x7:
-    font -Misc-Fixed-Medium-R-Normal--7-70-75-75-C-50-ISO10646-1
+    #font -Misc-Fixed-Medium-R-Normal--7-70-75-75-C-50-ISO10646-1
     #5x8:
     #font -Misc-Fixed-Medium-R-Normal--8-80-75-75-C-50-ISO10646-1
     #6x9:
     #font -Misc-Fixed-Medium-R-Normal--9-90-75-75-C-60-ISO10646-1
     #6x10:
-    #font -Misc-Fixed-Medium-R-Normal--10-100-75-75-C-60-ISO10646-1
+    font -Misc-Fixed-Medium-R-Normal--10-100-75-75-C-60-ISO10646-1
 }
 
 # outline color
