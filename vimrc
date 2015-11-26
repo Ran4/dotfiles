@@ -114,8 +114,8 @@ nnoremap ' `
 vnoremap ` '
 vnoremap ' `
 
-" Quick record
-nnoremap Q qq
+" Quickly replay a record
+nnoremap Q @q
 
 "Quickly move between windows with ctrl+hjkl
 nnoremap <C-J> <C-W><C-J>
