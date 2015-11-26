@@ -61,3 +61,6 @@ endfun
 
 "Start file with all folds open
 "autocmd BufWinEnter *.py :%foldopen!
+
+set foldmethod=marker
+norm zR

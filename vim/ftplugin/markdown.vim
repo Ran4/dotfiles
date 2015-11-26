@@ -50,3 +50,6 @@ if has("folding") && exists("g:markdown_folding")
 endif
 
 " vim:set sw=2:
+
+set foldmethod=marker
+norm zR

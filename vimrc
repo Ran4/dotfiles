@@ -1,3 +1,4 @@
+"{{{ Mappings
 let mapleader = "ä"
 nmap , ä
 nmap ö ä
@@ -170,12 +171,8 @@ vnoremap > >gv
 " nnoremap <leader>c /class <CR>zz
 " nnoremap <leader>c /class <CR>zz
 " nnoremap <leader>C ?class <CR>zz
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""" SET OPTIONS
-""""
-
+"}}}
+"{{{ Set options
 filetype plugin indent on
 
 set number "show line numbers
@@ -239,10 +236,8 @@ set scrolloff=4
 
 "Disable Bram's start message
 set shortmess+=I
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""" COLORS
-""""
+"}}}
+"{{{ Colors and highlighting
 " Color scheme
 " mkdir -p ~/.vim/colors
 " cd ~/.vim/colors
@@ -281,7 +276,8 @@ if exists('+colorcolumn')
 else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
-
+"}}}
+"{{{ Functions
 " Change in paranthesis function, since ci( initially doesn't work
 function New_cip()
     if search("(","bn") == line(".")
@@ -339,11 +335,8 @@ if has("autocmd")
     autocmd BufRead,BufNewFile * call HighlightExtraWhitespace()
 endif
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""" PLUGINS
-""""
-
+"}}}
+"{{{ PLUGINS
 "cd ~/.vim/bundle
 
 "Ack plugin for vim, usagE: :Ack [options] {pattern} [{directories}]
@@ -429,3 +422,4 @@ function! s:AppendCharEOL()
 endfunction
 
 nnoremap <silent> R :<C-u>call <SID>AppendCharEOL()<CR>
+"}}}
