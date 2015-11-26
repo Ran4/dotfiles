@@ -11,9 +11,12 @@ alias gs='git status'
 alias gc='git commit'
 alias gp='git push'
 alias gu='git pull'
+alias gd='git diff'
+alias gdc='git diff --cached'
 alias gb='git branch -v' #(verbose)
 alias gcm='git commit -m'
 alias gcam='git commit -am'
+alias ga='git add'
 
 alias g='grep'
 alias gi='grep -i' #case-insensitive grep
