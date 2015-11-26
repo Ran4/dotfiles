@@ -23,9 +23,14 @@
 
 xterm*saveLines: 20000
 
+!xterm*faceName: Liberation Mono:size=10:antialias=false
+
+!xterm*faceName: Liberation Mono:size=9:antialias=false
+
 !*xterm*renderFont: true
 !*xterm*faceName: VeraMono
 !*xterm*faceSize: 10
+
 xterm*borderWidth: 0
 
 ! Without the vt100, the size of ctrl+left/middle/right mouse click menu will be set to 80x35 px
@@ -38,6 +43,3 @@ xterm*vt100*geometry: 130x55
 !xterm*boldFont: fixed
 xterm*allowBoldFonts: false
 !END of mine
-
-xterm*font: -proggytiny-*-*-*-*-8-*-*-*-*-*-*-*
-!xterm*font: -*-clean-*-*-*-*-*-*-*-*-*-70-*-*
