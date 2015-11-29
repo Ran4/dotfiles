@@ -1,2 +1,3 @@
 set foldmethod=marker
-normal zR
+normal zi
+nnoremap <cr> zizt

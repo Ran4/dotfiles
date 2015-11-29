@@ -63,4 +63,5 @@ endfun
 "autocmd BufWinEnter *.py :%foldopen!
 
 set foldmethod=marker
-norm zR
+norm zi
+nnoremap <cr> zizt

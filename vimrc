@@ -1,4 +1,4 @@
-"{{{ Mappings
+"{{{ MAPPINGS
 let mapleader = "ä"
 nmap , ä
 nmap ö ä
@@ -172,7 +172,7 @@ vnoremap > >gv
 " nnoremap <leader>c /class <CR>zz
 " nnoremap <leader>C ?class <CR>zz
 "}}}
-"{{{ Set options
+"{{{ SET OPTIONS
 filetype plugin indent on
 
 set number "show line numbers
@@ -237,7 +237,7 @@ set scrolloff=4
 "Disable Bram's start message
 set shortmess+=I
 "}}}
-"{{{ Colors and highlighting
+"{{{ COLORS AND HIGHLIGHTING
 " Color scheme
 " mkdir -p ~/.vim/colors
 " cd ~/.vim/colors
@@ -277,7 +277,7 @@ else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 "}}}
-"{{{ Functions
+"{{{ FUNCTIONS
 " Change in paranthesis function, since ci( initially doesn't work
 function New_cip()
     if search("(","bn") == line(".")
@@ -353,12 +353,14 @@ let g:ag_qhandler="copen 7"
 ""Clever-f allows f/F to be pressed to repeat previous f/F search
 "!git clone https://github.com/rhysd/clever-f.vim
 
-
 ""ctrl-p is a fuzzy file finder
 "!git clone https://github.com/kien/ctrlp.vim ~/.vim/bundle/ctrlp.vim
 
 ""supertab, adds <Tab> for tab completion
 "!git clone git://github.com/ervandew/supertab ~/.vim/bundle/supertab
+
+""vim-visual-star-search, allows * operator on visual words (and <leader>* to vimgrep)
+"!git clone https://github.com/bronson/vim-visual-star-search ~/.vim/bundle/vim-visual-star-search
 
 ""targets.vim allows movements like cin" (change in next ") and da,
 "git clone git://github.com/wellle/targets.vim.git ~/.vim/bundle/targets.vim
