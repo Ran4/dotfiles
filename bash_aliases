@@ -49,6 +49,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+alias sagi='sudo apt-get install'
+
 alias logo='lxsession'
 alias logout='lxsession'
 

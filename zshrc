@@ -75,6 +75,20 @@ if command_exists xset ; then
     xset r rate 230 70 &> /dev/null ;
 fi
 
+
+if [ -x /usr/bin/dircolors ]; then
+    #if we can read the file ~/.dircolors, then eval list of colors given by $(dircolors -b ~/.dircolors)
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    #alias ls='ls --color=auto'
+    alias ls='ls --color=auto -h'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    #alias grep='grep --color=auto'
+    #alias fgrep='fgrep --color=auto'
+    #alias egrep='egrep --color=auto'
+fi
+
 #############################################################
 ##COMPUTER-SPECIFIC CONFIG:
 
