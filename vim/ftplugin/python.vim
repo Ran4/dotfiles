@@ -64,4 +64,4 @@ endfun
 
 set foldmethod=marker
 norm zi
-nnoremap <cr> zizt
+"nnoremap <cr> zizt

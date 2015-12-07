@@ -192,6 +192,8 @@ set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
 
 " set bs=2 "Fix backspace. Uncomment this if needed...
 
+set foldmethod=marker
+
 set splitbelow
 set splitright
 

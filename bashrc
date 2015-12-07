@@ -135,6 +135,21 @@ fi
 #    ($@ &> /dev/null &)
 #}
 
+# Color for less
+# See http://misc.flogisoft.com/bash/tip_colors_and_formatting for colors
+#export LESS_TERMCAP_mb=$'\E[01;31m'      # begin blinking
+#01 bold, 35 magenta
+export LESS_TERMCAP_md=$'\E[01;35m'      # begin bold: color for NAME, SYNOPSIS, DESCRIPTION...
+export LESS_TERMCAP_me=$'\E[0m'          # end mode
+#04 underline, 92 light green
+#export LESS_TERMCAP_so=$'\E[04;92m'   # begin standout-mode - Search highlighting
+#export LESS_TERMCAP_se=$'\E[0m'          # end standout-mode
+#45 bg=magenta
+export LESS_TERMCAP_so=$'\E[04;45m'   # begin standout-mode - Search highlighting
+export LESS_TERMCAP_se=$'\E[0m'          # end standout-mode
+#export LESS_TERMCAP_us=$'\E[01;45m'      # begin underline: color for commands etc.
+#export LESS_TERMCAP_ue=$'\E[0m'      # begin underline: color for commands etc.
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).

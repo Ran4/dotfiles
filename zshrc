@@ -37,6 +37,15 @@ plugins=(git vi-mode)
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ran/.fzf/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+#Don't autocomplete hosts.
+#Inspiration: https://tlvince.com/fixing-slow-zsh-command-completion
+zstyle ':completion:*' hosts off
+
+#Help function to see if a command exists
+command_exists () {
+  type "$1" >/dev/null 2>/dev/null
+}
+#{{{Keyboard related
 source $ZSH/oh-my-zsh.sh
 bindkey '^r' history-incremental-search-backward
 bindkey '^f' accept-line
@@ -46,15 +55,12 @@ export KEYTIMEOUT=1 #this is in 10 ms steps, so e.g. 20 = 200 ms
 bindkey -sM vicmd '^[' '^G'
 bindkey -rM viins '^X'
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-#Don't autocomplete hosts.
-#Inspiration: https://tlvince.com/fixing-slow-zsh-command-completion
-zstyle ':completion:*' hosts off
+#Key delay. msDelay (higher=longer), rate (quicker=faster)
+set r rate 230 70
+if command_exists xset ; then
+    xset r rate 230 70 &> /dev/null ;
+fi
+#}}}
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -63,19 +69,7 @@ zstyle ':completion:*' hosts off
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh #command line fuzzy file finder
 [ -f ~/git/z/z.sh ] && source ~/git/z/z.sh
 
-
-#Help function to see if a command exists
-command_exists () {
-  type "$1" >/dev/null 2>/dev/null
-}
-
-#Key delay. msDelay (higher=longer), rate (quicker=faster)
-set r rate 230 70
-if command_exists xset ; then
-    xset r rate 230 70 &> /dev/null ;
-fi
-
-
+# Colors {{{
 if [ -x /usr/bin/dircolors ]; then
     #if we can read the file ~/.dircolors, then eval list of colors given by $(dircolors -b ~/.dircolors)
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -89,8 +83,22 @@ if [ -x /usr/bin/dircolors ]; then
     #alias egrep='egrep --color=auto'
 fi
 
-#############################################################
-##COMPUTER-SPECIFIC CONFIG:
+# Color for less {{{
+# See http://misc.flogisoft.com/bash/tip_colors_and_formatting for colors
+#export LESS_TERMCAP_mb=$'\E[01;31m'      # begin blinking
+#01 bold, 35 magenta
+export LESS_TERMCAP_md=$'\E[01;35m'      # begin bold: color for NAME, SYNOPSIS, DESCRIPTION...
+export LESS_TERMCAP_me=$'\E[0m'          # end mode
+#04 underline, 92 light green
+#export LESS_TERMCAP_so=$'\E[04;92m'   # begin standout-mode - Search highlighting
+#export LESS_TERMCAP_se=$'\E[0m'          # end standout-mode
+#45 bg=magenta
+export LESS_TERMCAP_so=$'\E[04;45m'   # begin standout-mode - Search highlighting
+export LESS_TERMCAP_se=$'\E[0m'          # end standout-mode
+#export LESS_TERMCAP_us=$'\E[01;45m'      # begin underline: color for commands etc.
+#export LESS_TERMCAP_ue=$'\E[0m'      # begin underline: color for commands etc.
+#}}}}}}
+##COMPUTER-SPECIFIC CONFIG: {{{
 
 #disable touchpad on thinkpad computers
 if [ -f ~/.identifiers/ranl412 ]; then
@@ -119,3 +127,4 @@ else
 fi
 
 setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
+#}}}
