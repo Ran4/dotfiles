@@ -2,7 +2,7 @@ imap å [
 imap ¨ ]
 
 if exists('+colorcolumn')
-    set colorcolumn=81
+    set colorcolumn=80
 endif
 
 set makeprg=python\ -u\ %
