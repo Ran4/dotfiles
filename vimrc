@@ -30,8 +30,8 @@ nnoremap <leader>) viw<ESC>a)<ESC>hbi(<ESC>%
 nnoremap <leader>< viw<ESC>a><ESC>hbi<<ESC>%
 nnoremap <leader>> viw<ESC>a><ESC>hbi<<ESC>%
 
-nnoremap <leader>n :cn<cr>
-nnoremap <leader>N :cp<cr>
+nnoremap <leader>n :bn<cr>
+nnoremap <leader>N :bp<cr>
 
 nnoremap <space> :w<CR>
 nnoremap <bs> <nop>
