@@ -69,12 +69,14 @@ fi
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh #command line fuzzy file finder
 [ -f ~/git/z/z.sh ] && source ~/git/z/z.sh
 
+alias ls='ls -hF' #human readable, append indicator (one of */=>@|)
 # Colors {{{
 if [ -x /usr/bin/dircolors ]; then
     #if we can read the file ~/.dircolors, then eval list of colors given by $(dircolors -b ~/.dircolors)
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     #alias ls='ls --color=auto'
-    alias ls='ls --color=auto -h'
+    #alias ls='ls --color=auto -h'
+    alias ls='ls --color=auto -hF' #color, human readable, append indicator (one of */=>@|)
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
