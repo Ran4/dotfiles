@@ -55,6 +55,9 @@ export KEYTIMEOUT=1 #this is in 10 ms steps, so e.g. 20 = 200 ms
 bindkey -sM vicmd '^[' '^G'
 bindkey -rM viins '^X'
 
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
 #Key delay. msDelay (higher=longer), rate (quicker=faster)
 set r rate 230 70
 if command_exists xset ; then
@@ -128,5 +131,7 @@ else
     #echo "Not running xmodmap!"
 fi
 
-setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
+if command_exists setxkbmap ; then
+    setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
+fi
 #}}}
