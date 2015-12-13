@@ -2,6 +2,12 @@
 imap å [
 imap ¨ ]
 
+"Quickly navigate between parens
+nnoremap W /(<cr>
+nnoremap B ?(<cr>
+nnoremap E /)<cr>
+nnoremap ge ?)<cr>
+
 if exists('+colorcolumn')
     set colorcolumn=110
 endif
