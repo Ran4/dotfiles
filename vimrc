@@ -13,8 +13,10 @@ nnoremap <n :cn<cr>
 nnoremap <p :cp<cr>
 nnoremap <d :bd<cr>
 
-map å [
-map ¨ ]
+"imap å [
+"imap ¨ ]
+"imap Å [
+"imap ^ ]
 map åå [[
 map ¨¨ ]]
 
@@ -116,7 +118,7 @@ vnoremap ` '
 vnoremap ' `
 
 " Quickly replay a record
-nnoremap Q @q
+"nnoremap Q @q
 
 "Quickly move between windows with ctrl+hjkl
 nnoremap <C-J> <C-W><C-J>
