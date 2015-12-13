@@ -2,3 +2,7 @@ vim/.netrwhist
 .__afs*
 .*.swp
 .gitignore
+
+vim/bundle/vim-clojure-static/
+vim/bundle/vim-fireplace/
+vim/bundle/vim-clojure-highlight/

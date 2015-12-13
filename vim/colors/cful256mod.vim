@@ -81,14 +81,15 @@ highlight colorcolumn ctermbg=0 guibg=black
 
 " for groups introduced in version 7
 if v:version >= 700
-   highlight Pmenu       cterm=none ctermfg=16 ctermbg=165 gui=none guifg=#000000 guibg=#df00ff
-   highlight PmenuSel    cterm=none ctermfg=16 ctermbg=220 gui=none guifg=#000000 guibg=#ffdf00
-   "highlight tablinesel  cterm=none ctermfg=15 ctermbg=58  gui=none guifg=#ffffff guibg=#5f5f00
-   highlight tablinesel  cterm=none ctermfg=15 ctermbg=236  gui=none guifg=#ffffff guibg=#5f5f00
-   "highlight tabline     cterm=none ctermfg=7  ctermbg=58  gui=none guifg=#c0c0c0 guibg=#5f5f00
-   highlight tabline     cterm=none ctermfg=7  ctermbg=232  gui=none guifg=#c0c0c0 guibg=#5f5f00
-   "highlight tablinefill cterm=none ctermfg=58 ctermbg=58  gui=none guifg=#5f5f00 guibg=#5f5f00
-   highlight tablinefill cterm=none ctermfg=58 ctermbg=0  gui=none guifg=#5f5f00 guibg=#5f5f00
+    highlight Pmenu       cterm=none ctermfg=16 ctermbg=165 gui=none guifg=#000000 guibg=#df00ff
+    highlight PmenuSel    cterm=none ctermfg=16 ctermbg=220 gui=none guifg=#000000 guibg=#ffdf00
+    "highlight tablinesel  cterm=none ctermfg=15 ctermbg=58  gui=none guifg=#ffffff guibg=#5f5f00
+    highlight tablinesel  cterm=none ctermfg=15 ctermbg=236  gui=none guifg=#ffffff guibg=#5f5f00
+    "highlight tabline     cterm=none ctermfg=7  ctermbg=58  gui=none guifg=#c0c0c0 guibg=#5f5f00
+    highlight tabline     cterm=none ctermfg=7  ctermbg=232  gui=none guifg=#c0c0c0 guibg=#5f5f00
+    "highlight tablinefill cterm=none ctermfg=58 ctermbg=58  gui=none guifg=#5f5f00 guibg=#5f5f00
+    highlight tablinefill cterm=none ctermfg=58 ctermbg=0  gui=none guifg=#5f5f00 guibg=#5f5f00
+    highlight CursorLine  cterm=None            ctermbg=236	                  guibg=#32322f
 endif
 
 "for taglist plugin

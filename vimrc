@@ -357,7 +357,18 @@ let g:ag_qhandler="copen 7"
 ""Clever-f allows f/F to be pressed to repeat previous f/F search
 "!git clone https://github.com/rhysd/clever-f.vim
 
-""ctrl-p is a fuzzy file finder
+""{{{ Clojure plugins
+"""Clojure runtime files, extracted from the VimClojure project, required for vim-clojure-highlight
+""!git clone https://github.com/guns/vim-clojure-static ~/.vim/bundle/vim-clojure-highlight
+
+"""Quasi-REPL for clojure
+""!git clone https://github.com/tpope/vim-fireplace ~/.vim/bundle/vim-fireplace
+
+""vem-clojure-highlight gives extended syntax highlightinging for clojure
+""!git clone https://github.com/guns/vim-clojure-highlight ~/.vim/bundle/vim-clojure-highlight
+""}}}
+
+"""ctrl-p is a fuzzy file finder
 "!git clone https://github.com/kien/ctrlp.vim ~/.vim/bundle/ctrlp.vim
 
 ""supertab, adds <Tab> for tab completion
