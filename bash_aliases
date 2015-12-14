@@ -66,6 +66,7 @@ alias vim3='vim -c "vert resize 80" -c "wincmd w" -c "vert resize 80" -c "wincmd
 alias vim4="vim -c 'bel vert sbuf 2' -c '1wincmd w' -c 'bel sbuf 3' -c '3wincmd w' -c 'bel sbuf 4'"
 alias vims='vim -S .vimsession'
 alias rmswp='rm .*.swp'
+alias rmpyc='rm *.pyc'
 alias manvim='function _domanvim() { man $1 | vim -R -; }; _domanvim'
 alias :q='exit'
 alias :Q='exit'
