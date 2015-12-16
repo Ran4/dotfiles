@@ -90,7 +90,7 @@ au InsertEnter * set timeoutlen=450
 au InsertLeave * set timeoutlen=2500
 augroup END
 
-"Fix accidentally holding shift while trying to quite vim, e.g. :Q -> :q
+"Fix accidentally holding shift while trying to quit vim, e.g. :Q -> :q
 command Q q
 command Qa qa
 command QA qa
@@ -232,6 +232,8 @@ set timeoutlen=2500 " used with e.g. leader
 set ttimeoutlen=10
 
 set wildmode=longest,list,full
+
+set history=1000
 
 set laststatus=2 "always show statusbar. 1 means 'only when 2+ windows open'
 
