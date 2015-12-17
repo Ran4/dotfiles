@@ -48,9 +48,6 @@ nnoremap <leader>ei :vert split ~/.i3/config<CR>
 
 nnoremap <leader><leader>n :set number!<CR>
 
-" Call python
-nnoremap <leader>p :!clear && python %<CR>
-
 " Prepends # to line and goes down, Q removes then
 nnoremap <leader>q I#<esc>j
 nnoremap <leader>Q kx
