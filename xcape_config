@@ -3,7 +3,5 @@
 #setxkbmap -option 'caps:ctrl_modifier' -layout "se" -variant "nodeadkeys"
 
 #setxkbmap -option ctrl:nocaps
-setxkbmap -option ctrl:ctrl_modifier
 xcape -e 'Control_L=Escape'
-
 #xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'

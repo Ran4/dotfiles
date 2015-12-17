@@ -123,15 +123,16 @@ if [ -f ~/.identifiers/ranlubuntu ]; then
     alias m='~/ovrigt/mount_all.sh'
 fi
 
+if command_exists setxkbmap ; then
+    #setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
+    setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin" -option ctrl:nocaps
+fi
+
 if command_exists xcape ; then
     . ~/.xcape_config
     #echo "Not running xcape config!"
 else
     xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
     #echo "Not running xmodmap!"
-fi
-
-if command_exists setxkbmap ; then
-    setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
 fi
 #}}}

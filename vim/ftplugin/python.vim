@@ -10,6 +10,10 @@ nnoremap <leader>l :let g:syntastic_python_checkers=['python', 'pylint']
 "Disable pylint
 nnoremap <leader>L :let g:syntastic_python_checkers=['python']<cr>
 
+nnoremap <leader>p :!clear && python %<cr>
+nnoremap <leader>P :!python %<cr>
+nnoremap <leader>i :!python -i %<cr>
+
 if exists('+colorcolumn')
     set colorcolumn=80
 endif
