@@ -371,12 +371,15 @@ let g:ag_qhandler="copen 7"
 """Quasi-REPL for clojure
 ""!git clone https://github.com/tpope/vim-fireplace ~/.vim/bundle/vim-fireplace
 
-""vem-clojure-highlight gives extended syntax highlightinging for clojure
+""vim-clojure-highlight gives extended syntax highlightinging for clojure
 ""!git clone https://github.com/guns/vim-clojure-highlight ~/.vim/bundle/vim-clojure-highlight
 ""}}}
 
 """ctrl-p is a fuzzy file finder
 "!git clone https://github.com/kien/ctrlp.vim ~/.vim/bundle/ctrlp.vim
+
+""helper plugin that enables repetition with dot in plugins such as vim-surround
+"git clone git://github.com/tpope/vim-repeat.git ~/.vim/bundle/vim-repeat
 
 ""supertab, adds <Tab> for tab completion
 "!git clone git://github.com/ervandew/supertab ~/.vim/bundle/supertab
@@ -398,6 +401,7 @@ let g:ag_qhandler="copen 7"
 ""vim-fugitive is a git plugin
 "!git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 
+""use e.g. ds( to delete surrounding (
 "!git clone git://github.com/tpope/vim-surround.git
 
 ""vim-tbone allows tmux commands
