@@ -13,13 +13,6 @@ nnoremap <n :cn<cr>
 nnoremap <p :cp<cr>
 nnoremap <d :bd<cr>
 
-"imap å [
-"imap ¨ ]
-"imap Å [
-"imap ^ ]
-"map åå [mw
-"map ¨¨ ]mw
-
 " Adds characters around word
 nnoremap <leader>" viw<ESC>a"<ESC>hbi"<ESC>lel
 nnoremap <leader>' viw<ESC>a'<ESC>hbi'<ESC>lel
