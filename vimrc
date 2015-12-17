@@ -17,8 +17,8 @@ nnoremap <d :bd<cr>
 "imap ¨ ]
 "imap Å [
 "imap ^ ]
-map åå [[
-map ¨¨ ]]
+"map åå [mw
+"map ¨¨ ]mw
 
 " Adds characters around word
 nnoremap <leader>" viw<ESC>a"<ESC>hbi"<ESC>lel
@@ -97,6 +97,11 @@ command QA qa
 cmap Q! q!
 cmap Qa! qa!
 cmap QA! qa!
+
+"helper
+cmap FTP ~/.vim/ftplugin/<c-d>
+cmap BUN ~/.vim/bundle/<c-d>
+
 
 nnoremap + <C-a>
 nnoremap - <C-x>
