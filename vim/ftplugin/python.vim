@@ -1,6 +1,15 @@
 imap å [
 imap ¨ ]
 
+
+"Initially, only use the 'python' checker, which warns much less than pylint
+let g:syntastic_python_checkers=['python']
+let g:syntastic_always_populate_loc_list = 1
+"Manually set linters:
+nnoremap <leader>l :let g:syntastic_python_checkers=['python', 'pylint']
+"Disable pylint
+nnoremap <leader>L :let g:syntastic_python_checkers=['python']<cr>
+
 if exists('+colorcolumn')
     set colorcolumn=80
 endif
@@ -24,6 +33,8 @@ nnoremap <silent> <buffer> ]] :call <SID>Python_jump('/^\(class\\|def\)')<cr>
 nnoremap <silent> <buffer> [[ :call <SID>Python_jump('?^\(class\\|def\)')<cr>
 nnoremap <silent> <buffer> ]m :call <SID>Python_jump('/^\s*\(class\\|def\)')<cr>
 nnoremap <silent> <buffer> [m :call <SID>Python_jump('?^\s*\(class\\|def\)')<cr>
+nmap <silent> <buffer> å :call <SID>Python_jump('?^\s*\(class\\|def\)')<cr>
+nmap <silent> <buffer> ¨ :call <SID>Python_jump('/^\s*\(class\\|def\)')<cr>
 
 " Alternatives, also for visual mode
 nnoremap <silent> <buffer> <leader>c :call <SID>Python_jump('/^\(class\\|def\)')<cr>zz
@@ -35,9 +46,6 @@ vnoremap <silent> <buffer> <leader>c :call <SID>Python_jump('/^\(class\\|def\)')
 vnoremap <silent> <buffer> <leader>C :call <SID>Python_jump('?^\(class\\|def\)')<cr>zz
 vnoremap <silent> <buffer> <leader>d :call <SID>Python_jump('/^\s*\(class\\|def\)')<cr>zz
 vnoremap <silent> <buffer> <leader>D :call <SID>Python_jump('?^\s*\(class\\|def\)')<cr>zz
-
-nnoremap <silent> <buffer> å :call <SID>Python_jump('/^\s*\(class\\|def\)')<cr>zz
-nnoremap <silent> <buffer> Å :call <SID>Python_jump('?^\s*\(class\\|def\)')<cr>zz
 
 " q in visual mode appends '#~ ' to marked lines, Q removes them
 vnoremap q 0<C-v>I#~ <ESC>

@@ -6,19 +6,13 @@ nnoremap ,, ,
 
 "Buffer shortcuts: open new, next, prev, delete
 nnoremap <b :b <c-d>
-nnoremap <l :ls<cr>
+nnoremap <l :lnext<cr>
+nnoremap <L :lprevious<cr>
 "nnoremap <n :bn<cr>
 "nnoremap <p :bp<cr>
 nnoremap <n :cn<cr>
 nnoremap <p :cp<cr>
 nnoremap <d :bd<cr>
-
-"imap å [
-"imap ¨ ]
-"imap Å [
-"imap ^ ]
-map åå [[
-map ¨¨ ]]
 
 " Adds characters around word
 nnoremap <leader>" viw<ESC>a"<ESC>hbi"<ESC>lel
@@ -348,7 +342,7 @@ endif
 "Ack plugin for vim, usagE: :Ack [options] {pattern} [{directories}]
 "!git clone https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
 "Change default size of copen window in ag from 10 to 7
-let g:ag_qhandler="copen 7"
+"let g:ag_qhandler="copen 7"
 
 ""Ag plugin for vim, usagE: :Ag [options] {pattern} [{directories}]
 "!git clone https://github.com/rking/ag.vim ~/.vim/bundle/ag.vim
