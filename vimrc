@@ -89,6 +89,11 @@ cmap Q! q!
 cmap Qa! qa!
 cmap QA! qa!
 
+"helper
+cmap FTP ~/.vim/ftplugin/<c-d>
+cmap BUN ~/.vim/bundle/<c-d>
+
+
 nnoremap + <C-a>
 nnoremap - <C-x>
 
