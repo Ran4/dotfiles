@@ -1,3 +1,5 @@
+nnoremap <leader>p :!pandoc % -o out_%:r.html && firefox out_%:r.html<cr>
+
 set colorcolumn=120
 
 " Vim filetype plugin
