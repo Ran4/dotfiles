@@ -434,6 +434,7 @@ execute pathogen#infect()
 
 " Add fzf to RunTimePath
 set rtp+=~/.fzf
+nnoremap <leader>f :FZF<cr>
 
 function! s:AppendCharEOL()
     "echo 'Append Char EOL: '
