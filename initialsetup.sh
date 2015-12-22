@@ -7,6 +7,7 @@ sudo apt-get -y install tmux
 sudo apt-get -y install curl
 sudo apt-get -y install ack-grep
 sudo apt-get -y install silversearcher-ag
+sudo apt-get -y install tree
 
 sudo apt-get -y install xsel #xsel -p to get primary clipboard, pipe to it to set primary
 sudo apt-get -y install zsh
