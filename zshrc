@@ -34,7 +34,8 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(git vi-mode)
 
 # User configuration
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ran/.fzf/bin"
+#export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ran/.fzf/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 #Don't autocomplete hosts.
@@ -63,13 +64,16 @@ set r rate 230 70
 if command_exists xset ; then
     xset r rate 230 70 &> /dev/null ;
 fi
+
+#Prevent <c-s> from stopping the terminal
+stty -ixon
 #}}}
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh #command line fuzzy file finder
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh #command line fuzzy file finder
 [ -f ~/git/z/z.sh ] && source ~/git/z/z.sh
 
 alias ls='ls -hF' #human readable, append indicator (one of */=>@|)

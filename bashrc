@@ -12,8 +12,8 @@ if command_exists synclient ; then
     synclient VertScrollDelta=200 &> /dev/null ;
 fi
 
-#prevent <c-s> from stopping the terminal #causes warning on boot? Hm?
-#stty stop undef
+#Prevent <c-s> from stopping the terminal
+stty -ixon
 
 #Set vim mode for bash
 set editing-mode vi
