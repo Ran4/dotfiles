@@ -185,16 +185,22 @@ client.unfocused        #333333 #222222 #888888 #292d2e
 ########################################
 
 #colors copied from http://textuploader.com/aqpma
-set $unfocused    "#3D4341"
-#set $unfocused    "#EF8173"
 set $text         "#000000"
 #set $bartextcolor "#FBA1E5" #bar text color, pink-ish
+set $bartextcolor "#4c7899" #light blue
 #set $bartextcolor "#FB1135" #bar text color, red-pink-ish
-set $bartextcolor "#008B8B " #bar text color, darkcyan
+#set $bartextcolor "#008B8B " #bar text color, darkcyan
+#set $bartextcolor "#F08B8B " #bar text color, darkcyan
  	
-set $focused      "#EF0173"
-#set $focused      "#EF8173"
-set $focusedframe "#4c7899"
+
+set $focusedtextcolor "#ffffff"
+#set $focusedframecolor "#4c7899"
+set $focusedframecolor "#0f0f0f"
+#set $focusedframecolor "#181818"
+
+#set $inactivetextcolor "#404040"
+set $inactivetextcolor "#303030"
+set $inactiveframecolor "#040404"
 
 bar {
     #mode hide
@@ -206,9 +212,9 @@ bar {
         #background         #050E2D
         #background         #020202 #bar color
         background         #040404 #bar color
-        focused_workspace  #000000 $focused  #FFFFFF
+        focused_workspace  #000000 $focusedframecolor $focusedtextcolor
         active_workspace   #000000 #AE7AB6   #FFFFFF  #last one is inactive workspace...
-        inactive_workspace #000000 $unfocused   #FFFFFF
+        inactive_workspace #000000 $inactiveframecolor   $inactivetextcolor
         #statusline         $bartextcolor
         statusline         $bartextcolor
         separator          $bartextcolor
@@ -241,9 +247,9 @@ bar {
 
 # outline color
 for_window [class="^.*"] border pixel 1
-#client.focused          #000000 $focusedframe    $text
-client.unfocused        #000000 $unfocused  $text
-client.focused_inactive #000000 $unfocused  $text
+#client.focused          #000000 $focusedframecolor    $text
+client.unfocused        #000000 $inactiveframecolor  $text
+client.focused_inactive #000000 $inactiveframecolor  $text
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status

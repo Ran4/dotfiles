@@ -127,6 +127,11 @@ if [ -f ~/.identifiers/ranlubuntu ]; then
     alias m='~/ovrigt/mount_all.sh'
 fi
 
+if [ -f ~/.identifiers/ran-main-kubuntu ]; then
+    #set background image:
+    feh --bg-scale ~/ovrigt/backgrounds/red-shine.jpg
+fi
+
 if command_exists setxkbmap ; then
     #setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
     setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin" -option ctrl:nocaps
