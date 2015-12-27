@@ -26,6 +26,7 @@ alias acki='ack -i'
 alias agi='ag -i'
 
 alias matnod='matlab -nosplash -nodesktop'
+alias pdf='run zathura'
 
 run() {
     ($@ &> /dev/null &)
@@ -39,6 +40,7 @@ function __cdls {
     cd $1
     ls
 }
+
 alias c='__cdls'
 alias c..='__cdls ..'
 alias cl='__cdls'
