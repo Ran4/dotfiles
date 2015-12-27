@@ -13,7 +13,7 @@ if command_exists synclient ; then
 fi
 
 #Prevent <c-s> from stopping the terminal
-stty -ixon
+#stty -ixon
 
 #Set vim mode for bash
 set editing-mode vi

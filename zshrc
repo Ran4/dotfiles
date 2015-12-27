@@ -66,7 +66,7 @@ if command_exists xset ; then
 fi
 
 #Prevent <c-s> from stopping the terminal
-stty -ixon
+#stty -ixon
 #}}}
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,

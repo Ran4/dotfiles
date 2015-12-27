@@ -25,6 +25,8 @@ alias grepi='grep -i'
 alias acki='ack -i'
 alias agi='ag -i'
 
+alias matnod='matlab -nosplash -nodesktop'
+
 run() {
     ($@ &> /dev/null &)
 }
