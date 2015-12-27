@@ -187,19 +187,21 @@ client.unfocused        #333333 #222222 #888888 #292d2e
 #colors copied from http://textuploader.com/aqpma
 set $text         "#000000"
 #set $bartextcolor "#FBA1E5" #bar text color, pink-ish
-set $bartextcolor "#4c7899" #light blue
+#set $bartextcolor "#4c7899" #light blue
+set $bartextcolor "#a9a9a9" #light blue
 #set $bartextcolor "#FB1135" #bar text color, red-pink-ish
 #set $bartextcolor "#008B8B " #bar text color, darkcyan
 #set $bartextcolor "#F08B8B " #bar text color, darkcyan
  	
 
-set $focusedtextcolor "#ffffff"
-#set $focusedframecolor "#4c7899"
-set $focusedframecolor "#0f0f0f"
+set $focusedtextcolor "#0f0f0f"
+#set $focusedtextcolor "#ffffff"
+set $focusedframecolor "#ffffff"
 #set $focusedframecolor "#181818"
 
+set $inactivetextcolor "#808080"
 #set $inactivetextcolor "#404040"
-set $inactivetextcolor "#303030"
+#set $inactivetextcolor "#303030"
 set $inactiveframecolor "#040404"
 
 bar {
@@ -223,6 +225,7 @@ bar {
     #font pango:DejaVu Sans Mono, Icons 6
     #See https://en.wikipedia.org/wiki/Fixed_%28typeface%29
     #5x7:
+
     #font -Misc-Fixed-Medium-R-Normal--7-70-75-75-C-50-ISO10646-1
     #5x8:
     #font -Misc-Fixed-Medium-R-Normal--8-80-75-75-C-50-ISO10646-1
