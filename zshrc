@@ -123,6 +123,8 @@ if [ -f ~/.identifiers/ranl412 ]; then
     #Increase speed of trackpoint. Default is 1.0, 0.9 is faster
     TRACKPOINT_NAME=$(xinput --list --name-only | g -i trackpoint)
     xinput --set-prop "$TRACKPOINT_NAME" "Device Accel Constant Deceleration" 0.9
+    
+    feh --bg-scale ~/ovrigt/backgrounds/space_bluedots_1366_768.jpg
 fi
 
 if [ -f ~/.identifiers/ranlubuntu ]; then
@@ -134,6 +136,7 @@ if [ -f ~/.identifiers/ran-main-kubuntu ]; then
     #set background image:
     feh --bg-scale ~/ovrigt/backgrounds/red-shine.jpg
 fi
+#}}}
 
 if command_exists setxkbmap ; then
     #setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
@@ -147,4 +150,3 @@ else
     xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
     #echo "Not running xmodmap!"
 fi
-#}}}
