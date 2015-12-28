@@ -29,6 +29,9 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Command execution time stamp shown in the history command output.
 HIST_STAMPS="yyyy-mm-dd"
 
+HISTSIZE=400000
+HISTFILESIZE=8000000
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(git vi-mode)
