@@ -76,10 +76,13 @@ imap Jk <esc>
 cnoremap <c-a> <home>
 
 "Don't wait as long in insert mode (to enable us to quickly type j and k)
-augroup FastEscape
-au InsertEnter * set timeoutlen=450
-au InsertLeave * set timeoutlen=2500
-augroup END
+if has("autocmd")
+    augroup FastEscape
+        autocmd!
+        autocmd InsertEnter * set timeoutlen=450
+        autocmd InsertLeave * set timeoutlen=2500
+    augroup END
+endif
 
 "Fix accidentally holding shift while trying to quit vim, e.g. :Q -> :q
 command Q q
@@ -215,14 +218,6 @@ else
     set mouse=n "only use mouse in visual mode
 endif
 
-"Prevent auto-comments
-"c: Auto-wrap comments using textwidth, autoinserting the current comment leader
-"r: Autoinsert the current comment leader after hitting <CR> in Insert mode.
-"o: Autoinsert the current comment leader after hitting o/O in Normal mode.
-autocmd BufNewFile,BufWinEnter * setlocal formatoptions-=cro
-"set formatoptions-=cro "this won't work, will be owerwritten, see this link:
-"http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
-
 set timeout
 set timeoutlen=2500 " used with e.g. leader
 set ttimeoutlen=10
@@ -258,8 +253,13 @@ set t_Co=256
 nmap <leader>l :highlight ExtraWhitespace ctermbg=red<CR>:match ExtraWhiteSpace /\S\(\s\+\)$/<CR>
 "highlight current line in insert mode, also don't match extrawhitespace until
 "after leaving insertmode
-autocmd InsertEnter * set cursorline! | match ExtraWhitespace //
-autocmd InsertLeave * set cursorline! | call HighlightExtraWhitespace()
+if has("autocmd")
+    augroup whitespace
+        autocmd!
+        autocmd InsertEnter * set cursorline! | match ExtraWhitespace //
+        autocmd InsertLeave * set cursorline! | call HighlightExtraWhitespace()
+    augroup END
+endif
 
 
 function HighlightExtraWhitespace()
@@ -330,11 +330,21 @@ nnoremap ci} :call New_cisqb()<CR>
 nnoremap cis :call New_cisqb()<CR>
 
 if has("autocmd")
-    augroup bashalias
+    augroup bufstuff
+        autocmd!
         autocmd BufRead,BufNewFile .bash_aliases,bash_aliases set filetype=sh
+        
+        autocmd BufRead,BufNewFile * call HighlightExtraWhitespace()
+        
+        "Prevent auto-comments
+        "c: Auto-wrap comments using textwidth, autoinserting the current comment leader
+        "r: Autoinsert the current comment leader after hitting <CR> in Insert mode.
+        "o: Autoinsert the current comment leader after hitting o/O in Normal mode.
+        autocmd BufNewFile,BufWinEnter * setlocal formatoptions-=cro
+        "set formatoptions-=cro "this won't work, will be owerwritten, see this link:
+        "http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
+        
     augroup END
-
-    autocmd BufRead,BufNewFile * call HighlightExtraWhitespace()
 endif
 
 "}}}
