@@ -177,9 +177,9 @@ if [ -f ~/.identifiers/ranmini ]; then
 fi
 
 if [ -f ~/.identifiers/ranl412 ]; then
-    . ~/.custom/ranl412_bash_setprompt
-    unlink ~/.tmux.conf
-    ln -s ~/.custom/ranl412_tmux.conf ~/.tmux.conf
+    #. ~/.custom/ranl412_bash_setprompt
+    #unlink ~/.tmux.conf
+    #ln -s ~/.custom/ranl412_tmux.conf ~/.tmux.conf
     
     #Disable TouchPad:
     declare -i ID
