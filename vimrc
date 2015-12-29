@@ -52,6 +52,9 @@ nnoremap <leader><leader>n :set number!<CR>
 nnoremap <leader>q I#<esc>j
 nnoremap <leader>Q kx
 
+"add space around character, e.g. '*' -> ' * '
+nnoremap <leader><space> i<space><esc>2li<space><esc>h
+
 " Substitution  helper: press <leader>vname/newname<CR> to replace globally
 nnoremap <leader>s :%s//gc<Left><Left><Left>
 " visual mode replace helper
