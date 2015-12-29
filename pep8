@@ -5,4 +5,5 @@
 #E128: continuation line under-indented for visual indent
 #E262: inline comments should start with '# '
 #E265: block comment should start with '# '
-ignore = W293,E731,E302,E128,E262,E265
+#E116: unexpected indentation (comment)
+ignore = W293,E731,E302,E128,E262,E265,E116

@@ -7,7 +7,7 @@ nnoremap ,, ,
 "Buffer shortcuts: open new, next, prev, delete
 nnoremap <b :b <c-d>
 nnoremap <l :lnext<cr>
-nnoremap <L :lprevious<cr>
+nnoremap >L :lprevious<cr>
 "nnoremap <n :bn<cr>
 "nnoremap <p :bp<cr>
 nnoremap <n :cn<cr>
@@ -54,6 +54,7 @@ nnoremap <leader>Q kx
 
 "add space around character, e.g. '*' -> ' * '
 nnoremap <leader><space> i<space><esc>2li<space><esc>h
+vnoremap <space> <esc>`<i<space><esc>`>la<space><esc>`<l
 
 " Substitution  helper: press <leader>vname/newname<CR> to replace globally
 nnoremap <leader>s :%s//gc<Left><Left><Left>
