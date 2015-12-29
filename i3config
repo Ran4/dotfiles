@@ -19,6 +19,7 @@ bindsym $mod+q kill
 
 # start a terminal
 #bindsym $mod+Return exec xterm -fn 7x14
+#bindsym $mod+Return exec xterm -fn 6x10
 bindsym $mod+Return exec xterm
 
 # start dmenu (a program launcher)
@@ -51,14 +52,14 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # split in vertical/hhorizontal orientation
-#bindsym $mod+s split v
-#bindsym $mod+v split h
+bindsym $mod+s split v
+bindsym $mod+v split h
 
 #quickly open xterm/other with mod-s/v (shift for other)
-bindsym $mod+Shift+s split v; exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+Shift+v split h; exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+s split v; exec xterm
-bindsym $mod+v split h; exec xterm
+bindsym $mod+Shift+s split v; exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+s split v; exec xterm
+#bindsym $mod+v split h; exec xterm
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -277,7 +278,9 @@ client.focused_inactive #000000 $inactiveframecolor  $text
 #Programs to run at start
 #exec --no-startup-id xterm
 #exec xrdb -load ~/.Xresources
-exec --no-startup-id xterm -fn 7x14 -e ~/dotfiles/defaulttmuxsession.sh
+#exec --no-startup-id xterm -fn 7x14 -e ~/dotfiles/defaulttmuxsession.sh
+#exec --no-startup-id xterm -fn 6x10 -e ~/dotfiles/defaulttmuxsession.sh
+exec --no-startup-id xterm -e ~/dotfiles/defaulttmuxsession.sh
 exec . ~/.screenlayout/setupscreens.sh
 
 #wifi applet

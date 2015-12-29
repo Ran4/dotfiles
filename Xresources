@@ -27,8 +27,12 @@
 xterm*saveLines: 20000
 
 !xterm*faceName: Liberation Mono:size=10:antialias=false
-
 !xterm*faceName: Liberation Mono:size=9:antialias=false
+
+!104 lines  5x7
+!91 lines tiny=5x8
+!70 lines 6x10
+!54 lines default=7x10 (7x7, 7x9, 6x6)
 
 !*xterm*renderFont: true
 !*xterm*faceName: VeraMono
