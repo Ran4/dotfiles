@@ -1,9 +1,11 @@
 [pep8]
 #W293: blank line contains whitespace
 #E731: do not assign a lambda expression, use a def
-#E302: expectd 2 blank lines, found 1
+#E302: expected 2 blank lines, found 1
 #E128: continuation line under-indented for visual indent
 #E262: inline comments should start with '# '
-#E265: block comment should start with '# '
 #E116: unexpected indentation (comment)
-ignore = W293,E731,E302,E128,E262,E265,E116
+ignore = W293,E731,E302,E128,E262,E116
+
+#not ignored at the moment:
+#E265: block comment should start with '# '
