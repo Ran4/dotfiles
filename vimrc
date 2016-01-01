@@ -205,6 +205,7 @@ set splitright
 set incsearch "search as characters are entered
 "set ignorecase "ignore case when searching
 set smartcase "ignore case when searching, except if we start with a capital
+set hlsearch
 if has("gui_running")
     set mouse=a "use mouse in all modes
     set guioptions-=T "removes toolbar
@@ -282,6 +283,9 @@ if exists('+colorcolumn')
 else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
+
+"highlight Search term=none ctermfg=0 ctermbg=180
+highlight Search ctermfg=0 ctermbg=180
 "}}}
 "{{{ FUNCTIONS
 " Change in paranthesis function, since ci( initially doesn't work
@@ -383,6 +387,9 @@ endif
 """ctrl-p is a fuzzy file finder
 "!git clone https://github.com/kien/ctrlp.vim ~/.vim/bundle/ctrlp.vim
 
+"""incsearch incrementally highlights all pattern being matched.
+"!git clone https://github.com/haya14busa/incsearch.vim ~/.vim/bundle/incsearch.vim
+
 ""helper plugin that enables repetition with dot in plugins such as vim-surround
 "git clone git://github.com/tpope/vim-repeat.git ~/.vim/bundle/vim-repeat
 
@@ -416,17 +423,36 @@ endif
 "Rebuild help tags (comes with pathogen): should be done after any new install (?)
 ":Helptags
 
+"Don't show trailing spaces in Airline
+"let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long' ]
+"let g:airline#extensions#whitespace#checks = ['indent', 'long']
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+
 "use CtrlP to quickly switch between buffers
 nnoremap <b :CtrlPBuffer<cr>
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 
 nnoremap S s
 "if exists('g:EasyMotion_loaded')
 map s <Plug>(easymotion-s)
-map / <Plug>(easymotion-sn)
+"map / <Plug>(easymotion-sn)
 "map ? <Plug>(easymotion-tn)
 "map ö <Plug>(easymotion-sn)
-map n <Plug>(easymotion-next)
-map N <Plug>(easymotion-prev)
+"map n <Plug>(easymotion-next)
+"map N <Plug>(easymotion-prev)
 "map <cr> <Plug>(easymotion-w)
 " default except ; key which is hard to type
 "let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
