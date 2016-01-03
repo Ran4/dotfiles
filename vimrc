@@ -429,6 +429,7 @@ endif
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+let g:airline#extensions#syntastic#enabled = 0
 
 "use CtrlP to quickly switch between buffers
 nnoremap <b :CtrlPBuffer<cr>
