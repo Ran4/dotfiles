@@ -67,6 +67,8 @@ nnoremap <leader>w :wincmd w<CR>
 nnoremap <leader>W :wincmd W<CR>
 nnoremap <leader>r :vert resize 80<CR>
 
+nnoremap <leader>b :AirlineTheme badwolf<cr>
+
 " :help map-which-keys    " is helpful to find new mappings
 imap jk <esc>
 imap Jk <esc>
