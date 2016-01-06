@@ -67,8 +67,6 @@ nnoremap <leader>w :wincmd w<CR>
 nnoremap <leader>W :wincmd W<CR>
 nnoremap <leader>r :vert resize 80<CR>
 
-nnoremap <leader>b :AirlineTheme badwolf<cr>
-
 " :help map-which-keys    " is helpful to find new mappings
 imap jk <esc>
 imap Jk <esc>
@@ -205,7 +203,7 @@ set splitbelow
 set splitright
 
 set incsearch "search as characters are entered
-"set ignorecase "ignore case when searching
+set ignorecase "ignore case when searching
 set smartcase "ignore case when searching, except if we start with a capital
 set hlsearch
 if has("gui_running")
@@ -432,6 +430,8 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#syntastic#enabled = 0
+
+let g:airline_theme = 'badwolf'
 
 "use CtrlP to quickly switch between buffers
 nnoremap <b :CtrlPBuffer<cr>
