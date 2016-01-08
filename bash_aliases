@@ -69,6 +69,26 @@ alias vims='vim -S .vimsession'
 alias vim3='vim -c "vert resize 80" -c "wincmd w" -c "vert resize 80" -c "wincmd W" -O3'
 alias vim4="vim -c 'bel vert sbuf 2' -c '1wincmd w' -c 'bel sbuf 3' -c '3wincmd w' -c 'bel sbuf 4'"
 alias vims='vim -S .vimsession'
+
+#Send files to vimserver (creating one called VIMR automatically if needed).
+function vimr {
+SERVER_NAME=VIMRSERVER
+vim --serverlist | grep -q $SERVER_NAME
+if [ $? -eq 0 ]; then #a server has been started
+    #echo "Found VIMRSERVER"
+    if [ $# -eq 0 ]; then #no arguments given, start regular vim
+        #echo "No arguments given, starting vim as usual"
+        vim
+    else
+        #echo "Trying to access server called $SERVER_NAME"
+        vim --servername $SERVER_NAME --remote "$@"
+    fi
+else #start a new server
+    #echo "Starting new server called $SERVER_NAME"
+    vim --servername $SERVER_NAME "$@"
+fi
+}
+
 alias rmswp='rm .*.swp'
 alias rmpyc='rm *.pyc'
 alias manvim='function _domanvim() { man $1 | vim -R -; }; _domanvim'
