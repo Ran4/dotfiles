@@ -11,6 +11,7 @@ sudo apt-get -y install tree
 sudo apt-get -y install feh
 
 sudo apt-get -y install xsel #xsel -p to get primary clipboard, pipe to it to set primary
+sudo apt-get -y install xdotool #used with ~/.i3/runorfocus.py
 sudo apt-get -y install zsh
 
 sudo apt-get -y install zathura #pdf viewer with vim keybindings

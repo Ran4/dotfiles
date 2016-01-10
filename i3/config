@@ -29,7 +29,9 @@ bindsym $mod+Return exec xterm
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 bindsym $mod+d exec pcmanfm
-bindsym $mod+Shift+f exec firefox
+bindsym $mod+f exec python ~/.i3/runorfocus.py "Firefox" firefox
+bindsym $mod+e exec python ~/.i3/runorfocus.py "Xterm" xterm
+
 #bindsym $mod+x exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+x [class="(?i)xterm"] kill
 bindsym $mod+Shift+Return exec --no-startup-id i3-dmenu-desktop
@@ -57,20 +59,23 @@ bindsym $mod+v split h
 
 #quickly open xterm/other with mod-s/v (shift for other)
 bindsym $mod+Shift+v split h; exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+Shift+s split v; exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+Shift+s split v; exec --no-startup-id i3-dmenu-desktop
 #bindsym $mod+s split v; exec xterm
 #bindsym $mod+v split h; exec xterm
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen
+bindsym $mod+Shift+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+
+#Toggle sticky mode
+bindsym $mod+Shift+s sticky toggle
 
 # change focus between tiling / floating windows
 #bindsym $mod+space focus mode_toggle
@@ -89,6 +94,9 @@ set $ws1 1 xTerm
 set $ws2 2 Firefox
 set $ws3 3 Zathura
 set $ws4 4
+
+assign [class="Firefox"] $ws2
+assign [class="Zathura"] $ws3
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -219,7 +227,7 @@ bar {
     #mode hide
     #modifier mod4
     #position top
-    status_command i3status
+    status_command i3status --config ~/.i3/i3status.conf
     colors {
         #colorclass <border> <background> <text>
         #background         #050E2D

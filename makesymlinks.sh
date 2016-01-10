@@ -17,7 +17,7 @@ NC='\033[0m'
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="agignore bashrc bash_aliases bash_setprompt dircolors gitconfig gitignore_global vimrc vim xcape_config xmodmap_swap_caps_and_escape xmodmap_swap_caps_and_ctrl Xresources lesskey tmux.conf i3status.conf hhighlighter.sh custom/kth_tmux.conf custom/ranl412_tmux.conf zshrc oh-my-zsh/plugins/git/git.plugin.zsh oh-my-zsh/themes/sunrise-modified-ran.zsh-theme fonts pylintrc pep8"
+files="agignore bashrc bash_aliases bash_setprompt dircolors gitconfig gitignore_global vimrc vim xcape_config xmodmap_swap_caps_and_escape xmodmap_swap_caps_and_ctrl Xresources lesskey tmux.conf i3 hhighlighter.sh custom/kth_tmux.conf custom/ranl412_tmux.conf zshrc oh-my-zsh/plugins/git/git.plugin.zsh oh-my-zsh/themes/sunrise-modified-ran.zsh-theme fonts pylintrc pep8"
 
 ##########
 
@@ -65,12 +65,16 @@ echo -e "${LBLUE}Creating symlink to ~/.ssh/config (ln -s $dir/ssh_config ~/.ssh
 ln -s $dir/ssh_config ~/.ssh/config
 echo "...done"
 
-if command_exists i3 ; then
-	echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3config ~/.i3/config)${NC}"
-	ln -s $dir/i3config ~/.i3/config
-	#ln -s $dir/i3config ~/.config/i3/config #use this if using the XDG directory scheme
-	echo "...done"
-fi
+#
+#if command_exists i3 ; then
+#	echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3config ~/.i3/config)${NC}"
+#	ln -s $dir/i3config ~/.i3/config
+#	#ln -s $dir/i3config ~/.config/i3/config #use this if using the XDG directory scheme
+#
+#	echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3config ~/.i3/config)${NC}"
+#	ln -s $dir/i3config ~/.i3/config
+#	echo "...done"
+#fi
 
 #echo -e "${LBLUE}Calling xmodmap .xmodmap_swap_caps_and_escape and .xmodmap_swap_caps_and_ctrl${NC}"
 #xmodmap ~/.xmodmap_swap_caps_and_escape
