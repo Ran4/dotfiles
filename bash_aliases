@@ -81,7 +81,8 @@ if [ $? -eq 0 ]; then #a server has been started
         vim
     else
         #echo "Trying to access server called $SERVER_NAME"
-        vim --servername $SERVER_NAME --remote "$@"
+        #vim --servername $SERVER_NAME --remote "$@"
+        vim --servername $SERVER_NAME --remote-tab "$@"
     fi
 else #start a new server
     #echo "Starting new server called $SERVER_NAME"
