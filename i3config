@@ -81,11 +81,20 @@ bindsym $mod+Shift+space floating toggle
 # focus the child container
 #bindsym $mod+d focus child
 
+
+#set $ws1 1: xTerm
+#set $ws2 2: Firefox
+#set $ws3 3: Zathura
+set $ws1 1 xTerm  
+set $ws2 2 Firefox
+set $ws3 3 Zathura
+set $ws4 4
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
@@ -94,16 +103,16 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1; workspace 1
-bindsym $mod+Shift+2 move container to workspace 2; workspace 2
-bindsym $mod+Shift+3 move container to workspace 3; workspace 3
-bindsym $mod+Shift+4 move container to workspace 4; workspace 4
-bindsym $mod+Shift+5 move container to workspace 5; workspace 5
-bindsym $mod+Shift+6 move container to workspace 6; workspace 6
-bindsym $mod+Shift+7 move container to workspace 7; workspace 7
-bindsym $mod+Shift+8 move container to workspace 8; workspace 8
-bindsym $mod+Shift+9 move container to workspace 9; workspace 9
-bindsym $mod+Shift+0 move container to workspace 10; workspace 10
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace number 1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace number 2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace number 3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5; workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6; workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7; workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8; workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9; workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10; workspace number 10
 
 ########################################
 #Mouse stuff
@@ -168,13 +177,14 @@ bindsym $mod+Shift+Down resize grow height 2 px or 2 ppt
 bindsym $mod+Shift+Up resize shrink height 2 px or 2 ppt
 bindsym $mod+Shift+Right resize grow width 2 px or 2 ppt
 
-hide_edge_borders horizontal
+#hide_edge_borders horizontal
 #hide_edge_borders both
 
 #Color stuff
 # class                 border  backgr   text    indicator
-client.focused          #4c7899 #285577 #ffffff #2e9ef4 #default, blue
+#client.focused          #4c7899 #285577 #ffffff #2e9ef4 #default, blue
 #client.focused          #412458 #512888 #ffffff #2e9ef4 #KSU Purple
+client.focused          #412458 #f11828 #ffffff #2e9ef4 #Red-ish
 #client.focused          #412458 #c12888 #ffffff #fe5ef4
 #client.focused          #412458 $activebordercolor #ffffff #fe5ef4
 #colorclass client.focused_inactive #333333 #5f676a #ffffff #484e50
@@ -250,7 +260,7 @@ bar {
 }
 
 # outline color
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 3
 #client.focused          #000000 $focusedframecolor    $text
 client.unfocused        #000000 $inactiveframecolor  $text
 client.focused_inactive #000000 $inactiveframecolor  $text
@@ -295,4 +305,4 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 10%-
 #gaps outer -5 #higher than inner, so no gap when there's just a single window
 
 gaps inner 2
-gaps outer -3 #higher than inner, so no gap when there's just a single window
+gaps outer -5 #higher than inner, so no gap when there's just a single window
