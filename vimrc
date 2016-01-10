@@ -1,8 +1,16 @@
+
 "{{{ MAPPINGS
 let mapleader = "ä"
 nmap , ä
 nmap ö ä
 nnoremap ,, ,
+
+nmap ciå ci[
+nmap ci¨ ci]
+nmap caå ca[
+nmap ca¨ ca]
+nmap cså cs[
+nmap cs¨ cs]
 
 "Buffer shortcuts: open new, next, prev, delete
 nnoremap <b :b <c-d>
