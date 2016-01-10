@@ -29,8 +29,8 @@ bindsym $mod+Return exec xterm
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 bindsym $mod+d exec pcmanfm
-bindsym $mod+f exec python ~/.i3/runorfocus.py "Firefox" firefox
-bindsym $mod+e exec python ~/.i3/runorfocus.py "Xterm" xterm
+bindsym $mod+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
+bindsym $mod+e exec python3 ~/.i3/runorfocus.py "Xterm" xterm
 
 #bindsym $mod+x exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+x [class="(?i)xterm"] kill

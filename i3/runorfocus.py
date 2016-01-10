@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 Run or Focus script to be used with i3wm. Written by GermainZ
 
