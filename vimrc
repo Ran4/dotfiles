@@ -70,10 +70,12 @@ nnoremap <leader>s :%s//gc<Left><Left><Left>
 vnoremap <leader>s :s/\%V/g<Left><Left>
 vnoremap <leader>s :s//g<Left><Left>
 
-"Move around to next window and resizing it
-nnoremap <leader>w :wincmd w<CR>
-nnoremap <leader>W :wincmd W<CR>
+"Resize window
 nnoremap <leader>r :vert resize 80<CR>
+nnoremap <silent> <Leader><Leader>+ :exe "resize " . (winheight(0) * 3/2)<cr>
+nnoremap <silent> <Leader><Leader>- :exe "resize " . (winheight(0) * 2/3)<cr>
+nnoremap <silent> <Leader>+ :exe "vert resize " . (winwidth(0) * 3/2)<cr>
+nnoremap <silent> <Leader>- :exe "vert resize " . (winwidth(0) * 2/3)<cr>
 
 " :help map-which-keys    " is helpful to find new mappings
 imap jk <esc>
