@@ -38,6 +38,14 @@ xterm*saveLines: 20000
 !*xterm*faceName: VeraMono
 !*xterm*faceSize: 10
 
+!These face sizes will only be used with TrueType fonts
+xterm*faceSize1: 8
+xterm*faceSize2: 10
+xterm*faceSize3: 12
+xterm*faceSize4: 16
+xterm*faceSize5: 18
+xterm*faceSize6: 20
+
 xterm*borderWidth: 0
 
 ! Without the vt100, the size of ctrl+left/middle/right mouse click menu will be set to 80x35 px
