@@ -155,8 +155,8 @@ nnoremap zT zt4<C-y>
 nnoremap zB zb4<C-e>
 vnoremap zT zt4<C-y>
 vnoremap zB zb4<C-e>
-inoremap zT <esc>zt4<C-y>i
-inoremap zB <esc>zb4<C-e>i
+"inoremap zT <esc>zt4<C-y>i
+"inoremap zB <esc>zb4<C-e>i
 
 " Move vertically by visual line
 nnoremap j gj

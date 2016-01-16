@@ -1,5 +1,6 @@
 imap å [
 imap ¨ ]
+inoremap zå å
 
 
 "Initially, only use the 'python' checker, which warns much less than pylint
