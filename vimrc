@@ -12,6 +12,12 @@ nmap ca¨ ca]
 nmap cså cs[
 nmap cs¨ cs]
 
+nmap å [
+nmap ¨ ]
+
+"Helper for spell check: press <tab> on a word, <esc> to choose word
+nmap <tab> viw<esc>a<c-x>s
+
 "Buffer shortcuts: open new, next, prev, delete
 nnoremap <b :b <c-d>
 nnoremap <l :lnext<cr>
