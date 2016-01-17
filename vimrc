@@ -16,7 +16,7 @@ nmap å [
 nmap ¨ ]
 
 "Helper for spell check: press <tab> on a word, <esc> to choose word
-nmap <tab> viw<esc>a<c-x>s
+nmap <s-tab> viw<esc>a<c-x>s
 
 "Buffer shortcuts: open new, next, prev, delete
 nnoremap <b :b <c-d>
