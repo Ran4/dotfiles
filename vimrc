@@ -169,6 +169,8 @@ vnoremap zB zb4<C-e>
 " Move vertically by visual line
 nnoremap j gj
 nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
 " Call C/C++, assuming that there is an outfile with the output name %:r.out
 nnoremap <f5> :!clear && make && echo "    //// Output ////" && ./%:r.out<cr>
