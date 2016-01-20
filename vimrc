@@ -227,14 +227,22 @@ if has("gui_running")
     set guioptions-=T "removes toolbar
     set guioptions-=m "removes menu
     set guioptions-=l "removes always-on left-hand scrollbar
+    set guioptions-=L "removes left-hand scrollbar when there's a vertically split window
     set guioptions-=r "removes always-on right-hand scrollbar
-    set guifont=Terminus\ 10
+    set guioptions-=e "removes GUI tab pages
+    "set guifont=ProggySquareTT\ 12
+    "set guifont=ProggyTinyTT\ 12
+    set guifont=Monospace\ 12
     nnoremap <leader><leader>1 :set guifont=Terminus\ 9<cr>
     nnoremap <leader><leader>2 :set guifont=Terminus\ 10<cr>
     nnoremap <leader><leader>3 :set guifont=Terminus\ 11<cr>
     nnoremap <leader><leader>4 :set guifont=Terminus\ 13<cr>
     nnoremap <leader><leader>5 :set guifont=Terminus\ 14<cr>
     nnoremap <leader><leader>6 :set guifont=Terminus\ 16<cr>
+    
+    "Quickly write and quit from insert mode.
+    "Good with the itsalltext Firefox plugin
+    inoremap <s-cr> <esc>ZZ
 else
     set mouse=n "only use mouse in visual mode
 endif
