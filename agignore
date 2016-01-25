@@ -1,2 +1,5 @@
 #Unity .asset files
 *.asset
+
+#Python stuff
+*.pyc
