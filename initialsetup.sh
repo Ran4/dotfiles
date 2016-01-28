@@ -16,7 +16,7 @@ sudo apt-get -y install zsh
 
 sudo apt-get -y install zathura #pdf viewer with vim keybindings
 ZATHRCFILE=/etc/zathurarc
-[ ! -f $ZATHRCFILE ] && echo "writing to $ZATHRCFILE" && echo "set scroll-step 100" > $ZATHRCFILE
+[ ! -f $ZATHRCFILE ] && echo "writing $ZATHRCFILE" && echo "set scroll-step 100" > $ZATHRCFILE
 
 sudo apt-get -y install python-pip
 #sudo apt-get -y install texlive texlive-latex-base # Around 300 MB?
@@ -30,9 +30,6 @@ git config --global --replace-all core.pager "less -F -X"
 
 #Make a copy of the default ssh config
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
-mkdir -p ~/.ssh
-
-mkdir -p ~/git/other
 
 #Remove annoying folders that come with ubuntu
 rmdir ~/Music
@@ -41,17 +38,14 @@ rmdir ~/Documents
 rmdir ~/Videos
 rmdir ~/Desktop
 
+#Create some default folders
+mkdir -p ~/.ssh
+mkdir -p ~/other
+mkdir -p ~/git/other
 mkdir -p ~/pyy
-#cd ~/pyy
-#git clone git@github.com:Ran4/ei.git
-#sudo cp ~/pyy/ei/ei.py /usr/lib/python2.7/
-
 #sudo apt-get -y install python-tk #used for clip.py
 
-#sudo apt-get --reinstall install msttcorefonts
-#sudo apt-get --reinstall install ttf-mscorefonts-installer
-
-#i3-gaps. Needs i3 first!
+##Installing i3-gaps. Needs i3 first!
 #sudo apt-get -y install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev
 #sudo apt-get -y install libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev
 #sudo apt-get -y install libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev
