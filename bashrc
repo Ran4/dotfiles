@@ -200,15 +200,11 @@ if [ -f ~/.identifiers/kth ]; then
 fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-#xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null &
-#sleep to avoid the "please release the following keys within 2 seconds" thing
-#sleep 0.2 && xmodmap ~/.xmodmap_swap_caps_and_ctrl
-#xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null
 if command_exists xcape ; then
     . ~/.xcape_config
     #echo "Not running xcape config!"
 else
-    xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
+    xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
     #echo "Not running xmodmap!"
 fi
 

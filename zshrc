@@ -152,6 +152,6 @@ if command_exists xcape ; then
     . ~/.xcape_config
     #echo "Not running xcape config!"
 else
-    xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
+    xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
     #echo "Not running xmodmap!"
 fi
