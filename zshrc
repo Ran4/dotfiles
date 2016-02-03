@@ -135,6 +135,9 @@ fi
 if [ -f ~/.identifiers/ranlubuntu ]; then
     #alias m='~/ovrigt/mount_vbshare.sh'
     alias m='~/ovrigt/mount_all.sh'
+    
+    feh --bg-scale ~/other/backgrounds/Rainbow-Sky-Wallpaper-1024x576.jpg
+
 fi
 
 if [ -f ~/.identifiers/ran-main-kubuntu ]; then
