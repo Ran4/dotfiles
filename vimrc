@@ -417,6 +417,9 @@ endif
 ""helper plugin that enables repetition with dot in plugins such as vim-surround
 "git clone git://github.com/tpope/vim-repeat.git ~/.vim/bundle/vim-repeat
 
+"vim-rsi, adds 'readline-style-insertions' to command and insert mode
+"!git clone https://github.com/tpope/vim-rsi.git ~/.vim/bundle/vim-rsi
+
 ""supertab, adds <Tab> for tab completion
 "!git clone git://github.com/ervandew/supertab ~/.vim/bundle/supertab
 
@@ -438,6 +441,7 @@ endif
 "!git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 
 ""use e.g. ds( to delete surrounding (
+
 "!git clone git://github.com/tpope/vim-surround.git
 
 ""vim-tbone allows tmux commands
