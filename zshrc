@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/ran/.oh-my-zsh
+#export ZSH=/home/ran/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load. Look in ~/.oh-my-zsh/themes/
 # If set to "random", load a random theme each time that oh-my-zsh is loaded.
@@ -138,7 +139,7 @@ fi
 
 if [ -f ~/.identifiers/ran-main-kubuntu ]; then
     #set background image:
-    feh --bg-scale ~/ovrigt/backgrounds/red-shine.jpg
+    feh --bg-scale ~/other/backgrounds/red-shine.jpg
 fi
 #}}}
 
@@ -151,6 +152,6 @@ if command_exists xcape ; then
     . ~/.xcape_config
     #echo "Not running xcape config!"
 else
-    xmodmap ~/.xmodmap_swap_caps_and_ctrl &> /dev/null ;
+    xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
     #echo "Not running xmodmap!"
 fi

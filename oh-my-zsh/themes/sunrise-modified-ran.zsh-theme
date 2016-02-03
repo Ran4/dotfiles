@@ -73,7 +73,9 @@ function custom_git_prompt() {
 #PROMPT='%B %2~ $(custom_git_prompt)%{$MAGENTA%}%B»%b%{$RESET%} '
 #PROMPT='%2~$(custom_git_prompt)%{$MAGENTA%}%B»%b%{$RESET%} '
 #PROMPT='%2~$(custom_git_prompt)%{$LIGHTBLUE%}%B»%b%{$RESET%} '
-PROMPT='%12~$(custom_git_prompt)%{$LIGHTBLUE%}%B$%b%{$RESET%} '
+#PROMPT='%12~$(custom_git_prompt)%{$LIGHTBLUE%}%B$%b%{$RESET%} '
+PWD_COLOR=$FG[035] #green
+PROMPT='%{$PWD_COLOR%}%12~$(custom_git_prompt)%{$LIGHTBLUE%}%B$%b%{$RESET%} '
 RPS1="${return_code}"
 
 #ZSH_THEME_GIT_PROMPT_PREFIX=" %{$YELOW%}‹"

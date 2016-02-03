@@ -22,8 +22,6 @@ nmap <s-tab> viw<esc>a<c-x>s
 nnoremap <b :b <c-d>
 nnoremap <l :lnext<cr>
 nnoremap >L :lprevious<cr>
-"nnoremap <n :bn<cr>
-"nnoremap <p :bp<cr>
 nnoremap <n :cn<cr>
 nnoremap <p :cp<cr>
 nnoremap <d :bd<cr>
@@ -77,7 +75,8 @@ vnoremap <leader>s :s/\%V/g<Left><Left>
 vnoremap <leader>s :s//g<Left><Left>
 
 "Resize window
-nnoremap <leader>r :vert resize 80<CR>
+nnoremap <leader>r :vert resize 84<CR>
+nnoremap <leader>R :vert resize 80<CR>
 nnoremap <silent> <Leader><Leader>+ :exe "resize " . (winheight(0) * 3/2)<cr>
 nnoremap <silent> <Leader><Leader>- :exe "resize " . (winheight(0) * 2/3)<cr>
 nnoremap <silent> <Leader>+ :exe "vert resize " . (winwidth(0) * 3/2)<cr>
@@ -169,6 +168,8 @@ vnoremap zB zb4<C-e>
 " Move vertically by visual line
 nnoremap j gj
 nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
 " Call C/C++, assuming that there is an outfile with the output name %:r.out
 nnoremap <f5> :!clear && make && echo "    //// Output ////" && ./%:r.out<cr>
@@ -264,6 +265,9 @@ set scrolloff=4
 set shortmess+=I
 "}}}
 "{{{ COLORS AND HIGHLIGHTING
+
+set t_Co=256
+
 " Color scheme
 " mkdir -p ~/.vim/colors
 " cd ~/.vim/colors
@@ -274,8 +278,6 @@ color wombat256mod
 syntax enable
 " set background=dark
 " colorscheme solarized
-
-set t_Co=256
 
 " highlight trailing spaces
 " Shortcut to rapidly toggle `set list`
@@ -413,6 +415,9 @@ endif
 
 """incsearch incrementally highlights all pattern being matched.
 "!git clone https://github.com/haya14busa/incsearch.vim ~/.vim/bundle/incsearch.vim
+
+"""jedi-vim is a vim-binding to the autocompletion library Jedi
+"!git clone --recursive https://github.com/davidhalter/jedi-vim.git ~/.vim/bundle/jedi-vim
 
 ""helper plugin that enables repetition with dot in plugins such as vim-surround
 "git clone git://github.com/tpope/vim-repeat.git ~/.vim/bundle/vim-repeat
