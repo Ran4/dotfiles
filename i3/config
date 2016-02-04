@@ -31,6 +31,7 @@ bindsym $mod+Return exec xterm
 bindsym $mod+d exec pcmanfm
 bindsym $mod+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
 bindsym $mod+e exec python3 ~/.i3/runorfocus.py "Xterm" xterm
+bindsym $mod+m exec python3 ~/.i3/runorfocus.py "mendeleydesktop" mendeleydesktop
 
 #bindsym $mod+x exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+x [class="(?i)xterm"] kill
@@ -91,13 +92,17 @@ bindsym $mod+Shift+s sticky toggle
 #set $ws1 1: xTerm
 #set $ws2 2: Firefox
 #set $ws3 3: Zathura
-set $ws1 1 xTerm  
+set $ws1 1 xTerm
 set $ws2 2 Firefox
 set $ws3 3 Zathura
-set $ws4 4
+set $ws4 4 Mendeley
+set $ws5 5
+set $ws6 6
 
 assign [class="Firefox"] $ws2
 assign [class="Zathura"] $ws3
+assign [class="Mendeleydesktop"] $ws4
+
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
