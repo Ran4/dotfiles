@@ -146,6 +146,11 @@ bindsym $mod+button3 floating toggle
 # The side buttons move the window around
 bindsym button9 move left
 bindsym button8 move right
+
+# No mouse warping. That is, don't move the moues to a newly focused window
+#mouse_warping output
+mouse_warping none
+
 ####################
 
 # reload the configuration file
