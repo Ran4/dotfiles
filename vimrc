@@ -367,6 +367,7 @@ if has("autocmd")
     augroup bufstuff
         autocmd!
         autocmd BufRead,BufNewFile .bash_aliases,bash_aliases set filetype=sh
+        autocmd BufRead,BufNewFile *.arff set filetype=arff
         
         autocmd BufRead,BufNewFile * call HighlightExtraWhitespace()
         
