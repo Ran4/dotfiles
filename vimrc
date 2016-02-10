@@ -328,7 +328,8 @@ function New_cip()
 endfunction
 
 nnoremap ci( :call New_cip()<CR>
-nnoremap cip :call New_cip()<CR>
+nnoremap ci) :call New_cip()<CR>
+nnoremap cib :call New_cip()<CR>
 
 " Change in square brackets function, since ci[ initially doesn't work
 function New_cisb()
@@ -494,6 +495,9 @@ let g:EasyMotion_smartcase = 1
 "'Type Enter or Space key and jump to first match.'
 let g:EasyMotion_enter_jump_first = 1
 "endif
+
+""vim-jedi configuration
+let g:jedi#smart_auto_mappings = 0
 
 " syntastic, for syntax higlighting
 " GIT CLONE LINK GOES HERE?
