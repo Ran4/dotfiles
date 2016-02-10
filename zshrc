@@ -130,11 +130,17 @@ if [ -f ~/.identifiers/ranl412 ]; then
     xinput --set-prop "$TRACKPOINT_NAME" "Device Accel Constant Deceleration" 0.9
     
     feh --bg-scale ~/ovrigt/backgrounds/space_bluedots_1366_768.jpg
+    
+    #Set screen layout for 21.5" and rotated 24" screens at SciLifeLab
+    alias ki='~/.screenlayout/ki_215_24r.sh'
 fi
 
 if [ -f ~/.identifiers/ranlubuntu ]; then
     #alias m='~/ovrigt/mount_vbshare.sh'
     alias m='~/ovrigt/mount_all.sh'
+    
+    feh --bg-scale ~/other/backgrounds/Rainbow-Sky-Wallpaper-1024x576.jpg
+
 fi
 
 if [ -f ~/.identifiers/ran-main-kubuntu ]; then

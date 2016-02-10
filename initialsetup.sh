@@ -16,7 +16,9 @@ sudo apt-get -y install zsh
 
 sudo apt-get -y install zathura #pdf viewer with vim keybindings
 ZATHRCFILE=/etc/zathurarc
-[ ! -f $ZATHRCFILE ] && echo "writing $ZATHRCFILE" && echo "set scroll-step 100" > $ZATHRCFILE
+[ ! -f $ZATHRCFILE ] \
+    && echo "writing $ZATHRCFILE" && echo "set scroll-step 100" > $ZATHRCFILE \
+    && xdg-mime default zathura.desktop application/pdf
 
 sudo apt-get -y install python-pip
 #sudo apt-get -y install texlive texlive-latex-base # Around 300 MB?

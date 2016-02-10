@@ -8,7 +8,8 @@ let g:syntastic_python_checkers=['python']
 let g:syntastic_always_populate_loc_list = 1
 "Manually set linters:
 "nnoremap <leader>l :let g:syntastic_python_checkers=['python', 'pylint']
-nnoremap <leader>l :let g:syntastic_python_checkers=['python', 'pep8', 'pylint']
+nnoremap <leader>l :let g:syntastic_python_checkers=['python', 'pylint', 'pep8']
+nnoremap <leader><leader>l :let g:syntastic_python_checkers=['python3']
 "Disable pylint
 nnoremap <leader>L :let g:syntastic_python_checkers=['python']<cr>
 
