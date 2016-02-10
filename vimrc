@@ -42,7 +42,8 @@ nnoremap <leader>n :bn<cr>
 nnoremap <leader>N :bp<cr>
 
 nnoremap <space> :w<CR>
-nnoremap <bs> <nop>
+" press <backspace> to switch to the "alternate file"
+nnoremap <bs> <C-^>
 
 " Append to in-commands
 nnoremap <leader>a" f";i
