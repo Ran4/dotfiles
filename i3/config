@@ -28,14 +28,17 @@ bindsym $mod+Return exec xterm
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec pcmanfm
+# Program specific bindings {{{
+#bindsym $mod+d exec pcmanfm
+bindsym $mod+d exec python3 ~/.i3/runorfocus.py "pcmanfm" pcmanfm
 bindsym $mod+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
 bindsym $mod+e exec python3 ~/.i3/runorfocus.py "Xterm" xterm
 bindsym $mod+m exec python3 ~/.i3/runorfocus.py "mendeleydesktop" mendeleydesktop
+bindsym $mod+z exec python3 ~/.i3/runorfocus.py "Zathura" zathura
 
-#bindsym $mod+x exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+x [class="(?i)xterm"] kill
+bindsym $mod+Shift+x [class="(?i)xterm"] kill
 bindsym $mod+Shift+Return exec --no-startup-id i3-dmenu-desktop
+#}}}
 
 # movement
 bindsym $mod+h focus left
@@ -89,20 +92,25 @@ bindsym $mod+Shift+s sticky toggle
 #bindsym $mod+d focus child
 
 
+#Workspace naming {{{
+
 #set $ws1 1: xTerm
 #set $ws2 2: Firefox
 #set $ws3 3: Zathura
-set $ws1 1 xTerm
-set $ws2 2 Firefox
-set $ws3 3 Zathura
-set $ws4 4 Mendeley
+#set $ws1 1 xTerm
+#set $ws2 2 Firefox
+#set $ws3 3 Zathura
+#set $ws4 4 Mendeley
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
 set $ws5 5
 set $ws6 6
 
-assign [class="Firefox"] $ws2
-assign [class="Zathura"] $ws3
-assign [class="Mendeleydesktop"] $ws4
-
+#assign [class="Firefox"] $ws2
+#assign [class="Zathura"] $ws3
+#assign [class="Mendeleydesktop"] $ws4
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -128,8 +136,8 @@ bindsym $mod+Shift+8 move container to workspace number 8; workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9; workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10; workspace number 10
 
-########################################
-#Mouse stuff
+########################################}}}
+#Mouse stuff {{{
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -148,10 +156,10 @@ bindsym button9 move left
 bindsym button8 move right
 
 # No mouse warping. That is, don't move the moues to a newly focused window
-#mouse_warping output
-mouse_warping none
+mouse_warping output
+#mouse_warping none
 
-####################
+####################}}}
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -199,7 +207,7 @@ bindsym $mod+Shift+Right resize grow width 2 px or 2 ppt
 #hide_edge_borders horizontal
 #hide_edge_borders both
 
-#Color stuff
+#Colors {{{
 # class                 border  backgr   text    indicator
 #client.focused          #4c7899 #285577 #ffffff #2e9ef4 #default, blue
 #client.focused          #412458 #512888 #ffffff #2e9ef4 #KSU Purple
@@ -211,8 +219,6 @@ client.focused          #412458 #f11828 #ffffff #2e9ef4 #Red-ish
 client.unfocused        #333333 #222222 #888888 #292d2e
 #colorclass client.urgent           #2f343a #900000 #ffffff #900000
 #colorclass client.placeholder      #000000 #0c0c0c #ffffff #000000
-
-########################################
 
 #colors copied from http://textuploader.com/aqpma
 set $text         "#000000"
@@ -303,6 +309,9 @@ client.focused_inactive #000000 $inactiveframecolor  $text
 #    #    urgent_workspace   #2f343a #900000 #ffffff
 #    #}
 #}
+
+########################################}}}
+
 
 #Programs to run at start
 #exec --no-startup-id xterm
