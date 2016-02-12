@@ -459,6 +459,8 @@ endif
 "Rebuild help tags (comes with pathogen): should be done after any new install (?)
 ":Helptags
 
+"PLUGIN CONFIGURATION {{{
+""vim-airline configuration
 "Don't show trailing spaces in Airline
 "let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long' ]
 "let g:airline#extensions#whitespace#checks = ['indent', 'long']
@@ -472,6 +474,7 @@ let g:airline_theme = 'badwolf'
 "use CtrlP to quickly switch between buffers
 nnoremap <b :CtrlPBuffer<cr>
 
+""incsearch configuration
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
@@ -484,6 +487,7 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
+""EasyMotion configuration
 nnoremap S s
 "if exists('g:EasyMotion_loaded')
 map s <Plug>(easymotion-s)
@@ -517,6 +521,7 @@ execute pathogen#infect()
 " Add fzf to RunTimePath
 set rtp+=~/.fzf
 nnoremap <leader>f :FZF<cr>
+"END OF PLUGIN CONFIGURATION }}}
 
 function! s:AppendCharEOL()
     "echo 'Append Char EOL: '

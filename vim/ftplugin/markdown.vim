@@ -1,4 +1,11 @@
 nnoremap <leader>p :!pandoc % -o out_%:r.html && firefox out_%:r.html<cr>
+nnoremap <leader>P :!pandoc % -o out_%:r.html<cr>
+ 
+imap ä ä
+cmap ä ä
+
+imap å [
+imap ¨ ]
 
 set colorcolumn=120
 
