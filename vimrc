@@ -508,6 +508,8 @@ let g:EasyMotion_enter_jump_first = 1
 
 ""vim-jedi configuration
 let g:jedi#smart_auto_mappings = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signatures_delay = 0
 
 " syntastic, for syntax higlighting
 " GIT CLONE LINK GOES HERE?
