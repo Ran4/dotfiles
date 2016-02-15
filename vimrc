@@ -416,6 +416,9 @@ endif
 """ctrl-p is a fuzzy file finder
 "!git clone https://github.com/kien/ctrlp.vim ~/.vim/bundle/ctrlp.vim
 
+"""vim-gitgutter shows a git diff in the 'gutter' (sign column)
+"!git clone git://github.com/airblade/vim-gitgutter.git ~/.vim/bundle/vim-gitgutter
+
 """incsearch incrementally highlights all pattern being matched.
 "!git clone https://github.com/haya14busa/incsearch.vim ~/.vim/bundle/incsearch.vim
 
@@ -505,6 +508,11 @@ let g:EasyMotion_smartcase = 1
 "'Type Enter or Space key and jump to first match.'
 let g:EasyMotion_enter_jump_first = 1
 "endif
+
+""Gitgutter configuration
+"Starts disabled:
+let g:gitgutter_enabled = 0
+nnoremap <leader>gg :GitGutterToggle<cr>
 
 ""vim-jedi configuration
 let g:jedi#smart_auto_mappings = 0
