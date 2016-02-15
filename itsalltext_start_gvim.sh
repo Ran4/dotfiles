@@ -9,14 +9,17 @@ vim --serverlist | grep -q $SERVER_NAME
 
 if [ $? -eq 0 ]; then #a server has been started
     if [ $# -eq 0 ]; then #no arguments given, start regular vim
-        exec gvim -c "cd /tmp/.itsalltext/" +startinsert "$@"
+        #exec gvim -c "cd /tmp/.itsalltext/" +startinsert "$@"
+        exec gvim -c "cd /tmp/.itsalltext/" "$@"
     else #Trying to access server called $SERVER_NAME
         #exec gvim --servername $SERVER_NAME --remote-tab -c "cd /tmp/.itsalltext/" +startinsert "$@"
-        exec gvim --servername $SERVER_NAME --remote-tab -c "cd /tmp/.itsalltext/" +startinsert "$@"
+        #exec gvim --servername $SERVER_NAME --remote-tab -c "cd /tmp/.itsalltext/" +startinsert "$@"
+        exec gvim --servername $SERVER_NAME --remote-tab -c "cd /tmp/.itsalltext/" "$@"
     fi
 else #Start a new server called $SERVER_NAME
     #exec gvim --servername $SERVER_NAME -c "cd /tmp/.itsalltext/" +startinsert "$@"
-    exec gvim --servername $SERVER_NAME -c "cd /tmp/.itsalltext/" +startinsert "$@"
+    #exec gvim --servername $SERVER_NAME -c "cd /tmp/.itsalltext/" +startinsert "$@"
+    exec gvim --servername $SERVER_NAME -c "cd /tmp/.itsalltext/" "$@"
 fi
 
 exec gvim -c "cd /tmp/.itsalltext/" +startinsert "$@"
