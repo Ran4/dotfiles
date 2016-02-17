@@ -234,7 +234,8 @@ if has("gui_running")
     set guioptions-=e "removes GUI tab pages
     "set guifont=ProggySquareTT\ 12
     "set guifont=ProggyTinyTT\ 12
-    set guifont=Monospace\ 12
+    "set guifont=Monospace\ 11
+    set guifont=
     nnoremap <leader><leader>1 :set guifont=Terminus\ 9<cr>
     nnoremap <leader><leader>2 :set guifont=Terminus\ 10<cr>
     nnoremap <leader><leader>3 :set guifont=Terminus\ 11<cr>
@@ -399,6 +400,9 @@ endif
 ""vim airline is a lightweight alternative to powerline, written in pure ViML
 "!git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
 
+"""braceless adds text objects, folding and more for many braceless languages such as Python
+"!git clone https://github.com/tweekmonster/braceless.vim ~/.vim/bundle/braceless
+
 ""Clever-f allows f/F to be pressed to repeat previous f/F search
 "!git clone https://github.com/rhysd/clever-f.vim
 
@@ -473,6 +477,17 @@ let g:airline_right_sep = ''
 let g:airline#extensions#syntastic#enabled = 0
 
 let g:airline_theme = 'badwolf'
+
+""Braceless configuration
+autocmd FileType python BracelessEnable +indent
+"Change default block key to p from P: paragraph is useless in Python code
+let g:braceless_block_key = 'p'
+"+indent 	Enable indent handling
+"+fold 	        Enable folding
+"+fold-inner 	Enable folding, but fold on the inner block
+"+highlight 	Enable indent guide
+"+highlight-cc 	Enable indent guide, but use colorcolumn
+"+highlight-cc2 Enable indent guide and use colorcolumn
 
 "use CtrlP to quickly switch between buffers
 nnoremap <b :CtrlPBuffer<cr>
