@@ -16,7 +16,13 @@ nmap å [
 nmap ¨ ]
 
 "Helper for spell check: press <tab> on a word, <esc> to choose word
-nmap <s-tab> viw<esc>a<c-x>s
+nmap <s-tab> viw<esc>a<c-x>s<tab>
+nnoremap sus :set spell spelllang=en_us<cr>
+nnoremap sgb :set spell spelllang=en_gb<cr>
+
+"buffer splitting
+nnoremap sbn :sbn<cr>
+nnoremap sbv :vert sbn<cr>
 
 "Buffer shortcuts: open new, next, prev, delete
 nnoremap <b :b <c-d>
