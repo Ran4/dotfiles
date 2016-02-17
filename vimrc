@@ -485,7 +485,7 @@ let g:airline#extensions#syntastic#enabled = 0
 let g:airline_theme = 'badwolf'
 
 ""Braceless configuration
-autocmd FileType python BracelessEnable +indent
+autocmd FileType python BracelessEnable
 "Change default block key to p from P: paragraph is useless in Python code
 let g:braceless_block_key = 'p'
 "+indent 	Enable indent handling
