@@ -197,6 +197,10 @@ if [ -f ~/.identifiers/kth ]; then
     #cp ~/.custom/kth_tmux.conf ~/.tmux.conf
     unlink ~/.tmux.conf
     ln -s ~/.custom/kth_tmux.conf ~/.tmux.conf
+    
+    #Change to zsh without root
+    export SHELL=/bin/zsh
+    exec /bin/zsh -l
 fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
