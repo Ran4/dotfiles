@@ -5,12 +5,13 @@ nmap , ä
 nmap ö ä
 nnoremap ,, ,
 
-nmap ciå ci[
-nmap ci¨ ci]
-nmap caå ca[
-nmap ca¨ ca]
 nmap cså cs[
 nmap cs¨ cs]
+
+omap iå i[
+omap i¨ i]
+omap aå a[
+omap a¨ a]
 
 nmap å [
 nmap ¨ ]
