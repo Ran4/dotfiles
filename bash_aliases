@@ -13,7 +13,7 @@ alias gp='git push'
 alias gu='git pull'
 alias gd='git diff'
 alias gdc='git diff --cached'
-alias gb='git branch -v' #(verbose)
+alias gb='git branch -av' #(all, verbose)
 alias gcm='git commit -m'
 alias gcam='git commit -am'
 alias gch='git checkout'
@@ -96,6 +96,8 @@ alias :q='exit'
 alias :Q='exit'
 alias :qa='exit'
 alias :Qa='exit'
+
+alias treei='tree -I "*.pyc" --matchdirs -I "__pycache__"'
 
 #alias wanip='curl -s http://whatismijnip.nl |cut -d " " -f 5'
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
