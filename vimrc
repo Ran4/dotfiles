@@ -445,6 +445,9 @@ endif
 ""supertab, adds <Tab> for tab completion
 "!git clone git://github.com/ervandew/supertab ~/.vim/bundle/supertab
 
+""vim-vertical move, adds a vertical move motion to move without changing the cursor column
+"!git clone git://github.com/bruno-/vim-vertical-move.git ~/.vim/bundle/vim-vertical-move
+
 ""vim-visual-star-search, allows * operator on visual words (and <leader>* to vimgrep)
 "!git clone https://github.com/bronson/vim-visual-star-search ~/.vim/bundle/vim-visual-star-search
 
@@ -546,6 +549,13 @@ let g:jedi#show_call_signatures_delay = 0
 "let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++ -g -Wall'
 "let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
+
+""vim-vertical-move configuration
+let g:vertical_move_default_mapping = 0
+nmap <silent> ) <Plug>(vertical_move_down)
+nmap <silent> ( <Plug>(vertical_move_up)
+xmap <silent> ) <Plug>(vertical_move_down)
+xmap <silent> ( <Plug>(vertical_move_up)
 
 " Start pathogen
 execute pathogen#infect()

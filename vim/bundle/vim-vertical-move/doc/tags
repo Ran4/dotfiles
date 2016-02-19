@@ -1,0 +1,13 @@
+g:vertical_move_default_mapping	vertical_move.txt	/*g:vertical_move_default_mapping*
+vertical-move	vertical_move.txt	/*vertical-move*
+vertical-move-about	vertical_move.txt	/*vertical-move-about*
+vertical-move-changelog	vertical_move.txt	/*vertical-move-changelog*
+vertical-move-contributing	vertical_move.txt	/*vertical-move-contributing*
+vertical-move-down	vertical_move.txt	/*vertical-move-down*
+vertical-move-examples	vertical_move.txt	/*vertical-move-examples*
+vertical-move-introduction	vertical_move.txt	/*vertical-move-introduction*
+vertical-move-license	vertical_move.txt	/*vertical-move-license*
+vertical-move-mappings	vertical_move.txt	/*vertical-move-mappings*
+vertical-move-up	vertical_move.txt	/*vertical-move-up*
+vertical-move-usage	vertical_move.txt	/*vertical-move-usage*
+vertical_move.txt	vertical_move.txt	/*vertical_move.txt*
