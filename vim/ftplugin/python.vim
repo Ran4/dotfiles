@@ -14,8 +14,9 @@ nnoremap <leader><leader>l :let g:syntastic_python_checkers=['python3']
 nnoremap <leader>L :let g:syntastic_python_checkers=['python']<cr>
 
 nnoremap <leader>p :!clear && python %<cr>
-nnoremap <leader>P :!python %<cr>
+nnoremap <leader>P :!clear && python3 %<cr>
 nnoremap <leader>i :!python -i %<cr>
+nnoremap <leader>I :!python3 -i %<cr>
 
 if exists('+colorcolumn')
     set colorcolumn=80
