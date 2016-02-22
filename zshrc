@@ -133,6 +133,7 @@ if [ -f ~/.identifiers/ranl412 ]; then
     
     #Set screen layout for 21.5" and rotated 24" screens at SciLifeLab
     alias ki='~/.screenlayout/ki_215_24r.sh'
+    alias kih='~/.screenlayout/ki_high215_24r.sh'
     alias ki2='~/.screenlayout/ki_24r_24r.sh'
 fi
 
