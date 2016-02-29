@@ -6,3 +6,5 @@ nnoremap <leader>P :!clear && pandoc -s % -o temp_%:r.pdf<cr>
 
 " Lower priority of autocompletion for certain formats
 set suffixes+=*.pdf,*.jpg,*.png
+
+set colorcolumn=110

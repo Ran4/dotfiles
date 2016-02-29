@@ -282,6 +282,7 @@ set t_Co=256
 " cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 color wombat256mod
+"color lilypink
 "color wintersday
 
 syntax enable
@@ -537,7 +538,7 @@ let g:EasyMotion_enter_jump_first = 1
 ""Gitgutter configuration
 "Starts disabled:
 let g:gitgutter_enabled = 0
-nnoremap <leader>gg :GitGutterToggle<cr>
+nnoremap <leader>gg :let g:gitgutter_enabled = 1<cr>:GitGutterEnable<cr>
 
 ""vim-jedi configuration
 "let g:jedi#auto_initialization = 0
