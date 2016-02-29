@@ -1,6 +1,11 @@
 Host kth
 	HostName u-shell.csc.kth.se
 	User ransin
-Host l412
-	HostName 192.168.2.11
-	User ran
+Host bb
+	HostName bitbucket.org
+	User git
+	IdentityFile ~/.ssh/id_rsa
+Host gh
+	HostName github.com
+	User git
+	IdentityFile ~/.ssh/id_rsa
