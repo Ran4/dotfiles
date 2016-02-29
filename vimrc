@@ -2,7 +2,7 @@
 "{{{ MAPPINGS
 let mapleader = "ä"
 nmap , ä
-nmap ö ä
+"nmap ö ä
 nnoremap ,, ,
 
 nmap cså cs[
@@ -546,6 +546,10 @@ nnoremap <leader>gg :let g:gitgutter_enabled = 1<cr>:GitGutterEnable<cr>
 let g:jedi#smart_auto_mappings = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures_delay = 0
+
+""vim-rsi configuration
+""alt-d will disable ä so remove the meta-bindings
+let g:rsi_no_meta = 1
 
 " syntastic, for syntax higlighting
 " GIT CLONE LINK GOES HERE?
