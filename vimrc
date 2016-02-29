@@ -2,7 +2,7 @@
 "{{{ MAPPINGS
 let mapleader = "ä"
 nmap , ä
-nmap ö ä
+"nmap ö ä
 nnoremap ,, ,
 
 nmap cså cs[
@@ -282,6 +282,7 @@ set t_Co=256
 " cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 color wombat256mod
+"color lilypink
 "color wintersday
 
 syntax enable
@@ -537,7 +538,7 @@ let g:EasyMotion_enter_jump_first = 1
 ""Gitgutter configuration
 "Starts disabled:
 let g:gitgutter_enabled = 0
-nnoremap <leader>gg :GitGutterToggle<cr>
+nnoremap <leader>gg :let g:gitgutter_enabled = 1<cr>:GitGutterEnable<cr>
 
 ""vim-jedi configuration
 "let g:jedi#auto_initialization = 0
@@ -545,6 +546,10 @@ nnoremap <leader>gg :GitGutterToggle<cr>
 let g:jedi#smart_auto_mappings = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures_delay = 0
+
+""vim-rsi configuration
+""alt-d will disable ä so remove the meta-bindings
+let g:rsi_no_meta = 1
 
 " syntastic, for syntax higlighting
 " GIT CLONE LINK GOES HERE?
