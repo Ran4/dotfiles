@@ -79,6 +79,7 @@ fi
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh #command line fuzzy file finder
 [ -f ~/git/z/z.sh ] && source ~/git/z/z.sh
+[ -f ~/.hhighlighter.sh ] && source ~/.hhighlighter.sh
 
 alias ls='ls -hF' #human readable, append indicator (one of */=>@|)
 # Colors {{{

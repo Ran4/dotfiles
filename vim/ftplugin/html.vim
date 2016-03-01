@@ -1,1 +1,1 @@
-colorscheme colorful256
+colorscheme cful256mod
