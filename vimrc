@@ -242,7 +242,10 @@ if has("gui_running")
     "set guifont=ProggySquareTT\ 12
     "set guifont=ProggyTinyTT\ 12
     "set guifont=Monospace\ 11
-    set guifont=
+    set guifont=Monospace\ Regular\ 10
+    "set guifont=
+    set antialias
+    
     nnoremap <leader><leader>1 :set guifont=Terminus\ 9<cr>
     nnoremap <leader><leader>2 :set guifont=Terminus\ 10<cr>
     nnoremap <leader><leader>3 :set guifont=Terminus\ 11<cr>
