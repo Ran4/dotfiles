@@ -227,6 +227,12 @@ set foldmethod=marker
 set splitbelow
 set splitright
 
+"Reload a file if it has been modified outside of vim
+set autoread
+
+"Read local .vimrc files
+set exrc
+
 set incsearch "search as characters are entered
 set ignorecase "ignore case when searching
 set smartcase "ignore case when searching, except if we start with a capital
@@ -525,6 +531,9 @@ map g# <Plug>(incsearch-nohl-g#)
 ""EasyMotion configuration
 nnoremap S s
 "if exists('g:EasyMotion_loaded')
+"Without this, bundle/vim-easymotion/plugin/EasyMotion.vim:237 will set
+"the easymotion-prefix to <leader><leader>, which is not wanted
+map <Leader><Leader><Leader> <Plug>(easymotion-prefix)
 map s <Plug>(easymotion-s)
 "map / <Plug>(easymotion-sn)
 "map ? <Plug>(easymotion-tn)

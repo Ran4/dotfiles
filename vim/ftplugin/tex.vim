@@ -13,3 +13,9 @@ nnoremap <leader>P :!pdflatex %<CR>
 set suffixes+=*.pdf,*.jpg,*.png
 
 set colorcolumn=110
+
+nnoremap ´´ :source ~/.vim/ftplugin/tex.vim<cr>
+
+inoremap ´b <esc>bcw\begin{<c-r>"}<cr>\end{<c-r>"}<c-o>O
+inoremap ´f \frac{}{}<left><left><left>
+inoremap ´s \section{}<left>
