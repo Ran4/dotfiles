@@ -242,7 +242,10 @@ if has("gui_running")
     "set guifont=ProggySquareTT\ 12
     "set guifont=ProggyTinyTT\ 12
     "set guifont=Monospace\ 11
-    set guifont=
+    set guifont=Monospace\ Regular\ 10
+    "set guifont=
+    set antialias
+    
     nnoremap <leader><leader>1 :set guifont=Terminus\ 9<cr>
     nnoremap <leader><leader>2 :set guifont=Terminus\ 10<cr>
     nnoremap <leader><leader>3 :set guifont=Terminus\ 11<cr>
@@ -269,6 +272,9 @@ set laststatus=2 "always show statusbar. 1 means 'only when 2+ windows open'
 
 "always keep at a few lines at the top/bottom shown when moving around
 set scrolloff=4
+
+"Show this char when wrapping text
+set showbreak=↪
 
 "Disable Bram's start message
 set shortmess+=I
@@ -546,6 +552,10 @@ nnoremap <leader>gg :let g:gitgutter_enabled = 1<cr>:GitGutterEnable<cr>
 let g:jedi#smart_auto_mappings = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures_delay = 0
+
+""netrw configuration
+"gx will open file using xdg-open
+let g:netrw_browsex_viewer="xdg-open"
 
 ""vim-rsi configuration
 ""alt-d will disable ä so remove the meta-bindings

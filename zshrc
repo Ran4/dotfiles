@@ -152,7 +152,8 @@ fi
 
 if [ -f ~/.identifiers/ran-main-kubuntu ]; then
     #set background image:
-    feh --bg-scale ~/other/backgrounds/red-shine.jpg
+    #feh --bg-scale ~/other/backgrounds/red-shine.jpg
+    feh --bg-scale ~/other/backgrounds/waterfall_pixely.png
 fi
 #}}}
 
