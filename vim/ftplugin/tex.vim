@@ -14,6 +14,10 @@ set suffixes+=*.pdf,*.jpg,*.png
 
 set colorcolumn=110
 
+"Visually wrap long lines per word, don't wrap in the middle of a word.
+set linebreak
+
+"Mappings
 nnoremap ´´ :source ~/.vim/ftplugin/tex.vim<cr>
 
 inoremap ´b <esc>bcw\begin{<c-r>"}<cr>\end{<c-r>"}<c-o>O
