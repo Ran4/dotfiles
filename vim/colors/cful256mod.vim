@@ -26,7 +26,8 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let g:colors_name = "colorful256"
+"let g:colors_name = "colorful256"
+let g:colors_name = "cful256mod"
 
  "highlight Normal       cterm=none    ctermfg=251 ctermbg=235  gui=none    guifg=#b2b2b2 guibg=#000000
  highlight Normal       cterm=none    ctermfg=252 ctermbg=234  gui=none    guifg=#b2b2b2 guibg=#000000

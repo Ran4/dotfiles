@@ -85,7 +85,7 @@ export NVM_DIR="/home/$USER/.nvm"
 [ -f ~/git/z/z.sh ] && source ~/git/z/z.sh
 [ -f ~/.hhighlighter.sh ] && source ~/.hhighlighter.sh && alias h='h -n'
 
-alias ls='ls -hF' #human readable, append indicator (one of */=>@|)
+alias ls='ls --group-directories-first -hF' #human readable, append indicator (one of */=>@|)
 # Colors {{{
 if [ -x /usr/bin/dircolors ]; then
     #if we can read the file ~/.dircolors, then eval list of colors given by $(dircolors -b ~/.dircolors)
