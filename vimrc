@@ -418,9 +418,6 @@ endif
 ""Ag plugin for vim, usagE: :Ag [options] {pattern} [{directories}]
 "!git clone https://github.com/rking/ag.vim ~/.vim/bundle/ag.vim
 
-""vim airline is a lightweight alternative to powerline, written in pure ViML
-"!git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
-
 """braceless adds text objects, folding and more for many braceless languages such as Python
 "!git clone https://github.com/tweekmonster/braceless.vim ~/.vim/bundle/braceless
 
@@ -449,6 +446,9 @@ endif
 
 """jedi-vim is a vim-binding to the autocompletion library Jedi
 "!git clone --recursive https://github.com/davidhalter/jedi-vim.git ~/.vim/bundle/jedi-vim
+
+"""lightline.vim is a light and configurable statusline/tabline for Vim.
+"!git clone https://github.com/itchyny/lightline.vim ~/.vim/bundle/lightline.vim ~/.vim/bundle/lightline.vim
 
 ""helper plugin that enables repetition with dot in plugins such as vim-surround
 "git clone git://github.com/tpope/vim-repeat.git ~/.vim/bundle/vim-repeat
@@ -491,16 +491,6 @@ endif
 ":Helptags
 
 "PLUGIN CONFIGURATION {{{
-""vim-airline configuration
-"Don't show trailing spaces in Airline
-"let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long' ]
-"let g:airline#extensions#whitespace#checks = ['indent', 'long']
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline#extensions#syntastic#enabled = 0
-
-let g:airline_theme = 'badwolf'
 
 ""Braceless configuration
 autocmd FileType python BracelessEnable
@@ -562,6 +552,11 @@ nnoremap <leader>gg :let g:gitgutter_enabled = 1<cr>:GitGutterEnable<cr>
 let g:jedi#smart_auto_mappings = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures_delay = 0
+
+""lightline configuration
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
 
 ""netrw configuration
 "gx will open file using xdg-open
