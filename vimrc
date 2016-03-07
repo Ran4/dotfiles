@@ -7,7 +7,6 @@ nnoremap ,, ,
 
 nmap cså cs[
 nmap cs¨ cs]
-
 omap iå i[
 omap i¨ i]
 omap aå a[
@@ -48,7 +47,9 @@ nnoremap <leader>> viw<ESC>a><ESC>hbi<<ESC>%
 nnoremap <leader>n :bn<cr>
 nnoremap <leader>N :bp<cr>
 
-nnoremap <space> :w<CR>
+":update will save but only if there's a change
+"nnoremap <space> :w<CR>
+nnoremap <space> :update<CR>
 " press <backspace> to switch to the "alternate file"
 nnoremap <bs> <C-^>
 
