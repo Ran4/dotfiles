@@ -1,6 +1,7 @@
 
 "{{{ MAPPINGS
 let mapleader = "ä"
+let maplocalleader = "´"
 nmap , ä
 "nmap ö ä
 nnoremap ,, ,

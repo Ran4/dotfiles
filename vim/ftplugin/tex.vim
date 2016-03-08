@@ -18,8 +18,9 @@ set colorcolumn=110
 set linebreak
 
 "Mappings
-nnoremap ´´ :source ~/.vim/ftplugin/tex.vim<cr>
+nnoremap <localleader>rr :source ~/.vim/ftplugin/tex.vim<cr>
 
-inoremap ´b <esc>bcw\begin{<c-r>"}<cr>\end{<c-r>"}<c-o>O
-inoremap ´f \frac{}{}<left><left><left>
-inoremap ´s \section{}<left>
+inoremap <localleader>b <esc>bcw\begin{<c-r>"}<cr>\end{<c-r>"}<c-o>O
+inoremap <localleader>f \frac{}{}<left><left><left>
+inoremap <localleader>s \section{}<left>
+inoremap <localleader>i \textit{}<left>
