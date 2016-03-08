@@ -460,10 +460,6 @@ endif
 "!git clone https://github.com/itchyny/lightline.vim ~/.vim/bundle/lightline.vim ~/.vim/bundle/lightline.vim
 """}}}
 """{{{ qrstu
-
-""random-colorscheme-picker - helps pick a VIM colorscheme
-"!git clone https://github.com/sunuslee/vim-plugin-random-colorscheme-picker ~/.vim/bundle/random-colorscheme-picker
-
 ""repeat - helper plugin that enables repetition with dot in plugins such as vim-surround
 "!git clone git://github.com/tpope/vim-repeat.git ~/.vim/bundle/vim-repeat
 
