@@ -25,17 +25,20 @@ endif
 set makeprg=python\ -u\ %
 nnoremap <f5> :w:Make<cr>
 
+"Used for the commentary.vim plugin
+let b:commentary_format='#~ %s'
+
 set tabstop=8
 set expandtab
 set shiftwidth=4
 set softtabstop=4
 
+set wildignore+=*.pyc
+
 iabbrev adn and
 iabbrev pritn print
 iabbrev true: True:
 iabbrev false: False:
-
-set wildignore+=*.pyc
 
 nnoremap <silent> <buffer> ]] :call <SID>Python_jump('/^\(class\\|def\)')<cr>
 nnoremap <silent> <buffer> [[ :call <SID>Python_jump('?^\(class\\|def\)')<cr>
