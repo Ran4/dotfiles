@@ -1,4 +1,3 @@
-
 "{{{ MAPPINGS
 let mapleader = "ä"
 let maplocalleader = "´"
@@ -410,7 +409,7 @@ endif
 "}}}
 "{{{ PLUGINS
 "cd ~/.vim/bundle
-
+"""{{{ abcdef
 "Ack plugin for vim, usagE: :Ack [options] {pattern} [{directories}]
 "!git clone https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
 "Change default size of copen window in ag from 10 to 7
@@ -432,14 +431,22 @@ endif
 """Quasi-REPL for clojure
 ""!git clone https://github.com/tpope/vim-fireplace ~/.vim/bundle/vim-fireplace
 
-""vim-clojure-highlight gives extended syntax highlightinging for clojure
+""clojure-highlight gives extended syntax highlightinging for clojure
 ""!git clone https://github.com/guns/vim-clojure-highlight ~/.vim/bundle/vim-clojure-highlight
 ""}}}
 
 """ctrl-p is a fuzzy file finder
 "!git clone https://github.com/kien/ctrlp.vim ~/.vim/bundle/ctrlp.vim
 
-"""vim-gitgutter shows a git diff in the 'gutter' (sign column)
+"""easy-motion
+"!git clone https://github.com/easymotion/vim-easymotion ~/.vim/bundle/vim-easymotion
+
+""exchange: add the cx operator. I.e. cxe on one word, then cxe to exchange
+"!git clone git://github.com/tommcdo/vim-exchange.git
+
+"""}}}
+"""{{{ ghijk
+"""gitgutter shows a git diff in the 'gutter' (sign column)
 "!git clone git://github.com/airblade/vim-gitgutter.git ~/.vim/bundle/vim-gitgutter
 
 """incsearch incrementally highlights all pattern being matched.
@@ -447,48 +454,52 @@ endif
 
 """jedi-vim is a vim-binding to the autocompletion library Jedi
 "!git clone --recursive https://github.com/davidhalter/jedi-vim.git ~/.vim/bundle/jedi-vim
-
+"""}}}
+"""{{{ lmnop
 """lightline.vim is a light and configurable statusline/tabline for Vim.
 "!git clone https://github.com/itchyny/lightline.vim ~/.vim/bundle/lightline.vim ~/.vim/bundle/lightline.vim
+"""}}}
+"""{{{ qrstu
 
-""helper plugin that enables repetition with dot in plugins such as vim-surround
-"git clone git://github.com/tpope/vim-repeat.git ~/.vim/bundle/vim-repeat
+""random-colorscheme-picker - helps pick a VIM colorscheme
+"!git clone https://github.com/sunuslee/vim-plugin-random-colorscheme-picker ~/.vim/bundle/random-colorscheme-picker
 
-"vim-rsi, adds 'readline-style-insertions' to command and insert mode
+""repeat - helper plugin that enables repetition with dot in plugins such as vim-surround
+"!git clone git://github.com/tpope/vim-repeat.git ~/.vim/bundle/vim-repeat
+
+"rsi, adds 'readline-style-insertions' to command and insert mode
 "!git clone https://github.com/tpope/vim-rsi.git ~/.vim/bundle/vim-rsi
 
 ""supertab, adds <Tab> for tab completion
 "!git clone git://github.com/ervandew/supertab ~/.vim/bundle/supertab
 
-""vim-vertical move, adds a vertical move motion to move without changing the cursor column
-"!git clone git://github.com/bruno-/vim-vertical-move.git ~/.vim/bundle/vim-vertical-move
-
-""vim-visual-star-search, allows * operator on visual words (and <leader>* to vimgrep)
-"!git clone https://github.com/bronson/vim-visual-star-search ~/.vim/bundle/vim-visual-star-search
+""surround: use e.g. ds( to delete surrounding (
+"!git clone git://github.com/tpope/vim-surround.git
 
 ""targets.vim allows movements like cin" (change in next ") and da,
 "git clone git://github.com/wellle/targets.vim.git ~/.vim/bundle/targets.vim
 
-""vim-tmux-navigator allows seamless navigation between vim and tmux splits
-"!git clone https://github.com/christoomey/vim-tmux-navigator ~/.vim/bundle/vim-tmux-navigator
-
-"!git clone https://github.com/easymotion/vim-easymotion ~/.vim/bundle/vim-easymotion
-
-""vim-exchange: add the cx operator. I.e. cxe on one word, then cxe to exchange
-"!git clone git://github.com/tommcdo/vim-exchange.git
-
-""vim-fugitive is a git plugin
-"!git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
-
-""use e.g. ds( to delete surrounding (
-
-"!git clone git://github.com/tpope/vim-surround.git
-
-""vim-tbone allows tmux commands
+""tbone allows tmux commands
 "!git clone git://github.com/tpope/vim-tbone.git
 
+""tmux-navigator allows seamless navigation between vim and tmux splits
+"!git clone https://github.com/christoomey/vim-tmux-navigator ~/.vim/bundle/vim-tmux-navigator
+
+"""}}}
+"""{{{ vwxyz
+""vertical move, adds a vertical move motion to move without changing the cursor column
+"!git clone git://github.com/bruno-/vim-vertical-move.git ~/.vim/bundle/vim-vertical-move
+
+""visual-star-search, allows * operator on visual words (and <leader>* to vimgrep)
+"!git clone https://github.com/bronson/vim-visual-star-search ~/.vim/bundle/vim-visual-star-search
+
+""fugitive is a git plugin
+"!git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
+
 "!git clone https://github.com/bronson/vim-trailing-whitespace ~/.vim/bundle/vim-trailing-whitespace
-"Rebuild help tags (comes with pathogen): should be done after any new install (?)
+"""}}}
+
+"Rebuild help tags (comes with pathogen): should be done after any new install
 ":Helptags
 
 "PLUGIN CONFIGURATION {{{
