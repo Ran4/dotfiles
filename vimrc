@@ -484,6 +484,9 @@ endif
 ""tmux-navigator allows seamless navigation between vim and tmux splits
 "!git clone https://github.com/christoomey/vim-tmux-navigator ~/.vim/bundle/vim-tmux-navigator
 
+""unimpaired - add a bunch of handy bracket mappings
+"!git clone https://github.com/tpope/vim-unimpaired ~/.vim/bundle/vim-unimpaired
+
 """}}}
 """{{{ vwxyz
 ""vertical move, adds a vertical move motion to move without changing the cursor column
