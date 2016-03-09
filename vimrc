@@ -427,6 +427,9 @@ endif
 """commentary.vim - comment things out with gc+{motion} and more
 "!git clone https://github.com/tpope/vim-commentary ~/.vim/bundle/vim-commentary
 
+"""eunuch.vim - vim sugar for multiple UNIX shell commands like :Move, :Rename
+"!git clone https://github.com/tpope/vim-eunuch ~/.vim/bundle/vim-eunuch
+
 ""{{{ Clojure plugins
 """Clojure runtime files, extracted from the VimClojure project, required for vim-clojure-highlight
 ""!git clone https://github.com/guns/vim-clojure-static ~/.vim/bundle/vim-clojure-highlight
