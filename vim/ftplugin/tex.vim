@@ -11,11 +11,12 @@ nnoremap <leader>P :!pdflatex %<CR>
 
 " Lower priority of autocompletion for certain formats
 set suffixes+=*.pdf,*.jpg,*.png
-
 set colorcolumn=110
-
 "Visually wrap long lines per word, don't wrap in the middle of a word.
 set linebreak
+
+"Enable word completion with spell-checking
+"set complete+=kspell
 
 "Mappings
 nnoremap <localleader>rr :source ~/.vim/ftplugin/tex.vim<cr>
