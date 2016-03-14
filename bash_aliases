@@ -29,6 +29,7 @@ alias agi='ag -i'
 
 alias matnod='matlab -nosplash -nodesktop'
 alias pdf='run zathura'
+alias arq='/home/ran/.jena/apache-jena-3.0.1/bin/arq'
 
 run() {
     ($@ &> /dev/null &)
