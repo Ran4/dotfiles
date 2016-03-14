@@ -113,6 +113,7 @@ alias bat='cat /sys/class/power_supply/BAT1/capacity'
 
 alias reset='reset && tmux clear-history'
 alias clear='clear && tmux clear-history'
+alias lock='i3lock -d --color=102010 --no-unlock-indicator' #-d suspends screen after default 30s
 
 #temporary: used to quickly edit i3 config
 alias ei='vim ~/.i3/config'

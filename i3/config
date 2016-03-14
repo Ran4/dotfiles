@@ -39,6 +39,8 @@ bindsym $mod+z exec python3 ~/.i3/runorfocus.py "Zathura" zathura
 
 bindsym $mod+Shift+x [class="(?i)xterm"] kill
 bindsym $mod+Shift+Return exec --no-startup-id i3-dmenu-desktop
+
+bindsym $mod+ctrl+l exec --no-startup-id i3lock -d --color=102010 --no-unlock-indicator
 #}}}
 
 # movement
@@ -47,8 +49,6 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+Ctrl+h workspace prev
-bindsym $mod+Ctrl+l workspace next
 bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+Tab workspace next
 bindsym $mod+p workspace prev
