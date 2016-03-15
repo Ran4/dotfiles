@@ -387,6 +387,14 @@ nnoremap ci{ :call New_cisqb()<CR>
 nnoremap ci} :call New_cisqb()<CR>
 nnoremap cis :call New_cisqb()<CR>
 
+" Removes trailing spaces
+function TrimWhiteSpace()
+  %s/\s*$//
+  ''
+endfunction
+
+nnoremap <leader>w :call TrimWhiteSpace()<CR>
+
 if has("autocmd")
     augroup bufstuff
         autocmd!

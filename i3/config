@@ -32,12 +32,15 @@ bindsym $mod+Return exec xterm
 #bindsym $mod+d exec pcmanfm
 bindsym $mod+d exec python3 ~/.i3/runorfocus.py "pcmanfm" pcmanfm
 #bindsym $mod+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
+bindsym $mod+ctrl+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
 bindsym $mod+e exec python3 ~/.i3/runorfocus.py "Xterm" xterm
 bindsym $mod+m exec python3 ~/.i3/runorfocus.py "mendeleydesktop" mendeleydesktop
 bindsym $mod+z exec python3 ~/.i3/runorfocus.py "Zathura" zathura
 
 bindsym $mod+Shift+x [class="(?i)xterm"] kill
 bindsym $mod+Shift+Return exec --no-startup-id i3-dmenu-desktop
+
+bindsym $mod+ctrl+l exec --no-startup-id i3lock -d --color=102010 --no-unlock-indicator
 #}}}
 
 # movement
@@ -46,8 +49,6 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+Ctrl+h workspace prev
-bindsym $mod+Ctrl+l workspace next
 bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+Tab workspace next
 bindsym $mod+p workspace prev
@@ -329,8 +330,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
 
 #i3-gaps specific
-#gaps inner 4
+#gaps inner 2
 #gaps outer -5 #higher than inner, so no gap when there's just a single window
 
-gaps inner 2
-gaps outer -5 #higher than inner, so no gap when there's just a single window
+gaps inner 1
+gaps outer -4 #higher than inner, so no gap when there's just a single window
