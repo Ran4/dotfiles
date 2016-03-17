@@ -21,15 +21,18 @@ alias gcam='git commit -am'
 alias gch='git checkout'
 alias ga='git add'
 
+#Program aliases
 alias g='grep'
 alias gi='grep -i' #case-insensitive grep
 alias grepi='grep -i'
 alias acki='ack -i'
 alias agi='ag -i'
 
-alias matnod='matlab -nosplash -nodesktop'
+alias tmux='tmux -2'
+alias matnod='matlab -nosplash -nodesktop' #Run CLI version of Matlab
 alias pdf='run zathura'
-alias arq='/home/ran/.jena/apache-jena-3.0.1/bin/arq'
+alias arq='/home/ran/.jena/apache-jena-3.0.1/bin/arq' #arq, for running SPARQL queries
+alias lo='libreoffice'
 
 run() {
     ($@ &> /dev/null &)
@@ -58,19 +61,10 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 alias sagi='sudo apt-get install'
+alias acs='apt-cache search'
 
 alias logo='lxsession'
 alias logout='lxsession'
-
-alias kth='ssh ransin@u-shell.csc.kth.se'
-#alias xterm='xterm tmux -2'
-alias uxterm='uxterm tmux -2'
-alias tmux='tmux -2'
-
-alias vims='vim -S .vimsession'
-alias vim3='vim -c "vert resize 80" -c "wincmd w" -c "vert resize 80" -c "wincmd W" -O3'
-alias vim4="vim -c 'bel vert sbuf 2' -c '1wincmd w' -c 'bel sbuf 3' -c '3wincmd w' -c 'bel sbuf 4'"
-alias vims='vim -S .vimsession'
 
 #Send files to vimserver (creating one called VIMR automatically if needed).
 function vimr {
@@ -92,9 +86,13 @@ else #start a new server
 fi
 }
 
-alias rmswp='rm .*.swp'
 alias rmpyc='rm *.pyc'
+alias rmswp='rm .*.swp'
 alias manvim='function _domanvim() { man $1 | vim -R -; }; _domanvim'
+alias vims='vim -S .vimsession'
+alias vim3='vim -c "vert resize 80" -c "wincmd w" -c "vert resize 80" -c "wincmd W" -O3'
+alias vim4="vim -c 'bel vert sbuf 2' -c '1wincmd w' -c 'bel sbuf 3' -c '3wincmd w' -c 'bel sbuf 4'"
+alias vims='vim -S .vimsession'
 alias :q='exit'
 alias :Q='exit'
 alias :qa='exit'
@@ -102,7 +100,6 @@ alias :Qa='exit'
 
 alias treei='tree -I "*.pyc" --matchdirs -I "__pycache__"'
 
-#alias wanip='curl -s http://whatismijnip.nl |cut -d " " -f 5'
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias tmuxs='~/dotfiles/defaulttmuxsession.sh'
 alias ts='~/dotfiles/defaulttmuxsession.sh'
