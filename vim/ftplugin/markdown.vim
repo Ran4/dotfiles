@@ -3,7 +3,7 @@ nnoremap <silent> <leader>P :!pandoc -s % -o out_%:r.html &> /dev/null &<cr><cr>
 "nnoremap <silent> <space> :w<cr>:exec "!pandoc -s % -o out_%:r.html &> /dev/null &"<cr><cr>
 "nnoremap <silent> <space> :w<cr>:silent !pandoc -s % -o out_%:r.html &> /dev/null 2>&1 &<cr>:redraw!<cr>
 
-nnoremap <silent> <space> :update<cr>:exec "!pandoc -s % -o out_%:r.html &> /dev/null &"<cr><cr>
+"nnoremap <silent> <space> :update<cr>:exec "!pandoc -s % -o out_%:r.html &> /dev/null &"<cr><cr>
  
 imap ä ä
 cmap ä ä
@@ -11,9 +11,7 @@ cmap ä ä
 "imap å [
 "imap ¨ ]
 
-set colorcolumn=120
-
-" Vim filetype plugin
+set colorcolumn=120 " Vim filetype plugin
 " Language:		Markdown
 " Maintainer:		Tim Pope <vimNOSPAM@tpope.org>
 " Last Change:		2013 May 30
@@ -22,7 +20,7 @@ if exists("b:did_ftplugin")
   finish
 endif
 
-runtime! ftplugin/html.vim ftplugin/html_*.vim ftplugin/html/*.vim
+"runtime! ftplugin/html.vim ftplugin/html_*.vim ftplugin/html/*.vim
 
 setlocal comments=fb:*,fb:-,fb:+,n:> commentstring=>\ %s
 setlocal formatoptions+=tcqln formatoptions-=r formatoptions-=o
