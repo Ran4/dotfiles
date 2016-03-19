@@ -1,7 +1,5 @@
-imap å [
-imap ¨ ]
-inoremap zå å
-
+"remaps å¨Å^ to []{} in various ways
+source ~/.vim/ftplugin/remap_to_brackets.vim
 
 "Initially, only use the 'python' checker, which warns much less than pylint
 let g:syntastic_python_checkers=['python']

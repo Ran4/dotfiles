@@ -37,6 +37,8 @@ bindsym $mod+e exec python3 ~/.i3/runorfocus.py "Xterm" xterm
 bindsym $mod+m exec python3 ~/.i3/runorfocus.py "mendeleydesktop" mendeleydesktop
 bindsym $mod+z exec python3 ~/.i3/runorfocus.py "Zathura" zathura
 
+bindsym $mod+ctrl+v exec python3 ~/.i3/runorfocus.py "Gvim" gvim
+
 bindsym $mod+Shift+x [class="(?i)xterm"] kill
 bindsym $mod+Shift+Return exec --no-startup-id i3-dmenu-desktop
 

@@ -32,7 +32,11 @@ alias tmux='tmux -2'
 alias matnod='matlab -nosplash -nodesktop' #Run CLI version of Matlab
 alias pdf='run zathura'
 alias arq='/home/ran/.jena/apache-jena-3.0.1/bin/arq' #arq, for running SPARQL queries
-alias lo='libreoffice'
+#alias lo='libreoffice'
+
+lo() {
+    (libreoffice $@ &> /dev/null &)
+}
 
 run() {
     ($@ &> /dev/null &)
