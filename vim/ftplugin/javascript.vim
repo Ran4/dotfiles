@@ -1,6 +1,6 @@
 nnoremap <leader>p :!clear && node %<cr>
 
-inoremap <localleader>l console.log()<left>
+inoremap <localleader>l console.log();<left><left>
 
 colo cful256mod
 
