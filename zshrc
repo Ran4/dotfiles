@@ -53,7 +53,7 @@ command_exists () {
 #{{{Keyboard related
 source $ZSH/oh-my-zsh.sh
 bindkey '^r' history-incremental-search-backward
-bindkey '^f' accept-line
+#bindkey '^f' accept-line
 bindkey -M viins 'jk' vi-cmd-mode
 export KEYTIMEOUT=1 #this is in 10 ms steps, so e.g. 20 = 200 ms
 #Found at: http://superuser.com/questions/476532/how-can-i-make-zshs-vi-mode-behave-more-like-bashs-vi-mode
@@ -85,20 +85,15 @@ export NVM_DIR="/home/$USER/.nvm"
 [ -f ~/git/z/z.sh ] && source ~/git/z/z.sh
 [ -f ~/.hhighlighter.sh ] && source ~/.hhighlighter.sh && alias h='h -n'
 
-alias ls='ls --group-directories-first -hF' #human readable, append indicator (one of */=>@|)
+#alias ls='ls --group-directories-first -hF' #human readable, append indicator (one of */=>@|)
 # Colors {{{
 if [ -x /usr/bin/dircolors ]; then
     #if we can read the file ~/.dircolors, then eval list of colors given by $(dircolors -b ~/.dircolors)
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    #alias ls='ls --color=auto'
-    #alias ls='ls --color=auto -h'
     alias ls='ls --color=auto -hF' #color, human readable, append indicator (one of */=>@|)
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
+elif [ -x /usr/local/bin/gdircolors ]; then #OS X
+    test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
+    alias ls='gls --color=auto -hF' #color, human readable, append indicator (one of */=>@|)
 fi
 
 # Color for less {{{
@@ -147,13 +142,17 @@ if [ -f ~/.identifiers/ranlubuntu ]; then
     alias m='~/ovrigt/mount_all.sh'
     
     feh --bg-scale ~/other/backgrounds/Rainbow-Sky-Wallpaper-1024x576.jpg
-
 fi
 
 if [ -f ~/.identifiers/ran-main-kubuntu ]; then
     #set background image:
     #feh --bg-scale ~/other/backgrounds/red-shine.jpg
     feh --bg-scale ~/other/backgrounds/waterfall_pixely.png
+fi
+
+#Mac-specific stuff
+if [ -f ~/.identifiers/mac ]; then 
+    
 fi
 #}}}
 
@@ -166,6 +165,8 @@ if command_exists xcape ; then
     . ~/.xcape_config
     #echo "Not running xcape config!"
 else
-    xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-    #echo "Not running xmodmap!"
+    if command_exists xmodmap ; then
+        xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+        #echo "Not running xmodmap!"
+    fi
 fi

@@ -1,6 +1,7 @@
 vim/.netrwhist*
 .__afs*
 .*.swp
+.DS_Store
 .gitignore
 
 vim/bundle/vim-clojure-static/

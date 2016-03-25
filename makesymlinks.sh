@@ -17,7 +17,7 @@ NC='\033[0m'
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="agignore bashrc bash_aliases bash_setprompt dircolors gitconfig gitignore_global vimrc vim xcape_config Xresources lesskey tmux.conf i3 hhighlighter.sh custom/kth_tmux.conf custom/ranl412_tmux.conf zshrc oh-my-zsh/plugins/git/git.plugin.zsh oh-my-zsh/themes/sunrise-modified-ran.zsh-theme fonts pylintrc pep8"
+files="agignore bashrc bash_aliases bash_setprompt dircolors gitconfig gitignore_global vimrc vim xcape_config Xresources lesskey tmux.conf i3 hhighlighter.sh custom/kth_tmux.conf custom/ranl412_tmux.conf zshrc oh-my-zsh/plugins/git/git.plugin.zsh fonts pylintrc pep8"
 
 ##########
 
@@ -49,9 +49,11 @@ echo -e "${LBLUE}Reloading bash${NC}"
 source ~/.bashrc
 echo "...done"
 
-echo -e "${LBLUE}Loading X resources (xrdb -load ~/.Xresources)${NC}"
-xrdb -load ~/.Xresources
-echo "...done"
+if command_exists xrdb ; then
+    echo -e "${LBLUE}Loading X resources (xrdb -load ~/.Xresources)${NC}"
+    xrdb -load ~/.Xresources
+    echo "...done"
+fi
 
 echo -e "${LBLUE}Sourcing tmux (tmux source-file ~/.tmux.conf)${NC}"
 tmux source-file ~/.tmux.conf
@@ -65,13 +67,17 @@ echo -e "${LBLUE}Creating symlink to ~/.ssh/config (ln -s $dir/ssh_config ~/.ssh
 ln -s $dir/ssh_config ~/.ssh/config
 echo "...done"
 
-#
-#if command_exists i3 ; then
-#	echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3config ~/.i3/config)${NC}"
-#	ln -s $dir/i3config ~/.i3/config
-#	#ln -s $dir/i3config ~/.config/i3/config #use this if using the XDG directory scheme
-#
-#	echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3config ~/.i3/config)${NC}"
-#	ln -s $dir/i3config ~/.i3/config
-#	echo "...done"
-#fi
+echo -e "${LBLUE}Copying sunrise-modified-ran.zsh-theme file to ~/.oh-my-zsh/themes/${NC}"
+cp $dir/oh-my-zsh/themes/sunrise-modified-ran.zsh-theme ~/.oh-my-zsh/themes/
+
+if command_exists i3 ; then
+	echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3config ~/.i3/config)${NC}"
+	ln -s $dir/i3config ~/.i3/config
+	#ln -s $dir/i3config ~/.config/i3/config #use this if using the XDG directory scheme
+
+	echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3config ~/.i3/config)${NC}"
+	ln -s $dir/i3config ~/.i3/config
+	echo "...done"
+fi
+
+

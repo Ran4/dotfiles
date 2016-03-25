@@ -1,3 +1,16 @@
+# vim: ft=sh
+
+#Help function to see if a command exists
+command_exists () {
+  type "$1" >/dev/null 2>/dev/null
+}
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    #'Running GNU coreutils via Homebrew on your Mac? Here's a one-liner to get the manpages working!'
+    #https://gist.github.com/quickshiftin/9130153
+    alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _'
+fi
+
 alias ll='ls --group-directories-first -l'
 alias la='ls --group-directories-first -A'
 alias l='ls --group-directories-first -C'
@@ -119,6 +132,5 @@ alias lock='i3lock -d --color=102010 --no-unlock-indicator' #-d suspends screen 
 #temporary: used to quickly edit i3 config
 alias ei='vim ~/.i3/config'
 #alias kxt="ps aux | grep -i xterm | awk {'print $2'} | xargs kill -9" #kill xterm, please remove me once you've figured out the problem with i3
-alias kxt="kill -9 $(pidof xterm)" #kill all xterm windows, please remove me once you've figured out the problem with i3
 alias nocaps="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
 alias NOCAPS="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"

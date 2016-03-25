@@ -1,29 +1,50 @@
-sudo apt-get update
-sudo apt-get -y install git
-sudo apt-get -y install xcape
-sudo apt-get -y install openssh-server
-sudo apt-get -y install vim-gnome
-sudo apt-get -y install tmux
-sudo apt-get -y install curl
-sudo apt-get -y install ack-grep
-sudo apt-get -y install silversearcher-ag
-sudo apt-get -y install tree
-sudo apt-get -y install feh
 
-sudo apt-get -y install xsel #xsel -p to get primary clipboard, pipe to it to set primary
-sudo apt-get -y install xdotool #used with ~/.i3/runorfocus.py
-sudo apt-get -y install zsh
+function ask_yes_or_no() {
+    #found at http://stackoverflow.com/questions/1885525/how-do-i-prompt-a-user-for-confirmation-in-bash-script
+    #Usage example:
+    #if [[ "no" == $(ask_yes_or_no "Are you sure?") || \
+    #      "no" == $(ask_yes_or_no "Are you *really* sure?") ]]
+    #then
+    #    echo "Skipped."
+    #    exit 0
+    #fi
+    read -p "$1 [y]es/[N]o: "
+    case $(echo $REPLY | tr '[A-Z]' '[a-z]') in
+        y|yes) echo "yes" ;;
+        *)     echo "no" ;;
+    esac
+}
 
-sudo apt-get -y install zathura #pdf viewer with vim keybindings
-ZATHRCFILE=/etc/zathurarc
-[ ! -f $ZATHRCFILE ] \
-    && echo "writing $ZATHRCFILE" && echo "set scroll-step 100" > $ZATHRCFILE \
-    && xdg-mime default zathura.desktop application/pdf
+#Help function to see if a command exists
+command_exists () {
+  type "$1" >/dev/null 2>/dev/null
+}
 
-sudo apt-get -y install python-pip
-#sudo apt-get -y install texlive texlive-latex-base # Around 300 MB?
-#sudo apt-get -y install texlive-full  # 3 GB...
+if command_exists apt-get ; then
+    if [[ "yes" == $(ask_yes_or_no 'Install applications via apt-get?')  ]]
+    then
+        echo "Installing...."
+        ~/dotfiles/apt_get_installs.sh
+    else
+        echo "Not doing apt-get install."
+    fi
+    #Remove annoying folders that come with ubuntu
+    rmdir ~/Music
+    rmdir ~/Pictures
+    rmdir ~/Documents
+    rmdir ~/Videos
+    rmdir ~/Desktop
+fi
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    echo 'Detected OS X, calling ~/dotfiles/mac/initialsetup_mac.sh'
+    ~/dotfiles/mac/initialsetup_mac.sh
+fi
+
+#install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+echo 'Configuring git'
 git config --global user.email "rasmus.ansin@gmail.com"
 git config --global user.name "Rasmus Ansin"
 git config --global push.default simple
@@ -33,23 +54,9 @@ git config --global --replace-all core.pager "less -F -X"
 #Make a copy of the default ssh config
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
 
-#Remove annoying folders that come with ubuntu
-rmdir ~/Music
-rmdir ~/Pictures
-rmdir ~/Documents
-rmdir ~/Videos
-rmdir ~/Desktop
-
 #Create some default folders
+echo 'Creating some default folders'
 mkdir -p ~/.ssh
 mkdir -p ~/other
 mkdir -p ~/git/other
 mkdir -p ~/pyy
-#sudo apt-get -y install python-tk #used for clip.py
-
-##Installing i3-gaps. Needs i3 first!
-#sudo apt-get -y install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev
-#sudo apt-get -y install libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev
-#sudo apt-get -y install libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev
-#cd git/other/
-#git clone https://www.github.com/Airblader/i3 i3-gaps && cd i3-gaps && make && sudo make install
