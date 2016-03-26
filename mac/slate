@@ -47,4 +47,4 @@ bind m:${hyper}  ${righthalf}
 # These are laid out on the left hand
 #bind space:${hyper}  focus ${editor}
 bind f:${hyper}      focus 'Firefox'
-bind x:${hyper}      focus 'iTerm2'
+bind d:${hyper}      focus 'iTerm2'
