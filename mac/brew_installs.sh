@@ -30,6 +30,10 @@ brew install htop
 brew install tree
 brew install the_silver_searcher
 
+brew tap zegervdv/zathura
+brew install zathura
+brew install zathura-pdf-poppler
+
 # Python stuff
 pip install --upgrade pip
 brew install freetype
