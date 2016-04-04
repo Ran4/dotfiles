@@ -24,3 +24,7 @@ for file in $files; do
 done
 
 #ln -s /Users/ran/dotfiles/mac/slate /Users/ran/.slate
+
+#For some reasons, DefaultKeyBinding.dict can't be symlinked
+mkdir -p ~/Library/KeyBindings/
+cp ~/dotfiles/mac/DefaultKeyBinding.dict ~/Library/KeyBindings/
