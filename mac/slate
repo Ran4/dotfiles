@@ -33,7 +33,7 @@ bind l:${hyper}  focus right
 # These are laid out to be used with the right hand
 # and to complement the focus bindings
 #bind o:${hyper}  throw next
-bind i:${hyper}  ${full}
+bind o:${hyper}  ${full} #mnemonic "only"
 #bind ;:${hyper}  ${lefthalf}
 #bind ':${hyper}  ${righthalf}
 #bind y:${hyper}  ${topleft}
@@ -48,3 +48,4 @@ bind m:${hyper}  ${righthalf}
 #bind space:${hyper}  focus ${editor}
 bind f:${hyper}      focus 'Firefox'
 bind d:${hyper}      focus 'iTerm2'
+bind i:${hyper}      focus 'iTunes'

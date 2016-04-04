@@ -56,6 +56,7 @@ pip install pandas
 
 brew cask install xquartz
 
+brew install Caskroom/cask/anki
 
 # Things to install manually.
 # TODO: automate these things!
