@@ -3,4 +3,8 @@
     "^w" = "deleteWordBackward:";
     "~f" = "moveWordForward:";
     "~b" = "moveWordBackward:";
+    "^j" = "moveWordBackward:";
+    "^k" = "moveWordForward:";
+    "^J" = "moveWordBackwardAndModifySelection:";
+    "^K" = "moveWordForwardAndModifySelection:";
 }

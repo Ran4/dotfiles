@@ -61,6 +61,8 @@ pip install pandas
 brew cask install xquartz
 
 brew install Caskroom/cask/anki
+brew cask install flip4mac #Needed to play wmv files on OS X
+brew cask install silverlight
 
 # Things to install manually.
 # TODO: automate these things!
