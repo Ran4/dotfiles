@@ -15,6 +15,9 @@ omap a¨ a]
 nmap å [
 nmap ¨ ]
 
+"Helpers for OS X. TODO: Only activate this when using OS X.
+inoremap ± \
+
 "Helper for spell check: press <tab> on a word, <esc> to choose word
 nmap <s-tab> viw<esc>a<c-x>s<tab>
 nnoremap sus :set spell spelllang=en_us<cr>
@@ -304,6 +307,7 @@ color wombat256mod
 syntax enable
 " set background=dark
 " colorscheme solarized
+" colorscheme obsidian
 
 " highlight trailing spaces
 " Shortcut to rapidly toggle `set list`
