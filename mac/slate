@@ -49,5 +49,6 @@ bind m:${hyper}  ${righthalf}
 bind f:${hyper}      focus 'Firefox'
 bind d:${hyper}      focus 'iTerm2'
 bind i:${hyper}      focus 'iTunes'
+bind s:${hyper}      focus 'Spotify'
 
 bind r:${hyper}      relaunch

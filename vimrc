@@ -224,7 +224,7 @@ highlight SpellBad ctermbg=5
 "set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize
 set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
 
-" set bs=2 "Fix backspace. Uncomment this if needed...
+set bs=2 "Enable backspace to go past indent,eol,start
 
 set foldmethod=marker
 

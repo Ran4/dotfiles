@@ -64,6 +64,9 @@ brew install Caskroom/cask/anki
 brew cask install flip4mac #Needed to play wmv files on OS X
 brew cask install silverlight
 
+#fonts
+brew cask install caskroom/fonts/font-hack
+
 # Things to install manually.
 # TODO: automate these things!
 #Ukulele:
