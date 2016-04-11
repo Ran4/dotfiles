@@ -19,6 +19,7 @@ brew install openssh
 brew install rsync
 brew install unzip
 brew install python
+brew install python3
 brew install vim --override-system-vi
 brew install macvim
 #brew install macvim --override-system-vim --custom-system-icons
