@@ -68,6 +68,10 @@ brew cask install silverlight
 #fonts
 brew cask install caskroom/fonts/font-hack
 
+#Fixes problem with open in tmux (found at https://www.elmund.io/osx/2015/07/10/open-command-in-osx-tmux/)
+brew install reattach-to-user-namespace
+#echo "set -g default-command \"reattach-to-user-namespace -l ${SHELL}\"" >> ~/.tmux.conf
+
 # Things to install manually.
 # TODO: automate these things!
 #Ukulele:
