@@ -103,6 +103,11 @@ else #start a new server
 fi
 }
 
+#metal archives lyrics search: mly
+if [ -f ~/git/other/metallum/metallum.py ]; then
+    alias mly='python ~/git/other/metallum/metallum.py'
+fi
+
 alias rmpyc='rm *.pyc'
 alias rmswp='rm .*.swp'
 alias manvim='function _domanvim() { man $1 | vim -R -; }; _domanvim'
