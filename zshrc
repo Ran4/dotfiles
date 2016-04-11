@@ -42,6 +42,9 @@ plugins=(git vi-mode)
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+#Used for e.g. zsh:s edit-command-line (v in vi-mode)
+export EDITOR=vim
+
 #Don't autocomplete hosts.
 #Inspiration: https://tlvince.com/fixing-slow-zsh-command-completion
 zstyle ':completion:*' hosts off
