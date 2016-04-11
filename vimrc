@@ -17,6 +17,17 @@ nmap ¨ ]
 
 "Helpers for OS X. TODO: Only activate this when using OS X.
 inoremap ± \
+nnoremap dt± dt\
+nnoremap dT± dT\
+nnoremap df± df\
+nnoremap dF± dF\
+nnoremap t± t\
+nnoremap T± T\
+nnoremap f± f\
+nnoremap F± F\
+cnoremap ± \
+
+inoremap <€ <c-w>
 
 "Helper for spell check: press <tab> on a word, <esc> to choose word
 nmap <s-tab> viw<esc>a<c-x>s<tab>
@@ -391,6 +402,7 @@ function New_cisqb()
 endfunction
 
 nnoremap ci{ :call New_cisqb()<CR>
+nnoremap ciB :call New_cisqb()<CR>
 nnoremap ci} :call New_cisqb()<CR>
 nnoremap cis :call New_cisqb()<CR>
 
@@ -435,9 +447,6 @@ endif
 
 """braceless adds text objects, folding and more for many braceless languages such as Python
 "!git clone https://github.com/tweekmonster/braceless.vim ~/.vim/bundle/braceless
-
-""Clever-f allows f/F to be pressed to repeat previous f/F search
-"!git clone https://github.com/rhysd/clever-f.vim
 
 """commentary.vim - comment things out with gc+{motion} and more
 "!git clone https://github.com/tpope/vim-commentary ~/.vim/bundle/vim-commentary

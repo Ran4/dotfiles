@@ -3,6 +3,10 @@ imap å [
 imap ¨ ]
 imap Å {
 imap ^ }
+cmap å [
+cmap ¨ ]
+cmap Å {
+cmap ^ }
 inoremap zå å
 inoremap z¨ ¨
 inoremap zÅ Å
