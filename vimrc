@@ -16,16 +16,6 @@ nmap å [
 nmap ¨ ]
 
 "Helpers for OS X. TODO: Only activate this when using OS X.
-inoremap ± \
-nnoremap dt± dt\
-nnoremap dT± dT\
-nnoremap df± df\
-nnoremap dF± dF\
-nnoremap t± t\
-nnoremap T± T\
-nnoremap f± f\
-nnoremap F± F\
-cnoremap ± \
 
 inoremap <€ <c-w>
 
