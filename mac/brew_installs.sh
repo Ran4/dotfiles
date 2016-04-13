@@ -40,6 +40,8 @@ pip install --upgrade pip
 brew install freetype
 brew install libxml2
 
+pip install virtualenv
+
 # Pygame:
 brew tap Homebrew/python
 brew update
