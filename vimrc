@@ -466,7 +466,7 @@ endif
 ""}}}
 
 """ctrl-p is a fuzzy file finder
-"!git clone https://github.com/kien/ctrlp.vim ~/.vim/bundle/ctrlp.vim
+"!git clone https://github.com/ctrlpvim/ctrlp.vim ~/.vim/bundle/ctrlp.vim
 
 """easy-motion
 "!git clone https://github.com/easymotion/vim-easymotion ~/.vim/bundle/vim-easymotion
