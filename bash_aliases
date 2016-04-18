@@ -9,6 +9,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     #'Running GNU coreutils via Homebrew on your Mac? Here's a one-liner to get the manpages working!'
     #https://gist.github.com/quickshiftin/9130153
     alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _'
+    alias sort='gsort'
 fi
 
 alias ll='ls --group-directories-first -l'
@@ -21,6 +22,7 @@ alias lg='ls -lAh | ack -i'
 alias gits='git status'
 #eg. '* 3624854 (HEAD, master) Added gitconfig (23 minutes ago) <Rasmus Ansin>' but colored
 alias gl='git log -n 10 --graph --pretty=format:"%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
+alias ghostscript='/opt/local/bin/gs'
 alias gs='git status'
 alias gc='git commit'
 alias gp='git push'

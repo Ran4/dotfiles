@@ -52,5 +52,6 @@ bind i:${hyper}      focus 'iTunes'
 bind s:${hyper}      focus 'Spotify'
 bind x:${hyper}      focus 'Finder'
 bind c:${hyper}      focus 'Preview'
+bind v:${hyper}      focus 'VLC'
 
 bind r:${hyper}      relaunch
