@@ -489,6 +489,9 @@ endif
 ""supertab, adds <Tab> for tab completion
 "!git clone git://github.com/ervandew/supertab ~/.vim/bundle/supertab
 
+""syntastic, inline syntax checking for vim
+"!git clone https://github.com/scrooloose/syntastic.git ~/.vim/bundle/syntastic
+
 ""surround: use e.g. ds( to delete surrounding (
 "!git clone git://github.com/tpope/vim-surround.git
 

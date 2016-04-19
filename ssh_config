@@ -1,6 +1,10 @@
 Host kth
 	HostName u-shell.csc.kth.se
 	User ransin
+Host eps
+	HostName epsilon.nordlinglab.org
+	Port 2222
+	User ran
 Host bb
 	HostName bitbucket.org
 	User git

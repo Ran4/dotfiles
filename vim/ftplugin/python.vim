@@ -2,7 +2,7 @@
 source ~/.vim/ftplugin/remap_to_brackets.vim
 
 "Initially, only use the 'python' checker, which warns much less than pylint
-let g:syntastic_python_checkers=['python']
+let g:syntastic_python_checkers=['python', 'pep8']
 let g:syntastic_always_populate_loc_list = 1
 "Manually set linters:
 "nnoremap <leader>l :let g:syntastic_python_checkers=['python', 'pylint']
