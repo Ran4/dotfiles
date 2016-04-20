@@ -51,6 +51,59 @@ nmap di¨ di]
 nmap diÅ di{
 nmap di^ di}
 
+"deletion with df, dF, dt, dT
+nmap dfå df[
+nmap df¨ df]
+nmap dfÅ df{
+nmap df^ df}
+
+nmap dFå dF[
+nmap dF¨ dF]
+nmap dFÅ dF{
+nmap dF^ dF}
+
+nmap dtå dt[
+nmap dt¨ dt]
+nmap dtÅ dt{
+nmap dt^ dt}
+
+nmap dTå dT[
+nmap dT¨ dT]
+nmap dTÅ dT{
+nmap dT^ dT}
+
+"change with ci, ca
+nmap caå ca[
+nmap ca¨ ca]
+nmap caÅ ca{
+nmap ca^ ca}
+
+nmap ciå ci[
+nmap ci¨ ci]
+nmap ciÅ ci{
+nmap ci^ ci}
+
+"change with cf, cF, ct, cT
+nmap cfå cf[
+nmap cf¨ cf]
+nmap cfÅ cf{
+nmap cf^ cf}
+
+nmap cFå cF[
+nmap cF¨ cF]
+nmap cFÅ cF{
+nmap cF^ cF}
+
+nmap ctå ct[
+nmap ct¨ ct]
+nmap ctÅ ct{
+nmap ct^ ct}
+
+nmap cTå cT[
+nmap cT¨ cT]
+nmap cTÅ cT{
+nmap cT^ cT}
+
 "vim-surround
 nmap dså ds[
 nmap ds¨ ds]

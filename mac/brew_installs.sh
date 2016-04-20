@@ -60,6 +60,7 @@ brew link numpy
 brew install homebrew/python/matplotlib
 
 pip install pandas
+pip install pep8
 
 #Brew cask installs
 brew cask install xquartz
@@ -67,12 +68,13 @@ brew cask install xquartz
 brew install Caskroom/cask/anki
 brew cask install flip4mac #Needed to play wmv files on OS X
 brew cask install silverlight
+brew cask install vlc
+brew cask install broomstick #Hide menu bar items
+brew cask install slack #The chat program
 
 #fonts
 brew cask install caskroom/fonts/font-hack
 
-brew cask install vlc
-brew cask install broomstick #Hide menu bar items
 
 #Fixes problem with open in tmux (found at https://www.elmund.io/osx/2015/07/10/open-command-in-osx-tmux/)
 brew install reattach-to-user-namespace
