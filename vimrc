@@ -307,8 +307,10 @@ color wombat256mod
 
 syntax enable
 " set background=dark
-" colorscheme solarized
+" colorscheme breeze_ranmod
 " colorscheme obsidian
+" colorscheme solarized
+" colorscheme harlequin
 
 " highlight trailing spaces
 " Shortcut to rapidly toggle `set list`
