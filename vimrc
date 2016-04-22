@@ -294,23 +294,19 @@ set showbreak=↪
 set shortmess+=I
 "}}}
 "{{{ COLORS AND HIGHLIGHTING
-
 set t_Co=256
-
-" Color scheme
 " mkdir -p ~/.vim/colors
 " cd ~/.vim/colors
-" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
+" wget -O ~/.vim/colors/wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 color wombat256mod
-"color lilypink
-"color wintersday
-
-syntax enable
 " set background=dark
+" colorscheme luna-term
+" colorscheme wintersday
 " colorscheme breeze_ranmod
 " colorscheme obsidian
 " colorscheme solarized
 " colorscheme harlequin
+syntax enable
 
 " highlight trailing spaces
 " Shortcut to rapidly toggle `set list`
