@@ -67,6 +67,10 @@ echo -e "${LBLUE}Creating symlink to ~/.ssh/config (ln -s $dir/ssh_config ~/.ssh
 ln -s $dir/ssh_config ~/.ssh/config
 echo "...done"
 
+echo -e "${LBLUE}Creating nowplaying.sh symlink to /usr/bin (ln -s $dir/scripts/ /usr/bin/nowplaying)${NC}"
+sudo ln -s $dir/scripts/nowplaying.sh  /usr/bin/nowplaying
+echo "...done"
+
 echo -e "${LBLUE}Copying sunrise-modified-ran.zsh-theme file to ~/.oh-my-zsh/themes/${NC}"
 cp $dir/oh-my-zsh/themes/sunrise-modified-ran.zsh-theme ~/.oh-my-zsh/themes/
 

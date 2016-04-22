@@ -108,6 +108,10 @@ fi
 #metal archives lyrics search: mly
 if [ -f ~/git/other/metallum/metallum.py ]; then
     alias mly='python ~/git/other/metallum/metallum.py'
+    
+    if [ -f ~/dotfiles/scripts/mly_nowplaying.sh ]; then
+        alias ly='~/dotfiles/scripts/mly_nowplaying.sh'
+    fi
 fi
 
 alias rmpyc='rm *.pyc'
