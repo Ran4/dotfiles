@@ -31,15 +31,17 @@ brew install wget
 brew install htop
 brew install tree
 brew install the_silver_searcher
+brew install ack
 
 ################################################################################
 # Python installs
 ################################################################################
 pip install --upgrade pip
+pip install virtualenv
+pip install bpython
 brew install freetype
 brew install libxml2
 
-pip install virtualenv
 
 brew tap Homebrew/python
 brew install Homebrew/python/pygame
