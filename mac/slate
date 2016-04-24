@@ -49,7 +49,7 @@ bind m:${hyper}  ${righthalf}
 bind f:${hyper}      focus 'Firefox'
 bind d:${hyper}      focus 'iTerm2'
 bind i:${hyper}      focus 'iTunes'
-bind s:${hyper}      focus 'Spotify'
+bind s:${hyper}      focus 'Skype'
 bind x:${hyper}      focus 'Finder'
 bind c:${hyper}      focus 'Preview'
 bind v:${hyper}      focus 'VLC'
