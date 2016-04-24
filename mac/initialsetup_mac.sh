@@ -18,11 +18,24 @@ function ask_yes_or_no() {
 #Disable opening and closing window animations
 defaults write GlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 
+#Disable animations when opening a Quick Look window
+defaults write -g QLPanelAnimationDuration -float 0
+
+#Disable animations when you open an application from the Dock.
+defaults write com.apple.dock launchanim -bool false
+
 #Increase window resize speed for Cocoa applications.
 defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 
 #Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1
+
+#Disable the delay when you hide the Dock
+defaults write com.apple.Dock autohide-delay -float 0
+
+#Disable the standard delay in rendering a web page in Safari.
+defaults write com.apple.Safari WebKitInitialTimedLayoutDelay 0.25
+
 #################
 
 #Increase keyboard repeat speed
