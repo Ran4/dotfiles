@@ -271,7 +271,8 @@ if has("gui_running")
     "Good with the itsalltext Firefox plugin
     inoremap <s-cr> <esc>ZZ
 else
-    set mouse=n "only use mouse in visual mode
+    "set mouse=n "only use mouse in visual mode
+    set mouse=
 endif
 
 set timeout
@@ -633,9 +634,6 @@ xmap <silent> ( <Plug>(vertical_move_up)
 " Start pathogen
 execute pathogen#infect()
 
-" Add fzf to RunTimePath
-set rtp+=~/.fzf
-nnoremap <leader>f :FZF<cr>
 "END OF PLUGIN CONFIGURATION }}}
 
 function! s:AppendCharEOL()
