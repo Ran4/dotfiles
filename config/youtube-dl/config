@@ -1,0 +1,2 @@
+--restrict-filenames
+-o /tmp/%(title)s.%(ext)s

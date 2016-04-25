@@ -17,7 +17,7 @@ NC='\033[0m'
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="agignore bashrc bash_aliases bash_setprompt dircolors gitconfig gitignore_global vimrc vim xcape_config Xresources lesskey tmux.conf i3 hhighlighter.sh custom/kth_tmux.conf custom/ranl412_tmux.conf zshrc oh-my-zsh/plugins/git/git.plugin.zsh fonts pylintrc pep8"
+files="agignore bashrc bash_aliases bash_setprompt dircolors gitconfig gitignore_global vimrc vim xcape_config Xresources lesskey tmux.conf hhighlighter.sh custom/kth_tmux.conf custom/ranl412_tmux.conf zshrc oh-my-zsh/plugins/git/git.plugin.zsh pylintrc pep8 config/youtube-dl"
 
 ##########
 
