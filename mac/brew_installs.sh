@@ -33,6 +33,8 @@ brew install tree
 brew install the_silver_searcher
 brew install ack
 
+brew install youtube-dl
+
 ################################################################################
 # Python installs
 ################################################################################
