@@ -84,7 +84,8 @@ hi Normal        ctermfg=254 ctermbg=234 cterm=NONE
 " The Languages stuff
 hi Title         ctermfg=195 ctermbg=NONE cterm=NONE
 " ---------------------------------------------------------------------
-hi Comment       ctermfg=240  ctermbg=NONE cterm=NONE
+"hi Comment       ctermfg=240  ctermbg=NONE cterm=NONE
+hi Comment       ctermfg=248  ctermbg=NONE cterm=NONE
 " ---------------------------------------------------------------------
 hi Constant      ctermfg=227  ctermbg=NONE cterm=NONE
 hi String        ctermfg=74   ctermbg=NONE cterm=NONE
@@ -97,7 +98,8 @@ hi Identifier    ctermfg=37   ctermbg=NONE cterm=NONE
 hi Function      ctermfg=37   ctermbg=NONE cterm=NONE
 " ---------------------------------------------------------------------
 hi Statement     ctermfg=204  ctermbg=NONE cterm=NONE
-hi Conditional   ctermfg=184  ctermbg=NONE cterm=NONE
+"hi Conditional   ctermfg=184  ctermbg=NONE cterm=NONE
+hi Conditional   ctermfg=209  ctermbg=NONE cterm=NONE
 hi Operator      ctermfg=202  ctermbg=NONE cterm=NONE
 hi Exception     ctermfg=184  ctermbg=NONE cterm=NONE
 " ---------------------------------------------------------------------
@@ -159,20 +161,10 @@ hi SignColumn   ctermfg=NONE ctermbg=234  cterm=NONE
 " on more awesome, and fun to work with !)
 " ---------------------------------------------------------------------
 " Python Specifics
-hi pythonDot                ctermfg=161 ctermbg=NONE cterm=NONE
+"hi pythonDot                ctermfg=161 ctermbg=NONE cterm=NONE
 hi pythonParameters         ctermfg=149 ctermbg=NONE cterm=NONE
 hi pythonClassParameters    ctermfg=149 ctermbg=NONE cterm=NONE
 hi pythonClass              ctermfg=37  ctermbg=NONE cterm=NONE
-"
-" ---------------------------------------------------------------------
-"  Ruby Specifics
-hi rubyInterpolation      ctermfg=203 ctermbg=NONE cterm=NONE
-hi rubyMethodBlock        ctermfg=216 ctermbg=NONE cterm=NONE
-hi rubyCurlyBlock         ctermfg=204 ctermbg=NONE cterm=NONE
-hi rubyDoBlock            ctermfg=204 ctermbg=NONE cterm=NONE
-hi rubyBlockExpression    ctermfg=204 ctermbg=NONE cterm=NONE
-hi rubyArrayDelimiter     ctermfg=37  ctermbg=NONE cterm=NONE
-"
 " ---------------------------------------------------------------------
 "
 " }}}
