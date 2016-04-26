@@ -115,11 +115,13 @@ hi Underlined    ctermfg=111  ctermbg=NONE cterm=NONE
 hi Error         ctermfg=88   ctermbg=214 cterm=NONE
 " ---------------------------------------------------------------------
 hi TODO          ctermfg=198  ctermbg=228 cterm=NONE
+"hi TODO          ctermfg=255  ctermbg=9 cterm=NONE
 
 " ---------------------------------------------------------------------
 " Extended Highlighting
 
-hi NonText      ctermfg=244  ctermbg=NONE cterm=NONE
+"hi NonText      ctermfg=244  ctermbg=NONE cterm=NONE
+hi NonText      ctermfg=240  ctermbg=0 cterm=NONE
 hi Visual       ctermfg=235  ctermbg=227  cterm=NONE
 hi ErrorMsg     ctermfg=88   ctermbg=214  cterm=NONE
 hi IncSearch    ctermfg=235  ctermbg=208  cterm=NONE
