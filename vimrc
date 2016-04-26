@@ -539,6 +539,12 @@ let g:braceless_block_key = 'p'
 "use CtrlP to quickly switch between buffers
 nnoremap <b :CtrlPBuffer<cr>
 
+" The dir one means /__pycache__ OR /.git OR /.hg OR /.svn
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](__pycache__|\.(git|hg|svn))$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
+
 ""incsearch configuration
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
