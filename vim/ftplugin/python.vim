@@ -31,7 +31,7 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 
-set wildignore+=*.pyc,*__pycache__*
+set wildignore+=*.pyc,__pycache__
 
 iabbrev adn and
 iabbrev pritn print

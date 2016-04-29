@@ -105,7 +105,14 @@ imap Jk <esc>
 "nnoremap E $
 "noremap L $
 "nnoremap H ^
+
+" We're more often interested in completing previous command rather than
+" seeing the previous one
 cnoremap <c-a> <home>
+cnoremap <c-p> <up>
+cnoremap <c-n> <down>
+cnoremap <up> <c-p>
+cnoremap <down> <c-n>
 
 "Don't wait as long in insert mode (to enable us to quickly type j and k)
 if has("autocmd")
@@ -271,8 +278,14 @@ if has("gui_running")
     "Good with the itsalltext Firefox plugin
     inoremap <s-cr> <esc>ZZ
 else
-    "set mouse=n "only use mouse in visual mode
-    set mouse=
+    set mouse=n "only use mouse in visual mode
+    "set mouse=
+    set ttymouse=xterm2 "xterm2 to support resizing with mouse
+    
+    " workaround: enables mouse resize but helps with accidental clicks moving
+    " the cursor
+    nnoremap <LeftMouse> m'<LeftMouse>
+    nnoremap <LeftRelease> <LeftRelease>g``
 endif
 
 set timeout
