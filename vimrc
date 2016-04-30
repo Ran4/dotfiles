@@ -155,6 +155,9 @@ nnoremap ' `
 vnoremap ` '
 vnoremap ' `
 
+nnoremap Q :q
+nnoremap QQ Q
+
 " Quickly replay a record
 "nnoremap Q @q
 
@@ -247,6 +250,9 @@ set exrc
 
 "Toggles paste mode
 set pastetoggle=<F2>
+
+"Fixes slow responsiveness when scrolling in terms like iTerm(?)
+set lazyredraw
 
 set incsearch "search as characters are entered
 set ignorecase "ignore case when searching
