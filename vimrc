@@ -20,13 +20,10 @@ nmap ¨ ]
 inoremap <€ <c-w>
 
 "Helper for spell check: press <tab> on a word, <esc> to choose word
-nmap <s-tab> viw<esc>a<c-x>s<tab>
-nnoremap sus :set spell spelllang=en_us<cr>
-nnoremap sgb :set spell spelllang=en_gb<cr>
-
-"buffer splitting
-nnoremap sbn :sbn<cr>
-nnoremap sbv :vert sbn<cr>
+"nmap <s-tab> viw<esc>a<c-x>s<tab>
+nmap <s-tab> viw<esc>a<c-x>s
+nnoremap Sus :set spell spelllang=en_us<cr>
+nnoremap Sgb :set spell spelllang=en_gb<cr>
 
 "Buffer shortcuts: open new, next, prev, delete
 nnoremap <b :b <c-d>
@@ -578,12 +575,12 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 ""EasyMotion configuration
-nnoremap S s
+"nnoremap S s
 "if exists('g:EasyMotion_loaded')
 "Without this, bundle/vim-easymotion/plugin/EasyMotion.vim:237 will set
 "the easymotion-prefix to <leader><leader>, which is not wanted
 map <Leader><Leader><Leader> <Plug>(easymotion-prefix)
-map s <Plug>(easymotion-s)
+map S <Plug>(easymotion-s)
 "map / <Plug>(easymotion-sn)
 "map ? <Plug>(easymotion-tn)
 "map ö <Plug>(easymotion-sn)

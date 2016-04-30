@@ -93,6 +93,9 @@ elseif exists("b:current_syntax")
   finish
 endif
 
+" Set default syntax to Python 2 (added by Ran)
+let b:python_version_2 = 1
+
 "
 " Commands
 "
