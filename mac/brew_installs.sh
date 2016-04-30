@@ -77,6 +77,7 @@ brew cask install vlc
 brew cask install broomstick #Hide menu bar items
 brew cask install slack #The chat program
 brew cask install mendeley-desktop
+brew cask install transmission #The torrent client
 
 ################################################################################
 # Fixes
