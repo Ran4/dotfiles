@@ -20,10 +20,11 @@ nmap ¨ ]
 inoremap <€ <c-w>
 
 "Helper for spell check: press <tab> on a word, <esc> to choose word
-"nmap <s-tab> viw<esc>a<c-x>s<tab>
-nmap <s-tab> viw<esc>a<c-x>s
-nnoremap Sus :set spell spelllang=en_us<cr>
-nnoremap Sgb :set spell spelllang=en_gb<cr>
+nmap <s-tab> viw<esc>a<c-x>s<tab>
+"nmap <s-tab> viw<esc>a<c-x>s
+nnoremap gsus :set spell spelllang=en_us<cr>
+nnoremap gsgb :set spell spelllang=en_gb<cr>
+nnoremap gss :set nospell<cr>
 
 "Buffer shortcuts: open new, next, prev, delete
 nnoremap <b :b <c-d>
@@ -69,6 +70,7 @@ nnoremap <leader>: "xy:<c-r>x<bs>
 nnoremap <leader>ei :vert split ~/.i3/config<CR>
 
 nnoremap <leader><leader>n :set number!<CR>
+nnoremap <leader><leader>p :set paste<cr>"+p:set nopaste<cr>
 
 " Prepends # to line and goes down, Q removes then
 nnoremap <leader>q I#<esc>j
@@ -225,6 +227,7 @@ set softtabstop=4 "Number of spaces in tab when editing
 
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
+set fillchars=
 set expandtab "Expands tabs into spaces
 
 highlight SpellBad ctermbg=5
@@ -249,7 +252,7 @@ set exrc
 set pastetoggle=<F2>
 
 "Fixes slow responsiveness when scrolling in terms like iTerm(?)
-set lazyredraw
+"set lazyredraw
 
 set incsearch "search as characters are entered
 set ignorecase "ignore case when searching
@@ -266,10 +269,14 @@ if has("gui_running")
     "set guifont=ProggySquareTT\ 12
     "set guifont=ProggyTinyTT\ 12
     "set guifont=Monospace\ 11
-    set guifont=Monospace\ Regular\ 10
+    if has("gui_macvim")
+        set guifont=Menlo\ Regular:h14
+    else
+        set guifont=Monospace\ Regular\ 10
+    endif
     "set guifont=
     set antialias
-    
+
     nnoremap <leader><leader>1 :set guifont=Terminus\ 9<cr>
     nnoremap <leader><leader>2 :set guifont=Terminus\ 10<cr>
     nnoremap <leader><leader>3 :set guifont=Terminus\ 11<cr>
@@ -281,14 +288,14 @@ if has("gui_running")
     "Good with the itsalltext Firefox plugin
     inoremap <s-cr> <esc>ZZ
 else
-    set mouse=n "only use mouse in visual mode
-    "set mouse=
+    "set mouse=n "only use mouse in visual mode
+    set mouse=
     set ttymouse=xterm2 "xterm2 to support resizing with mouse
     
     " workaround: enables mouse resize but helps with accidental clicks moving
     " the cursor
-    nnoremap <LeftMouse> m'<LeftMouse>
-    nnoremap <LeftRelease> <LeftRelease>g``
+    "nnoremap <LeftMouse> m'<LeftMouse>
+    "nnoremap <LeftRelease> <LeftRelease>g``set guifont=Menlo\ Regular:h14
 endif
 
 set timeout
@@ -302,7 +309,7 @@ set history=1000
 set laststatus=2 "always show statusbar. 1 means 'only when 2+ windows open'
 
 "always keep at a few lines at the top/bottom shown when moving around
-set scrolloff=4
+""set scrolloff=4
 
 "Show this char when wrapping text
 set showbreak=↪
@@ -562,13 +569,13 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 ""incsearch configuration
-map /  <Plug>(incsearch-forward)
+"map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
 let g:incsearch#auto_nohlsearch = 1
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
+"map n  <Plug>(incsearch-nohl-n)
+"map N  <Plug>(incsearch-nohl-N)
 map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
@@ -611,26 +618,29 @@ let g:jedi#show_call_signatures_delay = 0
 
 
 ""lightline configuration
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'filename'],
-      \             [ 'fugitive', 'modified', 'readonly']]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"RO":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"*":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-      \ },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '|', 'right': '|' }
-      \ }
+"let g:lightline = {
+"      \ 'colorscheme': 'wombat',
+"      \ 'active': {
+"      \   'left': [ [ 'mode', 'paste' ],
+"      \             [ 'filename'],
+"      \             [ 'fugitive', 'modified', 'readonly']]
+"      \ },
+"      \ 'component': {
+"      \   'readonly': '%{&filetype=="help"?"":&readonly?"RO":""}',
+"      \   'modified': '%{&filetype=="help"?"":&modified?"*":&modifiable?"":"-"}',
+"      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+"      \ },
+"      \ 'component_visible_condition': {
+"      \   'readonly': '(&filetype!="help"&& &readonly)',
+"      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+"      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+"      \ },
+"      \ 'separator': { 'left': '⮀', 'right': '⮂' },
+"      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+"      \ }
+"
+"      "\ 'separator': { 'left': '', 'right': '' },
+"      "\ 'subseparator': { 'left': '|', 'right': '|' }
 
 ""netrw configuration
 "gx will open file using xdg-open
