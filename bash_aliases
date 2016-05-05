@@ -113,6 +113,9 @@ if [ -f ~/git/other/metallum/metallum.py ]; then
         alias ly='~/dotfiles/scripts/mly_nowplaying.sh'
     fi
 fi
+if [ -f ~/git/other/metallum/metallum.py ]; then
+    alias lya='clear && ~/dotfiles/scripts/lyrics_shower.py'
+fi
 
 alias rmpyc='rm *.pyc'
 alias rmswp='rm .*.swp'
@@ -121,6 +124,7 @@ alias vims='vim -S .vimsession'
 alias vim3='vim -c "vert resize 80" -c "wincmd w" -c "vert resize 80" -c "wincmd W" -O3'
 alias vim4="vim -c 'bel vert sbuf 2' -c '1wincmd w' -c 'bel sbuf 3' -c '3wincmd w' -c 'bel sbuf 4'"
 alias vims='vim -S .vimsession'
+alias vim='vim -O' #open multiple files as vertical splits by default
 alias :q='exit'
 alias :Q='exit'
 alias :qa='exit'
