@@ -1,9 +1,5 @@
 {
-  "Ansi 0 Color" : {
-    "Green Component" : 0,
-    "Red Component" : 0,
-    "Blue Component" : 0
-  },
+  "Use Non-ASCII Font" : true,
   "Tags" : [
 
   ],
@@ -12,22 +8,33 @@
     "Red Component" : 0.3333333432674408,
     "Blue Component" : 1
   },
-  "Normal Font" : "Menlo-Regular 14",
-  "Custom Directory" : "No",
+  "Ansi 7 Color" : {
+    "Green Component" : 0.7333333492279053,
+    "Red Component" : 0.7333333492279053,
+    "Blue Component" : 0.7333333492279053
+  },
+  "Ansi 8 Color" : {
+    "Green Component" : 0.3333333432674408,
+    "Red Component" : 0.3333333432674408,
+    "Blue Component" : 0.3333333432674408
+  },
   "Bold Color" : {
     "Green Component" : 1,
     "Red Component" : 1,
     "Blue Component" : 1
   },
-  "Ansi 4 Color" : {
+  "Ansi 9 Color" : {
+    "Green Component" : 0.3333333432674408,
+    "Red Component" : 1,
+    "Blue Component" : 0.3333333432674408
+  },
+  "Triggers" : [
+
+  ],
+  "Ansi 0 Color" : {
     "Green Component" : 0,
     "Red Component" : 0,
-    "Blue Component" : 0.7333333492279053
-  },
-  "Ansi 6 Color" : {
-    "Green Component" : 0.7333333492279053,
-    "Red Component" : 0,
-    "Blue Component" : 0.7333333492279053
+    "Blue Component" : 0
   },
   "Rows" : 40,
   "Default Bookmark" : "No",
@@ -61,14 +68,14 @@
   ],
   "Working Directory" : "\/Users\/ran",
   "Blinking Cursor" : true,
-  "Disable Window Resizing" : true,
+  "Space" : 0,
   "Sync Title" : false,
   "Prompt Before Closing 2" : false,
   "BM Growl" : true,
+  "Mouse Reporting" : true,
   "Command" : "",
   "Description" : "Default",
-  "Space" : 0,
-  "Mouse Reporting" : true,
+  "Disable Window Resizing" : true,
   "Screen" : -1,
   "Selection Color" : {
     "Green Component" : 0.8353000283241272,
@@ -85,7 +92,7 @@
   "Custom Command" : "No",
   "ASCII Anti Aliased" : true,
   "Non Ascii Font" : "Monaco 12",
-  "Vertical Spacing" : 0.8363387142319278,
+  "Vertical Spacing" : 0.8360257435993974,
   "Use Bold Font" : true,
   "Option Key Sends" : 2,
   "Selected Text Color" : {
@@ -278,13 +285,60 @@
   "Blur" : false,
   "Blink Allowed" : false,
   "Cursor Boost" : 0,
-  "Scrollback Lines" : 50000,
+  "Scrollback Lines" : 10000,
   "Send Code When Idle" : false,
   "Close Sessions On End" : true,
   "Terminal Type" : "xterm-256color",
   "Visual Bell" : true,
   "Flashing Bell" : false,
   "Silence Bell" : true,
+  "Smart Selection Rules" : [
+    {
+      "notes" : "Word bounded by whitespace",
+      "regex" : "\\S+",
+      "precision" : "low"
+    },
+    {
+      "notes" : "C++ namespace::identifier",
+      "regex" : "([a-zA-Z0-9_]+::)+[a-zA-Z0-9_]+",
+      "precision" : "normal"
+    },
+    {
+      "notes" : "Paths",
+      "regex" : "\\~?\/?([[:letter:][:number:]._-]+\/+)+[[:letter:][:number:]._-]+\/?",
+      "precision" : "normal"
+    },
+    {
+      "notes" : "Quoted string",
+      "regex" : "@?\"(?:[^\"\\\\]|\\\\.)*\"",
+      "precision" : "normal"
+    },
+    {
+      "notes" : "Java\/Python include paths",
+      "regex" : "([[:letter:][:number:]._]+\\.)+[[:letter:][:number:]._]+",
+      "precision" : "normal"
+    },
+    {
+      "notes" : "mailto URL",
+      "regex" : "\\bmailto:([a-z0-9A-Z_]+@)?([a-zA-Z0-9\\-]+\\.)*[a-zA-Z0-9\\-]+\\b",
+      "precision" : "normal"
+    },
+    {
+      "notes" : "email address",
+      "regex" : "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}\\b",
+      "precision" : "high"
+    },
+    {
+      "notes" : "HTTP URL",
+      "regex" : "https?:\/\/([a-z0-9A-Z]+(:[a-zA-Z0-9]+)?@)?[-a-z0-9A-Z\\-]+(\\.[-a-z0-9A-Z\\-]+)*((:[0-9]+)?)(\/[a-zA-Z0-9;:\/\\.\\-_+%~?&@=#\\(\\)]*)?",
+      "precision" : "very_high"
+    },
+    {
+      "notes" : "SSH URL",
+      "regex" : "\\bssh:([a-z0-9A-Z_]+@)?([a-zA-Z0-9\\-]+\\.)*[a-zA-Z0-9\\-]+\\b",
+      "precision" : "very_high"
+    }
+  ],
   "Ansi 14 Color" : {
     "Green Component" : 1,
     "Red Component" : 0.3333333432674408,
@@ -322,26 +376,22 @@
     "Red Component" : 0.7333333492279053,
     "Blue Component" : 0.7333333492279053
   },
-  "Use Non-ASCII Font" : false,
-  "Ansi 7 Color" : {
+  "Ansi 6 Color" : {
     "Green Component" : 0.7333333492279053,
-    "Red Component" : 0.7333333492279053,
+    "Red Component" : 0,
     "Blue Component" : 0.7333333492279053
   },
-  "Ansi 8 Color" : {
-    "Green Component" : 0.3333333432674408,
-    "Red Component" : 0.3333333432674408,
-    "Blue Component" : 0.3333333432674408
-  },
-  "Ansi 9 Color" : {
-    "Green Component" : 0.3333333432674408,
-    "Red Component" : 1,
-    "Blue Component" : 0.3333333432674408
-  },
-  "Right Option Key Sends" : 0,
   "Ansi 2 Color" : {
     "Green Component" : 0.7333333492279053,
     "Red Component" : 0,
     "Blue Component" : 0
-  }
+  },
+  "Normal Font" : "Menlo-Regular 14",
+  "Custom Directory" : "No",
+  "Ansi 4 Color" : {
+    "Green Component" : 0,
+    "Red Component" : 0,
+    "Blue Component" : 0.7333333492279053
+  },
+  "Right Option Key Sends" : 0
 }
