@@ -134,9 +134,7 @@ cmap QA! qa!
 cmap FTP ~/.vim/ftplugin/<c-d>
 cmap BUN ~/.vim/bundle/<c-d>
 
-
-nnoremap + <C-a>
-nnoremap - <C-x>
+nnoremap - /
 
 "0 is much easier to reach than ^ on many non-US layouts
 nnoremap 0 ^
@@ -226,7 +224,8 @@ set shiftwidth=4
 set softtabstop=4 "Number of spaces in tab when editing
 
 " Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
+"set list
+set listchars=tab:▸▸,eol:¬
 set fillchars=
 set expandtab "Expands tabs into spaces
 
@@ -615,8 +614,6 @@ let g:jedi#smart_auto_mappings = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures_delay = 0
 
-
-
 ""lightline configuration
 "let g:lightline = {
 "      \ 'colorscheme': 'wombat',
@@ -650,12 +647,26 @@ let g:netrw_browsex_viewer="xdg-open"
 ""alt-d will disable ä so remove the meta-bindings
 let g:rsi_no_meta = 1
 
-" syntastic, for syntax higlighting
-" GIT CLONE LINK GOES HERE?
+"" Syntastic configuration {{{
+let g:syntastic_mode_map = {
+    \ "mode": "passive",
+    \ "active_filetypes": [],
+    \ "passive_filetypes": [] }
+
+" Use .django.pylintrc to enable Syntastic for Django files
+autocmd FileType python
+    \ if search('^from django', 'npw') |
+    \ let g:syntastic_python_pylint_args="--rcfile=~/.django.pylintrc" |
+    \ endif
+
+"    \ let g:syntastic_python_pylint_args="--rcfile=$XDG_CONFIG_HOME/pylint/django.pylintrc" |
+
 "let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++ -g -Wall'
 "let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
+nnoremap <leader>c :SyntasticCheck<cr>
+""}}}
 ""vim-vertical-move configuration
 let g:vertical_move_default_mapping = 0
 nmap <silent> ) <Plug>(vertical_move_down)
