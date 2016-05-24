@@ -64,3 +64,4 @@ endif
 
 set foldmethod=marker
 norm zR
+set linebreak

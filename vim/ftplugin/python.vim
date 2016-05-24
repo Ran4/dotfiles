@@ -16,6 +16,10 @@ nnoremap <leader>P :!clear && python3 %<cr>
 nnoremap <leader>i :!python -i %<cr>
 nnoremap <leader>I :!python3 -i %<cr>
 
+
+nnoremap <localleader>rr :source ~/.vim/ftplugin/python.vim<cr>
+nnoremap <localleader>t :r ~/.vim/snippets/snippet_python3_test.py<cr>
+
 if exists('+colorcolumn')
     set colorcolumn=80
 endif
