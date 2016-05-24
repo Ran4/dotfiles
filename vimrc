@@ -15,6 +15,10 @@ omap a¨ a]
 nmap å [
 nmap ¨ ]
 
+nnoremap di_ f_dF_
+nnoremap vi_ t_vF_
+vnoremap i_ F_
+
 "Helpers for OS X. TODO: Only activate this when using OS X.
 
 inoremap <€ <c-w>
@@ -224,8 +228,9 @@ set shiftwidth=4
 set softtabstop=4 "Number of spaces in tab when editing
 
 " Use the same symbols as TextMate for tabstops and EOLs
-"set list
-set listchars=tab:▸▸,eol:¬
+set list
+"set listchars=tab:▸▸,eol:¬
+set listchars=tab:▸▸
 set fillchars=
 set expandtab "Expands tabs into spaces
 
@@ -285,7 +290,7 @@ if has("gui_running")
     
     "Quickly write and quit from insert mode.
     "Good with the itsalltext Firefox plugin
-    inoremap <s-cr> <esc>ZZ
+    "inoremap <s-cr> <esc>ZZ
 else
     "set mouse=n "only use mouse in visual mode
     set mouse=
@@ -606,6 +611,7 @@ let g:EasyMotion_enter_jump_first = 1
 "Starts disabled:
 let g:gitgutter_enabled = 0
 nnoremap <leader>gg :let g:gitgutter_enabled = 1<cr>:GitGutterEnable<cr>
+nnoremap <leader>gG :let g:gitgutter_enabled = 0<cr>:GitGutterDisable<cr>
 
 ""vim-jedi configuration
 "let g:jedi#auto_initialization = 0
