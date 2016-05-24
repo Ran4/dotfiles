@@ -94,6 +94,7 @@ alias acs='apt-cache search'
 
 alias logo='lxsession'
 alias logout='lxsession'
+alias va='source .venv/bin/activate' #virtualenv activate
 #Lyrics associated aliases and functions {{{
 #metal archives lyrics search: mly
 if [ -f ~/git/other/metallum/metallum.py ]; then

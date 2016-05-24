@@ -78,6 +78,7 @@ brew cask install broomstick #Hide menu bar items
 brew cask install slack #The chat program
 brew cask install mendeley-desktop
 brew cask install transmission #The torrent client
+brew cask install macdown #open source Markdown editor http://macdown.uranusjr.com
 
 ################################################################################
 # Fixes
