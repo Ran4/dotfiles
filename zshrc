@@ -68,6 +68,15 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey '^p' up-line-or-beginning-search
 bindkey '^n' down-line-or-beginning-search
+
+#Sometimes, emacs-style keybindings are nice
+bindkey '^e' end-of-line
+bindkey '^a' beginning-of-line
+bindkey '^b' vi-backward-char
+bindkey '^f' vi-forward-char
+bindkey '^d' vi-delete-char
+bindkey '^k' vi-kill-eol
+
 #Arrows keys up/down
 bindkey '\eOA' up-line-or-beginning-search
 bindkey '\e[A' up-line-or-beginning-search
