@@ -37,6 +37,7 @@ for file in $files; do
     mv ~/.$file $olddir
     echo -en "$file "
     ln -s $dir/$file ~/.$file
+    echo -e "ln -s $dir/$file ~/.$file"
 done
 echo -e "\n...done"
 
@@ -86,10 +87,10 @@ echo -e "${LBLUE}Copying sunrise-modified-ran.zsh-theme file to ~/.oh-my-zsh/the
 cp $dir/oh-my-zsh/themes/sunrise-modified-ran.zsh-theme ~/.oh-my-zsh/themes/
 
 if command_exists i3 ; then
-	echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3/config ~/.i3/config)${NC}"
-	#ln -s $dir/i3/config ~/.i3/config
-	ln -sf $dir/i3 ~/.i3
-	#ln -s $dir/i3config ~/.config/i3/config #use this if using the XDG directory scheme
+    echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3/config ~/.i3/config)${NC}"
+    #ln -s $dir/i3/config ~/.i3/config
+    ln -sf $dir/i3 ~/.i3
+    #ln -s $dir/i3config ~/.config/i3/config #use this if using the XDG directory scheme
 fi
 
 
