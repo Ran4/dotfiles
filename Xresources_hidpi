@@ -64,3 +64,5 @@ xterm*vt100*geometry: 130x55
 !xterm*boldFont: fixed
 xterm*allowBoldFonts: false
 !END of mine
+
+Xcursor.size: 8
