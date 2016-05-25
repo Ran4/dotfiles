@@ -34,3 +34,7 @@ fi
 echo -e "${LBLUE}Creating symlink to ~/.zprofile (ln -s $dir/arch/zprofile ~/.zprofile)${NC}"
 ln -sf $dir/arch/zprofile ~/.zprofile
 echo "...done"
+
+echo -e "${LBLUE}Copying $dir/arch/locale.conf to /etc/locale.conf${NC}"
+sudo cp $dir/arch/locale.conf /etc/locale.conf
+echo "...done"
