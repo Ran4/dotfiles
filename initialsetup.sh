@@ -41,6 +41,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     ~/dotfiles/mac/initialsetup_mac.sh
 fi
 
+if [ -f "/etc/arch-release" ]; then
+    echo 'Detected Arch, calling ~/dotfiles/arch/initalsetup_arch.sh'
+    ~/dotfiles/arch/initialsetup_arch.sh
+fi
+
 #install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
@@ -50,9 +55,6 @@ git config --global user.name "Rasmus Ansin"
 git config --global push.default simple
 #use less as a pager, but only if output is longer than the screen
 git config --global --replace-all core.pager "less -F -X"
-
-#Make a copy of the default ssh config
-sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
 
 #Create some default folders
 echo 'Creating some default folders'

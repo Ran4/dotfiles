@@ -208,7 +208,16 @@ if command_exists xcape ; then
     . ~/.xcape_config
     #echo "Not running xcape config!"
 else
-    xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+    if [ ! -f "/etc/arch-release" ]; then
+        xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+    fi
     #echo "Not running xmodmap!"
 fi
 
+if command_exists setxkbmap ; then
+    if [ -f "/etc/arch-release" ]; then
+        setxkbmap -model pc105 -layout "se" -variant "nodeadkeys"
+    else
+        setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin" -option ctrl:nocaps
+    fi
+fi

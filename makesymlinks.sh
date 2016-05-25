@@ -17,7 +17,7 @@ NC='\033[0m'
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="agignore bashrc bash_aliases bash_setprompt dircolors gitconfig gitignore_global vimrc vim xcape_config Xresources lesskey tmux.conf hhighlighter.sh custom/kth_tmux.conf custom/ranl412_tmux.conf zshrc oh-my-zsh/plugins/git/git.plugin.zsh pylintrc django.pylintrc pep8 config/youtube-dl"
+files="agignore bashrc bash_aliases bash_setprompt dircolors gitconfig gitignore_global vimrc vim xcape_config lesskey tmux.conf hhighlighter.sh custom/kth_tmux.conf custom/ranl412_tmux.conf zshrc oh-my-zsh/plugins/git/git.plugin.zsh pylintrc django.pylintrc pep8 config/youtube-dl"
 
 ##########
 
@@ -32,12 +32,13 @@ cd $dir
 echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
+echo "Moving any existing dotfiles from ~ to $olddir and creating symlinks to files in home directory..."
 for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file $olddir
-    echo "Creating symlink to $file in home directory."
+    echo -en "$file "
     ln -s $dir/$file ~/.$file
 done
+echo -e "\n...done"
 
 echo -e "${LBLUE}Creating ~/.custom and ~/.identifiers folders and copying files to ~/.custom${NC}"
 mkdir -p ~/.identifiers
@@ -48,6 +49,16 @@ echo "...done"
 echo -e "${LBLUE}Reloading bash${NC}"
 source ~/.bashrc
 echo "...done"
+
+if [ -f ~/.identifiers/hidpi ]; then
+    echo -e "${LBLUE}Creating hi-dpi Xresources symlink${NC}"
+    ln -sf $dir/Xresources_hidpi ~/.Xresources
+    echo "...done"
+else
+    echo -e "${LBLUE}Creating Xresources symlink${NC}"
+    ln -sf $dir/Xresources ~/.Xresources
+    echo "...done"
+fi
 
 if command_exists xrdb ; then
     echo -e "${LBLUE}Loading X resources (xrdb -load ~/.Xresources)${NC}"
@@ -64,24 +75,21 @@ lesskey -o ~/.less ~/.lesskey
 echo "...done"
 
 echo -e "${LBLUE}Creating symlink to ~/.ssh/config (ln -s $dir/ssh_config ~/.ssh/config)${NC}"
-ln -s $dir/ssh_config ~/.ssh/config
+ln -sf $dir/ssh_config ~/.ssh/config
 echo "...done"
 
 echo -e "${LBLUE}Creating nowplaying.sh symlink to /usr/bin (ln -s $dir/scripts/ /usr/bin/nowplaying)${NC}"
-sudo ln -s $dir/scripts/nowplaying.sh  /usr/bin/nowplaying
+sudo ln -sf $dir/scripts/nowplaying.sh  /usr/bin/nowplaying
 echo "...done"
 
 echo -e "${LBLUE}Copying sunrise-modified-ran.zsh-theme file to ~/.oh-my-zsh/themes/${NC}"
 cp $dir/oh-my-zsh/themes/sunrise-modified-ran.zsh-theme ~/.oh-my-zsh/themes/
 
 if command_exists i3 ; then
-	echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3config ~/.i3/config)${NC}"
-	ln -s $dir/i3config ~/.i3/config
+	echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3/config ~/.i3/config)${NC}"
+	#ln -s $dir/i3/config ~/.i3/config
+	ln -sf $dir/i3 ~/.i3
 	#ln -s $dir/i3config ~/.config/i3/config #use this if using the XDG directory scheme
-
-	echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3config ~/.i3/config)${NC}"
-	ln -s $dir/i3config ~/.i3/config
-	echo "...done"
 fi
 
 
