@@ -261,7 +261,7 @@ bar {
         separator          $bartextcolor
     } ##7ace92
 
-    font pango:DejaVu Sans Mono, Icons 18
+    font pango:DejaVu Sans Mono, Icons 16
     #See https://en.wikipedia.org/wiki/Fixed_%28typeface%29
     #5x7:
 
