@@ -261,7 +261,7 @@ bar {
         separator          $bartextcolor
     } ##7ace92
 
-    #font pango:DejaVu Sans Mono, Icons 6
+    font pango:DejaVu Sans Mono, Icons 18
     #See https://en.wikipedia.org/wiki/Fixed_%28typeface%29
     #5x7:
 
@@ -274,7 +274,7 @@ bar {
     #font -Misc-Fixed-Medium-R-Normal--10-100-75-75-C-60-ISO10646-1
 
     #6x13
-    font -Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1
+    #font -Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1
     #6x13B
     #font -Misc-Fixed-Bold-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1
     #7x13
@@ -317,12 +317,12 @@ client.focused_inactive #000000 $inactiveframecolor  $text
 
 
 #Programs to run at start
-#exec --no-startup-id xterm
-#exec xrdb -load ~/.Xresources
-exec --no-startup-id xterm -fn 7x14 -e ~/dotfiles/defaulttmuxsession.sh
+exec xrdb -load ~/.Xresources
+exec --no-startup-id xterm
+#exec --no-startup-id xterm -fn 7x14 -e ~/dotfiles/defaulttmuxsession.sh
 #exec --no-startup-id xterm -fn 6x10 -e ~/dotfiles/defaulttmuxsession.sh
 #exec --no-startup-id xterm -e ~/dotfiles/defaulttmuxsession.sh
-exec . ~/.screenlayout/setupscreens.sh
+#exec . ~/.screenlayout/setupscreens.sh
 
 #wifi applet
 exec nm-applet &> /dev/null &
@@ -335,5 +335,5 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
 #gaps inner 2
 #gaps outer -5 #higher than inner, so no gap when there's just a single window
 
-gaps inner 1
-gaps outer -4 #higher than inner, so no gap when there's just a single window
+# gaps inner 1
+# gaps outer -4 #higher than inner, so no gap when there's just a single window
