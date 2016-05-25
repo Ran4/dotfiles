@@ -117,6 +117,9 @@ cnoremap <c-n> <down>
 cnoremap <up> <c-p>
 cnoremap <down> <c-n>
 
+"An equivalent of <c-r><c-w>/<c-r><c-f> for the current line:
+cnoremap <C-r><C-l> <C-r>=getline('.')<CR>
+
 "Don't wait as long in insert mode (to enable us to quickly type j and k)
 if has("autocmd")
     augroup FastEscape
