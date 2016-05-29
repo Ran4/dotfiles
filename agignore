@@ -3,3 +3,6 @@
 
 #Python stuff
 *.pyc
+
+#No need to read through Firefox log files...
+Library/Application Support/Firefox

@@ -11,10 +11,10 @@ nnoremap <leader><leader>l :let g:syntastic_python_checkers=['python3']
 "Disable pylint
 nnoremap <leader>L :let g:syntastic_python_checkers=['python']<cr>
 
-nnoremap <leader>p :!clear && python %<cr>
-nnoremap <leader>P :!clear && python3 %<cr>
-nnoremap <leader>i :!python -i %<cr>
-nnoremap <leader>I :!python3 -i %<cr>
+nnoremap <leader>P :!clear && python %<cr>
+nnoremap <leader>p :!clear && python3 %<cr>
+nnoremap <leader>I :!python -i %<cr>
+nnoremap <leader>i :!python3 -i %<cr>
 
 
 nnoremap <localleader>rr :source ~/.vim/ftplugin/python.vim<cr>

@@ -69,7 +69,7 @@ nnoremap <leader>ev :vert split $MYVIMRC<CR>
 nnoremap <leader>Ev :split $MYVIMRC<CR>
 nnoremap <leader>EV :split $MYVIMRC<CR>
 "yank current line and enter it into command mode without pressing enter
-nnoremap <leader>: "xy:<c-r>x<bs>
+nnoremap <leader>: 0"xy$:<c-r>x
 
 nnoremap <leader>ei :vert split ~/.i3/config<CR>
 
@@ -277,7 +277,7 @@ if has("gui_running")
     "set guifont=ProggyTinyTT\ 12
     "set guifont=Monospace\ 11
     if has("gui_macvim")
-        set guifont=Menlo\ Regular:h14
+        set guifont=Menlo\ Regular:h13
     else
         set guifont=Monospace\ Regular\ 10
     endif
@@ -558,7 +558,7 @@ endif
 ""Braceless configuration
 autocmd FileType python BracelessEnable
 "Change default block key to p from P: paragraph is useless in Python code
-let g:braceless_block_key = 'p'
+"let g:braceless_block_key = 'p'
 "+indent 	Enable indent handling
 "+fold 	        Enable folding
 "+fold-inner 	Enable folding, but fold on the inner block
@@ -581,8 +581,8 @@ map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
 let g:incsearch#auto_nohlsearch = 1
-"map n  <Plug>(incsearch-nohl-n)
-"map N  <Plug>(incsearch-nohl-N)
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
 map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
