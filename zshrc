@@ -38,9 +38,9 @@ HISTFILESIZE=8000000
 plugins=(git vi-mode)
 
 # User configuration
-#export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ran/.fzf/bin"
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export PATH=$PATH:/opt/local/bin
+[[ -f "/etc/arch-release" ]] && export PATH=$PATH:/usr/bin/core_perl/
 export MANPATH="/opt/local/share/man:/usr/local/man:$MANPATH"
 
 #Used for e.g. zsh:s edit-command-line (v in vi-mode)
