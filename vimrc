@@ -1,4 +1,5 @@
 "{{{ MAPPINGS
+
 let mapleader = "ä"
 let maplocalleader = "´"
 nmap , ä
@@ -374,6 +375,38 @@ endif
 highlight Search ctermfg=0 ctermbg=180
 "}}}
 "{{{ FUNCTIONS
+
+nnoremap di( :call New_dib()<CR>
+nnoremap di) :call New_dib()<CR>
+nnoremap dib :call New_dib()<CR>
+"di(, di), dib that will move inside first instance of () first if needed
+function New_dib()
+    if search("(","bn") == line(".")
+        sil exe "normal! f)di("
+        "sil exe "normal! l"
+    else
+        sil exe "normal! f(di("
+        "sil exe "normal! l"
+    endif
+endfunction
+
+nnoremap di{ :call New_diB()<CR>
+nnoremap di} :call New_diB()<CR>
+nnoremap diB :call New_diB()<CR>
+"Like dib but } instead of )
+function New_diB()
+    if search("{","bn") == line(".")
+        sil exe "normal! f}di{"
+        "sil exe "normal! l"
+    else
+        sil exe "normal! f{di{"
+        "sil exe "normal! l"
+    endif
+endfunction
+
+nnoremap ci( :call New_cip()<CR>
+nnoremap ci) :call New_cip()<CR>
+nnoremap cib :call New_cip()<CR>
 " Change in paranthesis function, since ci( initially doesn't work
 function New_cip()
     if search("(","bn") == line(".")
