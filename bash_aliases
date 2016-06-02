@@ -157,7 +157,8 @@ if command_exists tmux ; then
     alias clear='clear && tmux clear-history'
 fi
 if command_exists i3lock ; then
-    alias lock='i3lock -d --color=102010 --no-unlock-indicator' #-d suspends screen after default 30s
+    alias lock='i3lock -d -e --color=102010 --no-unlock-indicator' #-d suspends screen after default 30s,
+    #-e ignores empty password
 fi
 
 #alias kxt="ps aux | grep -i xterm | awk {'print $2'} | xargs kill -9" #kill xterm, please remove me once you've figured out the problem with i3
