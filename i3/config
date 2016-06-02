@@ -207,7 +207,7 @@ bindsym $mod+Shift+Down resize grow height 2 px or 2 ppt
 bindsym $mod+Shift+Up resize shrink height 2 px or 2 ppt
 bindsym $mod+Shift+Right resize grow width 2 px or 2 ppt
 
-#hide_edge_borders horizontal
+hide_edge_borders horizontal
 #hide_edge_borders both
 
 #Colors {{{
@@ -235,8 +235,6 @@ set $bartextcolor "#a9a9a9" #light blue
 
 set $focusedtextcolor "#0f0f0f"
 #set $focusedtextcolor "#ffffff"
-set $focusedframecolor "#ffffff"
-#set $focusedframecolor "#181818"
 
 set $inactivetextcolor "#808080"
 #set $inactivetextcolor "#404040"
@@ -253,7 +251,7 @@ bar {
         #background         #050E2D
         #background         #020202 #bar color
         background         #040404 #bar color
-        focused_workspace  #000000 $focusedframecolor $focusedtextcolor
+        focused_workspace  #000000 $ffffff  $focusedtextcolor
         active_workspace   #000000 #AE7AB6   #FFFFFF  #last one is inactive workspace...
         inactive_workspace #000000 $inactiveframecolor   $inactivetextcolor
         #statusline         $bartextcolor
@@ -289,7 +287,8 @@ bar {
 
 # outline color
 for_window [class="^.*"] border pixel 3
-#client.focused          #000000 $focusedframecolor    $text
+client.focused          #000000 $focusedframecolor    $text
+set $focusedframecolor "#707070"
 client.unfocused        #000000 $inactiveframecolor  $text
 client.focused_inactive #000000 $inactiveframecolor  $text
 
@@ -335,5 +334,5 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
 #gaps inner 2
 #gaps outer -5 #higher than inner, so no gap when there's just a single window
 
-# gaps inner 1
-# gaps outer -4 #higher than inner, so no gap when there's just a single window
+#gaps inner 4
+#gaps outer -4 #higher than inner, so no gap when there's just a single window
