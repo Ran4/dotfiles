@@ -10,6 +10,7 @@ sudo pacman -S --needed python python2 python-virtualenv
 sudo pacman -S --needed pastebinit
 sudo pacman -S --needed zathura zathura-pdf-poppler zathura-ps zathura-djvu
 sudo pacman -S --needed eog
+sudo pacman -S --needed feh
 sudo pacman -S --needed i3-wm i3lock i3status
 
 ZATHRCFILE=/etc/zathurarc
