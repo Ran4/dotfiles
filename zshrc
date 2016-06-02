@@ -160,6 +160,10 @@ fi
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     source ~/dotfiles/mac/zshrc_mac.sh
 fi
+
+if [ -f "/etc/arch-release" ]; then
+    source ~/dotfiles/arch/zshrc_arch.sh
+fi
 #}}}
 
 if command_exists setxkbmap ; then
