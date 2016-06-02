@@ -54,12 +54,6 @@ nnoremap <leader>> viw<ESC>a><ESC>hbi<<ESC>%
 nnoremap <leader>n :bn<cr>
 nnoremap <leader>N :bp<cr>
 
-":update will save but only if there's a change
-"nnoremap <space> :w<CR>
-nnoremap <space> :update<CR>
-" press <backspace> to switch to the "alternate file"
-nnoremap <bs> <C-^>
-
 " Append to in-commands
 nnoremap <leader>a" f";i
 nnoremap <leader>a' f';i
@@ -98,6 +92,16 @@ nnoremap <silent> <Leader><Leader>+ :exe "resize " . (winheight(0) * 3/2)<cr>
 nnoremap <silent> <Leader><Leader>- :exe "resize " . (winheight(0) * 2/3)<cr>
 nnoremap <silent> <Leader>+ :exe "vert resize " . (winwidth(0) * 3/2)<cr>
 nnoremap <silent> <Leader>- :exe "vert resize " . (winwidth(0) * 2/3)<cr>
+
+":update will save but only if there's a change
+"nnoremap <space> :w<CR>
+nnoremap <space> :update<CR>
+" press <backspace> to switch to the "alternate file"
+nnoremap <bs> <C-^>
+" <cr> does za, but only in regular buffers
+" (found at https://www.reddit.com/r/vim/comments/4m678o/best_way_to_remap_cr_in_normal_mode/ )
+nnoremap <silent> <expr> <CR> empty(&buftype) \|\| &bt ==# 'help' \|\| &ft ==# 'man' ?
+                              \ 'za' : '<CR>'
 
 " :help map-which-keys    " is helpful to find new mappings
 imap jk <esc>
