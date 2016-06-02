@@ -334,5 +334,5 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
 #gaps inner 2
 #gaps outer -5 #higher than inner, so no gap when there's just a single window
 
-#gaps inner 4
-#gaps outer -4 #higher than inner, so no gap when there's just a single window
+gaps inner 4
+gaps outer -4 #higher than inner, so no gap when there's just a single window
