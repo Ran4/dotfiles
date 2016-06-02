@@ -1,60 +1,41 @@
-# Path to your oh-my-zsh installation.
-#export ZSH=/home/ran/.oh-my-zsh
+#ZSH related configuration {{{
 export ZSH=~/.oh-my-zsh
-
 # Set name of the theme to load. Look in ~/.oh-my-zsh/themes/
-# If set to "random", load a random theme each time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
 #ZSH_THEME="random"
 ZSH_THEME="sunrise-modified-ran"
-
-# Uncomment the following line to use case-sensitive completion.
-#CASE_SENSITIVE="true"
-
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Command execution time stamp shown in the history command output.
-HIST_STAMPS="yyyy-mm-dd"
-
+HIST_STAMPS="yyyy-mm-dd" # Command execution time stamp shown in the history command output.
 HISTSIZE=400000
 HISTFILESIZE=8000000
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# plugins loaded from ~/.oh-my-zsh/plugins/*, custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(git vi-mode)
 
-# User configuration
+#Don't autocomplete hosts. Inspiration: https://tlvince.com/fixing-slow-zsh-command-completion
+zstyle ':completion:*' hosts off
+#End of ZSH related configuration }}}
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export PATH=$PATH:/opt/local/bin
-[[ -f "/etc/arch-release" ]] && export PATH=$PATH:/usr/bin/core_perl/
+[ -f "/etc/arch-release" ] && export PATH=$PATH:/usr/bin/core_perl/
 export MANPATH="/opt/local/share/man:/usr/local/man:$MANPATH"
-
-#Used for e.g. zsh:s edit-command-line (v in vi-mode)
 export EDITOR=vim
+export PYLINTRC="~/.pylintrc"
 
-#Don't autocomplete hosts.
-#Inspiration: https://tlvince.com/fixing-slow-zsh-command-completion
-zstyle ':completion:*' hosts off
+#Node version manager:
+export NVM_DIR="/home/$USER/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 #Help function to see if a command exists
 command_exists () {
   type "$1" >/dev/null 2>/dev/null
 }
-#{{{Keyboard related
+#Keyboard related {{{
 source $ZSH/oh-my-zsh.sh
 bindkey '^r' history-incremental-search-backward
 # bindkey '^p' history-search-backward
@@ -99,13 +80,6 @@ fi
 #Prevent <c-s> from stopping the terminal
 #stty -ixon
 #}}}
-
-export PYLINTRC="~/.pylintrc"
-
-#Node version manager:
-export NVM_DIR="/home/$USER/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -183,8 +157,8 @@ if [ -f ~/.identifiers/ran-main-kubuntu ]; then
 fi
 
 #Mac-specific stuff
-if [ -f ~/.identifiers/mac ]; then 
-    
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+    source ~/dotfiles/mac/zshrc_mac.sh
 fi
 #}}}
 
