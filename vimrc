@@ -330,7 +330,8 @@ set t_Co=256
 " mkdir -p ~/.vim/colors
 " cd ~/.vim/colors
 " wget -O ~/.vim/colors/wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
-color wombat256mod
+"color wombat256mod
+color wombat256mod-darker
 " set background=dark
 " colorscheme luna-term
 " colorscheme wintersday
