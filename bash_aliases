@@ -89,8 +89,14 @@ alias tmuxs='~/dotfiles/defaulttmuxsession.sh'
 alias ts='~/dotfiles/defaulttmuxsession.sh'
 alias tskth='ts && tmux source-file ~/dotfiles/custom/kth_tmux.conf'
 
-alias sagi='sudo apt-get install'
-alias acs='apt-cache search'
+if command_exists apt-get ; then
+    alias sagi='sudo apt-get install'
+    alias acs='apt-cache search'
+fi
+
+if command_exists pacman ; then
+    alias sps='sudo pacman -S'
+fi
 
 alias logo='lxsession'
 alias logout='lxsession'
