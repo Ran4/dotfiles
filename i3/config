@@ -1,50 +1,7 @@
-# Should you change your keyboard layout some time, delete
-# this file and re-run i3-config-wizard(1).
-# See http://i3wm.org/docs/userguide.html for a complete reference!
-
+# Common bindings: movement, layout, config {{{
 #Mod1 = Alt, Mod4 = Win
 set $mod Mod1
 #set $mod Mod4
-
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-# Before i3 v4.8, we used to recommend this one as the default:
-font -misc-fixed-small-r-normal--13-120-75-75-C-70-iso10646-1
- 
-# kill focused window
-bindsym $mod+q kill
-
-# start a terminal
-#bindsym $mod+Return exec xterm -fn 7x14
-#bindsym $mod+Return exec xterm -fn 6x10
-bindsym $mod+Return exec xterm
-
-# start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
-#bindsym $mod+Backspace exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# Program specific bindings {{{
-#bindsym $mod+d exec pcmanfm
-bindsym $mod+d exec python3 ~/.i3/runorfocus.py "pcmanfm" pcmanfm
-#bindsym $mod+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
-bindsym $mod+ctrl+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
-bindsym $mod+e exec python3 ~/.i3/runorfocus.py "Xterm" xterm
-bindsym $mod+m exec python3 ~/.i3/runorfocus.py "mendeleydesktop" mendeleydesktop
-bindsym $mod+z exec python3 ~/.i3/runorfocus.py "Zathura" zathura
-
-bindsym $mod+ctrl+v exec python3 ~/.i3/runorfocus.py "Gvim" gvim
-
-bindsym $mod+Shift+x [class="(?i)xterm"] kill
-bindsym $mod+Shift+Return exec --no-startup-id i3-dmenu-desktop
-
-bindsym $mod+ctrl+l exec --no-startup-id i3lock -d --color=102010 --no-unlock-indicator
-#}}}
-
 # movement
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -59,30 +16,18 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# split in vertical/hhorizontal orientation
 bindsym $mod+s split v
 bindsym $mod+v split h
-
-#quickly open xterm/other with mod-s/v (shift for other)
-bindsym $mod+Shift+v split h; exec --no-startup-id i3-dmenu-desktop
-#bindsym $mod+Shift+s split v; exec --no-startup-id i3-dmenu-desktop
-#bindsym $mod+s split v; exec xterm
-#bindsym $mod+v split h; exec xterm
-
-# enter fullscreen mode for the focused container
 bindsym $mod+Shift+f fullscreen
 
-# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+q kill
+
+# Layout stuff
 #bindsym $mod+s layout stacking
 #bindsym $mod+Shift+w layout tabbed
 bindsym $mod+w layout tabbed
 bindsym $mod+Shift+w layout toggle split
-
-# toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
-#Toggle sticky mode
 bindsym $mod+Shift+s sticky toggle
 
 # change focus between tiling / floating windows
@@ -94,9 +39,63 @@ bindsym $mod+space focus mode_toggle
 # focus the child container
 #bindsym $mod+d focus child
 
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+r mode "resize"
+#use mod+arrows to move without resize mode
+bindsym $mod+Left resize shrink width 5 px or 5 ppt
+bindsym $mod+Down resize grow height 5 px or 5 ppt
+bindsym $mod+Up resize shrink height 5 px or 5 ppt
+bindsym $mod+Right resize grow width 5 px or 5 ppt
+#mod+shift+arrows to resize slowly
+bindsym $mod+Shift+Left resize shrink width 2 px or 2 ppt
+bindsym $mod+Shift+Down resize grow height 2 px or 2 ppt
+bindsym $mod+Shift+Up resize shrink height 2 px or 2 ppt
+bindsym $mod+Shift+Right resize grow width 2 px or 2 ppt
+#}}}
+# Program specific bindings {{{
+#bindsym $mod+d exec pcmanfm
+bindsym $mod+d exec python3 ~/.i3/runorfocus.py "pcmanfm" pcmanfm
+#bindsym $mod+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
+bindsym $mod+ctrl+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
+bindsym $mod+e exec python3 ~/.i3/runorfocus.py "Xterm" xterm
+bindsym $mod+m exec python3 ~/.i3/runorfocus.py "mendeleydesktop" mendeleydesktop
+bindsym $mod+z exec python3 ~/.i3/runorfocus.py "Zathura" zathura
+# start dmenu (a program launcher)
+#bindsym $mod+d exec dmenu_run
+
+bindsym $mod+ctrl+v exec python3 ~/.i3/runorfocus.py "Gvim" gvim
+
+bindsym $mod+Shift+x [class="(?i)xterm"] kill
+bindsym $mod+Shift+Return exec --no-startup-id i3-dmenu-desktop
+
+bindsym $mod+ctrl+l exec --no-startup-id i3lock -d --color=102010 --no-unlock-indicator
+
+#bindsym $mod+Return exec xterm -fn 7x14
+#bindsym $mod+Return exec xterm -fn 6x10
+bindsym $mod+Return exec --no-startup-id xterm
+#}}}
+# Programs to run at start {{{
+exec --no-startup-id xrdb -load ~/.Xresources
+exec --no-startup-id xterm
+#exec --no-startup-id xterm -fn 7x14 -e ~/dotfiles/defaulttmuxsession.sh
+#exec --no-startup-id xterm -fn 6x10 -e ~/dotfiles/defaulttmuxsession.sh
+#exec --no-startup-id xterm -e ~/dotfiles/defaulttmuxsession.sh
+#exec . ~/.screenlayout/setupscreens.sh
+
+#wifi applet
+exec --no-startup-id nm-applet &> /dev/null &
+
+#Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
+#}}}
 #Workspace naming {{{
-
 #set $ws1 1: xTerm
 #set $ws2 2: Firefox
 #set $ws3 3: Zathura
@@ -111,10 +110,6 @@ set $ws4 4
 set $ws5 5
 set $ws6 6
 
-#assign [class="Firefox"] $ws2
-#assign [class="Zathura"] $ws3
-#assign [class="Mendeleydesktop"] $ws4
-
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -125,7 +120,6 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace number 1
@@ -137,7 +131,6 @@ bindsym $mod+Shift+6 move container to workspace number 6; workspace number 6
 bindsym $mod+Shift+7 move container to workspace number 7; workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8; workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9; workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10; workspace number 10
 
 ########################################}}}
 #Mouse stuff {{{
@@ -163,83 +156,36 @@ mouse_warping output
 #mouse_warping none
 
 ####################}}}
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-# These bindings trigger as soon as you enter the resize mode
-
-# Pressing left will shrink the window’s width.
-# Pressing right will grow the window’s width.
-# Pressing up will shrink the window’s height.
-# Pressing down will grow the window’s height.
-bindsym h resize shrink width 10 px or 10 ppt
-bindsym j resize grow height 10 px or 10 ppt
-bindsym k resize shrink height 10 px or 10 ppt
-bindsym l resize grow width 10 px or 10 ppt
-
-# same bindings, but for the arrow keys
-        bindsym Left resize shrink width 2 px or 2 ppt
-        bindsym Down resize grow height 2 px or 2 ppt
-        bindsym Up resize shrink height 2 px or 2 ppt
-        bindsym Right resize grow width 2 px or 2 ppt
-
-# back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
-#use mod+arrows to move without resize mode
-bindsym $mod+Left resize shrink width 5 px or 5 ppt
-bindsym $mod+Down resize grow height 5 px or 5 ppt
-bindsym $mod+Up resize shrink height 5 px or 5 ppt
-bindsym $mod+Right resize grow width 5 px or 5 ppt
-#mod+shift+arrows to resize slowly
-bindsym $mod+Shift+Left resize shrink width 2 px or 2 ppt
-bindsym $mod+Shift+Down resize grow height 2 px or 2 ppt
-bindsym $mod+Shift+Up resize shrink height 2 px or 2 ppt
-bindsym $mod+Shift+Right resize grow width 2 px or 2 ppt
-
-hide_edge_borders horizontal
-#hide_edge_borders both
-
-#Colors {{{
-# class                 border  backgr   text    indicator
-#client.focused          #4c7899 #285577 #ffffff #2e9ef4 #default, blue
-#client.focused          #412458 #512888 #ffffff #2e9ef4 #KSU Purple
-client.focused          #412458 #f11828 #ffffff #2e9ef4 #Red-ish
-#client.focused          #412458 #c12888 #ffffff #fe5ef4
-#client.focused          #412458 $activebordercolor #ffffff #fe5ef4
-#colorclass client.focused_inactive #333333 #5f676a #ffffff #484e50
-#colorclass client.unfocused        #333333 #222222 #888888 #292d2e
-client.unfocused        #333333 #222222 #888888 #292d2e
-#colorclass client.urgent           #2f343a #900000 #ffffff #900000
-#colorclass client.placeholder      #000000 #0c0c0c #ffffff #000000
+# Colors and visual settings {{{
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+# Before i3 v4.8, we used to recommend this one as the default:
+font -misc-fixed-small-r-normal--13-120-75-75-C-70-iso10646-1
 
 #colors copied from http://textuploader.com/aqpma
 set $text         "#000000"
-#set $bartextcolor "#FBA1E5" #bar text color, pink-ish
+#set $bartextcolor "#FBA1E5" #bar text color, pink
 #set $bartextcolor "#4c7899" #light blue
-set $bartextcolor "#a9a9a9" #light blue
-#set $bartextcolor "#FB1135" #bar text color, red-pink-ish
-#set $bartextcolor "#008B8B " #bar text color, darkcyan
-#set $bartextcolor "#F08B8B " #bar text color, darkcyan
- 	
+set $bartextcolor "#a9a9a9"
 
 set $focusedtextcolor "#0f0f0f"
-#set $focusedtextcolor "#ffffff"
-
 set $inactivetextcolor "#808080"
-#set $inactivetextcolor "#404040"
-#set $inactivetextcolor "#303030"
-set $inactiveframecolor "#040404"
+set $inactiveframecolor "#000000"
+
+# Outline colors
+for_window [class="^.*"] border pixel 2
+#set $focusedframecolor "#7fff00"
+set $focusedframecolor "#ffffff"
+#set $focusedframecolor "#7fff00"
+client.focused          #000000 $focusedframecolor    $text
+client.unfocused        #000000 $inactiveframecolor  $text
+client.focused_inactive #000000 $inactiveframecolor  $text
+
+#hide_edge_borders horizontal
+hide_edge_borders both
 
 bar {
     #mode hide
@@ -269,7 +215,7 @@ bar {
     #6x9:
     #font -Misc-Fixed-Medium-R-Normal--9-90-75-75-C-60-ISO10646-1
     #6x10:
-    #font -Misc-Fixed-Medium-R-Normal--10-100-75-75-C-60-ISO10646-1
+    font -Misc-Fixed-Medium-R-Normal--10-100-75-75-C-60-ISO10646-1
 
     #6x13
     #font -Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1
@@ -284,55 +230,16 @@ bar {
     #7x14
     #font -Misc-Fixed-Medium-R-Normal--14-130-75-75-C-70-ISO10646-1
 }
+#}}}
+#i3-gaps specific {{{
+# gaps inner 2
+# gaps outer -5 #higher than inner, so no gap when there's just a single window
 
-# outline color
-for_window [class="^.*"] border pixel 3
-client.focused          #000000 $focusedframecolor    $text
-set $focusedframecolor "#707070"
-client.unfocused        #000000 $inactiveframecolor  $text
-client.focused_inactive #000000 $inactiveframecolor  $text
+# gaps inner 4
+# gaps outer -4 #higher than inner, so no gap when there's just a single window
 
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-#        status_command i3status
-#
-#    #using default colors
-#    #colors {
-#    #    background #000000
-#    #    statusline #ffffff #default
-#    #    separator #666666 #default
-#
-#    #    #colorclass <border> <background> <text>
-#    #    focused_workspace  #4c7899 #285577 #ffffff
-#    #    active_workspace   #333333 #5f676a #ffffff
-#    #    inactive_workspace #333333 #222222 #888888
-#    #    urgent_workspace   #2f343a #900000 #ffffff
-#    #}
-#}
-
-########################################}}}
-
-
-#Programs to run at start
-exec xrdb -load ~/.Xresources
-exec --no-startup-id xterm
-#exec --no-startup-id xterm -fn 7x14 -e ~/dotfiles/defaulttmuxsession.sh
-#exec --no-startup-id xterm -fn 6x10 -e ~/dotfiles/defaulttmuxsession.sh
-#exec --no-startup-id xterm -e ~/dotfiles/defaulttmuxsession.sh
-#exec . ~/.screenlayout/setupscreens.sh
-
-#wifi applet
-exec nm-applet &> /dev/null &
-
-#Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
-
-#i3-gaps specific
-#gaps inner 2
-#gaps outer -5 #higher than inner, so no gap when there's just a single window
-
-gaps inner 4
-gaps outer -4 #higher than inner, so no gap when there's just a single window
+# gaps inner 30
+# gaps outer 10 #higher than inner, so no gap when there's just a single window
+gaps inner 15
+gaps outer 5 #higher than inner, so no gap when there's just a single window
+#}}}
