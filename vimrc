@@ -103,6 +103,9 @@ nnoremap <bs> <C-^>
 nnoremap <silent> <expr> <CR> empty(&buftype) \|\| &bt ==# 'help' \|\| &ft ==# 'man' ?
                               \ 'za' : '<CR>'
 
+nnoremap + <c-a>
+nnoremap - <c-x>
+
 " :help map-which-keys    " is helpful to find new mappings
 imap jk <esc>
 imap Jk <esc>
@@ -336,8 +339,10 @@ set t_Co=256
 " wget -O ~/.vim/colors/wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 "color wombat256mod
 color wombat256mod-darker
+au FileType elm colorscheme predawn
+
 " set background=dark
-" colorscheme luna-term
+" colorscheme luna
 " colorscheme wintersday
 " colorscheme breeze_ranmod
 " colorscheme obsidian
@@ -507,6 +512,9 @@ endif
 
 """commentary.vim - comment things out with gc+{motion} and more
 "!git clone https://github.com/tpope/vim-commentary ~/.vim/bundle/vim-commentary
+
+"""elm-vim - Elm support for Vim
+"!git clone https://github.com/elmcast/elm-vim.git ~/.vim/bundle/elm-vim
 
 """eunuch.vim - vim sugar for multiple UNIX shell commands like :Move, :Rename
 "!git clone https://github.com/tpope/vim-eunuch ~/.vim/bundle/vim-eunuch
@@ -713,6 +721,7 @@ autocmd FileType python
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 nnoremap <leader>c :SyntasticCheck<cr>
+nnoremap <leader>C :SyntasticToggle<cr>
 ""}}}
 ""vim-vertical-move configuration
 let g:vertical_move_default_mapping = 0

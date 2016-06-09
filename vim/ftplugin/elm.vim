@@ -1,0 +1,46 @@
+" Mappings {{{
+"remaps å¨Å^ to []{} in various ways
+source ~/.vim/ftplugin/remap_to_brackets.vim
+
+"nnoremap <leader>p :SyntasticCheck<cr>:ElmMake<cr>
+nnoremap <leader>p :ElmMake<cr>
+nnoremap <leader>P :!clear && elm make --warn %<cr>
+
+"nnoremap <leader>P :call ElmMakeWithWarning()<cr>
+"function ElmMakeWithWarning()
+"    !clear && elm make --warn %
+"    ElmMake
+"endfunction
+
+nnoremap <localleader>r :ElmRepl<cr><cr>
+nnoremap <localleader>t :ElmTest<cr>
+nnoremap <localleader>w :!clear && elm make --warn %<cr>
+
+nnoremap <localleader>R :source ~/.vim/ftplugin/elm.vim<cr>
+
+"}}}
+" Let {{{
+let g:syntastic_always_populate_loc_list = 1
+
+let g:elm_detailed_complete = 1
+"let g:elm_make_show_warnings = 1
+let g:elm_syntastic_show_warnings = 1
+let g:elm_detailed_complete = 1
+let g:elm_classic_highlighting = 1
+
+"}}}
+" Set {{{
+set tabstop=8
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+
+if exists('+colorcolumn')
+    set colorcolumn=80
+endif
+
+"}}}
+
+"let b:commentary_format='#~ %s'
+
+iabbrev improt import
