@@ -51,10 +51,13 @@ bind space:${hyper} hint ASDFZXCVQWER12345<
 ## App bindings
 # These are laid out on the left hand
 #bind space:${hyper}  focus ${editor}
-bind f:${hyper}      focus 'Firefox'
-bind d:${hyper}      focus 'iTerm2'
 bind i:${hyper}      focus 'iTunes'
-bind s:${hyper}      focus 'Skype'
+#bind s:${hyper}      focus 'Skype'
+
+bind s:${hyper}      focus 'Slack'
+bind d:${hyper}      focus 'iTerm2'
+bind f:${hyper}      focus 'Firefox'
+
 bind x:${hyper}      focus 'Finder'
 bind c:${hyper}      focus 'Preview'
 bind v:${hyper}      focus 'VLC'

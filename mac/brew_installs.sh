@@ -32,6 +32,7 @@ brew install htop
 brew install tree
 brew install the_silver_searcher
 brew install ack
+brew install weechat
 
 brew install youtube-dl
 
@@ -111,3 +112,4 @@ brew install reattach-to-user-namespace
 #reboot
 # then e.g. mv /usr/bin/vim /usr/bin/vim74 to move away the default vim
 #brew install vim
+brew install elm
