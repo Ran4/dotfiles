@@ -15,6 +15,10 @@ nnoremap <leader>P :!clear && elm make --warn %<cr>
 nnoremap <localleader>r :ElmRepl<cr><cr>
 nnoremap <localleader>t :ElmTest<cr>
 nnoremap <localleader>w :!clear && elm make --warn %<cr>
+nnoremap <localleader>d :ElmShowDocs<cr>
+nnoremap <localleader>D :ElmBrowseDocs<cr>
+nnoremap <localleader>f :ElmFormat<cr>
+"nnoremap K :ElmShowDocs<cr>
 
 nnoremap <localleader>R :source ~/.vim/ftplugin/elm.vim<cr>
 
@@ -32,8 +36,8 @@ let g:elm_classic_highlighting = 1
 " Set {{{
 set tabstop=8
 set expandtab
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
 
 if exists('+colorcolumn')
     set colorcolumn=80

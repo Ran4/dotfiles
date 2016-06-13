@@ -3,7 +3,7 @@
 let mapleader = "ä"
 let maplocalleader = "´"
 nmap , ä
-"nmap ö ä
+nmap ö <localleader>
 nnoremap ,, ,
 
 nmap cså cs[
