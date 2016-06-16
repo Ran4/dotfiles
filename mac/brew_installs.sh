@@ -33,7 +33,7 @@ brew install tree
 brew install the_silver_searcher
 brew install ack
 brew install weechat
-
+brew install elm
 brew install youtube-dl
 
 ################################################################################
@@ -67,10 +67,7 @@ pip install pep8
 # Brew cask installs
 ################################################################################
 brew cask install xquartz
-
-#fonts
-brew cask install caskroom/fonts/font-hack
-
+brew cask install caskroom/fonts/font-hack #font
 brew install Caskroom/cask/anki
 brew cask install flip4mac #Needed to play wmv files on OS X
 brew cask install silverlight
@@ -80,6 +77,7 @@ brew cask install slack #The chat program
 brew cask install mendeley-desktop
 brew cask install transmission #The torrent client
 brew cask install macdown #open source Markdown editor http://macdown.uranusjr.com
+brew cask install flux
 
 ################################################################################
 # Fixes
@@ -112,4 +110,3 @@ brew install reattach-to-user-namespace
 #reboot
 # then e.g. mv /usr/bin/vim /usr/bin/vim74 to move away the default vim
 #brew install vim
-brew install elm
