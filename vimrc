@@ -281,6 +281,9 @@ if has("gui_running")
     set guioptions-=L "removes left-hand scrollbar when there's a vertically split window
     set guioptions-=r "removes always-on right-hand scrollbar
     set guioptions-=e "removes GUI tab pages
+    "Disable bell by setting visual bell then setting visual bell effect to none ('set t_vb=')
+    set visualbell
+    set t_vb=
     "set guifont=ProggySquareTT\ 12
     "set guifont=ProggyTinyTT\ 12
     "set guifont=Monospace\ 11
@@ -475,7 +478,8 @@ function TrimWhiteSpace()
 endfunction
 
 nnoremap <leader>w :call TrimWhiteSpace()<CR>
-
+"}}}
+"{{{ AUTOCMDS
 if has("autocmd")
     augroup bufstuff
         autocmd!
@@ -493,8 +497,10 @@ if has("autocmd")
         "http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
         
     augroup END
+    
+    " Resize splits when the window is resized
+    au VimResized * exe "normal! \<c-w>="
 endif
-
 "}}}
 "{{{ PLUGINS
 "cd ~/.vim/bundle
