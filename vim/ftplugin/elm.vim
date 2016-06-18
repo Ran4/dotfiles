@@ -3,14 +3,18 @@
 source ~/.vim/ftplugin/remap_to_brackets.vim
 
 "nnoremap <leader>p :SyntasticCheck<cr>:ElmMake<cr>
-nnoremap <leader>p :ElmMake<cr>
-nnoremap <leader>P :!clear && elm make --warn %<cr>
+"nnoremap <leader>p :ElmMake<cr>
+"nnoremap <leader>P :!clear && elm make --warn %<cr>
+nnoremap <leader>p :!clear && elm make --warn %<cr>
 
 "nnoremap <leader>P :call ElmMakeWithWarning()<cr>
 "function ElmMakeWithWarning()
 "    !clear && elm make --warn %
 "    ElmMake
 "endfunction
+
+nnoremap <leader><space> :update<cr>:ElmMake<cr>
+nnoremap <silent> <space> :update<cr>:SyntasticCheck<cr>
 
 nnoremap <localleader>r :ElmRepl<cr><cr>
 nnoremap <localleader>t :ElmTest<cr>
