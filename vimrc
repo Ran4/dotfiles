@@ -386,6 +386,19 @@ endif
 
 "highlight Search term=none ctermfg=0 ctermbg=180
 highlight Search ctermfg=0 ctermbg=180
+
+"Left side statusline:
+set statusline= "First clear statusline
+set statusline+=%t " file name (tail) of the file in the buffer
+set statusline+=\ %m%r "Modified [+]/[-], readonly [RO]
+set statusline+=%w "Preview window flag [Preview]
+set statusline+=%= "Start of right side statusline
+"Right side statusline:
+set statusline+=%{fugitive#head()}
+set statusline+=\ %y "Filetype e.g. [elm]
+set statusline+=\ [col\ %02c] "Column number
+set statusline+=\ %02p%% "Percent through file
+set statusline+=\ %03l/%03L "Cursor line/total lines
 "}}}
 "{{{ FUNCTIONS
 
