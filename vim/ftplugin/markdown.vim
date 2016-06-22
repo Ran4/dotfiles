@@ -7,6 +7,8 @@ nnoremap <silent> <leader>P :!pandoc -s % -o out_%:r.html &> /dev/null &<cr><cr>
 "nnoremap <silent> <space> :w<cr>:silent !pandoc -s % -o out_%:r.html &> /dev/null 2>&1 &<cr>:redraw!<cr>
 
 "nnoremap <silent> <space> :update<cr>:exec "!pandoc -s % -o out_%:r.html &> /dev/null &"<cr><cr>
+
+nnoremap <localleader>c :colo Tomorrow-Night<cr>:colo Tomorrow-Night<cr>
  
 imap ä ä
 cmap ä ä
