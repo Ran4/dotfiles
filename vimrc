@@ -156,6 +156,7 @@ nnoremap 0 ^
 nnoremap ´ ^
 nnoremap ^ 0
 nnoremap d0 d^
+nnoremap c0 c^
 nnoremap y0 y^
 
 " More reasonable use of Y (as opposed to being identical to yy)
