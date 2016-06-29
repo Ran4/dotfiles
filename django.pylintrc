@@ -193,7 +193,7 @@ no-docstring-rgx=__.*__
 
 # Minimum line length for functions/classes that require docstrings, shorter
 # ones are exempt.
-docstring-min-length=4
+docstring-min-length=5
 
 
 [LOGGING]
