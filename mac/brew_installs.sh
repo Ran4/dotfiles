@@ -35,6 +35,7 @@ brew install ack
 brew install weechat
 brew install elm
 brew install youtube-dl
+brew install pandoc
 
 ################################################################################
 # Python installs
