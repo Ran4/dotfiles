@@ -28,14 +28,15 @@ defaults write com.apple.dock launchanim -bool false
 defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 
 #Speed up Mission Control animations
-defaults write com.apple.dock expose-animation-duration -float 0.05
-killall Dock
+defaults write com.apple.dock expose-animation-duration -float 0.01
 
 #Disable the delay when you hide the Dock
 defaults write com.apple.Dock autohide-delay -float 0
 
+killall Dock
+
 #Disable the standard delay in rendering a web page in Safari.
-defaults write com.apple.Safari WebKitInitialTimedLayoutDelay 0.25
+defaults write com.apple.Safari WebKitInitialTimedLayoutDelay 0.15
 
 #################
 
