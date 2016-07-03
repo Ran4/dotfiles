@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 function ask_yes_or_no() {
     #found at http://stackoverflow.com/questions/1885525/how-do-i-prompt-a-user-for-confirmation-in-bash-script
