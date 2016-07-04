@@ -88,7 +88,8 @@ alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias tmux='tmux -2'
 alias tmuxs='~/dotfiles/defaulttmuxsession.sh'
 alias ts='~/dotfiles/defaulttmuxsession.sh'
-alias tns='tmux new -s' #Create new session with tns sessionname
+# alias tns='tmux new -s' #Create new session with tns sessionname
+alias t='~/dotfiles/tmux_attach_to_or_create_new_session.bash' #Create new session $1 or attach to it
 alias tskth='ts && tmux source-file ~/dotfiles/custom/kth_tmux.conf'
 
 if command_exists apt-get ; then
