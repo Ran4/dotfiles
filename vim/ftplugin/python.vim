@@ -20,6 +20,14 @@ nnoremap <leader>i :!python3 -i %<cr>
 nnoremap <localleader>rr :source ~/.vim/ftplugin/python.vim<cr>
 nnoremap <localleader>t :r ~/.vim/snippets/snippet_python3_test.py<cr>
 
+"Turn (where | = cursor)
+"    some_value|
+" into
+"    print("some_value:", some_value)
+"and exit insert mode
+inoremap <localleader>d <esc>"qdiwaprint("<c-r>q:", <c-r>q)<esc>
+nnoremap <localleader>d "qdiwaprint("<c-r>q:", <c-r>q)<esc>
+
 if exists('+colorcolumn')
     set colorcolumn=80
 endif
