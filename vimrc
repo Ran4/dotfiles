@@ -344,6 +344,7 @@ set t_Co=256
 "color wombat256mod
 color wombat256mod-darker
 au FileType elm colorscheme predawn
+"au FileType elm colorscheme github
 
 " set background=dark
 " colorscheme luna
@@ -688,6 +689,7 @@ nnoremap <leader>gG :let g:gitgutter_enabled = 0<cr>:GitGutterDisable<cr>
 let g:jedi#smart_auto_mappings = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures_delay = 0
+let g:jedi#force_py_version = 3
 
 ""lightline configuration
 "let g:lightline = {
@@ -741,6 +743,14 @@ let g:netrw_bufsettings = 'nomodifiable nomodified readonly nobuflisted nowrap n
 ""alt-d will disable ä so remove the meta-bindings
 let g:rsi_no_meta = 1
 
+"" Supertab configuration
+"CompletionType = context means that tab will depending on context do e.g.:
+"/usr/l<tab>     # will use filename completion
+"myvar.t<tab>    # will use user completion if completefunc set,
+                "# or omni completion if omnifunc set.
+"myvar-><tab>    # same as above
+let g:SuperTabDefaultCompletionType = "context"
+
 "" Syntastic configuration {{{
 let g:syntastic_mode_map = {
     \ "mode": "passive",
@@ -752,6 +762,9 @@ autocmd FileType python
     \ if search('^from django', 'npw') |
     \ let g:syntastic_python_pylint_args="--rcfile=~/.django.pylintrc" |
     \ endif
+
+autocmd FileType python
+    \ let g:syntastic_python_checkers=['python3', 'pep8']
 
 "    \ let g:syntastic_python_pylint_args="--rcfile=$XDG_CONFIG_HOME/pylint/django.pylintrc" |
 
