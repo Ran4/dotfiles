@@ -36,6 +36,7 @@ brew install weechat
 brew install elm
 brew install youtube-dl
 brew install pandoc
+brew cask install amethyst
 
 ################################################################################
 # Python installs

@@ -20,10 +20,10 @@ alias righthalf    move screenOriginX+screenSizeX/2;screenOriginY  screenSizeX/2
 ################################################################################
 
 ## Focus
-bind k:${hyper}  focus up
-bind j:${hyper}  focus down
-bind h:${hyper}  focus left
-bind l:${hyper}  focus right
+# bind k:${hyper}  focus up
+# bind j:${hyper}  focus down
+# bind h:${hyper}  focus left
+# bind l:${hyper}  focus right
 bind b:${hyper}  focus behind
 
 ########################################
@@ -33,6 +33,7 @@ bind b:${hyper}  focus behind
 bind o:${hyper}  ${full} #mnemonic "only"
 #bind n:${hyper}  ${lefthalf}
 #bind m:${hyper}  ${righthalf}
+
 bind n:${hyper}  chain ${lefthalf} | sequence throw prev > ${righthalf}
 bind m:${hyper}  chain ${righthalf} | throw next resize:screenSizeX/2;screenSizeY
 
@@ -54,7 +55,8 @@ bind space:${hyper} hint ASDFZXCVQWER12345<
 bind i:${hyper}      focus 'iTunes'
 #bind s:${hyper}      focus 'Skype'
 
-bind s:${hyper}      focus 'Slack'
+# bind s:${hyper}      focus 'Slack'
+bind s:${hyper}      focus 'Safari'
 bind d:${hyper}      focus 'iTerm2'
 bind f:${hyper}      focus 'Firefox'
 
