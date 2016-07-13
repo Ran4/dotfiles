@@ -53,7 +53,7 @@ bind space:${hyper} hint ASDFZXCVQWER12345<
 # These are laid out on the left hand
 #bind space:${hyper}  focus ${editor}
 bind i:${hyper}      focus 'iTunes'
-#bind s:${hyper}      focus 'Skype'
+bind y:${hyper}      focus 'Skype'
 
 # bind s:${hyper}      focus 'Slack'
 bind s:${hyper}      focus 'Safari'
