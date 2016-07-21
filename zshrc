@@ -79,6 +79,26 @@ fi
 
 #Prevent <c-s> from stopping the terminal
 #stty -ixon
+
+if command_exists setxkbmap ; then
+    if [ -f "/etc/arch-release" ]; then
+        setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
+    else
+        setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin" -option ctrl:nocaps
+    fi
+fi
+
+if command_exists xcape ; then
+    . ~/.xcape_config
+    #echo "Not running xcape config!"
+else
+    if command_exists xmodmap ; then
+        if [ ! -f "/etc/arch-release" ]; then
+            xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+            #echo "Not running xmodmap!"
+        fi
+    fi
+fi
 #}}}
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -96,10 +116,10 @@ alias -s pdf=open
 if [ -x /usr/bin/dircolors ]; then
     #if we can read the file ~/.dircolors, then eval list of colors given by $(dircolors -b ~/.dircolors)
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto -hF' #color, human readable, append indicator (one of */=>@|)
+    alias ls='ls --color=auto -hF --group-directories-first' #color, human readable, append indicator (one of */=>@|)
 elif [ -x /usr/local/bin/gdircolors ]; then #OS X
     test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
-    alias ls='gls --color=auto -hF' #color, human readable, append indicator (one of */=>@|)
+    alias ls='gls --color=auto -hF --group-directories-first' #color, human readable, */=>@| type indicator
 fi
 
 # Color for less {{{
@@ -165,23 +185,3 @@ if [ -f "/etc/arch-release" ]; then
     source ~/dotfiles/arch/zshrc_arch.sh
 fi
 #}}}
-
-if command_exists setxkbmap ; then
-    if [ -f "/etc/arch-release" ]; then
-        setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
-    else
-        setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin" -option ctrl:nocaps
-    fi
-fi
-
-if command_exists xcape ; then
-    . ~/.xcape_config
-    #echo "Not running xcape config!"
-else
-    if command_exists xmodmap ; then
-        if [ ! -f "/etc/arch-release" ]; then
-            xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-            #echo "Not running xmodmap!"
-        fi
-    fi
-fi
