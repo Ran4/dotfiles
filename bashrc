@@ -208,8 +208,12 @@ if command_exists xcape ; then
     . ~/.xcape_config
     #echo "Not running xcape config!"
 else
-    if [ ! -f "/etc/arch-release" ]; then
-        xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+    if [ ! -f "/etc/arch-release" ] ; then
+        if [[ "$OSTYPE" =~ ^darwin ]]; then
+            :
+        else
+            xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+        fi
     fi
     #echo "Not running xmodmap!"
 fi
