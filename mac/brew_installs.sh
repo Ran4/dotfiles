@@ -38,6 +38,13 @@ brew install youtube-dl
 brew install pandoc
 brew cask install amethyst
 
+#Neovim:
+brew tap neovim/neovim
+brew install --HEAD --with-release neovim
+ln -s ~/dotfiles/vim ~/.config/nvim
+ln -s ~/dotfiles/vimrc ~/.config/nvim/init.vim
+pip3 install neovim
+
 ################################################################################
 # Python installs
 ################################################################################

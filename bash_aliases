@@ -146,6 +146,9 @@ alias vim3='vim -c "vert resize 80" -c "wincmd w" -c "vert resize 80" -c "wincmd
 alias vim4="vim -c 'bel vert sbuf 2' -c '1wincmd w' -c 'bel sbuf 3' -c '3wincmd w' -c 'bel sbuf 4'"
 alias vims='vim -S .vimsession'
 alias vim='vim -O' #open multiple files as vertical splits by default
+if command_exists nvim ; then
+    alias vim='nvim -O'
+fi
 alias :q='exit'
 alias :Q='exit'
 alias :qa='exit'
@@ -163,6 +166,16 @@ if command_exists i3lock ; then
     alias lock='i3lock -d -e --color=102010 --no-unlock-indicator' #-d suspends screen after default 30s,
     #-e ignores empty password
 fi
+
+#KWM, a tiling window manager for OS X
+if command_exists kwmc ; then
+    alias kwmkill='launchctl unload /usr/local/opt/kwm/homebrew.mxcl.kwm.plist'
+    alias kwmstart='launchctl load /usr/local/opt/kwm/homebrew.mxcl.kwm.plist'
+    # Kwm restart = kr
+    alias kr='kwmkill && kwmstart'
+    #-e ignores empty password
+fi
+
 
 #alias kxt="ps aux | grep -i xterm | awk {'print $2'} | xargs kill -9" #kill xterm, please remove me once you've figured out the problem with i3
 alias nocaps="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"

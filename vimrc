@@ -233,6 +233,11 @@ vnoremap > >gv
 "{{{ SET OPTIONS
 filetype plugin indent on
 
+if has('nvim')
+    let $LANG = 'en'
+    set langmenu=none
+endif
+
 set number "show line numbers
 "set relativenumber
 
@@ -309,7 +314,9 @@ if has("gui_running")
 else
     "set mouse=n "only use mouse in visual mode
     set mouse=
-    set ttymouse=xterm2 "xterm2 to support resizing with mouse
+    if !has('nvim')
+        set ttymouse=xterm2 "xterm2 to support resizing with mouse
+    endif
     
     " workaround: enables mouse resize but helps with accidental clicks moving
     " the cursor
@@ -621,6 +628,11 @@ endif
 ":Helptags
 
 "PLUGIN CONFIGURATION {{{
+
+"Neovim-specific:
+if has('nvim')
+    let g:python3_host_prog = '/usr/local/bin/python3'
+endif
 
 ""Braceless configuration
 autocmd FileType python BracelessEnable
