@@ -180,6 +180,39 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+if has('nvim')
+    "Terminal mappings, since <C-\><C-n> is annoying to prepend
+    tnoremap <c-s> <C-\><C-n>
+    tnoremap <c-s><c-h> <C-\><C-n><c-w>h
+    tnoremap <c-s><c-j> <C-\><C-n><c-w>j
+    tnoremap <c-s><c-k> <C-\><C-n><c-w>k
+    tnoremap <c-s><c-l> <C-\><C-n><c-w>l
+    tnoremap <c-s>h <C-\><C-n><c-w>h
+    tnoremap <c-s>j <C-\><C-n><c-w>j
+    tnoremap <c-s>k <C-\><C-n><c-w>k
+    tnoremap <c-s>l <C-\><C-n><c-w>l
+    
+    nnoremap <c-s><c-h> <c-w>h
+    nnoremap <c-s><c-j> <c-w>j
+    nnoremap <c-s><c-k> <c-w>k
+    nnoremap <c-s><c-l> <c-w>l
+    nnoremap <c-s>h <c-w>h
+    nnoremap <c-s>j <c-w>j
+    nnoremap <c-s>k <c-w>k
+    nnoremap <c-s>l <c-w>l
+    
+    "Mac keyboard specific:
+    "tnoremap ˛ <C-\><C-n><C-w>h
+    "tnoremap √ <C-\><C-n><C-w>j
+    "tnoremap ª <C-\><C-n><C-w>k
+    "tnoremap ﬁ <C-\><C-n><C-w>l
+    "
+    "nnoremap ˛ <C-w>h
+    "nnoremap √ <C-w>j
+    "nnoremap ª <C-w>k
+    "nnoremap ﬁ <C-w>l
+endif
+
 " o and O doesn't go into insert mode
 nnoremap o o.<Esc>"_x<Esc>
 nnoremap O O.<Esc>"_x<Esc>
@@ -376,7 +409,7 @@ if has("autocmd")
 endif
 
 
-function HighlightExtraWhitespace()
+function! HighlightExtraWhitespace()
     "highlight ExtraWhitespace ctermbg=red
     "6 is a blue color?
     highlight ExtraWhitespace ctermbg=6
@@ -415,7 +448,7 @@ nnoremap di( :call New_dib()<CR>
 nnoremap di) :call New_dib()<CR>
 nnoremap dib :call New_dib()<CR>
 "di(, di), dib that will move inside first instance of () first if needed
-function New_dib()
+function! New_dib()
     if search("(","bn") == line(".")
         sil exe "normal! f)di("
         "sil exe "normal! l"
@@ -429,7 +462,7 @@ nnoremap di{ :call New_diB()<CR>
 nnoremap di} :call New_diB()<CR>
 nnoremap diB :call New_diB()<CR>
 "Like dib but } instead of )
-function New_diB()
+function! New_diB()
     if search("{","bn") == line(".")
         sil exe "normal! f}di{"
         "sil exe "normal! l"
@@ -443,7 +476,7 @@ nnoremap ci( :call New_cip()<CR>
 nnoremap ci) :call New_cip()<CR>
 nnoremap cib :call New_cip()<CR>
 " Change in paranthesis function, since ci( initially doesn't work
-function New_cip()
+function! New_cip()
     if search("(","bn") == line(".")
         sil exe "normal! f)ci("
         sil exe "normal! l"
@@ -460,7 +493,7 @@ nnoremap ci) :call New_cip()<CR>
 nnoremap cib :call New_cip()<CR>
 
 " Change in square brackets function, since ci[ initially doesn't work
-function New_cisb()
+function! New_cisb()
     if search("[","bn") == line(".")
         sil exe "normal! f]ci["
         sil exe "normal! l"
@@ -476,7 +509,7 @@ nnoremap ci[ :call New_cisb()<CR>
 nnoremap ci] :call New_cisb()<CR>
 
 " Change in squigly brackets function, since ci{ initially doesn't work
-function New_cisqb()
+function! New_cisqb()
     if search("{","bn") == line(".")
         sil exe "normal! f}ci{"
         sil exe "normal! l"
@@ -494,7 +527,7 @@ nnoremap ci} :call New_cisqb()<CR>
 nnoremap cis :call New_cisqb()<CR>
 
 " Removes trailing spaces
-function TrimWhiteSpace()
+function! TrimWhiteSpace()
   %s/\s*$//
   ''
 endfunction
@@ -694,6 +727,8 @@ let g:EasyMotion_enter_jump_first = 1
 let g:gitgutter_enabled = 0
 nnoremap <leader>gg :let g:gitgutter_enabled = 1<cr>:GitGutterEnable<cr>
 nnoremap <leader>gG :let g:gitgutter_enabled = 0<cr>:GitGutterDisable<cr>
+nnoremap <leader>gs :Gstatus<cr>30<c-w>+
+nnoremap <leader>gd :Gdiff<cr>
 
 ""vim-jedi configuration
 "let g:jedi#auto_initialization = 0
