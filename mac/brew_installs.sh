@@ -44,6 +44,9 @@ brew install --HEAD --with-release neovim
 ln -s ~/dotfiles/vim ~/.config/nvim
 ln -s ~/dotfiles/vimrc ~/.config/nvim/init.vim
 pip3 install neovim
+#Fix <c-h>: https://github.com/neovim/neovim/wiki/FAQ#my-ctrl-h-mapping-doesnt-work
+infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
+tic $TERM.ti
 
 ################################################################################
 # Python installs
