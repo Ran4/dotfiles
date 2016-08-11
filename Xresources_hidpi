@@ -61,5 +61,5 @@ xterm*allowBoldFonts: false
 !END of mine
 
 Xcursor.size: 8
-!Xft.dpi: 144
-Xft.dpi: 96
+Xft.dpi: 144
+!Xft.dpi: 96
