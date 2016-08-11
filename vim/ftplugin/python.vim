@@ -11,8 +11,14 @@ nnoremap <leader><leader>l :let g:syntastic_python_checkers=['python3']
 "Disable pylint
 nnoremap <leader>L :let g:syntastic_python_checkers=['python']<cr>
 
-nnoremap <leader>P :!clear && python %<cr>
-nnoremap <leader>p :!clear && python3 %<cr>
+"nvim will auto clear
+if has('nvim')
+    nnoremap <leader>P :!python %<cr>
+    nnoremap <leader>p :!python3 %<cr>
+else
+    nnoremap <leader>P :!clear && python %<cr>
+    nnoremap <leader>p :!clear && python3 %<cr>
+endif
 nnoremap <leader>I :!python -i %<cr>
 nnoremap <leader>i :!python3 -i %<cr>
 

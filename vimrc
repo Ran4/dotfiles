@@ -200,17 +200,6 @@ if has('nvim')
     nnoremap <c-s>j <c-w>j
     nnoremap <c-s>k <c-w>k
     nnoremap <c-s>l <c-w>l
-    
-    "Mac keyboard specific:
-    "tnoremap ˛ <C-\><C-n><C-w>h
-    "tnoremap √ <C-\><C-n><C-w>j
-    "tnoremap ª <C-\><C-n><C-w>k
-    "tnoremap ﬁ <C-\><C-n><C-w>l
-    "
-    "nnoremap ˛ <C-w>h
-    "nnoremap √ <C-w>j
-    "nnoremap ª <C-w>k
-    "nnoremap ﬁ <C-w>l
 endif
 
 " o and O doesn't go into insert mode
