@@ -563,6 +563,9 @@ endif
 """commentary.vim - comment things out with gc+{motion} and more
 "!git clone https://github.com/tpope/vim-commentary ~/.vim/bundle/vim-commentary
 
+"""dracula-theme, a colortheme
+"!git clone https://github.com/dracula/vim.git ~/.vim/bundle/dracula-theme
+
 """elm-vim - Elm support for Vim
 "!git clone https://github.com/elmcast/elm-vim.git ~/.vim/bundle/elm-vim
 
