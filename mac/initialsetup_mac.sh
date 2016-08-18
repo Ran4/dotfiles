@@ -44,6 +44,9 @@ defaults write com.apple.Safari WebKitInitialTimedLayoutDelay 0.15
 defaults write -g InitialKeyRepeat -int 14
 defaults write -g KeyRepeat -int 1
 
+# Disable the sound effects on boot
+sudo nvram SystemAudioVolume=" "
+
 
 #Install slate, to bind hyper key (cmd+ctrl+shift+option)
 #cd /Applications && curl http://www.ninjamonkeysoftware.com/slate/versions/slate-latest.tar.gz | tar -xz
