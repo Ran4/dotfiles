@@ -1,7 +1,7 @@
 # Common bindings: movement, layout, config {{{
 #Mod1 = Alt, Mod4 = Win
-set $mod Mod1
-#set $mod Mod4
+#set $mod Mod1
+set $mod Mod4l
 # movement
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -240,6 +240,6 @@ bar {
 
 # gaps inner 30
 # gaps outer 10 #higher than inner, so no gap when there's just a single window
-gaps inner 15
-gaps outer 5 #higher than inner, so no gap when there's just a single window
+#gaps inner 15
+#gaps outer 5 #higher than inner, so no gap when there's just a single window
 #}}}
