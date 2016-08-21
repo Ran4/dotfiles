@@ -13,8 +13,9 @@ nnoremap <leader>L :let g:syntastic_python_checkers=['python']<cr>
 
 "nvim will auto clear
 if has('nvim')
-    nnoremap <leader>P :!python %<cr>
-    nnoremap <leader>p :!python3 %<cr>
+    "Use :term instead of :!, since that supports input()
+    nnoremap <leader>P :term python %<cr>
+    nnoremap <leader>p :term python3 %<cr>
 else
     nnoremap <leader>P :!clear && python %<cr>
     nnoremap <leader>p :!clear && python3 %<cr>
