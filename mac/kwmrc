@@ -97,12 +97,12 @@ kwmc config border marked radius 0
 define hyper cmd+alt+ctrl+shift
 
 // Enable the prefix mode
-kwmc mode prefix prefix on
+kwmc mode prefix prefix off
 kwmc mode prefix timeout 1.05
 kwmc mode prefix restore default
 kwmc mode prefix color 0xFF458588
 
-kwmc bindsym ctrl-s mode activate prefix // Activate prefix mode
+/* kwmc bindsym ctrl-s mode activate prefix // Activate prefix mode */
 
 // Quit Kwm
 kwmc bindsym cmd+alt+ctrl-q quit
