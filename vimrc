@@ -183,6 +183,7 @@ nnoremap <C-H> <C-W><C-H>
 if has('nvim')
     "Terminal mappings, since <C-\><C-n> is annoying to prepend
     tnoremap <c-s> <C-\><C-n>
+    tnoremap <c-s><c-s> <C-\><C-n><c-w><c-c>
     tnoremap <c-s><c-h> <C-\><C-n><c-w>h
     tnoremap <c-s><c-j> <C-\><C-n><c-w>j
     tnoremap <c-s><c-k> <C-\><C-n><c-w>k
@@ -192,6 +193,13 @@ if has('nvim')
     tnoremap <c-s>k <C-\><C-n><c-w>k
     tnoremap <c-s>l <C-\><C-n><c-w>l
     
+    tnoremap <c-h> <c-\><c-n><c-w>h
+    tnoremap <c-j> <c-\><c-n><c-w>j
+    tnoremap <c-k> <c-\><c-n><c-w>k
+    
+    "Open a new vertical term
+    nnoremap <c-t> :vnew<cr>:term<cr>
+    
     nnoremap <c-s><c-h> <c-w>h
     nnoremap <c-s><c-j> <c-w>j
     nnoremap <c-s><c-k> <c-w>k
@@ -200,6 +208,9 @@ if has('nvim')
     nnoremap <c-s>j <c-w>j
     nnoremap <c-s>k <c-w>k
     nnoremap <c-s>l <c-w>l
+    
+    "Automatically enter terminal if we go into term window
+    autocmd BufEnter term://* startinsert
 endif
 
 " o and O doesn't go into insert mode

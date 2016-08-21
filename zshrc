@@ -17,6 +17,11 @@ HISTFILESIZE=8000000
 # plugins loaded from ~/.oh-my-zsh/plugins/*, custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(git vi-mode)
 
+#Help function to see if a command exists
+command_exists () {
+  type "$1" >/dev/null 2>/dev/null
+}
+
 #Don't autocomplete hosts. Inspiration: https://tlvince.com/fixing-slow-zsh-command-completion
 zstyle ':completion:*' hosts off
 #End of ZSH related configuration }}}
@@ -26,15 +31,14 @@ export PATH=$PATH:/opt/local/bin
 export MANPATH="/opt/local/share/man:/usr/local/man:$MANPATH"
 export EDITOR=vim
 export PYLINTRC="~/.pylintrc"
-
 #Node version manager:
 export NVM_DIR="/home/$USER/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-#Help function to see if a command exists
-command_exists () {
-  type "$1" >/dev/null 2>/dev/null
-}
+#This will overwrite ~/.gitconfig
+if command_exists nvim ; then
+    export GIT_EDITOR=nvim
+fi
 #Keyboard related {{{
 source $ZSH/oh-my-zsh.sh
 bindkey '^r' history-incremental-search-backward
