@@ -417,6 +417,7 @@ function! HighlightExtraWhitespace()
 endfunction
 
 if exists('+colorcolumn')
+    "Set a default colorcolumn
     set colorcolumn=110
     " Colorcolumn color is very dark grey
     highlight colorcolumn ctermbg=0 guibg=black
@@ -607,6 +608,9 @@ endif
 """{{{ ghijk
 """gitgutter shows a git diff in the 'gutter' (sign column)
 "!git clone git://github.com/airblade/vim-gitgutter.git ~/.vim/bundle/vim-gitgutter
+
+"""haskell-vim, a bunch of scripts for Haskell and Cabal
+"!git clone https://github.com/neovimhaskell/haskell-vim.git ~/.vim/bundle/haskell-vim
 
 """incsearch incrementally highlights all pattern being matched.
 "!git clone https://github.com/haya14busa/incsearch.vim ~/.vim/bundle/incsearch.vim
