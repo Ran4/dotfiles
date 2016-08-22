@@ -245,11 +245,11 @@ nnoremap <f5> :!clear && make && echo "    //// Output ////" && ./%:r.out<cr>
 map <F8> :setlocal spell! spelllang=en_gb<CR>
 
 " Inverse of join (J)
-function! BreakHere()
-    s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
-    call histdel("/", -1)
-endfunction
-nnoremap K :call BreakHere()<CR>
+"function! BreakHere()
+"    s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
+"    call histdel("/", -1)
+"endfunction
+"nnoremap K :call BreakHere()<CR>
 
 " Easier indentation in visual mode
 vnoremap < <gv
