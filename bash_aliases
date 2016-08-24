@@ -80,8 +80,8 @@ alias acki='ack -i'
 alias agi='ag -i'
 
 alias matnod='matlab -nosplash -nodesktop' #Run CLI version of Matlab
-alias pdf='run zathura'
-alias arq='/home/ran/.jena/apache-jena-3.0.1/bin/arq' #arq, for running SPARQL queries
+alias hask="stack --verbosity silent runghc"
+
 alias tree='tree --dirsfirst -I "*.pyc" --matchdirs -I "__pycache__"'
 
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
