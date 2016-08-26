@@ -1,5 +1,0 @@
-language: vim
-
-before_script: make .test/plugins
-
-script: make test

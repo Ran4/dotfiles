@@ -20,10 +20,6 @@ nnoremap di_ f_dF_
 nnoremap vi_ t_vF_
 vnoremap i_ F_
 
-"Helpers for OS X. TODO: Only activate this when using OS X.
-
-inoremap <€ <c-w>
-
 "Helper for spell check: press <tab> on a word, <esc> to choose word
 nmap <s-tab> viw<esc>a<c-x>s<tab>
 "nmap <s-tab> viw<esc>a<c-x>s
@@ -569,9 +565,6 @@ endif
 ""Ag plugin for vim, usagE: :Ag [options] {pattern} [{directories}]
 "!git clone https://github.com/rking/ag.vim ~/.vim/bundle/ag.vim
 
-"""braceless adds text objects, folding and more for many braceless languages such as Python
-"!git clone https://github.com/tweekmonster/braceless.vim ~/.vim/bundle/braceless
-
 """commentary.vim - comment things out with gc+{motion} and more
 "!git clone https://github.com/tpope/vim-commentary ~/.vim/bundle/vim-commentary
 
@@ -673,17 +666,6 @@ endif
 if has('nvim')
     let g:python3_host_prog = '/usr/local/bin/python3'
 endif
-
-""Braceless configuration
-autocmd FileType python BracelessEnable
-"Change default block key to p from P: paragraph is useless in Python code
-"let g:braceless_block_key = 'p'
-"+indent 	Enable indent handling
-"+fold 	        Enable folding
-"+fold-inner 	Enable folding, but fold on the inner block
-"+highlight 	Enable indent guide
-"+highlight-cc 	Enable indent guide, but use colorcolumn
-"+highlight-cc2 Enable indent guide and use colorcolumn
 
 "use CtrlP to quickly switch between buffers
 nnoremap <b :CtrlPBuffer<cr>
