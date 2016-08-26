@@ -212,7 +212,9 @@ else
         if [[ "$OSTYPE" =~ ^darwin ]]; then
             :
         else
-            xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+            if command_exists xmodmap ; then
+                xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+            fi
         fi
     fi
     #echo "Not running xmodmap!"

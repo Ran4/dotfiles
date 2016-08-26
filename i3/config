@@ -1,7 +1,7 @@
 # Common bindings: movement, layout, config {{{
 #Mod1 = Alt, Mod4 = Win
 #set $mod Mod1
-set $mod Mod4l
+set $mod Mod4
 # movement
 bindsym $mod+h focus left
 bindsym $mod+j focus down
