@@ -57,15 +57,20 @@ iabbrev pritn print
 iabbrev true: True:
 iabbrev false: False:
 
-nnoremap <silent> <buffer> ]] :call <SID>Python_jump('/^\(class\\|def\)')<cr>
-nnoremap <silent> <buffer> [[ :call <SID>Python_jump('?^\(class\\|def\)')<cr>
+"nnoremap <silent> <buffer> ]] :call <SID>Python_jump('/^\(class\\|def\)')<cr>
+"nnoremap <silent> <buffer> [[ :call <SID>Python_jump('?^\(class\\|def\)')<cr>
 nnoremap <silent> <buffer> ]m :call <SID>Python_jump('/^\s*\(class\\|def\)')<cr>
 nnoremap <silent> <buffer> [m :call <SID>Python_jump('?^\s*\(class\\|def\)')<cr>
+nnoremap <silent> <buffer> ¨¨ :call <SID>Python_jump('/^\s*\(class\\|def\)')<cr>
+nnoremap <silent> <buffer> åå :call <SID>Python_jump('?^\s*\(class\\|def\)')<cr>
 "nmap <silent> <buffer> å :call <SID>Python_jump('?^\s*\(class\\|def\)')<cr>
 "nmap <silent> <buffer> ¨ :call <SID>Python_jump('/^\s*\(class\\|def\)')<cr>
 
-vnoremap <silent> <buffer> [m :call <SID>Python_jump('?^\s*\(class\\|def\)')<cr>
-vnoremap <silent> <buffer> ]m :call <SID>Python_jump('/^\s*\(class\\|def\)')<cr>
+vnoremap <silent> <buffer> ¨¨ j$/^\s*\(class\\|def\)<cr>k
+vnoremap <silent> <buffer> åå ?^\s*\(class\\|def\)<cr>k
+
+"Delete until next def or class (not including the next def or class)
+nnoremap d¨¨ d/^\s*\(class\\|def\)<cr>
 
 " q in visual mode appends '#~ ' to marked lines, Q removes them
 vnoremap q 0<C-v>I#~ <ESC>
