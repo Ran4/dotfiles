@@ -176,6 +176,15 @@ if command_exists kwmc ; then
     #-e ignores empty password
 fi
 
+#Running headless Parallels servers
+if [ -f ~/.identifiers/ran-mbpr14 ]; then
+    UBUNTU_PARALLELS_NAME='ran-par-ubuntu16'
+    alias ubuntustart='prlctl start $UBUNTU_PARALLELS_NAME'
+    alias ubunturestart='prlctl reset $UBUNTU_PARALLELS_NAME && prlctl restart $UBUNTU_PARALLELS_NAME'
+    alias ubuntustop='prlctl stop $UBUNTU_PARALLELS_NAME'
+    alias ubuntustatus='prlctl list --all'
+fi
+
 
 #alias kxt="ps aux | grep -i xterm | awk {'print $2'} | xargs kill -9" #kill xterm, please remove me once you've figured out the problem with i3
 alias nocaps="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
