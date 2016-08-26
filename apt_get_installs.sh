@@ -1,6 +1,5 @@
 sudo apt-get update
 sudo apt-get -y install git
-sudo apt-get -y install xcape
 sudo apt-get -y install openssh-server
 sudo apt-get -y install vim-gnome
 sudo apt-get -y install tmux
@@ -8,17 +7,24 @@ sudo apt-get -y install curl
 sudo apt-get -y install ack-grep
 sudo apt-get -y install silversearcher-ag
 sudo apt-get -y install tree
-sudo apt-get -y install feh
+if [ -f ~/.identifiers/without_x ] ; then
+    echo 'Ignoring X programs, please run:'
+    echo '#sudo rm -rf $(which xset)'
+    echo '#sudo rm -rf $(which xmodmap)'
+    echo '#sudo rm -rf $(which setxkbmap)'
+else
+    sudo apt-get -y install xcape
+    sudo apt-get -y install feh
+    sudo apt-get -y install xsel #xsel -p to get primary clipboard, pipe to it to set primary
+    sudo apt-get -y install xdotool #used with ~/.i3/runorfocus.py
 
-sudo apt-get -y install xsel #xsel -p to get primary clipboard, pipe to it to set primary
-sudo apt-get -y install xdotool #used with ~/.i3/runorfocus.py
+    sudo apt-get -y install zathura #pdf viewer with vim keybindings
+    ZATHRCFILE=/etc/zathurarc
+    [ ! -f $ZATHRCFILE ] \
+        && echo "writing $ZATHRCFILE" && echo "set scroll-step 100" > $ZATHRCFILE \
+        && xdg-mime default zathura.desktop application/pdf
+fi
 sudo apt-get -y install zsh
-
-sudo apt-get -y install zathura #pdf viewer with vim keybindings
-ZATHRCFILE=/etc/zathurarc
-[ ! -f $ZATHRCFILE ] \
-    && echo "writing $ZATHRCFILE" && echo "set scroll-step 100" > $ZATHRCFILE \
-    && xdg-mime default zathura.desktop application/pdf
 
 sudo apt-get -y install python-pip
 #sudo apt-get -y install texlive texlive-latex-base # Around 300 MB?
