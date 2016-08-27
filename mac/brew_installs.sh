@@ -38,6 +38,9 @@ brew install youtube-dl
 brew install pandoc
 brew cask install amethyst
 
+brew install moc
+brew services start jack #moc only works when jack is running
+
 #Neovim:
 brew tap neovim/neovim
 brew install --HEAD --with-release neovim
