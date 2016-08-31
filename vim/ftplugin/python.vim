@@ -14,14 +14,20 @@ nnoremap <leader>L :let g:syntastic_python_checkers=['python']<cr>
 "nvim will auto clear
 if has('nvim')
     "Use :term instead of :!, since that supports input()
-    nnoremap <leader>P :term python %<cr>
-    nnoremap <leader>p :term python3 %<cr>
+    "nnoremap <leader>P :term python %<cr>
+    "nnoremap <leader>p :term python3 %<cr>
+    nnoremap <leader>p <c-w><c-v>:term python2 %<cr>
+    nnoremap <leader>p <c-w><c-v>:term python3 %<cr>
+    
+    nnoremap <leader>I :new \| term python2<cr>
+    nnoremap <leader>i :new \| term python3<cr>
 else
     nnoremap <leader>P :!clear && python %<cr>
     nnoremap <leader>p :!clear && python3 %<cr>
 endif
-nnoremap <leader>I :!python -i %<cr>
-nnoremap <leader>i :!python3 -i %<cr>
+
+"nnoremap <leader>I :!python -i %<cr>
+"nnoremap <leader>i :!python3 -i %<cr>
 
 
 nnoremap <localleader>rr :source ~/.vim/ftplugin/python.vim<cr>
