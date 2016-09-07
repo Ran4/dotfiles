@@ -159,7 +159,7 @@ if [ -f ~/.identifiers/ranl412 ]; then
     TRACKPOINT_NAME=$(xinput --list --name-only | g -i trackpoint)
     xinput --set-prop "$TRACKPOINT_NAME" "Device Accel Constant Deceleration" 0.9
     
-    feh --bg-scale ~/ovrigt/backgrounds/space_bluedots_1366_768.jpg
+    feh --bg-scale ~/other/backgrounds/beautiful_landscape.jpg
     
     #Set screen layout for 21.5" and rotated 24" screens at SciLifeLab
     alias ki='~/.screenlayout/ki_215_24r.sh'
