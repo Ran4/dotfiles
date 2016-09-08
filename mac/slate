@@ -22,10 +22,11 @@ alias bottomhalf   move 0;screenSizeY/2                            screenSizeX;s
 ################################################################################
 
 ## Focus
-# bind k:${hyper}  focus up
-# bind j:${hyper}  focus down
-# bind h:${hyper}  focus left
-# bind l:${hyper}  focus right
+bind k:${hyper}  focus up
+bind j:${hyper}  focus down
+
+bind h:${hyper}  focus left
+bind l:${hyper}  focus right
 bind b:${hyper}  focus behind
 
 ########################################
@@ -33,13 +34,11 @@ bind b:${hyper}  focus behind
 # These are laid out to be used with the right hand
 # and to complement the focus bindings
 bind o:${hyper}  ${full} #mnemonic "only"
-#bind n:${hyper}  ${lefthalf}
-#bind m:${hyper}  ${righthalf}
 
 bind n:${hyper}  chain ${lefthalf} | sequence throw prev > ${righthalf}
 bind m:${hyper}  chain ${righthalf} | throw next resize:screenSizeX/2;screenSizeY
-bind j:${hyper}  ${bottomhalf}
-bind k:${hyper}  ${tophalf}
+# bind j:${hyper}  ${bottomhalf}
+# bind k:${hyper}  ${tophalf}
 
 # Third and two-third window size positions
 #1/3 size, positions 0, 1/3 and 2/3
