@@ -14,31 +14,21 @@ HIST_STAMPS="yyyy-mm-dd" # Command execution time stamp shown in the history com
 HISTSIZE=400000
 HISTFILESIZE=8000000
 
-# plugins loaded from ~/.oh-my-zsh/plugins/*, custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git vi-mode)
-
 #Help function to see if a command exists
 command_exists () {
   type "$1" >/dev/null 2>/dev/null
 }
 
+# plugins loaded from ~/.oh-my-zsh/plugins/*, custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+plugins=(git vi-mode)
+
+source ~/.zsh/exports.zsh
+source ~/.zsh/functions.zsh
+
 #Don't autocomplete hosts. Inspiration: https://tlvince.com/fixing-slow-zsh-command-completion
 zstyle ':completion:*' hosts off
+source ~/.zsh/setopt.zsh
 #End of ZSH related configuration }}}
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-export PATH=$PATH:/opt/local/bin
-[[ -f "/etc/arch-release" ]] && export PATH=$PATH:/usr/bin/core_perl/
-export MANPATH="/opt/local/share/man:/usr/local/man:$MANPATH"
-export EDITOR=vim
-export PYLINTRC="~/.pylintrc"
-#Node version manager:
-export NVM_DIR="/home/$USER/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-#This will overwrite ~/.gitconfig
-if command_exists nvim ; then
-    export GIT_EDITOR=nvim
-fi
 #Keyboard related {{{
 source $ZSH/oh-my-zsh.sh
 bindkey '^r' history-incremental-search-backward
@@ -189,3 +179,5 @@ if [ -f "/etc/arch-release" ]; then
     source ~/dotfiles/arch/zshrc_arch.sh
 fi
 #}}}
+#e.g. "~/Applications $ " where the pwd is green, $ is yellow
+# PROMPT="%{$fg_no_bold[green]%}%2~%{$reset_color%}%{$fg_no_bold[yellow]%}$%{$reset_color%} "
