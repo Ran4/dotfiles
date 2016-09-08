@@ -1,5 +1,6 @@
 "remaps å¨Å^ to []{} in various ways
 source ~/.vim/ftplugin/remap_to_brackets.vim
+nnoremap rå rå
 
 nnoremap <leader>p :!pandoc -s % -o out_%:r.html && firefox out_%:r.html &<cr>
 nnoremap <silent> <leader>P :!pandoc -s % -o out_%:r.html &> /dev/null &<cr><cr>
