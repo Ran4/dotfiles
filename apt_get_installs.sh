@@ -27,6 +27,16 @@ fi
 sudo apt-get -y install zsh
 
 sudo apt-get -y install python-pip
+
+# Neovim
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt-get update
+sudo apt-get -y install neovim
+
+sudo apt-get -y install python-dev python-pip python3-dev python3-pip
+#The symlinking is done in makesymlinks.sh
+
 #sudo apt-get -y install texlive texlive-latex-base # Around 300 MB?
 #sudo apt-get -y install texlive-full  # 3 GB...
 

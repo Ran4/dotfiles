@@ -60,9 +60,10 @@ bindsym $mod+Shift+Right resize grow width 2 px or 2 ppt
 #}}}
 # Program specific bindings {{{
 #bindsym $mod+d exec pcmanfm
-bindsym $mod+d exec python3 ~/.i3/runorfocus.py "pcmanfm" pcmanfm
-#bindsym $mod+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
-bindsym $mod+ctrl+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
+bindsym $mod+shift+d exec python3 ~/.i3/runorfocus.py "pcmanfm" pcmanfm
+bindsym $mod+d exec python3 ~/.i3/runorfocus.py "xterm" xterm
+bindsym $mod+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
+#bindsym $mod+ctrl+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
 bindsym $mod+e exec python3 ~/.i3/runorfocus.py "Xterm" xterm
 bindsym $mod+m exec python3 ~/.i3/runorfocus.py "mendeleydesktop" mendeleydesktop
 bindsym $mod+z exec python3 ~/.i3/runorfocus.py "Zathura" zathura

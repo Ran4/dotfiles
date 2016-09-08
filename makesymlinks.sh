@@ -89,6 +89,13 @@ echo -e "${LBLUE}Creating nowplaying.sh symlink to /usr/bin (ln -s $dir/scripts/
 sudo ln -sf $dir/scripts/nowplaying.sh  /usr/bin/nowplaying
 echo "...done"
 
+if command_exists nvim ; then
+    echo -e "${LBLUE}Symlinking vim folder and vimrc for nvim to use${NC}"
+    ln -s ~/dotfiles/vim ~/.config/nvim
+    ln -s ~/dotfiles/vimrc ~/.config/nvim/init.vim
+    echo "...done"
+fi
+
 echo -e "${LBLUE}Copying sunrise-modified-ran.zsh-theme file to ~/.oh-my-zsh/themes/${NC}"
 cp $dir/oh-my-zsh/themes/sunrise-modified-ran.zsh-theme ~/.oh-my-zsh/themes/
 
