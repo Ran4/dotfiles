@@ -1,3 +1,7 @@
 #vim swap files
 *.swo
 *.swp
+.netrwhist
+
+# OS X
+.DS_Store
