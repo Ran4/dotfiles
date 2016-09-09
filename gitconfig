@@ -1,11 +1,12 @@
 [user]
 	email = rasmus.ansin@gmail.com
 	name = Rasmus Ansin
+[github]
+	user = ran4
 [user]
 	editor = vim
 [push]
 	default = simple
-
 [core]
 	pager = less -F -X
 	excludesfile = "~/.gitignore_global"
@@ -17,3 +18,5 @@
 	tool = vimdiff2
 [commit]
 	verbose
+[alias]
+	stat = log --stat --graph --pretty=oneline --abbrev-commit --date=relative
