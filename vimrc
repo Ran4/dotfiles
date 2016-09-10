@@ -391,16 +391,16 @@ au FileType elm colorscheme predawn
 " colorscheme harlequin
 syntax enable
 
-" highlight trailing spaces
-" Shortcut to rapidly toggle `set list`
-nmap <leader>l :highlight ExtraWhitespace ctermbg=red<CR>:match ExtraWhiteSpace /\S\(\s\+\)$/<CR>
+" highlight trailing spaces. <leader>h to start highlight, <leader>H to stop.
+nmap <leader>h :highlight ExtraWhitespace ctermbg=red<CR>:match ExtraWhiteSpace /\S\(\s\+\)$/<CR>
+nmap <leader>H :highlight clear ExtraWhitespace<cr>
 "highlight current line in insert mode, also don't match extrawhitespace until
 "after leaving insertmode
 if has("autocmd")
     augroup whitespace
         autocmd!
-        autocmd InsertEnter * set cursorline! | match ExtraWhitespace //
-        autocmd InsertLeave * set cursorline! | call HighlightExtraWhitespace()
+        "autocmd InsertEnter * set cursorline! | match ExtraWhitespace //
+        "autocmd InsertLeave * set cursorline! | call HighlightExtraWhitespace()
     augroup END
 endif
 
@@ -538,7 +538,7 @@ if has("autocmd")
         autocmd BufRead,BufNewFile .bash_aliases,bash_aliases set filetype=sh
         autocmd BufRead,BufNewFile *.arff set filetype=arff
         
-        autocmd BufRead,BufNewFile * call HighlightExtraWhitespace()
+        "autocmd BufRead,BufNewFile * call HighlightExtraWhitespace()
         
         "Prevent auto-comments
         "c: Auto-wrap comments using textwidth, autoinserting the current comment leader
