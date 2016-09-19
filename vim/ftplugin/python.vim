@@ -19,8 +19,8 @@ if has('nvim')
     nnoremap <leader>p <c-w><c-v>:term python2 %<cr>
     nnoremap <leader>p <c-w><c-v>:term python3 %<cr>
     
-    nnoremap <leader>I :new \| term python2<cr>
-    nnoremap <leader>i :new \| term python3<cr>
+    nnoremap <leader>I <c-w><c-v>:term python -i %<cr>
+    nnoremap <leader>i <c-w><c-v>:term python3 -i %<cr>
 else
     nnoremap <leader>P :!clear && python %<cr>
     nnoremap <leader>p :!clear && python3 %<cr>
