@@ -15,7 +15,8 @@ XTerms += rxvt-unicode-256colour:rxvt-unicode-256color
 XTerms += eterm
 
 #Theme = rhowaldt_theme
-Theme = nightly_theme
+#Theme = nightly_theme
+Theme = transparent-background
 MOCDir = ~/.moc
 
 # Use librcc to fix ID3 version 1/1.1 tags encoding.
