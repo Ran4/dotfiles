@@ -74,7 +74,7 @@ call s:highlight("NonText", 8, "NONE", "NONE")
 call s:highlight("SpecialKey", "NONE", 13, "NONE")
 
 "call s:highlight("Cursor", 0, 7, "reverse")
-call s:highlight("LineNr", 8, 13, "NONE")
+call s:highlight("LineNr", 8, 0, "NONE")
 call s:highlight("VertSplit", 8, "NONE", "NONE")
 call s:highlight("StatusLine", 7, 13, "NONE")
 call s:highlight("StatusLineNC", 8, 13, "NONE")
