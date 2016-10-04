@@ -189,9 +189,46 @@ if has('nvim')
     tnoremap <c-s>k <C-\><C-n><c-w>k
     tnoremap <c-s>l <C-\><C-n><c-w>l
     
+    
+    " Recreating some tmux-like stuff
+    tnoremap <c-s>c <C-\><C-n>:tabe<cr>:term<cr>
+    "In case we're not releasing ctrl quickly enough:
+    tnoremap <c-s><c-c> <C-\><C-n>:tabe<cr>:term<cr>
+    tnoremap <c-s>n <C-\><C-n>gt
+    tnoremap <c-s><c-n> <C-\><C-n>gt
+    tnoremap <c-s>p <C-\><C-n>gT
+    tnoremap <c-s><c-p> <C-\><C-n>gT
+    tnoremap <c-s>s <C-\><C-n>:new<cr>:term<cr>
+    tnoremap <c-s><c-s> <C-\><C-n>:new<cr>:term<cr>
+    tnoremap <c-s>v <C-\><C-n>:vnew<cr>:term<cr>
+    tnoremap <c-s><c-v> <C-\><C-n>:vnew<cr>:term<cr>
+    tnoremap <c-s>x <C-\><C-n><c-w>c
+    tnoremap <c-s><c-x> <C-\><C-n><c-w>c
+    tnoremap <c-s>T <C-\><C-n><c-w>T
+    
+    nnoremap <c-s>c :tabe<cr>:term<cr>
+    "In case we're not releasing ctrl quickly enough:
+    nnoremap <c-s><c-c> :tabe<cr>:term<cr>
+    nnoremap <c-s>n gt
+    nnoremap <c-s><c-n> gt
+    nnoremap <c-s>p gT
+    nnoremap <c-s><c-p> gT
+    nnoremap <c-s>s :new<cr>:term<cr>
+    nnoremap <c-s><c-s> :new<cr>:term<cr>
+    nnoremap <c-s>v :vnew<cr>:term<cr>
+    nnoremap <c-s><c-v> :vnew<cr>:term<cr>
+    nnoremap <c-s>x <c-w>c
+    nnoremap <c-s><c-x> <c-w>c
+    nnoremap <c-s>T <c-w>T
+    
+    
+    
     tnoremap <c-h> <c-\><c-n><c-w>h
     tnoremap <c-j> <c-\><c-n><c-w>j
     tnoremap <c-k> <c-\><c-n><c-w>k
+    
+    tnoremap <c-l> <c-\><c-n><c-w>l
+    
     
     "Open a new vertical term
     nnoremap <c-t> :vnew<cr>:term<cr>
@@ -720,7 +757,7 @@ nnoremap <leader>gs :Gstatus<cr>30<c-w>+
 nnoremap <leader>gd :Gdiff<cr>
 
 ""vim-jedi configuration
-"let g:jedi#auto_initialization = 0
+let g:jedi#auto_initialization = 0
 
 let g:jedi#smart_auto_mappings = 0
 let g:jedi#popup_on_dot = 0
