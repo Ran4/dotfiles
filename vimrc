@@ -223,11 +223,10 @@ if has('nvim')
     
     
     
-    tnoremap <c-h> <c-\><c-n><c-w>h
-    tnoremap <c-j> <c-\><c-n><c-w>j
-    tnoremap <c-k> <c-\><c-n><c-w>k
-    
-    tnoremap <c-l> <c-\><c-n><c-w>l
+    "tnoremap <c-h> <c-\><c-n><c-w>h
+    "tnoremap <c-j> <c-\><c-n><c-w>j
+    "tnoremap <c-k> <c-\><c-n><c-w>k "used for kill to eol
+    "tnoremap <c-l> <c-\><c-n><c-w>l "used for clear...
     
     
     "Open a new vertical term
