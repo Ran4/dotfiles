@@ -93,6 +93,8 @@ brew cask install mendeley-desktop
 brew cask install transmission #The torrent client
 brew cask install macdown #open source Markdown editor http://macdown.uranusjr.com
 brew cask install flux
+brew cask install haroopad
+brew cask install hammerspoon
 
 ################################################################################
 # Fixes

@@ -10,7 +10,7 @@ NC='\033[0m'
 dir=~/dotfiles/mac                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="slate"
+files="slate hammerspoon"
 
 mkdir -p $olddir
 cd $dir
