@@ -756,7 +756,7 @@ nnoremap <leader>gs :Gstatus<cr>30<c-w>+
 nnoremap <leader>gd :Gdiff<cr>
 
 ""vim-jedi configuration
-let g:jedi#auto_initialization = 0
+"let g:jedi#auto_initialization = 0
 
 let g:jedi#smart_auto_mappings = 0
 let g:jedi#popup_on_dot = 0
