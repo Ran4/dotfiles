@@ -50,5 +50,6 @@ endif
 "}}}
 
 "let b:commentary_format='#~ %s'
+colorscheme luna
 
 iabbrev improt import
