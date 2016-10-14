@@ -1,0 +1,27 @@
+* Items enabled:
+
+Change Command_R Key (Right Command)
+    Command_R to Option_R
+
+Change Control_L Key (Left Control)
+    Control_L to Control_L (+ When you type Control_L only, send Escape)
+
+Change Fn Key
+    Fn+(letter,number,symbol) to hyper
+
+Change Option_r Key (Right Option)
+    Option_r to Command_R
+
+Use "hjkl" keys  as arrow keys if you are not editing text.
+    Enable in some standard apps. finder, itunes, photos, activity monitor, system prefs, karabiner, seil
+
+For Applications
+    Enable at only Firefox
+        Control+T to Command+T
+
+For PC Users
+    Use PC Style Home/End #2 (actually, change home/end key to Command+Left/Right.)
+
+
+
+* Key repeat: override, delay 230 ms, repeat 16 ms
