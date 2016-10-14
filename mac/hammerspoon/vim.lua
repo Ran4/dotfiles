@@ -6,8 +6,7 @@ local normal = hs.hotkey.modal.new()
 -- <c-c> - enter Normal mode
 -- I don't remap <esc> because it's too risky
 -- enterNormal = hs.hotkey.bind({"ctrl"}, "[", function()
--- enterNormal = hs.hotkey.bind({"ctrl"}, "c", function()
-enterNormal = hs.hotkey.bind({"ctrl"}, "j", function()
+enterNormal = hs.hotkey.bind({"ctrl"}, "q", function()
     normal:enter()
     hs.alert.show('Normal mode')
 end)
