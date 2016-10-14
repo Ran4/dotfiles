@@ -1,7 +1,7 @@
 # Show file titles (title, author, album) instead of file names.
 ReadTags = yes
 
-MusicDir = "/Users/ran/Music/iTunes/iTunes Media/Music/"
+MusicDir = "/Users/ran/Music/"
 StartInMusicDir = yes
 SoundDriver = JACK:ALSA:OSS
 ShowHiddenFiles= no
