@@ -1,6 +1,6 @@
 brew update
 ################################################################################
-# Common linux stuff
+# Replace POSIX stuff
 ################################################################################
 brew tap homebrew/dupes
 brew install findutils --with-default-names
@@ -15,6 +15,9 @@ brew install diffutils
 brew install gzip
 brew install watch
 
+################################################################################
+# Programs that compile from source
+################################################################################
 brew install git
 brew install less
 brew install openssh
@@ -36,10 +39,12 @@ brew install weechat
 brew install elm
 brew install youtube-dl
 brew install pandoc
-brew cask install amethyst
 
 brew install moc
 brew services start jack #moc only works when jack is running
+#Run
+#jackd -d coreaudio &
+#to start jackd
 
 #Neovim:
 brew tap neovim/neovim
@@ -87,7 +92,6 @@ brew install Caskroom/cask/anki
 brew cask install flip4mac #Needed to play wmv files on OS X
 brew cask install silverlight
 brew cask install vlc
-brew cask install broomstick #Hide menu bar items
 brew cask install slack #The chat program
 brew cask install mendeley-desktop
 brew cask install transmission #The torrent client
@@ -95,6 +99,7 @@ brew cask install macdown #open source Markdown editor http://macdown.uranusjr.c
 brew cask install flux
 brew cask install haroopad
 brew cask install hammerspoon
+brew cask install music-manager #google music manager
 
 ################################################################################
 # Fixes
