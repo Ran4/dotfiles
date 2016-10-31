@@ -6,6 +6,9 @@ nmap , ä
 nmap ö <localleader>
 nnoremap ,, ,
 
+map § <
+map ° >
+
 nmap cså cs[
 nmap cs¨ cs]
 omap iå i[
@@ -283,17 +286,10 @@ map <F8> :setlocal spell! spelllang=en_gb<CR>
 "endfunction
 "nnoremap K :call BreakHere()<CR>
 
-" Easier indentation in visual mode
+" Easier indentation in visual mode (don't leave visual mode after < or >)
 vnoremap < <gv
 vnoremap > >gv
 
-" nnoremap <leader>d [mzz
-" vnoremap <leader>d ]mzz
-" nnoremap <leader>D ]mzz
-" vnoremap <leader>D ]mzz
-" nnoremap <leader>c /class <CR>zz
-" nnoremap <leader>c /class <CR>zz
-" nnoremap <leader>C ?class <CR>zz
 "}}}
 "{{{ SET OPTIONS
 filetype plugin indent on
