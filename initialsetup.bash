@@ -37,6 +37,8 @@ if command_exists apt-get ; then
     rmdir ~/Desktop
 fi
 
+sudo pip3 install virtualenv
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
     echo 'Detected OS X, calling ~/dotfiles/mac/initialsetup_mac.sh'
     ~/dotfiles/mac/initialsetup_mac.sh
@@ -47,8 +49,15 @@ if [ -f "/etc/arch-release" ]; then
     ~/dotfiles/arch/initialsetup_arch.sh
 fi
 
+echo "Installing fzf"
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
 #install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+echo "Changing shell to zsh..."
+sudo chsh -s $(which zsh)
 
 echo 'Configuring git'
 git config --global user.email "rasmus.ansin@gmail.com"

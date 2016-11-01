@@ -66,9 +66,9 @@ bindkey -sM vicmd '^[' '^G'
 bindkey -rM viins '^X'
 
 #Key delay. msDelay (higher=longer), rate (quicker=faster)
-set r rate 230 70
+set r rate 200 70
 if command_exists xset ; then
-    xset r rate 230 70 &> /dev/null ;
+    xset r rate 200 70 &> /dev/null ;
 fi
 
 #Prevent <c-s> from stopping the terminal
@@ -82,17 +82,20 @@ if command_exists setxkbmap ; then
     fi
 fi
 
-if command_exists xcape ; then
-    . ~/.xcape_config
-    #echo "Not running xcape config!"
-else
-    if command_exists xmodmap ; then
-        if [ ! -f "/etc/arch-release" ]; then
-            xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-            #echo "Not running xmodmap!"
-        fi
-    fi
-fi
+# xcape/xmodmap can be used instead of alexandre/caps2esc
+#if command_exists xcape ; then
+#    . ~/.xcape_config
+#    #echo "Not running xcape config!"
+#else
+#    if command_exists xmodmap ; then
+#        if [ ! -f "/etc/arch-release" ]; then
+#            xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+#            #echo "Not running xmodmap!"
+#        fi
+#    fi
+#fi
+
+
 #}}}
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
