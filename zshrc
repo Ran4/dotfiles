@@ -173,6 +173,11 @@ if [ -f ~/.identifiers/ran-main-kubuntu ]; then
     feh --bg-scale ~/other/backgrounds/waterfall_pixely.png
 fi
 
+if [ -f ~/.identifiers/ran-ub1610-vb ]; then
+    #set background image:
+    feh --bg-scale ~/other/backgrounds/house_on_water_1920_1080.jpg
+fi
+
 #Mac-specific stuff
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     source ~/dotfiles/mac/zshrc_mac.sh

@@ -29,12 +29,15 @@ if command_exists apt-get ; then
     else
         echo "Not doing apt-get install."
     fi
+    
     #Remove annoying folders that come with ubuntu
     rmdir ~/Music
     rmdir ~/Pictures
     rmdir ~/Documents
     rmdir ~/Videos
     rmdir ~/Desktop
+    
+    xdg-mime default feh.desktop image/jpeg
 fi
 
 sudo pip3 install virtualenv
