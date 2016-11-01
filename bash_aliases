@@ -33,7 +33,7 @@ alias lg='ls -lAh | ack -i'
 #git {{{
 alias gits='git status'
 #eg. '* 3624854 (HEAD, master) Added gitconfig (23 minutes ago) <Rasmus Ansin>' but colored
-alias gl='git log -n 10 --graph --pretty=format:"%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
+alias gl='git log -n 16 --graph --pretty=format:"%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
 alias ghostscript='/opt/local/bin/gs'
 alias gs='git status'
 alias gc='git commit'
