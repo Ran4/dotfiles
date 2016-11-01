@@ -1,7 +1,9 @@
 # Common bindings: movement, layout, config {{{
 #Mod1 = Alt, Mod4 = Win
 #set $mod Mod1
-set $mod Mod4
+#set $mod Mod4
+set $mod Mod1+ctrl
+
 # movement
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -70,12 +72,10 @@ bindsym $mod+z exec python3 ~/.i3/runorfocus.py "Zathura" zathura
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
 
-bindsym $mod+ctrl+v exec python3 ~/.i3/runorfocus.py "Gvim" gvim
-
 bindsym $mod+Shift+x [class="(?i)xterm"] kill
 bindsym $mod+Shift+Return exec --no-startup-id i3-dmenu-desktop
 
-bindsym $mod+ctrl+l exec --no-startup-id i3lock -d --color=102010 --no-unlock-indicator
+#bindsym $mod+ctrl+l exec --no-startup-id i3lock -d --color=102010 --no-unlock-indicator
 
 #bindsym $mod+Return exec xterm -fn 7x14
 #bindsym $mod+Return exec xterm -fn 6x10
@@ -183,7 +183,7 @@ set $focusedframecolor "#ffffff"
 #set $focusedframecolor "#7fff00"
 client.focused          #000000 $focusedframecolor    $text
 client.unfocused        #000000 $inactiveframecolor  $text
-client.focused_inactive #000000 $inactiveframecolor  $text
+client.focused_inactive #000000 "#b0b0b0"  "#030303"
 
 #hide_edge_borders horizontal
 hide_edge_borders both
@@ -195,8 +195,6 @@ bar {
     status_command i3status --config ~/.i3/i3status.conf
     colors {
         #colorclass <border> <background> <text>
-        #background         #050E2D
-        #background         #020202 #bar color
         background         #040404 #bar color
         focused_workspace  #000000 $ffffff  $focusedtextcolor
         active_workspace   #000000 #AE7AB6   #FFFFFF  #last one is inactive workspace...
@@ -231,6 +229,13 @@ bar {
     #7x14
     #font -Misc-Fixed-Medium-R-Normal--14-130-75-75-C-70-ISO10646-1
 }
+#}}}
+# Program specific config {{{
+# border normal is here used to show border for floating elements
+for_window [class="feh"] floating enable, border normal
+
+# matplotlib plots:
+for_window [class="Tk"] floating enable, border normal
 #}}}
 #i3-gaps specific {{{
 # gaps inner 2
