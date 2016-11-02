@@ -1,0 +1,177 @@
+""Downloading the wombat256mod colorscheme:
+""Run lines below (the ! means 'run in terminal' in vim, so if you're typing
+"" directly into a terminal, type them without the preceeding '!')
+"!mkdir -p ~/.vim/colors
+"!wget -O ~/.vim/colors/wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
+try
+    colorscheme wombat256mod
+catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme ron
+endtry
+
+"Exit insert mode by typing 'jk' instead of <esc>
+imap jk <esc>
+imap Jk <esc>
+
+let mapleader = "ä"
+nmap , ä
+nnoremap ,, ,
+
+" Quickly edit vimrc
+nnoremap <leader>ev :vert split ~/.vimrc<CR>
+nnoremap <leader>Ev :split ~/.vimrc<CR>
+nnoremap <leader>EV :split ~/.vimrc<CR>
+" Disable highlight (nohighlight) by typing <leader>h
+nnoremap <leader>h :noh<cr>
+
+":update will save but only if there's a change
+nnoremap <space> :update<CR>
+
+"+ and - will add/subtract [count] from number under cursor
+nnoremap + <c-a>
+nnoremap - <c-x>
+
+"Quickly move between windows with ctrl+hjkl
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
+
+" Easier indentation in visual mode (don't leave visual mode after < or >)
+vnoremap < <gv
+vnoremap > >gv
+
+"0 is much easier to reach than ^ on many non-US layouts
+nnoremap 0 ^
+nnoremap ´ ^
+nnoremap ^ 0
+nnoremap d0 d^
+nnoremap c0 c^
+nnoremap y0 y^
+
+" More reasonable use of Y (as opposed to being identical to yy)
+nnoremap Y y$
+
+" Jump directly to a spot instead of just to that line
+nnoremap ` '
+nnoremap ' `
+vnoremap ` '
+vnoremap ' `
+
+"Don't wait as long in insert mode (to enable us to quickly type j and k)
+if has("autocmd")
+    augroup FastEscape
+        autocmd!
+        autocmd InsertEnter * set timeoutlen=450
+        autocmd InsertLeave * set timeoutlen=2500
+    augroup END
+endif
+
+""""""""""""""""""""
+
+"Fix accidentally holding shift while trying to quit vim, e.g. :Q -> :q
+command Q q
+command Qa qa
+command QA qa
+cmap Q! q!
+cmap Qa! qa!
+cmap QA! qa!
+
+
+""""""""""""""""""""
+
+
+"Detect file types automatically
+filetype plugin indent on
+
+"Enable syntax highlighting
+syntax enable
+
+" Use :help 'option' to see the documentation for the given option.
+
+"Line numbers
+set number
+
+set shiftwidth=4
+set softtabstop=4 "Number of spaces in tab when editing
+
+set fillchars=
+set expandtab "Expands tabs into spaces
+
+"Copy indent from previous line when we continue an indented line
+set autoindent
+
+set backspace=indent,eol,start
+set complete-=i
+
+"Use spaces, but <tab> and <bs> works like it was a single tab
+set smarttab
+
+set ttimeout
+set ttimeoutlen=100
+
+"Highlight patterns as we search
+set incsearch
+
+set ignorecase "ignore case when searching
+set smartcase "ignore case when searching, except if we start with a capital
+
+"Always show status bar
+set laststatus=2
+
+set ruler
+set wildmenu
+set wildmode=longest,list,full
+
+set splitbelow
+set splitright
+
+set t_Co=256
+
+"Always keep at least this many lines above/below/leftof/rightof cursor
+if !&scrolloff
+    set scrolloff=4
+endif
+if !&sidescrolloff
+  set sidescrolloff=5
+endif
+set display+=lastline
+
+if &encoding ==# 'latin1' && has('gui_running')
+  set encoding=utf-8
+endif
+
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
+
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j " Delete comment character when joining commented lines
+endif
+
+"Reload a file if it has been modified outside of vim
+set autoread
+
+if &history < 1000
+  set history=1000
+endif
+
+if &tabpagemax < 50
+  set tabpagemax=50
+endif
+if !empty(&viminfo)
+  set viminfo^=!
+endif
+
+" Allow color schemes to do bright colors without forcing bold.
+if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
+  set t_Co=16
+endif
+
+" vim:set ft=vim et sw=4:

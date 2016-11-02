@@ -1,0 +1,1 @@
+Setting in iTerm2: Preferences -> Keys -> ^h = Send escape sequence [104;5u
