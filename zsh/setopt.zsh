@@ -1,3 +1,5 @@
+#See options with   man zshoptions
+
 # History
 setopt append_history # Allow multiple terminal sessions to all append to one zsh command history
 setopt hist_find_no_dups # When searching history don't display results already cycled through twice

@@ -17,7 +17,7 @@ o() {
 if [[ "$OSTYPE" == "darwin"* ]]; then
     #'Running GNU coreutils via Homebrew on your Mac? Here's a one-liner to get the manpages working!'
     #https://gist.github.com/quickshiftin/9130153
-    alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _'
+    # alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _'
     alias sort='gsort'
     alias firefox='open -a firefox -g' #open application (-a) firefox, don't bring it to foreground (-g)
 fi
@@ -91,6 +91,9 @@ alias ts='~/dotfiles/defaulttmuxsession.sh'
 # alias tns='tmux new -s' #Create new session with tns sessionname
 alias t='~/dotfiles/tmux_attach_to_or_create_new_session.bash' #Create new session $1 or attach to it
 alias tskth='ts && tmux source-file ~/dotfiles/custom/kth_tmux.conf'
+
+alias du='du -h' #-h human readable
+alias dus='du -sch * | sort -h' #-s no recursive show, -c show total, -h human readable
 
 if command_exists apt-get ; then
     alias sagi='sudo apt-get install'
@@ -175,16 +178,6 @@ if command_exists kwmc ; then
     alias kr='kwmkill && kwmstart'
     #-e ignores empty password
 fi
-
-#Running headless Parallels servers
-if [ -f ~/.identifiers/ran-mbpr14 ]; then
-    UBUNTU_PARALLELS_NAME='ran-par-ubuntu16'
-    alias ubuntustart='prlctl start $UBUNTU_PARALLELS_NAME'
-    alias ubunturestart='prlctl reset $UBUNTU_PARALLELS_NAME && prlctl restart $UBUNTU_PARALLELS_NAME'
-    alias ubuntustop='prlctl stop $UBUNTU_PARALLELS_NAME'
-    alias ubuntustatus='prlctl list --all'
-fi
-
 
 #alias kxt="ps aux | grep -i xterm | awk {'print $2'} | xargs kill -9" #kill xterm, please remove me once you've figured out the problem with i3
 alias nocaps="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"

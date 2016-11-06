@@ -9,7 +9,7 @@ export PAGER='less'
 
 export PYLINTRC="~/.pylintrc"
 #Node version manager:
-export NVM_DIR="/home/$USER/.nvm"
+export NVM_DIR="~/.nvm/"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 #This will overwrite ~/.gitconfig
