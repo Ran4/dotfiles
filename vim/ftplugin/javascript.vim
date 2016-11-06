@@ -1,4 +1,9 @@
-nnoremap <leader>p :!clear && node %<cr>
+if has('nvim')
+    "Use :term instead of :!, since that supports input()
+    nnoremap <leader>p <c-w><c-v>:term node %<cr>
+else
+    nnoremap <leader>p :!clear && node %<cr>
+endif
 
 inoremap <localleader>l console.log();<left><left>
 

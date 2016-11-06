@@ -640,6 +640,9 @@ endif
 """incsearch incrementally highlights all pattern being matched.
 "!git clone https://github.com/haya14busa/incsearch.vim ~/.vim/bundle/incsearch.vim
 
+"""vim-javascript, improved syntax highlighting and improved indentation
+"!git clone https://github.com/pangloss/vim-javascript.git ~/.vim/bundle/vim-javascript
+
 """jedi-vim is a vim-binding to the autocompletion library Jedi
 "!git clone --recursive https://github.com/davidhalter/jedi-vim.git ~/.vim/bundle/jedi-vim
 """}}}
