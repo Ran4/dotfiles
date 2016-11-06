@@ -58,7 +58,6 @@ bindkey '\e[A' up-line-or-beginning-search
 bindkey '\eOB' down-line-or-beginning-search
 bindkey '\e[B' down-line-or-beginning-search
 
-#bindkey '^f' accept-line
 bindkey -M viins 'jk' vi-cmd-mode
 export KEYTIMEOUT=1 #this is in 10 ms steps, so e.g. 20 = 200 ms
 #Found at: http://superuser.com/questions/476532/how-can-i-make-zshs-vi-mode-behave-more-like-bashs-vi-mode
