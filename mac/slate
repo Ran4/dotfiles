@@ -24,8 +24,8 @@ alias center       move screenOriginX+0.15*screenSizeX;screenOriginY+0.1*screenS
 ################################################################################
 
 ## Focus
-bind k:${hyper}  focus up
-bind j:${hyper}  focus down
+# bind k:${hyper}  focus up
+# bind j:${hyper}  focus down
 
 bind h:${hyper}  focus left
 bind l:${hyper}  focus right
@@ -39,8 +39,8 @@ bind o:${hyper}  ${full} #mnemonic "only"
 
 bind n:${hyper}  chain ${lefthalf} | sequence throw prev > ${righthalf}
 bind m:${hyper}  chain ${righthalf} | throw next resize:screenSizeX/2;screenSizeY
-# bind j:${hyper}  ${bottomhalf}
-# bind k:${hyper}  ${tophalf}
+bind j:${hyper}  ${bottomhalf}
+bind k:${hyper}  ${tophalf}
 bind w:${hyper}  ${center}
 
 # Third and two-third window size positions
@@ -52,17 +52,16 @@ bind 3:${hyper}  move screenOriginX+2*screenSizeX/3;screenOriginY  screenSizeX/3
 bind 4:${hyper}  move screenOriginX;screenOriginY                  2*screenSizeX/3;screenSizeY
 bind 5:${hyper}  move screenOriginX+screenSizeX/3;screenOriginY    2*screenSizeX/3;screenSizeY
 
-bind space:${hyper} hint ASDFZXCVQWER12345<
+# bind space:${hyper} hint ASDFZXCVQWER12345<
 
 ########################################
 ## App bindings
 # These are laid out on the left hand
-#bind space:${hyper}  focus ${editor}
-bind i:${hyper}      focus 'iTunes'
+bind space:${hyper}  focus 'iTerm2'
 bind y:${hyper}      focus 'Skype'
 
-# bind s:${hyper}      focus 'Slack'
-bind s:${hyper}      focus 'Safari'
+bind s:${hyper}      focus 'Slack'
+# bind s:${hyper}      focus 'Safari'
 bind d:${hyper}      focus 'iTerm2'
 bind f:${hyper}      focus 'Firefox'
 
