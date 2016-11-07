@@ -63,6 +63,7 @@ export KEYTIMEOUT=1 #this is in 10 ms steps, so e.g. 20 = 200 ms
 #Found at: http://superuser.com/questions/476532/how-can-i-make-zshs-vi-mode-behave-more-like-bashs-vi-mode
 bindkey -sM vicmd '^[' '^G'
 bindkey -rM viins '^X'
+bindkey '^D' list-choices
 
 #Key delay. msDelay (higher=longer), rate (quicker=faster)
 set r rate 200 70
