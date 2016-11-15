@@ -7,7 +7,13 @@ endif
 
 inoremap <localleader>l console.log();<left><left>
 
-colo cful256mod
+inoremap <localleader>d <esc>"qdiwaconsole.log("<c-r>q:", <c-r>q);
+nnoremap <localleader>d "qdiwaconsole.log("<c-r>q:", <c-r>q);<esc>
+
+inoremap <localleader>r <esc>"qdiwavar <c-r>q = require("<c-r>q");
+nnoremap <localleader>r "qdiwavar <c-r>q = require("<c-r>q");<esc>
+
+colo luna
 
 if exists('+colorcolumn')
     set colorcolumn=80
@@ -16,4 +22,4 @@ endif
 "remaps å¨Å^ to []{} in various ways
 source ~/.vim/ftplugin/remap_to_brackets.vim
 
-colo cful256mod
+iabbrev cll console.log

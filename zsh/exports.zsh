@@ -16,3 +16,6 @@ export NVM_DIR="~/.nvm/"
 if command_exists nvim ; then
     export GIT_EDITOR=nvim
 fi
+
+#Needed for tmuxp?
+export DISABLE_AUTO_TITLE='true'

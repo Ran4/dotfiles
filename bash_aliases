@@ -92,6 +92,9 @@ alias ts='~/dotfiles/defaulttmuxsession.sh'
 alias t='~/dotfiles/tmux_attach_to_or_create_new_session.bash' #Create new session $1 or attach to it
 alias tskth='ts && tmux source-file ~/dotfiles/custom/kth_tmux.conf'
 
+# Django manage.py
+alias m='./manage.py'
+
 alias du='du -h' #-h human readable
 alias dus='du -sch * | sort -h' #-s no recursive show, -c show total, -h human readable
 
