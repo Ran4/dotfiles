@@ -75,3 +75,7 @@ mkdir -p ~/.ssh
 mkdir -p ~/other
 mkdir -p ~/git/other
 mkdir -p ~/pyy
+
+echo "Downloading and symlinking og"
+git clone git@github.com:ran4/og ~/pyy
+sudo ln -s ~/pyy/og/og.py /usr/local/bin/og
