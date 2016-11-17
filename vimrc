@@ -657,6 +657,9 @@ endif
 "rsi, adds 'readline-style-insertions' to command and insert mode
 "!git clone https://github.com/tpope/vim-rsi.git ~/.vim/bundle/vim-rsi
 
+""speeddating.vim, make <c-a> <c-x> support dates
+"!git clone https://github.com/tpope/vim-speeddating ~/.vim/bundle/vim-speeddating
+
 ""supertab, adds <Tab> for tab completion
 "!git clone git://github.com/ervandew/supertab ~/.vim/bundle/supertab
 
@@ -693,6 +696,7 @@ endif
 """}}}
 
 "Rebuild help tags (comes with pathogen): should be done after any new install
+"tag: update docs update documentation
 ":Helptags
 
 "PLUGIN CONFIGURATION {{{
