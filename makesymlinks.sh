@@ -89,6 +89,10 @@ echo -e "${LBLUE}Creating nowplaying.sh symlink to /usr/bin (ln -s $dir/scripts/
 sudo ln -sf $dir/scripts/nowplaying.sh  /usr/bin/nowplaying
 echo "...done"
 
+echo -e "${LBLUE}Creating symlink to ~/.tmuxp${NC}"
+ln -sf $dir/tmuxp ~/.tmuxp
+echo "...done"
+
 if command_exists nvim ; then
     echo -e "${LBLUE}Symlinking vim folder and vimrc for nvim to use${NC}"
     ln -s ~/dotfiles/vim ~/.config/nvim

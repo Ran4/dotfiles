@@ -1,0 +1,11 @@
+session_name: django
+windows:
+  - window_name: server+shell
+    layout: main-vertical
+    panes:
+      - source .venv/bin/activate && clear && m runserver
+      - source .venv/bin/activate && clear && m shell
+  - 
+    focus: true
+    panes:
+      - source .venv/bin/activate && clear && tree -L 2
