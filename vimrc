@@ -649,6 +649,9 @@ endif
 """{{{ lmnop
 """lightline.vim is a light and configurable statusline/tabline for Vim.
 "!git clone https://github.com/itchyny/lightline.vim ~/.vim/bundle/lightline.vim ~/.vim/bundle/lightline.vim
+
+"""matchit increases support for %. For example, jump between <tags> </tags>
+"!git clone https://github.com/tmhedberg/matchit ~/.vim/bundle/matchit
 """}}}
 """{{{ qrstu
 ""repeat - helper plugin that enables repetition with dot in plugins such as vim-surround
