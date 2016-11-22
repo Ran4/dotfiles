@@ -85,8 +85,8 @@ vnoremap <leader>s :s/\%V/g<Left><Left>
 vnoremap <leader>s :s//g<Left><Left>
 
 "Resize window
-nnoremap <leader>r :vert resize 84<CR>
-nnoremap <leader>R :vert resize 80<CR>
+"nnoremap <leader>r :vert resize 84<CR>
+"nnoremap <leader>R :vert resize 80<CR>
 nnoremap <silent> <Leader><Leader>+ :exe "resize " . (winheight(0) * 3/2)<cr>
 nnoremap <silent> <Leader><Leader>- :exe "resize " . (winheight(0) * 2/3)<cr>
 nnoremap <silent> <Leader>+ :exe "vert resize " . (winwidth(0) * 3/2)<cr>
@@ -648,7 +648,10 @@ endif
 """}}}
 """{{{ lmnop
 """lightline.vim is a light and configurable statusline/tabline for Vim.
-"!git clone https://github.com/itchyny/lightline.vim ~/.vim/bundle/lightline.vim ~/.vim/bundle/lightline.vim
+"!git clone https://github.com/itchyny/lightline.vim ~/.vim/bundle/lightline.vim
+
+"""vim-mark, clone of the 'Mark.vim' plugin, allows highlighting of words
+"!git clone https://github.com/Yggdroot/vim-mark ~/.vim/bundle/vim-mark
 
 """matchit increases support for %. For example, jump between <tags> </tags>
 "!git clone https://github.com/tmhedberg/matchit ~/.vim/bundle/matchit
@@ -758,8 +761,11 @@ let g:EasyMotion_enter_jump_first = 1
 let g:gitgutter_enabled = 0
 nnoremap <leader>gg :let g:gitgutter_enabled = 1<cr>:GitGutterEnable<cr>
 nnoremap <leader>gG :let g:gitgutter_enabled = 0<cr>:GitGutterDisable<cr>
+nnoremap <leader>gn :GitGutterNextHunk<cr>
+nnoremap <leader>gN :GitGutterPrevHunk<cr>
 nnoremap <leader>gs :Gstatus<cr>30<c-w>+
 nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gb :Gblame<cr>
 
 ""vim-jedi configuration
 "let g:jedi#auto_initialization = 0
@@ -793,6 +799,10 @@ let g:jedi#force_py_version = 3
 "
 "      "\ 'separator': { 'left': '', 'right': '' },
 "      "\ 'subseparator': { 'left': '|', 'right': '|' }
+
+"vim-mark configuration
+highlight MarkWord1 ctermbg=NONE ctermfg=Yellow guibg=#8CCBEA guifg=Black
+highlight MarkWord2 ctermbg=NONE cterm=underline ctermfg=Green guibg=#8CCBEA guifg=Black
 
 ""netrw configuration
 "gx will open file using xdg-open
