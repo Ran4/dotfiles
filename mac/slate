@@ -66,7 +66,7 @@ bind d:${hyper}      focus 'iTerm2'
 bind f:${hyper}      focus 'Firefox'
 
 bind x:${hyper}      focus 'Finder'
-#bind c:${hyper}      focus 'Preview'
+bind p:${hyper}      focus 'Preview'
 bind c:${hyper}      focus 'Google Chrome'
 bind v:${hyper}      focus 'VLC'
 
