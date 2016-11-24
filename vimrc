@@ -720,6 +720,8 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](__pycache__|\.(git|hg|svn))$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ }
+" Use regexp search by default
+" let g:ctrlp_regexp = 1
 
 ""incsearch configuration
 "map /  <Plug>(incsearch-forward)
