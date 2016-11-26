@@ -165,6 +165,8 @@ alias :Qa='exit'
 #show battery level
 alias bat='cat /sys/class/power_supply/BAT1/capacity'
 
+alias p3='python3'
+
 if command_exists tmux ; then
     alias reset='reset && tmux clear-history'
     alias clear='clear && tmux clear-history'
@@ -187,4 +189,4 @@ fi
 alias nocaps="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
 alias NOCAPS="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
 
-alias newpythonproj=". ~/.tmuxp/newpythonproj.sh"
+alias pyproj=". ~/.tmuxp/pyproj.sh"
