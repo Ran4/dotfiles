@@ -1,0 +1,54 @@
+# This file contains snippets that are always defined. I personally
+# have snippets for signatures and often needed texts
+
+# sligthly lower priority than everything else since specialized versions
+# should overwrite. The user needs to adjust her priority in her snippets to
+# ~-55 so that other filetypes will still overwrite.
+priority -60
+
+##########################
+# LOREM IPSUM GENERATORS #
+##########################
+snippet lorem "Lorem Ipsum - 50 Words" b
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+no sea takimata sanctus est Lorem ipsum dolor sit amet.
+endsnippet
+
+snippet "lorem(\d+)" "Lorem Ipsum - n characters" r
+`!p
+lorem_string = \
+"""Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+no sea takimata sanctus est Lorem ipsum dolor sit amet."""
+
+num_chars = int(match.group(1))
+snip.rv = lorem_string[:num_chars]`
+endsnippet
+
+#########
+# DATES #
+#########
+snippet date "YYYY-MM-DD" w
+`date +%Y-%m-%d`
+endsnippet
+
+snippet ddate "Month DD, YYYY" w
+`date +%B\ %d,\ %Y`
+endsnippet
+
+snippet diso "ISO format datetime" w
+`date +%Y-%m-%dT%H:%M:%S%:z`
+endsnippet
+
+snippet time "hh:mm" w
+`date +%H:%M`
+endsnippet
+
+snippet datetime "YYYY-MM-DD hh:mm" w
+`date +%Y-%m-%d\ %H:%M`
+endsnippet
+
+# vim:ft=snippets:

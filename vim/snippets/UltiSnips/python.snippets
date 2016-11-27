@@ -1,0 +1,42 @@
+snippet print "de"
+print("${1:var}:", $1)
+$0
+endsnippet
+
+snippet print( "de"
+print("${1:var}:", $1)
+$0
+endsnippet
+
+snippet unixtime "print unixtime"
+`!p import time
+if not snip.c:
+    snip.rv = int(time.time())`
+endsnippet
+
+snippet #!
+#!/usr/bin/env python3
+$0
+endsnippet
+
+snippet ifname "if name == main" b
+def $1():
+    $0
+
+if __name__ == "__main__":
+    ${1:main}()
+endsnippet
+
+# snippet '\d\d' "regexp trig kk" r
+# lol
+# endsnippet
+
+# snippet "rep (\d+) (\w+)" "Repeat" r
+# `!p snip.rv = int(match.group(1)) * match.group(2)`
+# endsnippet
+
+
+snippet for
+for ${1} in ${2:$1s}:
+    ${0}
+endsnippet

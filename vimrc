@@ -147,6 +147,7 @@ cmap QA! qa!
 "helper
 cmap FTP ~/.vim/ftplugin/<c-d>
 cmap BUN ~/.vim/bundle/<c-d>
+cmap US ~/.vim/bundle/vim-snippets.git/snippets/<c-d>
 
 nnoremap - /
 
@@ -640,6 +641,9 @@ endif
 """incsearch incrementally highlights all pattern being matched.
 "!git clone https://github.com/haya14busa/incsearch.vim ~/.vim/bundle/incsearch.vim
 
+"""vim-indent-object, e.g. vii to visually select at same indentation (also vai)
+"!git clone https://github.com/michaeljsmith/vim-indent-object ~/.vim/bundle/vim-indent-object
+
 """vim-javascript, improved syntax highlighting and improved indentation
 "!git clone https://github.com/pangloss/vim-javascript.git ~/.vim/bundle/vim-javascript
 
@@ -683,6 +687,9 @@ endif
 
 ""tmux-navigator allows seamless navigation between vim and tmux splits
 "!git clone https://github.com/christoomey/vim-tmux-navigator ~/.vim/bundle/vim-tmux-navigator
+
+""ultisnips to create smart snippets
+"!git clone https://github.com/SirVer/ultisnips ~/.vim/bundle/ultisnips
 
 ""unimpaired - add a bunch of handy bracket mappings
 "!git clone https://github.com/tpope/vim-unimpaired ~/.vim/bundle/vim-unimpaired
@@ -829,6 +836,24 @@ let g:netrw_browse_split = 4
 " buffer setting
 let g:netrw_bufsettings = 'nomodifiable nomodified readonly nobuflisted nowrap number'
 
+
+""ultisnips configuration
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+set rtp+=~/.vim/snippets/
+let g:UltiSnipsSnippetsDir = "~/.vim/snippets/UltiSnips"
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-l>"
+
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+let g:UltiSnipsEditSplit="vertical"
+nnoremap <leader>eu :UltiSnipsEdit<cr>
+
+
 ""vim-rsi configuration
 ""alt-d will disable ä so remove the meta-bindings
 let g:rsi_no_meta = 1
@@ -844,8 +869,8 @@ let g:SuperTabDefaultCompletionType = "context"
 "" Syntastic configuration {{{
 let g:syntastic_mode_map = {
     \ "mode": "passive",
-    \ "active_filetypes": [],
-    \ "passive_filetypes": [] }
+    \ "active_filetypes": ['elixir'],
+    \ "passive_filetypes": ['python'] }
 
 " Use .django.pylintrc to enable Syntastic for Django files
 autocmd FileType python
@@ -855,6 +880,10 @@ autocmd FileType python
 
 autocmd FileType python
     \ let g:syntastic_python_checkers=['python3', 'pep8']
+
+autocmd FileType elixir
+    \ let g:syntastic_elixir_checkers=['elixir']
+let g:syntastic_enable_elixir_checker = 1
 
 "    \ let g:syntastic_python_pylint_args="--rcfile=$XDG_CONFIG_HOME/pylint/django.pylintrc" |
 
