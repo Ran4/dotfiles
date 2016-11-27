@@ -1,0 +1,6 @@
+session_name: python
+windows:
+  -
+    focus: true
+    panes:
+      - source .venv/bin/activate && clear && tree -L 2
