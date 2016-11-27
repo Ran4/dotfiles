@@ -7,7 +7,8 @@ endif
 
 if has('nvim')
     "Use :term instead of :!, since that supports input()
-    nnoremap <leader>p <c-w><c-v>:term elixir %<cr>
+    "nnoremap <leader>p <c-w><c-v>:term elixir %<cr>
+    nnoremap <leader>p <c-w><c-v>:term rm Elixir.%:r.beam 2> /dev/null \|\| elixir %<cr>
 else
-    nnoremap <leader>p :!clear && elixir %<cr>
+    nnoremap <leader>p :!clear && rm Elixir.%:r.beam && elixir %<cr>
 endif
