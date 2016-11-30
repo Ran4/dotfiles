@@ -12,3 +12,5 @@ if has('nvim')
 else
     nnoremap <leader>p :!clear && rm Elixir.%:r.beam && elixir %<cr>
 endif
+
+set wildignore+=Elixir.*.beam
