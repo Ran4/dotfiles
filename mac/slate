@@ -58,10 +58,9 @@ bind 5:${hyper}  move screenOriginX+screenSizeX/3;screenOriginY    2*screenSizeX
 ## App bindings
 # These are laid out on the left hand
 bind space:${hyper}  focus 'iTerm2'
-bind y:${hyper}      focus 'Skype'
 
-bind s:${hyper}      focus 'Slack'
-# bind s:${hyper}      focus 'Safari'
+# bind a:${hyper}      focus 'Slack'
+bind s:${hyper}      focus 'Skype'
 bind d:${hyper}      focus 'iTerm2'
 bind f:${hyper}      focus 'Firefox'
 
