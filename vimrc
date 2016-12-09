@@ -99,8 +99,11 @@ nnoremap <space> :update<CR>
 nnoremap <bs> <C-^>
 " <cr> does za, but only in regular buffers
 " (found at https://www.reddit.com/r/vim/comments/4m678o/best_way_to_remap_cr_in_normal_mode/ )
+"" nnoremap <silent> <expr> <CR> empty(&buftype) \|\| &bt ==# 'help' \|\| &ft ==# 'man' ?
+""                               \ 'za' : '<CR>'
+
 nnoremap <silent> <expr> <CR> empty(&buftype) \|\| &bt ==# 'help' \|\| &ft ==# 'man' ?
-                              \ 'za' : '<CR>'
+                              \ '<Plug>(easymotion-s)' : '<CR>'
 
 nnoremap + <c-a>
 nnoremap - <c-x>
@@ -309,7 +312,8 @@ set softtabstop=4 "Number of spaces in tab when editing
 " Use the same symbols as TextMate for tabstops and EOLs
 set list
 "set listchars=tab:▸▸,eol:¬
-set listchars=tab:▸▸
+"set listchars=tab:▸▸
+set listchars=tab:▸▸,trail:·
 set fillchars=
 set expandtab "Expands tabs into spaces
 
@@ -869,8 +873,8 @@ let g:SuperTabDefaultCompletionType = "context"
 "" Syntastic configuration {{{
 let g:syntastic_mode_map = {
     \ "mode": "passive",
-    \ "active_filetypes": ['elixir'],
-    \ "passive_filetypes": ['python'] }
+    \ "active_filetypes": [],
+    \ "passive_filetypes": ['python', 'elixir'] }
 
 " Use .django.pylintrc to enable Syntastic for Django files
 autocmd FileType python
