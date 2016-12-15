@@ -21,7 +21,7 @@ else
     sudo apt-get -y install zathura #pdf viewer with vim keybindings
     ZATHRCFILE=/etc/zathurarc
     [ ! -f $ZATHRCFILE ] \
-        && echo "writing $ZATHRCFILE" && echo "set scroll-step 100" > $ZATHRCFILE \
+        && echo "writing $ZATHRCFILE" && sudo echo "set scroll-step 100" > $ZATHRCFILE \
         && xdg-mime default zathura.desktop application/pdf
 fi
 sudo apt-get -y install zsh
@@ -33,6 +33,8 @@ sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt-get update
 sudo apt-get -y install neovim
+pip3 install neovim
+pip2 install neovim
 
 sudo apt-get -y install python-dev python-pip python3-dev python3-pip
 #The symlinking is done in makesymlinks.sh
