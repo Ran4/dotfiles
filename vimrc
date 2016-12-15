@@ -312,8 +312,8 @@ set softtabstop=4 "Number of spaces in tab when editing
 " Use the same symbols as TextMate for tabstops and EOLs
 set list
 "set listchars=tab:▸▸,eol:¬
-"set listchars=tab:▸▸
-set listchars=tab:▸▸,trail:·
+set listchars=tab:▸▸
+"set listchars=tab:▸▸,trail:·
 set fillchars=
 set expandtab "Expands tabs into spaces
 
@@ -774,8 +774,8 @@ let g:EasyMotion_enter_jump_first = 1
 let g:gitgutter_enabled = 0
 nnoremap <leader>gg :let g:gitgutter_enabled = 1<cr>:GitGutterEnable<cr>
 nnoremap <leader>gG :let g:gitgutter_enabled = 0<cr>:GitGutterDisable<cr>
-nnoremap <leader>gn :GitGutterNextHunk<cr>
-nnoremap <leader>gN :GitGutterPrevHunk<cr>
+nnoremap <leader>gn :GitGutterEnable<cr>:GitGutter<cr>:GitGutterNextHunk<cr>
+nnoremap <leader>gN :GitGutterEnable<cr>:GitGutter<cr>:GitGutterPrevHunk<cr>
 nnoremap <leader>gs :Gstatus<cr>30<c-w>+
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gb :Gblame<cr>
