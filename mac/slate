@@ -36,6 +36,7 @@ bind b:${hyper}  focus behind
 # These are laid out to be used with the right hand
 # and to complement the focus bindings
 bind o:${hyper}  ${full} #mnemonic "only"
+bind e:${hyper}  ${full}
 
 bind n:${hyper}  chain ${lefthalf} | sequence throw next > ${righthalf}
 bind m:${hyper}  chain ${righthalf} | sequence throw prev > ${lefthalf}
@@ -58,6 +59,7 @@ bind 5:${hyper}  move screenOriginX+screenSizeX/3;screenOriginY    2*screenSizeX
 ## App bindings
 # These are laid out on the left hand
 bind space:${hyper}  focus 'iTerm2'
+bind t:${hyper}  focus 'Terminal'
 
 # bind a:${hyper}      focus 'Slack'
 bind s:${hyper}      focus 'Skype'
