@@ -44,6 +44,7 @@ alias gdc='git diff --cached'
 alias gb='git branch -v' #verbose
 alias gba='git branch -av' #(all, verbose)
 alias gcm='git commit -m'
+alias gca='git commit -a'
 alias gcam='git commit -am'
 alias gch='git checkout'
 alias ga='git add'

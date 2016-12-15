@@ -4,6 +4,9 @@ export PATH=$PATH:~/.local/bin
 [[ -f "/etc/arch-release" ]] && export PATH=$PATH:/usr/bin/core_perl/
 export MANPATH="/opt/local/share/man:/usr/local/man:$MANPATH"
 export EDITOR=vim
+export HOMEBREW_CASK_OPTS="--caskroom=/opt/homebrew-cask/Caskroom"
+
+export LC_CTYPE=en_US.UTF-8
 
 export PAGER='less'
 
