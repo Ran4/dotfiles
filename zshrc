@@ -20,7 +20,7 @@ command_exists () {
 }
 
 # plugins loaded from ~/.oh-my-zsh/plugins/*, custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git vi-mode)
+plugins=(git vi-mode docker)
 
 source ~/.zsh/exports.zsh
 source ~/.zsh/functions.zsh
