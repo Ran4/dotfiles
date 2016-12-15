@@ -75,10 +75,12 @@ fi
 #stty -ixon
 
 if command_exists setxkbmap ; then
-    if [ -f "/etc/arch-release" ]; then
-        setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
-    else
-        setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin" -option ctrl:nocaps
+    if [ -n "$DISPLAY" ]; then
+        if [ -f "/etc/arch-release" ]; then
+            setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
+        else
+            setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin" -option ctrl:nocaps
+        fi
     fi
 fi
 
@@ -174,8 +176,13 @@ if [ -f ~/.identifiers/ran-main-kubuntu ]; then
 fi
 
 if [ -f ~/.identifiers/ran-ub1610-vb ]; then
-    #set background image:
-    feh --bg-scale ~/other/backgrounds/house_on_water_1920_1080.jpg
+    if [ -n "$DISPLAY" ]; then
+        #set background image:
+        feh --bg-scale ~/other/backgrounds/house_on_water_1920_1080.jpg    
+    fi
+    
+    #Change tmux bgcolor without changing tmux.conf:
+    tmux set -g status-bg '#343d46'
 fi
 
 #Mac-specific stuff
