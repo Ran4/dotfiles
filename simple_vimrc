@@ -27,10 +27,6 @@ nnoremap <leader>h :noh<cr>
 ":update will save but only if there's a change
 nnoremap <space> :update<CR>
 
-"+ and - will add/subtract [count] from number under cursor
-nnoremap + <c-a>
-nnoremap - <c-x>
-
 "Quickly move between windows with ctrl+hjkl
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -47,7 +43,7 @@ nnoremap gk k
 vnoremap < <gv
 vnoremap > >gv
 
-"0 is much easier to reach than ^ on many non-US layouts
+"0 is much easier to reach than ^
 nnoremap 0 ^
 nnoremap ´ ^
 nnoremap ^ 0
@@ -162,9 +158,6 @@ if &history < 1000
   set history=1000
 endif
 
-if &tabpagemax < 50
-  set tabpagemax=50
-endif
 if !empty(&viminfo)
   set viminfo^=!
 endif
