@@ -1,0 +1,2 @@
+# Make readline use vi bindings
+set editing-mode vi
