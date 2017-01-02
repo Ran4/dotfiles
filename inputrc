@@ -1,2 +1,33 @@
 # Make readline use vi bindings
 set editing-mode vi
+
+# We still want all of the default emacs bindings when in vi-insert mode, so we need to
+# repeat all of the defaults that were overwritten by `set editing-mode vi` (see `man readline`)
+# We're ignoring the meta bindings here!
+
+"\C-@": set-mark
+"\C-A": beginning-of-line
+"\C-B": backward-char
+"\C-D": delete-char
+"\C-E": end-of-line
+"\C-F": forward-char
+"\C-G": abort
+"\C-H": backward-delete-char
+"\C-I": complete
+"\C-J": accept-line
+"\C-K": kill-line
+"\C-L": clear-screen
+"\C-M": accept-line
+"\C-N": next-history
+"\C-P": previous-history
+"\C-Q": quoted-insert
+"\C-R": reverse-search-history
+"\C-S": forward-search-history
+"\C-T": transpose-chars
+"\C-U": unix-line-discard
+"\C-V": quoted-insert
+"\C-W": unix-word-rubout
+"\C-Y": yank
+"\C-]": character-search
+"\C-_": undo
+"\C-?": backward-delete-char
