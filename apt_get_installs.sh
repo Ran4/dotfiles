@@ -42,7 +42,8 @@ sudo apt-get -y install python-dev python-pip python3-dev python3-pip
 #sudo apt-get -y install texlive texlive-latex-base # Around 300 MB?
 #sudo apt-get -y install texlive-full  # 3 GB...
 
-#sudo apt-get -y install python-tk #used for clip.py
+#used for clip.py
+sudo apt-get -y install python-tk
 
 ##Installing i3-gaps. Needs i3 first!
 #sudo apt-get -y install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev
