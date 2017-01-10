@@ -840,6 +840,9 @@ let g:netrw_browse_split = 4
 " buffer setting
 let g:netrw_bufsettings = 'nomodifiable nomodified readonly nobuflisted nowrap number'
 
+" not netrw, but gX to open current file in external program
+nnoremap <silent> gX :call system('open ' . expand('%'))<CR>
+
 
 ""ultisnips configuration
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
