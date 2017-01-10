@@ -88,6 +88,27 @@ nmap ci¨ ci]
 nmap ciÅ ci{
 nmap ci^ ci}
 
+"visual with vi, va
+nmap vaå va[
+nmap va¨ va]
+nmap vaÅ va{
+nmap va^ va}
+
+nmap viå vi[
+nmap vi¨ vi]
+nmap viÅ vi{
+nmap vi^ vi}
+
+vmap aå a[
+vmap a¨ a]
+vmap aÅ a{
+vmap a^ a}
+
+vmap iå i[
+vmap i¨ i]
+vmap iÅ i{
+vmap i^ i}
+
 "change with cf, cF, ct, cT
 nmap cfå cf[
 nmap cf¨ cf]
