@@ -301,6 +301,9 @@ filetype plugin indent on
 if has('nvim')
     let $LANG = 'en'
     set langmenu=none
+    
+    "Show :substitute substitutions in new split
+    set inccommand=split
 endif
 
 set number "show line numbers
