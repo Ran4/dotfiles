@@ -154,7 +154,11 @@ alias vim4="vim -c 'bel vert sbuf 2' -c '1wincmd w' -c 'bel sbuf 3' -c '3wincmd 
 alias vims='vim -S .vimsession'
 alias vim='vim -O' #open multiple files as vertical splits by default
 if command_exists nvim ; then
-    alias vi='/usr/local/bin/vim -O'
+    if [ -f /usr/local/bin/vim ]; then
+        alias vi='/usr/local/bin/vim -O'
+    else
+        alias vi='/usr/bin/vim -O'
+    fi
     alias vim='nvim -O'
 fi
 alias :q='exit'
