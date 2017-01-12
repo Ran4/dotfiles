@@ -51,6 +51,8 @@ bindkey '^b' vi-backward-char
 bindkey '^f' vi-forward-char
 bindkey '^d' vi-delete-char
 bindkey '^k' vi-kill-eol
+bindkey "\eb" vi-backward-word
+bindkey "\ef" vi-forward-word
 
 #Arrows keys up/down
 bindkey '\eOA' up-line-or-beginning-search

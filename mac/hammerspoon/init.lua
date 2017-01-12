@@ -7,8 +7,8 @@
 -- hs.hotkey.bind(ctrlshift, "q", hs.window.focusWindowWest)
 
 
--- ctrl+g sends ctrl
-hs.hotkey.bind({"ctrl"}, "q", function()
+-- ctrl+m sends ctrl
+hs.hotkey.bind({"ctrl"}, "m", function()
     hs.eventtap.keyStroke({}, "Return")
 end)
 
