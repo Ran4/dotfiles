@@ -3,8 +3,8 @@
 set nonumber
 
 "nnoremap <leader>p :!pandoc -s % -o out_%:r.html && firefox out_%:r.html &<cr>
-nnoremap <leader>p :!pandoc -s % -o out_%:r.html && open out_%:r.html &<cr>
-nnoremap <silent> <leader>P :!pandoc -s % -o out_%:r.html &> /dev/null &<cr><cr>
+nnoremap <leader>p :!pandoc -s % -o /tmp/out_%:r.html && open /tmp/out_%:r.html &<cr>
+nnoremap <silent> <leader>P :!pandoc -s % -o /tmp/out_%:r.html &> /dev/null &<cr><cr>
 "nnoremap <silent> <space> :w<cr>:exec "!pandoc -s % -o out_%:r.html &> /dev/null &"<cr><cr>
 "nnoremap <silent> <space> :w<cr>:silent !pandoc -s % -o out_%:r.html &> /dev/null 2>&1 &<cr>:redraw!<cr>
 
