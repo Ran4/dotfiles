@@ -29,11 +29,11 @@ bindsym $mod+q kill
 #bindsym $mod+Shift+w layout tabbed
 bindsym $mod+w layout tabbed
 bindsym $mod+Shift+w layout toggle split
-bindsym $mod+Shift+space floating toggle
+# bindsym $mod+Shift+space floating toggle
 bindsym $mod+Shift+s sticky toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 #bindsym $mod+a focus parent
@@ -63,7 +63,8 @@ bindsym $mod+Shift+Right resize grow width 2 px or 2 ppt
 # Program specific bindings {{{
 #bindsym $mod+d exec pcmanfm
 bindsym $mod+shift+d exec python3 ~/.i3/runorfocus.py "pcmanfm" pcmanfm
-bindsym $mod+d exec python3 ~/.i3/runorfocus.py "xterm" xterm
+# bindsym $mod+d exec python3 ~/.i3/runorfocus.py "xterm" xterm
+bindsym $mod+space exec python3 ~/.i3/runorfocus.py "xterm" xterm
 bindsym $mod+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
 #bindsym $mod+ctrl+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
 bindsym $mod+e exec python3 ~/.i3/runorfocus.py "Xterm" xterm
