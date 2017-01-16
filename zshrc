@@ -81,7 +81,8 @@ if command_exists setxkbmap ; then
         if [ -f "/etc/arch-release" ]; then
             setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
         else
-            setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin" -option ctrl:nocaps
+            # setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin" -option ctrl:nocaps
+            setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
         fi
     fi
 fi
@@ -141,7 +142,7 @@ export LESS_TERMCAP_se=$'\E[0m'          # end standout-mode
 ##COMPUTER-SPECIFIC CONFIG: {{{
 
 #disable touchpad on thinkpad computers
-if [ -f ~/.identifiers/ranl412 ]; then
+if [ -f ~/.identifiers/thinkpad ]; then
     #. ~/.custom/ranl412_bash_setprompt
     #unlink ~/.tmux.conf
     #ln -s ~/.custom/ranl412_tmux.conf ~/.tmux.conf
@@ -156,8 +157,13 @@ if [ -f ~/.identifiers/ranl412 ]; then
     TRACKPOINT_NAME=$(xinput --list --name-only | g -i trackpoint)
     xinput --set-prop "$TRACKPOINT_NAME" "Device Accel Constant Deceleration" 0.9
     
-    feh --bg-scale ~/other/backgrounds/beautiful_landscape.jpg
     
+    if [ -f ~/.identifiers/orexplore ]; then
+        feh --bg-scale /usr/share/wallpapers/Next/contents/images/2560x1600.png
+    else
+        feh --bg-scale ~/other/backgrounds/beautiful_landscape.jpg
+    fi
+        
     #Set screen layout for 21.5" and rotated 24" screens at SciLifeLab
     alias ki='~/.screenlayout/ki_215_24r.sh'
     alias kih='~/.screenlayout/ki_high215_24r.sh'

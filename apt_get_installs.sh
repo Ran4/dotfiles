@@ -28,6 +28,11 @@ sudo apt-get -y install zsh
 
 sudo apt-get -y install python-pip
 
+# Git, `apt install git` will install an older version
+sudo apt-add-repository ppa:git-core/ppa
+sudo apt-get update
+sudo apt-get install git
+
 # Neovim
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:neovim-ppa/unstable
