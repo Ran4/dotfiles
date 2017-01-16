@@ -63,7 +63,7 @@ echo "Changing shell to zsh..."
 sudo chsh -s $(which zsh)
 
 echo 'Configuring git'
-git config --global user.email "rasmus.ansin@gmail.com"
+#git config --global user.email "rasmus.ansin@gmail.com"
 git config --global user.name "Rasmus Ansin"
 git config --global push.default simple
 #use less as a pager, but only if output is longer than the screen
@@ -76,6 +76,6 @@ mkdir -p ~/other
 mkdir -p ~/git/other
 mkdir -p ~/pyy
 
-echo "Downloading and symlinking og"
-git clone git@github.com:ran4/og ~/pyy
-sudo ln -s ~/pyy/og/og.py /usr/local/bin/og
+#echo "Downloading and symlinking og"
+#git clone git@github.com:ran4/og ~/pyy
+#sudo ln -s ~/pyy/og/og.py /usr/local/bin/og
