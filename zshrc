@@ -160,6 +160,7 @@ if [ -f ~/.identifiers/thinkpad ]; then
     
     if [ -f ~/.identifiers/orexplore ]; then
         feh --bg-scale /usr/share/wallpapers/Next/contents/images/2560x1600.png
+        ~/.screenlayout/T460s_and_1920x1200.sh
     else
         feh --bg-scale ~/other/backgrounds/beautiful_landscape.jpg
     fi
