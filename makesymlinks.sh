@@ -103,6 +103,12 @@ fi
 echo -e "${LBLUE}Copying sunrise-modified-ran.zsh-theme file to ~/.oh-my-zsh/themes/${NC}"
 cp $dir/oh-my-zsh/themes/sunrise-modified-ran.zsh-theme ~/.oh-my-zsh/themes/
 
+echo -e "${LBLUE}Copying gtk3.0__gtk.css to ~/.config/gtk-3.0/${NC}"
+
+if [ ! -f "~/.config/gtk-3.0/gtk.css" ]; then
+    cp "$dir/gtk3.0___gtk.css" "~/.config/gtk-3.0/gtk.css"
+fi
+
 if command_exists i3 ; then
     echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3/config ~/.i3/config)${NC}"
     #ln -s $dir/i3/config ~/.i3/config
