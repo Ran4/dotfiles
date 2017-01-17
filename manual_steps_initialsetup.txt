@@ -1,0 +1,13 @@
+# Firefox
+
+In Linux (well, *NIX \ OS X):
+
+Setting up alt as main modkey for Firefox (?):
+Start about:config, set these values:
+
+    ui.key.accelKey 18
+    ui.key.menuAccessKey 0
+
+No need to change in Firefox 50, but could change in the future:
+
+    ui.key.generalAccessKey -1

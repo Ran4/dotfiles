@@ -82,3 +82,5 @@ mkdir -p ~/pyy
 #echo "Downloading and symlinking og"
 #git clone git@github.com:ran4/og ~/pyy
 #sudo ln -s ~/pyy/og/og.py /usr/local/bin/og
+
+echo "See and perform manual_steps_initialsetup.txt for not yet scripted parts of the setup"
