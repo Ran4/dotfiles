@@ -93,6 +93,9 @@ exec --no-startup-id xterm
 #wifi applet
 exec --no-startup-id nm-applet &> /dev/null &
 
+#caps2esc
+exec --no-startup-id ~/git/other/caps2esc/caps2esc &> /dev/null &
+
 #Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
@@ -237,10 +240,10 @@ bar {
     #6x9:
     #font -Misc-Fixed-Medium-R-Normal--9-90-75-75-C-60-ISO10646-1
     #6x10:
-    font -Misc-Fixed-Medium-R-Normal--10-100-75-75-C-60-ISO10646-1
+    #font -Misc-Fixed-Medium-R-Normal--10-100-75-75-C-60-ISO10646-1
 
     #6x13
-    #font -Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1
+    font -Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1
     #6x13B
     #font -Misc-Fixed-Bold-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1
     #7x13
