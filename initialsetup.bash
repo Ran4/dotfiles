@@ -72,6 +72,12 @@ git config --global push.default simple
 #use less as a pager, but only if output is longer than the screen
 git config --global --replace-all core.pager "less -F -X"
 
+echo 'Configuring zathura'
+ZATHRCFILE=/etc/zathurarc
+[ ! -f $ZATHRCFILE ] \
+    && echo "writing $ZATHRCFILE" && echo "set scroll-step 100" > $ZATHRCFILE \
+    && xdg-mime default zathura.desktop application/pdf
+
 #Create some default folders
 echo 'Creating some default folders'
 mkdir -p ~/.ssh
