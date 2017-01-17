@@ -10,6 +10,8 @@ export LC_CTYPE=en_US.UTF-8
 
 export PAGER='less'
 
+# export $(dbus-launch)
+
 export PYLINTRC="~/.pylintrc"
 #Node version manager:
 export NVM_DIR="~/.nvm/"
