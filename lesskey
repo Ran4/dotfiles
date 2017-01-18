@@ -1,4 +1,5 @@
 ö forw-search
+- forw-search
 
 
 #Ignore case, and handle control characters properly (e.g. for git log)
