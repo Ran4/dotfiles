@@ -10,7 +10,13 @@ run() {
 }
 
 o() {
-    (xdg-open $@ &> /dev/null &)
+    if [ $# -eq 0 ]; then
+      xdg-open . &> /dev/null
+    else
+      for file in "$@"; do
+        xdg-open "$file" &> /dev/null
+      done
+    fi
 }
 #}}}
 #OS X specific {{{
