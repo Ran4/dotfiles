@@ -687,7 +687,7 @@ endif
 "!git clone git://github.com/tpope/vim-surround.git
 
 ""targets.vim allows movements like cin" (change in next ") and da,
-"git clone git://github.com/wellle/targets.vim.git ~/.vim/bundle/targets.vim
+"!git clone git://github.com/wellle/targets.vim.git ~/.vim/bundle/targets.vim
 
 ""tbone allows tmux commands
 "!git clone git://github.com/tpope/vim-tbone.git
@@ -789,7 +789,9 @@ nnoremap <leader>gb :Gblame<cr>
 let g:jedi#smart_auto_mappings = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures_delay = 0
-let g:jedi#force_py_version = 3
+
+" Change this to use Python3 Python 3
+" let g:jedi#force_py_version = 3
 
 ""lightline configuration
 "let g:lightline = {
@@ -844,7 +846,8 @@ let g:netrw_browse_split = 4
 let g:netrw_bufsettings = 'nomodifiable nomodified readonly nobuflisted nowrap number'
 
 " not netrw, but gX to open current file in external program
-nnoremap <silent> gX :call system('open ' . expand('%'))<CR>
+" nnoremap <silent> gX :call system('open ' . expand('%'))<CR>
+nnoremap <silent> gX :call system('xdg-open ' . expand('%'))<CR>
 
 
 ""ultisnips configuration
@@ -852,7 +855,8 @@ let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 set rtp+=~/.vim/snippets/
 let g:UltiSnipsSnippetsDir = "~/.vim/snippets/UltiSnips"
 
-let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsListSnippets="<c-l>"
 
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
