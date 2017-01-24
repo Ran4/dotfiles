@@ -38,21 +38,21 @@ xterm*font: -*-fixed-medium-r-*-*-14-*-*-*-*-*-iso8859-*
 ! If true, uses anti-aliasing
 *xterm*renderFont: false
 *xterm*faceName: VeraMono
-*xterm*faceSize: 18
+*xterm*faceSize: 12
 
 !These face sizes will only be used with TrueType fonts
-!xterm*faceSize1: 8
-!xterm*faceSize2: 10
-!xterm*faceSize3: 12
-!xterm*faceSize4: 16
-!xterm*faceSize5: 18
-!xterm*faceSize6: 20
-xterm*faceSize1: 16
-xterm*faceSize2: 18
-xterm*faceSize3: 20
-xterm*faceSize4: 22
-xterm*faceSize5: 24
-xterm*faceSize6: 26
+xterm*faceSize1: 8
+xterm*faceSize2: 10
+xterm*faceSize3: 12
+xterm*faceSize4: 16
+xterm*faceSize5: 18
+xterm*faceSize6: 20
+!xterm*faceSize1: 16
+!xterm*faceSize2: 18
+!xterm*faceSize3: 20
+!xterm*faceSize4: 22
+!xterm*faceSize5: 24
+!xterm*faceSize6: 26
 
 xterm*borderWidth: 0
 
