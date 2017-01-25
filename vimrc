@@ -692,9 +692,6 @@ endif
 ""tbone allows tmux commands
 "!git clone git://github.com/tpope/vim-tbone.git
 
-""tmux-navigator allows seamless navigation between vim and tmux splits
-"!git clone https://github.com/christoomey/vim-tmux-navigator ~/.vim/bundle/vim-tmux-navigator
-
 ""ultisnips to create smart snippets
 "!git clone https://github.com/SirVer/ultisnips ~/.vim/bundle/ultisnips
 
