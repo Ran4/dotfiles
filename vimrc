@@ -468,7 +468,8 @@ highlight Search ctermfg=0 ctermbg=180
 
 "Left side statusline:
 set statusline= "First clear statusline
-set statusline+=%t " file name (tail) of the file in the buffer
+"set statusline+=%t " file name (tail) of the file in the buffer
+set statusline+=%f " full file name of the file in the buffer
 set statusline+=\ %m%r "Modified [+]/[-], readonly [RO]
 set statusline+=%w "Preview window flag [Preview]
 set statusline+=%= "Start of right side statusline
