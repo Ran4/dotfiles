@@ -277,10 +277,10 @@ nnoremap <silent> <Plug>unimpairedPutBelow :call <SID>putline(']p', 'Below')<CR>
 
 nmap [p <Plug>unimpairedPutAbove
 nmap ]p <Plug>unimpairedPutBelow
-nnoremap <silent> >P :call <SID>putline('[p', 'Above')<CR>>']
-nnoremap <silent> >p :call <SID>putline(']p', 'Below')<CR>>']
-nnoremap <silent> <P :call <SID>putline('[p', 'Above')<CR><']
-nnoremap <silent> <p :call <SID>putline(']p', 'Below')<CR><']
+"nnoremap <silent> >P :call <SID>putline('[p', 'Above')<CR>>']
+"nnoremap <silent> >p :call <SID>putline(']p', 'Below')<CR>>']
+"nnoremap <silent> <P :call <SID>putline('[p', 'Above')<CR><']
+"nnoremap <silent> <p :call <SID>putline(']p', 'Below')<CR><']
 nnoremap <silent> =P :call <SID>putline('[p', 'Above')<CR>=']
 nnoremap <silent> =p :call <SID>putline(']p', 'Below')<CR>=']
 
