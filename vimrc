@@ -261,6 +261,7 @@ nnoremap O O.<Esc>"_x<Esc>
 " âĉêĝĥîĵôŝûŵŷẑ
 nnoremap ü i<CR><Esc>k$
 nnoremap ë :vert resize 80<CR>
+nnoremap Ω :vert resize 80<CR>
 "Key that is right of + on Swedish keyboards plus key gives these
 nnoremap ẃ :mksession! .vimsession<cr>
 nnoremap ŕ :source .vimsession<cr>
