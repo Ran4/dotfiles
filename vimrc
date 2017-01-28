@@ -840,12 +840,16 @@ let g:netrw_liststyle=3
 let g:netrw_sort_sequence='[\/]$'
 " ignore case on sorting
 let g:netrw_sort_options='i'
+" 30% of the screen for the netrw window, 70% for the file window
+let g:netrw_winsize = 20
 " vsplit netrw to the left window
 let g:netrw_altv = 1
-" 30% of the screen for the netrw window, 70% for the file window
-let g:netrw_winsize = 30
+" hsplit netrw to the top window
+let g:netrw_alto = 1
 " open file in a previous buffer (right window)
 let g:netrw_browse_split = 4
+" preview window is shown in vertically split window
+let g:netrw_preview = 1
 " buffer setting
 let g:netrw_bufsettings = 'nomodifiable nomodified readonly nobuflisted nowrap number'
 
