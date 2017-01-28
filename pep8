@@ -9,3 +9,7 @@
 ignore = W293,E731,E302,E128,E262,E116,E265
 
 #not ignored at the moment:
+
+
+
+exclude = .svn,CVS,.bzr,.hg,.git,__pycache__,.tox,.venv,venv,migrations,settings.py
