@@ -730,10 +730,16 @@ nnoremap <b :CtrlPBuffer<cr>
 " The dir one means /__pycache__ OR /.git OR /.hg OR /.svn
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](__pycache__|\.(git|hg|svn))$',
-  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'file': '\v\.(exe|so|dll|pyc)$',
   \ }
 " Use regexp search by default
 " let g:ctrlp_regexp = 1
+
+" Add <c-o> to AcceptSelection("h") and don't use it for OpenMulti()
+let g:ctrlp_prompt_mappings = {
+\ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>', '<c-o>'],
+\ 'OpenMulti()':          [],
+\ }
 
 ""incsearch configuration
 "map /  <Plug>(incsearch-forward)
