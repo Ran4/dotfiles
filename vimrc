@@ -777,6 +777,9 @@ let g:EasyMotion_smartcase = 1
 let g:EasyMotion_enter_jump_first = 1
 "endif
 
+" fzf.vim configuration
+set rtp+=/usr/local/opt/fzf
+
 ""Gitgutter configuration
 "Starts disabled:
 let g:gitgutter_enabled = 0
@@ -830,6 +833,9 @@ highlight MarkWord2 ctermbg=NONE cterm=underline ctermfg=Green guibg=#8CCBEA gui
 ""netrw configuration
 "gx will open file using xdg-open
 let g:netrw_browsex_viewer="xdg-open"
+
+"notational-fzf-vim configuration
+let g:nv_directories = ['/Users/ran/orexplore/git/misc-hermod/notes']
 
 " hide banner
 "let g:netrw_banner = 0
