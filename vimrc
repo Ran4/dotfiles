@@ -610,6 +610,9 @@ endif
 """commentary.vim - comment things out with gc+{motion} and more
 "!git clone https://github.com/tpope/vim-commentary ~/.vim/bundle/vim-commentary
 
+"""vim-css3-syntax - better syntax highlighting (also see ~/.vim/after/ftplugin/css.vim)
+"!git clone https://github.com/hail2u/vim-css3-syntax ~/.vim/bundle/vim-css3-syntax
+
 """dracula-theme, a colortheme
 "!git clone https://github.com/dracula/vim.git ~/.vim/bundle/dracula-theme
 
