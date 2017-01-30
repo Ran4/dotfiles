@@ -6,8 +6,7 @@ set nonumber
 nnoremap <leader>p :!pandoc -s % -o /tmp/out_%:r.html && xdg-open /tmp/out_%:r.html &<cr>
 nnoremap <silent> <leader>P :!pandoc -s % -o /tmp/out_%:r.html &> /dev/null &<cr><cr>
 "nnoremap <silent> <space> :update<cr>:exec "!pandoc -s % -o /tmp/out_%:r.html --css ~/orexplore/git/misc-hermod/notes/biggercode.css &> /dev/null &"<cr><cr>
-"nnoremap <silent> <space> :w<cr>:exec "!pandoc -s % -o /tmp/out_%:r.html --highlight-style zenburn &> /dev/null &"<cr><cr>
-"nnoremap <silent> <space> :w<cr>:silent !pandoc -s % -o /tmp/out_%:r.html &> /dev/null 2>&1 &<cr>:redraw!<cr>
+"nnoremap <silent> <space> :update<cr>:exec "!pandoc -s % -o output/out_%:r.html --css ~/orexplore/git/misc-hermod/notes/biggercode.css &> /dev/null &"<cr><cr>
 
 "nnoremap <localleader>c :colo Tomorrow-Night<cr>:colo Tomorrow-Night<cr>
 nnoremap <localleader>c :colo iceberg<cr>
