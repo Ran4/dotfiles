@@ -673,6 +673,9 @@ endif
 ""repeat - helper plugin that enables repetition with dot in plugins such as vim-surround
 "!git clone git://github.com/tpope/vim-repeat.git ~/.vim/bundle/vim-repeat
 
+""" notational-fzf-vim adds the :NV command to search in markdown (requires fzf and configured fzf.vim)
+""!git clone https://github.com/Alok/notational-fzf-vim ~/.vim/bundle/notational-fzf-vim
+
 "rsi, adds 'readline-style-insertions' to command and insert mode
 "!git clone https://github.com/tpope/vim-rsi.git ~/.vim/bundle/vim-rsi
 
@@ -722,6 +725,7 @@ endif
 
 "Neovim-specific:
 if has('nvim')
+    let g:python_host_prog = '/usr/local/bin/python'
     let g:python3_host_prog = '/usr/local/bin/python3'
 endif
 
