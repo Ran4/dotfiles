@@ -783,6 +783,7 @@ let g:EasyMotion_enter_jump_first = 1
 
 " fzf.vim configuration
 set rtp+=/usr/local/opt/fzf
+set rtp+=/home/rasmus/.fzf
 
 ""Gitgutter configuration
 "Starts disabled:
@@ -839,7 +840,7 @@ highlight MarkWord2 ctermbg=NONE cterm=underline ctermfg=Green guibg=#8CCBEA gui
 let g:netrw_browsex_viewer="xdg-open"
 
 "notational-fzf-vim configuration
-let g:nv_directories = ['/Users/ran/orexplore/git/misc-hermod/notes']
+let g:nv_directories = ['/Users/ran/orexplore/git/misc-hermod/notes', '/home/rasmus/orexplore/git/misc-hermod/notes']
 
 " hide banner
 "let g:netrw_banner = 0
