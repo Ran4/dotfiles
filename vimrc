@@ -951,5 +951,5 @@ function! s:AppendCharEOL()
     call winrestview(v)
 endfunction
 
-nnoremap <silent> R :<C-u>call <SID>AppendCharEOL()<CR>
+"nnoremap <silent> R :<C-u>call <SID>AppendCharEOL()<CR>
 "}}}
