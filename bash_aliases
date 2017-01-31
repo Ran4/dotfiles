@@ -177,6 +177,7 @@ alias :Qa='exit'
 alias bat='cat /sys/class/power_supply/BAT1/capacity'
 
 alias p3='python3'
+alias zath='zathura'
 
 if command_exists tmux ; then
     alias reset='reset && tmux clear-history'
@@ -210,4 +211,6 @@ if [ -f ~/.identifiers/orexplore ]; then
     
     # alias xrs="~/.screenlayout/same_T460s_and_1920x1080.sh"
     alias xrsame="~/.screenlayout/same_T460s_and_1920x1080.sh"
+    
+    alias xrone="~/.screenlayout/T460s_only.sh"
 fi
