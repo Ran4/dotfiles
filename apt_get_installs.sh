@@ -6,6 +6,8 @@ sudo apt-get -y install tmux
 sudo apt-get -y install curl
 sudo apt-get -y install ack-grep
 sudo apt-get -y install silversearcher-ag
+sudo apt-get -y install pandoc
+sudo apt-get -y install pandoc-citeproc
 sudo apt-get -y install tree
 if [ -f ~/.identifiers/without_x ] ; then
     echo 'Ignoring X programs, please run:'
