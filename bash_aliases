@@ -213,6 +213,7 @@ if [ -f ~/.identifiers/orexplore ]; then
     
     # alias xrs="~/.screenlayout/same_T460s_and_1920x1080.sh"
     alias xrsame="~/.screenlayout/same_T460s_and_1920x1080.sh"
+    alias xrsamedp="~/.screenlayout/same_T460s_and_1920x1080_minidp.sh"
     
     alias xrone="~/.screenlayout/T460s_only.sh"
 fi
