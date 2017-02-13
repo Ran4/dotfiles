@@ -11,10 +11,10 @@ run() {
 
 o() {
     if [ $# -eq 0 ]; then
-      xdg-open . &> /dev/null
+      xdg-open . &> /dev/null & disown
     else
       for file in "$@"; do
-        xdg-open "$file" &> /dev/null
+        xdg-open "$file" &> /dev/null & disown
       done
     fi
 }
@@ -178,6 +178,8 @@ alias bat='cat /sys/class/power_supply/BAT1/capacity'
 
 alias p3='python3'
 alias zath='zathura'
+
+alias open=o
 
 if command_exists tmux ; then
     alias reset='reset && tmux clear-history'
