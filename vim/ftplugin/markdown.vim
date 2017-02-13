@@ -3,8 +3,8 @@
 
 nnoremap <leader>p :!pandoc -s % -o /tmp/out_%:r.html && xdg-open /tmp/out_%:r.html &<cr>
 nnoremap <silent> <leader>P :!pandoc -s % -o /tmp/out_%:r.html &> /dev/null &<cr><cr>
-"nnoremap <silent> <space> :update<cr>:exec "!pandoc -s % -o /tmp/out_%:r.html --css ~/orexplore/git/misc-hermod/notes/biggercode.css &> /dev/null &"<cr><cr>
-"nnoremap <silent> <space> :update<cr>:exec "!pandoc -s % -o output/out_%:r.html --css ~/orexplore/git/misc-hermod/notes/biggercode.css &> /dev/null &"<cr><cr>
+"nnoremap <silent> <space> :update<cr>:exec "!pandoc -s % -o /tmp/out_%:r.html --css ~/orexplore/git/misc-hermod/css/biggercode.css &> /dev/null &"<cr><cr>
+"nnoremap <silent> <space> :update<cr>:exec "!pandoc -s % -o output/out_%:r.html --css ~/orexplore/git/misc-hermod/css/biggercode.css &> /dev/null &"<cr><cr>
 "nnoremap <space> :update<cr>:make html<cr>:redrawstatus<cr>
 
 "nnoremap <silent> <space> :update<cr>:exec "make"<cr><cr>
