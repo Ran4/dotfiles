@@ -14,7 +14,7 @@ inoremap <localleader>r <esc>"qdiwavar <c-r>q = require("<c-r>q");
 nnoremap <localleader>r "qdiwavar <c-r>q = require("<c-r>q");<esc>
 
 " colo luna
-colo iceberg
+" colo iceberg
 
 if exists('+colorcolumn')
     set colorcolumn=100
