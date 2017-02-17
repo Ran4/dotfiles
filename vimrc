@@ -307,6 +307,9 @@ if has('nvim')
     set inccommand=split
 endif
 
+"set completeopt=menu,preview,noinsert
+set completeopt=menu,preview,longest
+
 set number "show line numbers
 "set relativenumber
 
