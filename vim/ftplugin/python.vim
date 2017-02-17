@@ -62,6 +62,7 @@ iabbrev adn and
 iabbrev pritn print
 iabbrev true: True:
 iabbrev false: False:
+iabbrev impot import
 
 "nnoremap <silent> <buffer> ]] :call <SID>Python_jump('/^\(class\\|def\)')<cr>
 "nnoremap <silent> <buffer> [[ :call <SID>Python_jump('?^\(class\\|def\)')<cr>
