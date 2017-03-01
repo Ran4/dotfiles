@@ -733,7 +733,7 @@ endif
 if has('nvim')
     let g:python_host_prog = '/usr/local/bin/python'
     let g:python3_host_prog = '/usr/local/bin/python3'
-endif
+endi
 
 "use CtrlP to quickly switch between buffers
 nnoremap <b :CtrlPBuffer<cr>

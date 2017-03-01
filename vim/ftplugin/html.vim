@@ -4,7 +4,7 @@
 "e.g.   table|<<    ->    <table>|</table>
 "       table|>>    ->    <table></table>|
 inoremap <localleader>< <esc>bce<<c-r>"></<c-r>"><c-o>F<
-inoremap <localleader>< <esc>bce<<c-r>"></<c-r>">
+inoremap <localleader>> <esc>bce<<c-r>"></<c-r>">
 "inoremap << <esc>bce<<c-r>"></<c-r>"><c-o>F<
 "inoremap >> <esc>bce<<c-r>"></<c-r>">
 
