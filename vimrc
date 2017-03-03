@@ -645,6 +645,9 @@ endif
 ""exchange: add the cx operator. I.e. cxe on one word, then cxe to exchange
 "!git clone git://github.com/tommcdo/vim-exchange.git
 
+""fzf.vim enables some fzf commands such as :Ag or :Files
+"!git clone https://github.com/junegunn/fzf.vim ~/.vim/bundle/fzf.vim
+
 """}}}
 """{{{ ghijk
 """gitgutter shows a git diff in the 'gutter' (sign column)
