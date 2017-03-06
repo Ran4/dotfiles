@@ -1,7 +1,7 @@
 "remaps å¨Å^ to []{} in various ways
 source ~/.vim/ftplugin/remap_to_brackets.vim
 
-colorscheme iceberg
+"colorscheme iceberg
 
 "Initially, only use the 'python' checker, which warns much less than pylint
 let g:syntastic_python_checkers=['python3', 'pep8']

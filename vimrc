@@ -607,9 +607,6 @@ endif
 "Change default size of copen window in ag from 10 to 7
 "let g:ag_qhandler="copen 7"
 
-""Ag plugin for vim, usagE: :Ag [options] {pattern} [{directories}]
-"!git clone https://github.com/rking/ag.vim ~/.vim/bundle/ag.vim
-
 """commentary.vim - comment things out with gc+{motion} and more
 "!git clone https://github.com/tpope/vim-commentary ~/.vim/bundle/vim-commentary
 
