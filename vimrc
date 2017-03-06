@@ -604,8 +604,6 @@ endif
 """{{{ abcdef
 "Ack plugin for vim, usagE: :Ack [options] {pattern} [{directories}]
 "!git clone https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
-"Change default size of copen window in ag from 10 to 7
-"let g:ag_qhandler="copen 7"
 
 """commentary.vim - comment things out with gc+{motion} and more
 "!git clone https://github.com/tpope/vim-commentary ~/.vim/bundle/vim-commentary
@@ -734,6 +732,14 @@ if has('nvim')
     let g:python_host_prog = '/usr/local/bin/python'
     let g:python3_host_prog = '/usr/local/bin/python3'
 endi
+
+"ack-vim configuration
+"Change default size of copen window in ag from 10 to 7
+"let g:ag_qhandler="copen 7"
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 "use CtrlP to quickly switch between buffers
 nnoremap <b :CtrlPBuffer<cr>
