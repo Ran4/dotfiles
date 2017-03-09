@@ -53,11 +53,6 @@ nnoremap <leader>> viw<ESC>a><ESC>hbi<<ESC>%
 nnoremap <leader>n :bn<cr>
 nnoremap <leader>N :bp<cr>
 
-" Append to in-commands
-nnoremap <leader>a" f";i
-nnoremap <leader>a' f';i
-nnoremap <leader>a) f)i
-
 " Quickly edit vimrc
 nnoremap <leader>ev :vert split $MYVIMRC<CR>
 nnoremap <leader>Ev :split $MYVIMRC<CR>
@@ -184,72 +179,73 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 if has('nvim')
-    "Terminal mappings, since <C-\><C-n> is annoying to prepend
-    tnoremap <c-s> <C-\><C-n>
-    tnoremap <c-s><c-s> <C-\><C-n><c-w><c-c>
-    tnoremap <c-s><c-h> <C-\><C-n><c-w>h
-    tnoremap <c-s><c-j> <C-\><C-n><c-w>j
-    tnoremap <c-s><c-k> <C-\><C-n><c-w>k
-    tnoremap <c-s><c-l> <C-\><C-n><c-w>l
-    tnoremap <c-s>h <C-\><C-n><c-w>h
-    tnoremap <c-s>j <C-\><C-n><c-w>j
-    tnoremap <c-s>k <C-\><C-n><c-w>k
-    tnoremap <c-s>l <C-\><C-n><c-w>l
-    
-    
-    " Recreating some tmux-like stuff
-    tnoremap <c-s>c <C-\><C-n>:tabe<cr>:term<cr>
-    "In case we're not releasing ctrl quickly enough:
-    tnoremap <c-s><c-c> <C-\><C-n>:tabe<cr>:term<cr>
-    tnoremap <c-s>n <C-\><C-n>gt
-    tnoremap <c-s><c-n> <C-\><C-n>gt
-    tnoremap <c-s>p <C-\><C-n>gT
-    tnoremap <c-s><c-p> <C-\><C-n>gT
-    tnoremap <c-s>s <C-\><C-n>:new<cr>:term<cr>
-    tnoremap <c-s><c-s> <C-\><C-n>:new<cr>:term<cr>
-    tnoremap <c-s>v <C-\><C-n>:vnew<cr>:term<cr>
-    tnoremap <c-s><c-v> <C-\><C-n>:vnew<cr>:term<cr>
-    tnoremap <c-s>x <C-\><C-n><c-w>c
-    tnoremap <c-s><c-x> <C-\><C-n><c-w>c
-    tnoremap <c-s>T <C-\><C-n><c-w>T
-    
-    nnoremap <c-s>c :tabe<cr>:term<cr>
-    "In case we're not releasing ctrl quickly enough:
-    nnoremap <c-s><c-c> :tabe<cr>:term<cr>
-    nnoremap <c-s>n gt
-    nnoremap <c-s><c-n> gt
-    nnoremap <c-s>p gT
-    nnoremap <c-s><c-p> gT
-    nnoremap <c-s>s :new<cr>:term<cr>
-    nnoremap <c-s><c-s> :new<cr>:term<cr>
-    nnoremap <c-s>v :vnew<cr>:term<cr>
-    nnoremap <c-s><c-v> :vnew<cr>:term<cr>
-    nnoremap <c-s>x <c-w>c
-    nnoremap <c-s><c-x> <c-w>c
-    nnoremap <c-s>T <c-w>T
-    
-    
-    
-    "tnoremap <c-h> <c-\><c-n><c-w>h
-    "tnoremap <c-j> <c-\><c-n><c-w>j
-    "tnoremap <c-k> <c-\><c-n><c-w>k "used for kill to eol
-    "tnoremap <c-l> <c-\><c-n><c-w>l "used for clear...
-    
-    
-    "Open a new vertical term
-    nnoremap <c-t> :vnew<cr>:term<cr>
-    
-    nnoremap <c-s><c-h> <c-w>h
-    nnoremap <c-s><c-j> <c-w>j
-    nnoremap <c-s><c-k> <c-w>k
-    nnoremap <c-s><c-l> <c-w>l
-    nnoremap <c-s>h <c-w>h
-    nnoremap <c-s>j <c-w>j
-    nnoremap <c-s>k <c-w>k
-    nnoremap <c-s>l <c-w>l
-    
-    "Automatically enter terminal if we go into term window
-    autocmd BufEnter term://* startinsert
+    """ Disabled to get c-s to work with fzf.vim's Ag command
+    """ "Terminal mappings, since <C-\><C-n> is annoying to prepend
+    """ tnoremap <c-s> <C-\><C-n>
+    """ tnoremap <c-s><c-s> <C-\><C-n><c-w><c-c>
+    """ tnoremap <c-s><c-h> <C-\><C-n><c-w>h
+    """ tnoremap <c-s><c-j> <C-\><C-n><c-w>j
+    """ tnoremap <c-s><c-k> <C-\><C-n><c-w>k
+    """ tnoremap <c-s><c-l> <C-\><C-n><c-w>l
+    """ tnoremap <c-s>h <C-\><C-n><c-w>h
+    """ tnoremap <c-s>j <C-\><C-n><c-w>j
+    """ tnoremap <c-s>k <C-\><C-n><c-w>k
+    """ tnoremap <c-s>l <C-\><C-n><c-w>l
+    """ 
+    """ 
+    """ " Recreating some tmux-like stuff
+    """ tnoremap <c-s>c <C-\><C-n>:tabe<cr>:term<cr>
+    """ "In case we're not releasing ctrl quickly enough:
+    """ tnoremap <c-s><c-c> <C-\><C-n>:tabe<cr>:term<cr>
+    """ tnoremap <c-s>n <C-\><C-n>gt
+    """ tnoremap <c-s><c-n> <C-\><C-n>gt
+    """ tnoremap <c-s>p <C-\><C-n>gT
+    """ tnoremap <c-s><c-p> <C-\><C-n>gT
+    """ tnoremap <c-s>s <C-\><C-n>:new<cr>:term<cr>
+    """ tnoremap <c-s><c-s> <C-\><C-n>:new<cr>:term<cr>
+    """ tnoremap <c-s>v <C-\><C-n>:vnew<cr>:term<cr>
+    """ tnoremap <c-s><c-v> <C-\><C-n>:vnew<cr>:term<cr>
+    """ tnoremap <c-s>x <C-\><C-n><c-w>c
+    """ tnoremap <c-s><c-x> <C-\><C-n><c-w>c
+    """ tnoremap <c-s>T <C-\><C-n><c-w>T
+    """ 
+    """ nnoremap <c-s>c :tabe<cr>:term<cr>
+    """ "In case we're not releasing ctrl quickly enough:
+    """ nnoremap <c-s><c-c> :tabe<cr>:term<cr>
+    """ nnoremap <c-s>n gt
+    """ nnoremap <c-s><c-n> gt
+    """ nnoremap <c-s>p gT
+    """ nnoremap <c-s><c-p> gT
+    """ nnoremap <c-s>s :new<cr>:term<cr>
+    """ nnoremap <c-s><c-s> :new<cr>:term<cr>
+    """ nnoremap <c-s>v :vnew<cr>:term<cr>
+    """ nnoremap <c-s><c-v> :vnew<cr>:term<cr>
+    """ nnoremap <c-s>x <c-w>c
+    """ nnoremap <c-s><c-x> <c-w>c
+    """ nnoremap <c-s>T <c-w>T
+    """ 
+    """ 
+    """ 
+    """ "tnoremap <c-h> <c-\><c-n><c-w>h
+    """ "tnoremap <c-j> <c-\><c-n><c-w>j
+    """ "tnoremap <c-k> <c-\><c-n><c-w>k "used for kill to eol
+    """ "tnoremap <c-l> <c-\><c-n><c-w>l "used for clear...
+    """ 
+    """ 
+    """ "Open a new vertical term
+    """ nnoremap <c-t> :vnew<cr>:term<cr>
+    """ 
+    """ nnoremap <c-s><c-h> <c-w>h
+    """ nnoremap <c-s><c-j> <c-w>j
+    """ nnoremap <c-s><c-k> <c-w>k
+    """ nnoremap <c-s><c-l> <c-w>l
+    """ nnoremap <c-s>h <c-w>h
+    """ nnoremap <c-s>j <c-w>j
+    """ nnoremap <c-s>k <c-w>k
+    """ nnoremap <c-s>l <c-w>l
+    """ 
+    """ "Automatically enter terminal if we go into term window
+    """ autocmd BufEnter term://* startinsert
 endif
 
 " o and O doesn't go into insert mode
@@ -797,6 +793,13 @@ let g:EasyMotion_enter_jump_first = 1
 set rtp+=/usr/local/opt/fzf
 set rtp+=/home/rasmus/.fzf
 
+nnoremap <leader>a :Ag<cr>
+
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
 ""Gitgutter configuration
 "Starts disabled:
 let g:gitgutter_enabled = 0
@@ -922,6 +925,7 @@ let g:syntastic_mode_map = {
 autocmd FileType python
     \ if search('^from django', 'npw') |
     \ let g:syntastic_python_pylint_args="--rcfile=~/.django.pylintrc" |
+    \ let g:syntastic_python_pep8_args="--config ~/.config/pep8" |
     \ endif
 
 autocmd FileType python
