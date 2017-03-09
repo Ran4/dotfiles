@@ -33,7 +33,9 @@ xterm*saveLines: 20000
 !tiny=5x8
 !6x10
 !default=7x10 (7x7, 7x9, 6x6)
-xterm*font: -*-fixed-medium-r-*-*-14-*-*-*-*-*-iso8859-*
+
+!~ This is equivalent to "small" font size:
+!xterm*font: -*-fixed-medium-r-*-*-14-*-*-*-*-*-iso8859-*
 
 ! If true, uses anti-aliasing
 *xterm*renderFont: false
