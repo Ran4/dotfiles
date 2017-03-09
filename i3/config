@@ -29,11 +29,11 @@ bindsym $mod+q kill
 #bindsym $mod+Shift+w layout tabbed
 bindsym $mod+w layout tabbed
 bindsym $mod+Shift+w layout toggle split
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+space floating toggle
 bindsym $mod+Shift+s sticky toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space focus mode_toggle
 
 # focus the parent container
 #bindsym $mod+a focus parent
