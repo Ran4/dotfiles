@@ -186,7 +186,7 @@ if command_exists tmux ; then
     alias clear='clear && tmux clear-history'
 fi
 if command_exists i3lock ; then
-    alias lock='i3lock -d -e --color=102010 --no-unlock-indicator' #-d suspends screen after default 30s,
+    alias lock='i3lock -d -e --color=102010' #-d suspends screen after default 30s,
     #-e ignores empty password
 fi
 
