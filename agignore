@@ -1,9 +1,12 @@
-#Unity .asset files
-*.asset
-
 #Python stuff
 __pycache__
 *.pyc
 
-#No need to read through Firefox log files...
-Library/Application Support/Firefox
+#No need to look through Library folder on OS X
+Library
+
+#alccalcer stuff
+sortiment.xml
+sortiment_newer.xml
+
+main.entry.js.map
