@@ -56,9 +56,7 @@ sudo apt-get -y install ruby-dev
 sudo apt-get -y install python-tk
 
 ##Installing i3-gaps. Needs i3 first!
-#sudo apt-get -y install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev
-#sudo apt-get -y install libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev
-#sudo apt-get -y install libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev
-#cd git/other/
-#git clone https://www.github.com/Airblader/i3 i3-gaps && cd i3-gaps && make && sudo make install
-
+# Dependencies has been updated, and are rather complicated for ubuntu. See the project wiki for install
+# instructions
+# cd git/other/
+# git clone https://www.github.com/Airblader/i3 i3-gaps && cd i3-gaps && make && sudo make install
