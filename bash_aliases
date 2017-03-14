@@ -212,8 +212,7 @@ alias pyproj=". ~/.tmuxp/pyproj.sh"
 if [ -f ~/.identifiers/orexplore ]; then
     # Screen layouts:
     # alias xrm="~/.screenlayout/T460s_and_1920x1200.sh"
-    alias xrmain="~/.screenlayout/T460s_and_1920x1200.sh"
-    alias xrmain2="~/.screenlayout/T460s_and_rotated_1920x1200.sh"
+    alias xrmain="~/.screenlayout/T460s_and_4k.sh"
     
     # alias xrs="~/.screenlayout/same_T460s_and_1920x1080.sh"
     alias xrsame="~/.screenlayout/same_T460s_and_1920x1080.sh"
