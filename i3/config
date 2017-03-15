@@ -202,16 +202,17 @@ set $inactivetextcolor "#808080"
 set $inactiveframecolor "#000000"
 
 # Outline colors
-for_window [class="^.*"] border pixel 2
-#set $focusedframecolor "#7fff00"
-set $focusedframecolor "#ffffff"
-#set $focusedframecolor "#7fff00"
+for_window [class="^.*"] border pixel 4
+#set $focusedframecolor "#7fff00" #green
+#set $focusedframecolor "#ff7f00" #orange
+set $focusedframecolor "#5bb2ff" #orange
+#set $focusedframecolor "#ffffff"
 client.focused          #000000 $focusedframecolor    $text
 client.unfocused        #000000 $inactiveframecolor  $text
 client.focused_inactive #000000 "#b0b0b0"  "#030303"
 
-#hide_edge_borders horizontal
-hide_edge_borders both
+hide_edge_borders horizontal
+#hide_edge_borders both
 
 bar {
     #mode hide
@@ -229,7 +230,7 @@ bar {
         separator          $bartextcolor
     } ##7ace92
 
-    font pango:DejaVu Sans Mono, Icons 16
+    font pango:DejaVu Sans Mono, Icons 11
     #See https://en.wikipedia.org/wiki/Fixed_%28typeface%29
     #5x7:
 
@@ -242,7 +243,7 @@ bar {
     #font -Misc-Fixed-Medium-R-Normal--10-100-75-75-C-60-ISO10646-1
 
     #6x13
-    font -Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1
+    #font -Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1
     #6x13B
     #font -Misc-Fixed-Bold-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1
     #7x13
@@ -266,8 +267,10 @@ for_window [class="Tk"] floating enable, border normal
 # gaps inner 2
 # gaps outer -5 #higher than inner, so no gap when there's just a single window
 
-# gaps inner 4
-# gaps outer -4 #higher than inner, so no gap when there's just a single window
+# gaps inner 5
+gaps inner 10
+# gaps outer -2 #higher than inner, so no gap when there's just a single window
+gaps outer -10 #higher than inner, so no gap when there's just a single window
 
 # gaps inner 30
 # gaps outer 10 #higher than inner, so no gap when there's just a single window
