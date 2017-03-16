@@ -109,6 +109,8 @@ set complete-=i
 "Use spaces, but <tab> and <bs> works like it was a single tab
 set smarttab
 
+set smartindent
+
 set ttimeout
 set ttimeoutlen=100
 
