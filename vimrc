@@ -8,6 +8,8 @@ nnoremap ,, ,
 
 map § <
 map ° >
+imap § <
+vmap § <
 
 nmap cså cs[
 nmap cs¨ cs]
@@ -901,6 +903,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 let g:UltiSnipsEditSplit="vertical"
 nnoremap <leader>eu :UltiSnipsEdit<cr>
+
+
+""vim-racer configuration
+let g:racer_cmd = "/Users/ran/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
 
 
 ""vim-rsi configuration
