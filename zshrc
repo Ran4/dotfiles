@@ -171,19 +171,6 @@ if [ -f ~/.identifiers/thinkpad ]; then
     alias ki2='~/.screenlayout/ki_24r_24r.sh'
 fi
 
-if [ -f ~/.identifiers/ranlubuntu ]; then
-    #alias m='~/ovrigt/mount_vbshare.sh'
-    alias m='~/ovrigt/mount_all.sh'
-    
-    feh --bg-scale ~/other/backgrounds/Rainbow-Sky-Wallpaper-1024x576.jpg
-fi
-
-if [ -f ~/.identifiers/ran-main-kubuntu ]; then
-    #set background image:
-    #feh --bg-scale ~/other/backgrounds/red-shine.jpg
-    feh --bg-scale ~/other/backgrounds/waterfall_pixely.png
-fi
-
 if [ -f ~/.identifiers/ran-ub1610-vb ]; then
     if [ -n "$DISPLAY" ]; then
         #set background image:
@@ -192,6 +179,9 @@ if [ -f ~/.identifiers/ran-ub1610-vb ]; then
     
     #Change tmux bgcolor without changing tmux.conf:
     tmux set -g status-bg '#343d46'
+ 
+    # oh-my-zsh right prompt
+    export RPROMPT=$(hostname)
 fi
 
 #Mac-specific stuff
