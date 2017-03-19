@@ -476,7 +476,7 @@ set statusline+=\ %m%r "Modified [+]/[-], readonly [RO]
 set statusline+=%w "Preview window flag [Preview]
 set statusline+=%= "Start of right side statusline
 "Right side statusline:
-set statusline+=%{fugitive#head()}
+" set statusline+=%{fugitive#head()}
 set statusline+=\ %y "Filetype e.g. [elm]
 set statusline+=\ [col\ %02c] "Column number
 set statusline+=\ %02p%% "Percent through file
@@ -699,9 +699,6 @@ endif
 ""tbone allows tmux commands
 "!git clone git://github.com/tpope/vim-tbone.git
 
-""ultisnips to create smart snippets
-"!git clone https://github.com/SirVer/ultisnips ~/.vim/bundle/ultisnips
-
 ""unimpaired - add a bunch of handy bracket mappings
 "!git clone https://github.com/tpope/vim-unimpaired ~/.vim/bundle/vim-unimpaired
 
@@ -755,6 +752,11 @@ let g:ctrlp_prompt_mappings = {
 \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>', '<c-o>'],
 \ 'OpenMulti()':          [],
 \ }
+
+""Deoplete configuration
+let g:deoplete#sources#rust#racer_binary='/Users/ran/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/Users/ran/rust/src/src'
+let g:deoplete#sources#rust#documentation_max_height=40
 
 ""incsearch configuration
 "map /  <Plug>(incsearch-forward)
@@ -888,27 +890,19 @@ nnoremap <silent> gX :call system('xdg-open ' . expand('%'))<CR>
 
 
 ""ultisnips configuration
-let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
-set rtp+=~/.vim/snippets/
-let g:UltiSnipsSnippetsDir = "~/.vim/snippets/UltiSnips"
-
-"let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsListSnippets="<c-l>"
-
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-let g:UltiSnipsEditSplit="vertical"
-nnoremap <leader>eu :UltiSnipsEdit<cr>
-
-
-""vim-racer configuration
-let g:racer_cmd = "/Users/ran/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
-
+" let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+" set rtp+=~/.vim/snippets/
+" let g:UltiSnipsSnippetsDir = "~/.vim/snippets/UltiSnips"
+" 
+" let g:UltiSnipsExpandTrigger="<c-j>"
+" let g:UltiSnipsListSnippets="<c-l>"
+" 
+" "let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" "let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" 
+" let g:UltiSnipsEditSplit="vertical"
+" nnoremap <leader>eu :UltiSnipsEdit<cr>
 
 ""vim-rsi configuration
 ""alt-d will disable ä so remove the meta-bindings
