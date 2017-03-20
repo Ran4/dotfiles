@@ -1,0 +1,4 @@
+!default: keycode  40 = d D d D eth ETH eth
+!eth is ð
+!ETH is Ð
+!keycode X = key, shift+key, mode_switch+key, mode_switch+shift+key, altgr+key, altgr+shift+key
