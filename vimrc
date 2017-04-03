@@ -811,9 +811,11 @@ nnoremap <leader>gg :let g:gitgutter_enabled = 1<cr>:GitGutterEnable<cr>
 nnoremap <leader>gG :let g:gitgutter_enabled = 0<cr>:GitGutterDisable<cr>
 nnoremap <leader>gn :GitGutterEnable<cr>:GitGutter<cr>:GitGutterNextHunk<cr>
 nnoremap <leader>gN :GitGutterEnable<cr>:GitGutter<cr>:GitGutterPrevHunk<cr>
-nnoremap <leader>gs :Gstatus<cr>30<c-w>+
+"nnoremap <leader>gs :Gstatus<cr>30<c-w>+
+nnoremap <leader>gs :GitGutterStageHunk<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gc :Gcommit<cr>
 
 ""vim-jedi configuration
 "let g:jedi#auto_initialization = 0

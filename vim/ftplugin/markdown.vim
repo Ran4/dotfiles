@@ -1,7 +1,7 @@
 "remaps å¨Å^ to []{} in various ways
 "source ~/.vim/ftplugin/remap_to_brackets.vim
 
-nnoremap <leader>p :!pandoc -s % -o /tmp/out_%:r.html && xdg-open /tmp/out_%:r.html &<cr>
+nnoremap <leader>p :!pandoc -s % -o /tmp/out_%:r.html && xdg-open /tmp/out_%:r.html &<cr><cr>
 nnoremap <silent> <leader>P :!pandoc -s % -o /tmp/out_%:r.html &> /dev/null &<cr><cr>
 "nnoremap <silent> <space> :update<cr>:exec "!pandoc -s % -o /tmp/out_%:r.html --css ~/orexplore/git/misc-hermod/css/biggercode.css &> /dev/null &"<cr><cr>
 "nnoremap <silent> <space> :update<cr>:exec "!pandoc -s % -o output/out_%:r.html --css ~/orexplore/git/misc-hermod/css/biggercode.css &> /dev/null &"<cr><cr>
