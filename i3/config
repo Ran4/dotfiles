@@ -69,6 +69,7 @@ bindsym $mod+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
 bindsym $mod+e exec python3 ~/.i3/runorfocus.py "Xterm" xterm
 bindsym $mod+m exec python3 ~/.i3/runorfocus.py "mendeleydesktop" mendeleydesktop
 bindsym $mod+z exec python3 ~/.i3/runorfocus.py "Zathura" zathura
+bindsym $mod+b exec python3 ~/.i3/runorfocus.py "Virtualbox" virtualbox
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
 
