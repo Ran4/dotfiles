@@ -100,6 +100,8 @@ fi
 #    fi
 #fi
 
+# nohup sudo ./caps2esc &
+
 
 #}}}
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
