@@ -5,7 +5,8 @@
 ## Key aliases
 ################################################################################
 #alias hyper shift;ctrl;alt;cmd
-alias hyper shift;ctrl
+#alias hyper shift;ctrl
+alias hyper ctrl;cmd
 
 ## Position aliases
 alias full         move screenOriginX;screenOriginY                screenSizeX;screenSizeY
@@ -59,7 +60,7 @@ bind 5:${hyper}  move screenOriginX+screenSizeX/3;screenOriginY    2*screenSizeX
 ## App bindings
 # These are laid out on the left hand
 bind space:${hyper}  focus 'iTerm2'
-bind t:${hyper}  focus 'Terminal'
+bind t:${hyper}      focus 'Tomahawk'
 
 # bind a:${hyper}      focus 'Slack'
 bind s:${hyper}      focus 'Skype'
