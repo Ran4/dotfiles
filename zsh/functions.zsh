@@ -120,3 +120,7 @@ defword() {
     curl "dict://dict.org/d:$1"
   fi
 }
+
+dockerips() {
+    docker inspect -f '{{.Name}} {{.NetworkSettings.IPAddress }}' $(docker ps -aq)
+}
