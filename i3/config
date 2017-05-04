@@ -265,16 +265,6 @@ for_window [class="feh"] floating enable, border normal
 for_window [class="Tk"] floating enable, border normal
 #}}}
 #i3-gaps specific {{{
-# gaps inner 2
-# gaps outer -5 #higher than inner, so no gap when there's just a single window
-
-# gaps inner 5
 gaps inner 10
-# gaps outer -2 #higher than inner, so no gap when there's just a single window
-gaps outer -10 #higher than inner, so no gap when there's just a single window
-
-# gaps inner 30
-# gaps outer 10 #higher than inner, so no gap when there's just a single window
-#gaps inner 15
-#gaps outer 5 #higher than inner, so no gap when there's just a single window
+gaps outer -14 #higher than inner, so no gap when there's just a single window
 #}}}
