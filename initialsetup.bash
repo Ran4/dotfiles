@@ -73,6 +73,10 @@ git config --global push.default simple
 #use less as a pager, but only if output is longer than the screen
 git config --global --replace-all core.pager "less -F -X"
 
+echo 'Adding mpd directory'
+mkdir -p ~/.mpd
+mkdir -p ~/.mpd/playlists
+
 echo 'Configuring zathura'
 ZATHRCFILE=/etc/zathurarc
 [ ! -f $ZATHRCFILE ] \
