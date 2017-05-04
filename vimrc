@@ -670,6 +670,9 @@ endif
 
 """matchit increases support for %. For example, jump between <tags> </tags>
 "!git clone https://github.com/tmhedberg/matchit ~/.vim/bundle/matchit
+
+"""vim-printf, turn lines into printf statements
+"!git clone git://github.com/mptre/vim-printf ~/.vim/bundle/vim-printf
 """}}}
 """{{{ qrstu
 ""repeat - helper plugin that enables repetition with dot in plugins such as vim-surround
@@ -709,6 +712,9 @@ endif
 
 ""visual-star-search, allows * operator on visual words (and <leader>* to vimgrep)
 "!git clone https://github.com/bronson/vim-visual-star-search ~/.vim/bundle/vim-visual-star-search
+
+""vim-vue, syntax highlighting for Vue.js components
+"!git clone https://github.com/posva/vim-vue.git ~/.vim/bundle/vim-vue
 
 ""fugitive is a git plugin
 "!git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
@@ -859,6 +865,8 @@ highlight MarkWord2 ctermbg=NONE cterm=underline ctermfg=Green guibg=#8CCBEA gui
 ""netrw configuration
 "gx will open file using xdg-open
 let g:netrw_browsex_viewer="xdg-open"
+
+""vim-printf configuration
 
 "notational-fzf-vim configuration
 let g:nv_directories = ['/Users/ran/orexplore/git/misc-hermod/notes', '/home/rasmus/orexplore/git/misc-hermod/']
