@@ -5,8 +5,8 @@
 ## Key aliases
 ################################################################################
 #alias hyper shift;ctrl;alt;cmd
-#alias hyper shift;ctrl
-alias hyper ctrl;cmd
+alias hyper shift;ctrl
+#alias hyper ctrl;cmd
 
 ## Position aliases
 alias full         move screenOriginX;screenOriginY                screenSizeX;screenSizeY
@@ -28,8 +28,8 @@ alias center       move screenOriginX+0.15*screenSizeX;screenOriginY+0.1*screenS
 # bind k:${hyper}  focus up
 # bind j:${hyper}  focus down
 
-bind h:${hyper}  focus left
-bind l:${hyper}  focus right
+bind h:ctrl;cmd  focus left
+bind l:ctrl;cmd  focus right
 bind b:${hyper}  focus behind
 
 ########################################
