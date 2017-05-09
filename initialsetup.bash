@@ -38,6 +38,7 @@ if command_exists apt-get ; then
     rmdir ~/Desktop
     
     xdg-mime default feh.desktop image/jpeg
+    xdg-mime default firefox.desktop text/markdown
 fi
 
 sudo pip3 install virtualenv

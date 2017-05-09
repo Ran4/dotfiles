@@ -53,6 +53,10 @@ nnoremap <f5> :w:Make<cr>
 "Used for the commentary.vim plugin
 let b:commentary_format='#~ %s'
 
+"Used for the vim-printf plugin
+let b:printf_pattern = 'print("%{}".format(%s))'
+let b:printf_delim = ': '
+
 set tabstop=8
 set expandtab
 set shiftwidth=4
