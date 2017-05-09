@@ -675,6 +675,9 @@ endif
 ""repeat - helper plugin that enables repetition with dot in plugins such as vim-surround
 "!git clone git://github.com/tpope/vim-repeat.git ~/.vim/bundle/vim-repeat
 
+""vim-markdown, Markdown runtime files
+"!git clone https://github.com/tpope/vim-markdown  ~/.vim/bundle/vim-markdown
+
 """ notational-fzf-vim adds the :NV command to search in markdown (requires fzf and configured fzf.vim)
 ""!git clone https://github.com/Alok/notational-fzf-vim ~/.vim/bundle/notational-fzf-vim
 
@@ -855,6 +858,11 @@ let g:jedi#show_call_signatures_delay = 0
 "vim-mark configuration
 highlight MarkWord1 ctermbg=NONE ctermfg=Yellow guibg=#8CCBEA guifg=Black
 highlight MarkWord2 ctermbg=NONE cterm=underline ctermfg=Green guibg=#8CCBEA guifg=Black
+
+"vim-markdown configuration
+let g:markdown_fenced_languages = ['html', 'python', 'haskell', 'javascript', 'bash=sh']
+" default markdown_minlines is 50
+"let g:markdown_minlines = 100
 
 ""netrw configuration
 "gx will open file using xdg-open
