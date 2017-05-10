@@ -220,3 +220,5 @@ if [ -f ~/.identifiers/orexplore ]; then
     
     alias xrone="~/.screenlayout/T460s_only.sh"
 fi
+
+alias exp="source /tmp/export"
