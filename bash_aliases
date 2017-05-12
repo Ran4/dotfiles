@@ -46,7 +46,9 @@ alias gc='git commit'
 alias gp='git push'
 alias gu='git pull'
 alias gd='git diff'
+alias gdw='git diff --color-words=.'
 alias gdc='git diff --cached'
+alias gdwc='git diff --color-words=. --cached'
 alias gb='git branch -v' #verbose
 alias gba='git branch -av' #(all, verbose)
 alias gcm='git commit -m'
