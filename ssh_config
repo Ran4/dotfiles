@@ -13,8 +13,16 @@ Host gh
 	HostName github.com
 	User git
 	IdentityFile ~/.ssh/id_rsa
+# Orexplore stuff
 Host ore
 	HostName git.orexplore.se
 	User gogs
 	IdentityFile ~/.ssh/id_rsa
- 
+Host njord
+	HostName njord.local
+	User rasmus
+	IdentityFile ~/.ssh/id_rsa
+Host njord
+	HostName njord.local
+	User hermod
+	IdentityFile ~/.ssh/hermod_id_rsa
