@@ -6,10 +6,21 @@ nmap , ä
 nmap ö <localleader>
 nnoremap ,, ,
 
-map § <
-map ° >
-imap § <
-vmap § <
+" Ugly hack since OS X is terrible at not breaking this...
+if has("macunix")
+    map § <
+    map ° >
+    map f§ f<
+    map f° f>
+    map F§ F<
+    map F° F>
+    map t§ t<
+    map t° t>
+    map T§ T<
+    map T° T>
+    imap § <
+    vmap § <
+endif
 
 nmap cså cs[
 nmap cs¨ cs]
@@ -872,7 +883,12 @@ let g:markdown_fenced_languages = ['html', 'python', 'haskell', 'javascript', 'b
 
 ""netrw configuration
 "gx will open file using xdg-open
-let g:netrw_browsex_viewer="xdg-open"
+
+if has("macunix")
+    let g:netrw_browsex_viewer="open"
+else
+    let g:netrw_browsex_viewer="xdg-open"
+endif
 
 ""vim-printf configuration
 
@@ -903,8 +919,12 @@ let g:netrw_preview = 1
 let g:netrw_bufsettings = 'nomodifiable nomodified readonly nobuflisted nowrap number'
 
 " not netrw, but gX to open current file in external program
-" nnoremap <silent> gX :call system('open ' . expand('%'))<CR>
-nnoremap <silent> gX :call system('xdg-open ' . expand('%'))<CR>
+
+if has("macunix")
+    nnoremap <silent> gX :call system('open ' . expand('%'))<CR>
+else
+    nnoremap <silent> gX :call system('xdg-open ' . expand('%'))<CR>
+endif
 
 
 ""ultisnips configuration
