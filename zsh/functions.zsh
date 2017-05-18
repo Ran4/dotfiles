@@ -124,3 +124,13 @@ defword() {
 dockerips() {
     docker inspect -f '{{.Name}} {{.NetworkSettings.IPAddress }}' $(docker ps -aq)
 }
+
+# Slightl nicer than `df -h | grep /dev/sda1` and figuring our the order.
+avail() {
+    FILESYSTEM=$(df -h | grep "^/dev/sda1" | tr -s " " | cut -d" " -f 1)
+    SIZE=$(df -h | grep "^/dev/sda1" | tr -s " " | cut -d" " -f 2)
+    USED=$(df -h | grep "^/dev/sda1" | tr -s " " | cut -d" " -f 3)
+    AVAIL=$(df -h | grep "^/dev/sda1" | tr -s " " | cut -d" " -f 4)
+
+    echo "$FILESYSTEM $USED used, $AVAIL remaining (total: $SIZE)"
+}
