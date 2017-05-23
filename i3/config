@@ -22,6 +22,11 @@ bindsym $mod+s split v
 bindsym $mod+v split h
 bindsym $mod+Shift+f fullscreen
 
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 4 # increase screen brightness
+bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 4 # decrease screen brightness
+
 bindsym $mod+q kill
 
 # Layout stuff
