@@ -108,6 +108,7 @@ fi
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
+[ -f ~/.bash_exports ] && source ~/.bash_exports
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh #command line fuzzy file finder
 [ -f ~/git/z/z.sh ] && source ~/git/z/z.sh
 [ -f ~/.hhighlighter.sh ] && source ~/.hhighlighter.sh && alias h='h -n'
