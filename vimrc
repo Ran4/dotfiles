@@ -888,6 +888,7 @@ if has("macunix")
     let g:netrw_browsex_viewer="open"
 else
     let g:netrw_browsex_viewer="xdg-open"
+    set listchars=tab:>>
 endif
 
 ""vim-printf configuration
