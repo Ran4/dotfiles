@@ -104,6 +104,9 @@ alias tskth='ts && tmux source-file ~/dotfiles/custom/kth_tmux.conf'
 # Django manage.py
 alias m='./manage.py'
 
+# Docker
+alias docker-clean='docker container prune -f; docker image prune -f'
+
 alias du='du -h' #-h human readable
 alias dus='du -sch * | sort -h' #-s no recursive show, -c show total, -h human readable
 
