@@ -127,10 +127,15 @@ dockerips() {
 
 # Slightl nicer than `df -h | grep /dev/sda1` and figuring our the order.
 avail() {
-    FILESYSTEM=$(df -h | grep "^/dev/sda1" | tr -s " " | cut -d" " -f 1)
-    SIZE=$(df -h | grep "^/dev/sda1" | tr -s " " | cut -d" " -f 2)
-    USED=$(df -h | grep "^/dev/sda1" | tr -s " " | cut -d" " -f 3)
-    AVAIL=$(df -h | grep "^/dev/sda1" | tr -s " " | cut -d" " -f 4)
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        _DISK_PATH="/dev/disk1"
+    else
+        _DISK_PATH="/dev/sda1"
+    fi 
+    FILESYSTEM=$(df -h | grep "^$_DISK_PATH" | tr -s " " | cut -d" " -f 1)
+    SIZE=$(df -h | grep "^$_DISK_PATH" | tr -s " " | cut -d" " -f 2)
+    USED=$(df -h | grep "^$_DISK_PATH" | tr -s " " | cut -d" " -f 3)
+    AVAIL=$(df -h | grep "^$_DISK_PATH" | tr -s " " | cut -d" " -f 4)
 
     echo "$FILESYSTEM $USED used, $AVAIL remaining (total: $SIZE)"
 }
