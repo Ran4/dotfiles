@@ -175,6 +175,12 @@ if [ -f ~/.identifiers/thinkpad ]; then
     alias ki2='~/.screenlayout/ki_24r_24r.sh'
 fi
 
+if [ -f ~/.identifiers/orexplore ]; then
+    # Open the erm system
+    alias erp='open ~/svn/doc/Artiklar/Orexplores_ERP_system.ods'
+    alias cderp='cd ~/svn/doc/Artiklar/'
+fi
+
 if [ -f ~/.identifiers/ran-ub1610-vb ]; then
     if [ -n "$DISPLAY" ]; then
         #set background image:
