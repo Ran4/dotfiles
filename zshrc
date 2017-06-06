@@ -112,7 +112,7 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh #command line fuzzy file finder
 [ -f ~/git/z/z.sh ] && source ~/git/z/z.sh
 [ -f ~/.hhighlighter.sh ] && source ~/.hhighlighter.sh && alias h='h -n'
-[ -f ~/.mpdasrc ] && mpdas -c ~/.mpdasrc -d
+# [ -f ~/.mpdasrc ] && mpdas -c ~/.mpdasrc -d
 
 #open pdf by simply typing it's name.
 alias -s pdf=open
