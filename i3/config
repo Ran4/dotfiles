@@ -266,6 +266,9 @@ for_window [class="feh"] floating enable, border normal
 
 # matplotlib plots:
 for_window [class="Tk"] floating enable, border normal
+
+for_window [class="Arandr"] floating enable, border normal
+
 #}}}
 #i3-gaps specific {{{
 gaps inner 10
