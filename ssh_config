@@ -13,6 +13,12 @@ Host gh
 	HostName github.com
 	User git
 	IdentityFile ~/.ssh/id_rsa
+Host mac
+	HostName 192.168.1.13
+	User ran
+Host ran-ub
+	HostName 192.168.1.12
+	User ran
 # Orexplore stuff
 Host ore
 	HostName git.orexplore.se
