@@ -620,6 +620,12 @@ endif
 """vim-css3-syntax - better syntax highlighting (also see ~/.vim/after/ftplugin/css.vim)
 "!git clone https://github.com/hail2u/vim-css3-syntax ~/.vim/bundle/vim-css3-syntax
 
+"""deoplete.nvim
+"!git clone https://github.com/Shougo/deoplete.nvim ~/.vim/bundle/deoplete.nvim
+
+"""deoplete-rust
+"!git clone https://github.com/sebastianmarkow/deoplete-rust ~/.vim/bundle/deoplete-rust
+
 """dracula-theme, a colortheme
 "!git clone https://github.com/dracula/vim.git ~/.vim/bundle/dracula-theme
 
@@ -698,6 +704,9 @@ endif
 "rsi, adds 'readline-style-insertions' to command and insert mode
 "!git clone https://github.com/tpope/vim-rsi.git ~/.vim/bundle/vim-rsi
 
+""rust.vim
+"!git clone --depth=1 https://github.com/rust-lang/rust.vim.git ~/.vim/bundle/rust.vim
+
 ""speeddating.vim, make <c-a> <c-x> support dates
 "!git clone https://github.com/tpope/vim-speeddating ~/.vim/bundle/vim-speeddating
 
@@ -715,6 +724,9 @@ endif
 
 ""tbone allows tmux commands
 "!git clone git://github.com/tpope/vim-tbone.git
+
+""vim-toml, adds syntax support for TOML files
+"!git clone https://github.com/cespare/vim-toml ~/.vim/bundle/vim-toml
 
 ""unimpaired - add a bunch of handy bracket mappings
 "!git clone https://github.com/tpope/vim-unimpaired ~/.vim/bundle/vim-unimpaired

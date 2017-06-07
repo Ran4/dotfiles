@@ -77,6 +77,9 @@ echo 'Adding mpd directory'
 mkdir -p ~/.mpd
 mkdir -p ~/.mpd/playlists
 
+echo 'Installing tmux'
+./install_tmux.bash
+
 echo 'Configuring zathura'
 ZATHRCFILE=/etc/zathurarc
 [ ! -f $ZATHRCFILE ] \
