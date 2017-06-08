@@ -268,6 +268,8 @@ for_window [class="feh"] floating enable, border normal
 for_window [class="Tk"] floating enable, border normal
 
 for_window [class="Arandr"] floating enable, border normal
+for_window [class="libreoffice"] floating enable, border normal
+for_window [class="libreoffice-calc"] floating enable, border normal
 
 #}}}
 #i3-gaps specific {{{
