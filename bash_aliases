@@ -231,3 +231,4 @@ if [ -f ~/.identifiers/ran-ub ]; then
 fi
 
 alias exp="source /tmp/export"
+alias twitch='nohup google-chrome --app=https://www.twitch.tv/escapeaoe/videos/all &'
