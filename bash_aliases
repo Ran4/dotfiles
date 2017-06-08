@@ -226,4 +226,8 @@ if [ -f ~/.identifiers/orexplore ]; then
     alias xrone="~/.screenlayout/T460s_only.sh"
 fi
 
+if [ -f ~/.identifiers/ran-ub ]; then
+    alias xrmain="~/.screenlayout/main.sh"
+fi
+
 alias exp="source /tmp/export"
