@@ -55,6 +55,9 @@ sudo apt-get -y install ruby-dev
 #used for clip.py
 sudo apt-get -y install python-tk
 
+# volume control and e.g. setting microphone input
+sudo apt -y install pavucontrol
+
 ##Installing i3-gaps. Needs i3 first!
 # Dependencies has been updated, and are rather complicated for ubuntu. See the project wiki for install
 # instructions
