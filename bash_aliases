@@ -224,6 +224,9 @@ if [ -f ~/.identifiers/orexplore ]; then
     alias xrsamedp="~/.screenlayout/same_T460s_and_1920x1080_minidp.sh"
     
     alias xrone="~/.screenlayout/T460s_only.sh"
+    
+    # Docker exec shortcuts
+    alias web='docker exec -it $(docker-compose ps -q web)'
 fi
 
 if [ -f ~/.identifiers/ran-ub ]; then
