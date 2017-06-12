@@ -756,9 +756,14 @@ endif
 
 "Neovim-specific:
 if has('nvim')
-    let g:python_host_prog = '/usr/local/bin/python'
-    let g:python3_host_prog = '/usr/local/bin/python3'
-endi
+    if has("macunix")
+        let g:python_host_prog = '/usr/local/bin/python'
+        let g:python3_host_prog = '/usr/local/bin/python3'
+    else
+        let g:python_host_prog = '/usr/bin/python'
+        let g:python3_host_prog = '/usr/bin/python3'
+    endif
+endif
 
 "ack-vim configuration
 "Change default size of copen window in ag from 10 to 7
@@ -786,8 +791,14 @@ let g:ctrlp_prompt_mappings = {
 \ }
 
 ""Deoplete configuration
-let g:deoplete#sources#rust#racer_binary='/Users/ran/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/Users/ran/rust/src/src'
+
+if has("macunix")
+    let g:deoplete#sources#rust#racer_binary='/Users/ran/.cargo/bin/racer'
+    let g:deoplete#sources#rust#rust_source_path='/Users/ran/rust/src/src'
+else
+    let g:deoplete#sources#rust#racer_binary='/home/ran/.cargo/bin/racer'
+    let g:deoplete#sources#rust#rust_source_path='/home/ran/rust/src/src'
+endif
 let g:deoplete#sources#rust#documentation_max_height=40
 
 ""incsearch configuration

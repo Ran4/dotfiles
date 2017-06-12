@@ -194,6 +194,13 @@ if [ -f ~/.identifiers/ran-ub1610-vb ]; then
     export RPROMPT=$(hostname)
 fi
 
+if [ -f ~/.identifiers/ran-ub ]; then
+    if [ -n "$DISPLAY" ]; then
+        #set background image:
+        feh --bg-scale ~/other/backgrounds/lake_and_ocean_bg.jpg
+    fi
+fi
+
 #Mac-specific stuff
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     source ~/dotfiles/mac/zshrc_mac.sh
