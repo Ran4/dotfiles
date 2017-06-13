@@ -139,3 +139,7 @@ avail() {
 
     echo "$FILESYSTEM $USED used, $AVAIL remaining (total: $SIZE)"
 }
+
+app() {
+    nohup google-chrome --app=$1 & > /dev/null 2>&1
+}
