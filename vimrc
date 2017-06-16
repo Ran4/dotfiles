@@ -369,16 +369,14 @@ if has("gui_running")
     set guioptions-=L "removes left-hand scrollbar when there's a vertically split window
     set guioptions-=r "removes always-on right-hand scrollbar
     set guioptions-=e "removes GUI tab pages
-    "Disable bell by setting visual bell then setting visual bell effect to none ('set t_vb=')
-    set visualbell
+    "Visual bell causes the entire screen to flash in an annoying fashion
+    set novisualbell
     set t_vb=
-    "set guifont=ProggySquareTT\ 12
-    "set guifont=ProggyTinyTT\ 12
-    "set guifont=Monospace\ 11
     if has("gui_macvim")
         set guifont=Menlo\ Regular:h13
     else
-        set guifont=Monospace\ Regular\ 10
+        " set guifont=Monospace\ Regular\ 10
+        set guifont=Inconsolata\ 11
     endif
     "set guifont=
     set antialias
