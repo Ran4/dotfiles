@@ -21,6 +21,22 @@
   {
     "delete-from-cursor" (word-ends, -1)
   };
+  bind "<ctrl>b"
+  {
+    "move-cursor" (logical-positions, -1, 0)
+  };
+  bind "<shift><ctrl>b"
+  {
+    "move-cursor" (logical-positions, -1, 1)
+  };
+  bind "<ctrl>f"
+  {
+    "move-cursor" (logical-positions, 1, 0)
+  };
+  bind "<shift><ctrl>f"
+  {
+    "move-cursor" (logical-positions, 1, 1)
+  };
 }
 
 entry {
