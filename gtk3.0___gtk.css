@@ -1,44 +1,40 @@
 @binding-set text-entry
 {
-  bind "<Control>a"
-  {
-    "move-cursor" (paragraph-ends, -1, 0)
-  };
-  bind "<Control>e"
-  {
-    "move-cursor" (paragraph-ends, 1, 0)
-  };
-  bind "<Control>k"
-  {
-    "delete-from-cursor" (paragraph-ends, 1)
-  };
-  bind "<Control>u"
-  {
-    "move-cursor" (paragraph-ends, -1, 0)
-    "delete-from-cursor" (paragraph-ends, 1)
-  };
-  bind "<Control>w"
-  {
-    "delete-from-cursor" (word-ends, -1)
-  };
-  bind "<ctrl>b"
-  {
-    "move-cursor" (logical-positions, -1, 0)
-  };
-  bind "<shift><ctrl>b"
-  {
-    "move-cursor" (logical-positions, -1, 1)
-  };
-  bind "<ctrl>f"
-  {
-    "move-cursor" (logical-positions, 1, 0)
-  };
-  bind "<shift><ctrl>f"
-  {
-    "move-cursor" (logical-positions, 1, 1)
-  };
+  /* You can find more inspiration by copying the Emacs gtk key theme config:
+     /usr/share/themes/Emacs/gtk-3.0/gtk-keys.css
+     
+  In most of these, the last two numbers usually means direction and then select-or-not
+  e,g, (logical-positions, 1, 0) means move forward (right) without selection, while
+       (logical-positions, 1, 1) means move forward8right) while selecting.
+   */
+  bind "<Control>a"     { "move-cursor" (paragraph-ends, -1, 0) };
+  bind "<Control>e"     { "move-cursor" (paragraph-ends, 1, 0) };
+  bind "<Control>k"     { "delete-from-cursor" (paragraph-ends, 1) };
+  bind "<Control>u"     { "move-cursor" (paragraph-ends, -1, 0) "delete-from-cursor" (paragraph-ends, 1) };
+  bind "<Control>w"     { "delete-from-cursor" (word-ends, -1) };
+  
+  bind "<ctrl>b"        { "move-cursor" (logical-positions, -1, 0) };
+  bind "<shift><ctrl>b" { "move-cursor" (logical-positions, -1, 1) };
+  bind "<ctrl>f"        { "move-cursor" (logical-positions, 1, 0) };
+  bind "<shift><ctrl>f" { "move-cursor" (logical-positions, 1, 1) }; 
+  bind "<ctrl>p"        { "move-cursor" (display-lines, -1, 0) };
+  bind "<shift><ctrl>p" { "move-cursor" (display-lines, -1, 1) };
+  bind "<ctrl>n"        { "move-cursor" (display-lines, 1, 0) };
+  bind "<shift><ctrl>n" { "move-cursor" (display-lines, 1, 1) };
+  
+  bind "<Mod5>BackSpace" { "delete-from-cursor" (word-ends, -1) };
+  
+  bind "dstroke" { "move-cursor" (words, 1, 0) }; /* dstroke == RAlt+f*/
+
+  bind "rightdoublequotemark" { "move-cursor" (words, -1, 0) }; /* rightdoublequotemark == RAlt+b*/
+  
+  /* Can't get these to work, probably need some sort of mod key before them? */
+  bind "ordfeminine" { "move-cursor" (words, 1, 1) }; /* ordfeminine == RAlt+shift+f*/
+  bind "rightsinglequotemark" { "move-cursor" (words, -1, 1) }; /* rightsinglequotemark == RAlt+shift+b*/
 }
 
+
+/* Ensure that both 'entry' and 'textview' uses our newly defined binding-set */
 entry {
     -gtk-key-bindings: text-entry;
 }
