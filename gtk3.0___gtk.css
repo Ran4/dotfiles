@@ -8,10 +8,15 @@
        (logical-positions, 1, 1) means move forward8right) while selecting.
    */
   bind "<Control>a"     { "move-cursor" (paragraph-ends, -1, 0) };
+  bind "<shift><Control>a" { "move-cursor" (paragraph-ends, -1, 1) };
   bind "<Control>e"     { "move-cursor" (paragraph-ends, 1, 0) };
+  bind "<shift><Control>e"     { "move-cursor" (paragraph-ends, 1, 1) };
   bind "<Control>k"     { "delete-from-cursor" (paragraph-ends, 1) };
   bind "<Control>u"     { "move-cursor" (paragraph-ends, -1, 0) "delete-from-cursor" (paragraph-ends, 1) };
   bind "<Control>w"     { "delete-from-cursor" (word-ends, -1) };
+  
+  bind "<ctrl>d"        { "delete-from-cursor" (chars, 1) };
+  bind "<shift><ctrl>d"        { "delete-from-cursor" (chars, -1) };
   
   bind "<ctrl>b"        { "move-cursor" (logical-positions, -1, 0) };
   bind "<shift><ctrl>b" { "move-cursor" (logical-positions, -1, 1) };
@@ -22,7 +27,7 @@
   bind "<ctrl>n"        { "move-cursor" (display-lines, 1, 0) };
   bind "<shift><ctrl>n" { "move-cursor" (display-lines, 1, 1) };
   
-  bind "<Mod5>BackSpace" { "delete-from-cursor" (word-ends, -1) };
+  /* bind "<Mod3>BackSpace" { "delete-from-cursor" (word-ends, -1) }; */
   
   bind "dstroke" { "move-cursor" (words, 1, 0) }; /* dstroke == RAlt+f*/
 
