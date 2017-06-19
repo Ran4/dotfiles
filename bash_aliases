@@ -235,3 +235,4 @@ fi
 
 alias exp="source /tmp/export"
 alias twitch='nohup google-chrome --app=https://www.twitch.tv/escapeaoe/videos/all &'
+alias netflix='nohup google-chrome --app=https://www.netflix.com &'
