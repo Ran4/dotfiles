@@ -212,3 +212,6 @@ fi
 #}}}
 #e.g. "~/Applications $ " where the pwd is green, $ is yellow
 # PROMPT="%{$fg_no_bold[green]%}%2~%{$reset_color%}%{$fg_no_bold[yellow]%}$%{$reset_color%} "
+
+# See http://situmam.blogspot.se/2012/05/emacs-keybidings-in-ubuntu-1204-precise.html
+#gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
