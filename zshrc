@@ -212,3 +212,7 @@ fi
 #}}}
 #e.g. "~/Applications $ " where the pwd is green, $ is yellow
 # PROMPT="%{$fg_no_bold[green]%}%2~%{$reset_color%}%{$fg_no_bold[yellow]%}$%{$reset_color%} "
+
+export NVM_DIR="~/.nvm/"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
