@@ -9,10 +9,11 @@ import time
 from subprocess import Popen, PIPE
 
 #A script that outputs currently playing song with format $ARTIST - $SONG
-NOW_PLAYING_COMMAND = "nowplaying"
+NOW_PLAYING_COMMAND = "/home/ran/dotfiles/scripts/nowplaying.sh"
 
 #A script that outputs the currently playing lyrics to stdout
-PRINT_LYRICS_COMMAND = "/Users/ran/dotfiles/scripts/mly_nowplaying.sh"
+#~ PRINT_LYRICS_COMMAND = "/Users/ran/dotfiles/scripts/mly_nowplaying.sh"
+PRINT_LYRICS_COMMAND = "/home/ran/dotfiles/scripts/mly_nowplaying.sh"
 
 DELAY_BETWEEN_UPDATES_IN_SECONDS = 0.5
 
@@ -32,7 +33,6 @@ def auto_print_latest_lyrics():
         now_playing = get_nowplaying()
 
 def get_nowplaying():
-    NOW_PLAYING_COMMAND
     p = Popen(NOW_PLAYING_COMMAND.split(" "),
         stdout=PIPE, stderr=PIPE, stdin=PIPE)
     return p.stdout.read().strip()

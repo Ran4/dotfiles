@@ -213,6 +213,9 @@ fi
 #e.g. "~/Applications $ " where the pwd is green, $ is yellow
 # PROMPT="%{$fg_no_bold[green]%}%2~%{$reset_color%}%{$fg_no_bold[yellow]%}$%{$reset_color%} "
 
+# See http://situmam.blogspot.se/2012/05/emacs-keybidings-in-ubuntu-1204-precise.html
+#gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
+
 export NVM_DIR="~/.nvm/"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
