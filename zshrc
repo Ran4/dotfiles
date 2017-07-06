@@ -80,8 +80,8 @@ fi
 #Prevent <c-s> from stopping the terminal
 #stty -ixon
 
-if [ ! -f ~/.identifiers/xkbmap_is_checked ]; then
-    touch ~/.identifiers/xkbmap_is_checked
+if [ ! -f /tmp/xkbmap_is_checked ]; then
+    touch /tmp/xkbmap_is_checked
     if command_exists setxkbmap ; then
         if [ -n "$DISPLAY" ]; then
             if [ -f "/etc/arch-release" ]; then
@@ -159,8 +159,8 @@ if [ -f ~/.identifiers/thinkpad ]; then
     #unlink ~/.tmux.conf
     #ln -s ~/.custom/ranl412_tmux.conf ~/.tmux.conf
     
-    if [ ! -f ~/.identifiers/xinput_is_set ]; then
-        touch ~/.identifiers/xinput_is_set
+    if [ ! -f /tmp/xinput_is_set ]; then
+        touch /tmp/xinput_is_set
         #Disable TouchPad:
         declare -i ID
         ID=`xinput list | grep -Eo 'TouchPad\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}'`
