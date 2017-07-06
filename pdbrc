@@ -1,0 +1,6 @@
+# vim: ft=python
+
+alias ph print(help(%1))
+
+# dir(), but without the dunders
+alias dir2 [x for x in dir(%1) if not x.startswith("_")]
