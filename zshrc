@@ -1,3 +1,7 @@
+# TICK() { # Good for time testing
+#    echo A $@ $(date +%s.%N | tail -c +7)
+#}
+
 #ZSH related configuration {{{
 export ZSH=~/.oh-my-zsh
 # Set name of the theme to load. Look in ~/.oh-my-zsh/themes/
@@ -76,13 +80,16 @@ fi
 #Prevent <c-s> from stopping the terminal
 #stty -ixon
 
-if command_exists setxkbmap ; then
-    if [ -n "$DISPLAY" ]; then
-        if [ -f "/etc/arch-release" ]; then
-            setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
-        else
-            # setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin" -option ctrl:nocaps
-            setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
+if [ ! -f /tmp/xkbmap_is_checked ]; then
+    touch /tmp/xkbmap_is_checked
+    if command_exists setxkbmap ; then
+        if [ -n "$DISPLAY" ]; then
+            if [ -f "/etc/arch-release" ]; then
+                setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
+            else
+                # setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin" -option ctrl:nocaps
+                setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
+            fi
         fi
     fi
 fi
@@ -142,6 +149,7 @@ export LESS_TERMCAP_so=$'\E[04;45m'   # begin standout-mode - Search highlightin
 export LESS_TERMCAP_se=$'\E[0m'          # end standout-mode
 #export LESS_TERMCAP_us=$'\E[01;45m'      # begin underline: color for commands etc.
 #export LESS_TERMCAP_ue=$'\E[0m'      # begin underline: color for commands etc.
+
 #}}}}}}
 ##COMPUTER-SPECIFIC CONFIG: {{{
 
@@ -151,28 +159,33 @@ if [ -f ~/.identifiers/thinkpad ]; then
     #unlink ~/.tmux.conf
     #ln -s ~/.custom/ranl412_tmux.conf ~/.tmux.conf
     
-    #Disable TouchPad:
-    declare -i ID
-    ID=`xinput list | grep -Eo 'TouchPad\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}'`
-    xinput set-prop $ID "Device Enabled" 0
-    #echo 'Touchpad has been disabled.'
-    
-    #Increase speed of trackpoint. Default is 1.0, 0.9 is faster
-    TRACKPOINT_NAME=$(xinput --list --name-only | g -i trackpoint)
-    xinput --set-prop "$TRACKPOINT_NAME" "Device Accel Constant Deceleration" 0.9
-    
-    
-    if [ -f ~/.identifiers/orexplore ]; then
-        feh --bg-scale /usr/share/wallpapers/Next/contents/images/2560x1600.png
-        # ~/.screenlayout/T460s_and_1920x1200.sh
-    else
-        feh --bg-scale ~/other/backgrounds/beautiful_landscape.jpg
-    fi
+    if [ ! -f /tmp/xinput_is_set ]; then
+        touch /tmp/xinput_is_set
+        #Disable TouchPad:
+        declare -i ID
+        ID=`xinput list | grep -Eo 'TouchPad\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}'`
+        xinput set-prop $ID "Device Enabled" 0
+        #echo 'Touchpad has been disabled.'
         
-    #Set screen layout for 21.5" and rotated 24" screens at SciLifeLab
-    alias ki='~/.screenlayout/ki_215_24r.sh'
-    alias kih='~/.screenlayout/ki_high215_24r.sh'
-    alias ki2='~/.screenlayout/ki_24r_24r.sh'
+        #Increase speed of trackpoint. Default is 1.0, 0.9 is faster
+        TRACKPOINT_NAME=$(xinput --list --name-only | g -i trackpoint)
+        xinput --set-prop "$TRACKPOINT_NAME" "Device Accel Constant Deceleration" 0.9
+    fi
+    
+    # Set the bg, but only if it hasn't been set before
+    if [ ! -f /tmp/bg_is_set ]; then
+        touch /tmp/bg_is_set
+        if [ -f ~/.identifiers/orexplore ]; then
+            feh --bg-scale \
+                /usr/share/wallpapers/Next/contents/images/2560x1600.png \
+                &> /dev/null
+            # ~/.screenlayout/T460s_and_1920x1200.sh
+        else
+            feh --bg-scale \
+                ~/other/backgrounds/beautiful_landscape.jpg \
+                &> /dev/null
+        fi
+    fi
 fi
 
 if [ -f ~/.identifiers/orexplore ]; then
@@ -216,3 +229,7 @@ fi
 
 # See http://situmam.blogspot.se/2012/05/emacs-keybidings-in-ubuntu-1204-precise.html
 #gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
+
+export NVM_DIR="~/.nvm/"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

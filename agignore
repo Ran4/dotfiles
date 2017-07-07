@@ -10,3 +10,9 @@ sortiment.xml
 sortiment_newer.xml
 
 main.entry.js.map
+
+*css.map
+
+# We don't want to search ctags files
+tags
+TAGS

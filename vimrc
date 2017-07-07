@@ -776,7 +776,7 @@ nnoremap <b :CtrlPBuffer<cr>
 
 " The dir one means /__pycache__ OR /.git OR /.hg OR /.svn
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](__pycache__|\.(git|hg|svn)|htmlcov)$',
+  \ 'dir':  '\v[\/](__pycache__|\.(git|hg|svn)|htmlcov|TAGS|tags)$',
   \ 'file': '\v\.(exe|so|dll|pyc)$',
   \ }
 " Use regexp search by default
