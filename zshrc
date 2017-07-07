@@ -197,7 +197,8 @@ fi
 if [ -f ~/.identifiers/ran-ub ]; then
     if [ -n "$DISPLAY" ]; then
         #set background image:
-        feh --bg-scale ~/other/backgrounds/lake_and_ocean_bg.jpg
+        # feh --bg-scale ~/other/backgrounds/lake_and_ocean_bg.jpg
+        feh --bg-scale /home/ran/Downloads/wallpaper/alena-aenami-atlast2k2.jpg
     fi
 fi
 
