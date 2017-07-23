@@ -46,6 +46,9 @@ sudo pip3 install virtualenv
 if [[ "$OSTYPE" == "darwin"* ]]; then
     echo 'Detected OS X, calling ~/dotfiles/mac/initialsetup_mac.sh'
     ~/dotfiles/mac/initialsetup_mac.sh
+else
+    echo "Installing stack"
+    curl -sSL https://get.haskellstack.org/ | sh
 fi
 
 if [ -f "/etc/arch-release" ]; then

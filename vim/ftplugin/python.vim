@@ -13,6 +13,9 @@ nnoremap <leader><leader>l :let g:syntastic_python_checkers=['python3']
 "Disable pylint
 nnoremap <leader>L :let g:syntastic_python_checkers=['python']<cr>
 
+
+let g:syntastic_python_checkers=['python3', 'pep8']
+
 "nvim will auto clear
 if has('nvim')
     "Use :term instead of :!, since that supports input()

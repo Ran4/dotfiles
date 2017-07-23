@@ -4,6 +4,9 @@
 #set $mod Mod4
 set $mod Mod1+ctrl
 
+# Pressing workspace key again toggles back to the previous workspace
+workspace_auto_back_and_forth yes
+
 # movement
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -82,8 +85,8 @@ bindsym $mod+b exec python3 ~/.i3/runorfocus.py "Virtualbox" virtualbox
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
 
-bindsym $mod+Shift+x [class="(?i)xterm"] kill
 bindsym $mod+Shift+Return exec --no-startup-id i3-dmenu-desktop
+bindsym Mod4+Return exec --no-startup-id i3-dmenu-desktop
 
 #bindsym $mod+ctrl+l exec --no-startup-id i3lock -d --color=102010 --no-unlock-indicator
 
@@ -94,6 +97,7 @@ bindsym $mod+Return exec --no-startup-id xterm
 # Programs to run at start {{{
 exec --no-startup-id xrdb -load ~/.Xresources
 exec --no-startup-id xterm
+exec --no-startup-id compton -b
 #exec --no-startup-id xterm -fn 7x14 -e ~/dotfiles/defaulttmuxsession.sh
 #exec --no-startup-id xterm -fn 6x10 -e ~/dotfiles/defaulttmuxsession.sh
 #exec --no-startup-id xterm -e ~/dotfiles/defaulttmuxsession.sh
@@ -116,7 +120,6 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
 #set $ws1 1 xTerm
 #set $ws2 2 Firefox
 #set $ws3 3 Zathura
-#set $ws4 4 Mendeley
 set $ws1 1
 set $ws2 2
 set $ws3 3
@@ -208,17 +211,18 @@ set $inactivetextcolor "#808080"
 set $inactiveframecolor "#000000"
 
 # Outline colors
-for_window [class="^.*"] border pixel 4
+for_window [class="^.*"] border pixel 3
 #set $focusedframecolor "#7fff00" #green
-#set $focusedframecolor "#ff7f00" #orange
-set $focusedframecolor "#5bb2ff" #orange
+set $focusedframecolor "#ff7f00" #orange
+#set $focusedframecolor "#5bb2ff" #orange
 #set $focusedframecolor "#ffffff"
 client.focused          #000000 $focusedframecolor    $text
 client.unfocused        #000000 $inactiveframecolor  $text
 client.focused_inactive #000000 "#b0b0b0"  "#030303"
 
-hide_edge_borders horizontal
+#hide_edge_borders horizontal
 #hide_edge_borders both
+hide_edge_borders smart
 
 bar {
     #mode hide
@@ -275,6 +279,6 @@ for_window [class="libreoffice-calc"] floating enable, border normal
 
 #}}}
 #i3-gaps specific {{{
-gaps inner 10
-gaps outer -14 #higher than inner, so no gap when there's just a single window
+gaps inner 8
+gaps outer -9 #higher than inner, so no gap when there's just a single window
 #}}}

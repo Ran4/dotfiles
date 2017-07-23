@@ -612,6 +612,9 @@ endif
 "Ack plugin for vim, usagE: :Ack [options] {pattern} [{directories}]
 "!git clone https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
 
+"Ale, Asynchronous Lint Engine for Neovim
+"!git clone https://github.com/w0rp/ale.git ~/.vim/bundle/ale.git
+
 """commentary.vim - comment things out with gc+{motion} and more
 "!git clone https://github.com/tpope/vim-commentary ~/.vim/bundle/vim-commentary
 
@@ -751,6 +754,16 @@ endif
 ":Helptags
 
 "PLUGIN CONFIGURATION {{{
+
+"ALE configuration
+let g:ale_lint_on_save = 1
+let g:ale_linters = {
+\   'python': [
+\       'pylint',
+\   ],
+\}
+let g:ale_python_pylint_executable = 'pylint3'
+let g:ale_python_pylint_options="--rcfile=~/.pylintrc"
 
 "Neovim-specific:
 if has('nvim')
