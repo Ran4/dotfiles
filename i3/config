@@ -3,6 +3,7 @@
 #set $mod Mod1
 #set $mod Mod4
 set $mod Mod1+ctrl
+set $default_terminal urxvt
 
 # Pressing workspace key again toggles back to the previous workspace
 workspace_auto_back_and_forth yes
@@ -40,11 +41,7 @@ bindsym $mod+shift+t layout default
 bindsym $mod+o focus parent
 bindsym $mod+i focus child
 bindsym $mod+space floating toggle
-bindsym Mod1+space floating toggle
 bindsym $mod+Shift+s sticky toggle
-# bindsym ctrl+space floating toggle
-bindsym $mod+m scratchpad show
-bindsym $mod+shift+m move scratchpad
 
 # change focus between tiling / floating windows
 bindsym $mod+Shift+space focus mode_toggle
@@ -77,7 +74,7 @@ bindsym $mod+Shift+Right resize grow width 2 px or 2 ppt
 # Program specific bindings {{{
 #bindsym $mod+d exec pcmanfm
 bindsym $mod+shift+d exec python3 ~/.i3/runorfocus.py "pcmanfm" pcmanfm
-bindsym $mod+d exec python3 ~/.i3/runorfocus.py "xterm" xterm
+bindsym $mod+d exec python3 ~/.i3/runorfocus.py "$default_terminal" $default_terminal
 bindsym $mod+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
 #bindsym $mod+ctrl+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
 bindsym $mod+z exec python3 ~/.i3/runorfocus.py "Zathura" zathura
@@ -90,17 +87,18 @@ bindsym Mod4+Return exec --no-startup-id i3-dmenu-desktop
 
 #bindsym $mod+ctrl+l exec --no-startup-id i3lock -d --color=102010 --no-unlock-indicator
 
-#bindsym $mod+Return exec xterm -fn 7x14
-#bindsym $mod+Return exec xterm -fn 6x10
-bindsym $mod+Return exec --no-startup-id xterm
+#bindsym $mod+Return exec $default_terminal -fn 7x14
+#bindsym $mod+Return exec $default_terminal -fn 6x10
+bindsym $mod+Return exec --no-startup-id $default_terminal
 #}}}
 # Programs to run at start {{{
 exec --no-startup-id xrdb -load ~/.Xresources
-exec --no-startup-id xterm
 exec --no-startup-id compton -b
-#exec --no-startup-id xterm -fn 7x14 -e ~/dotfiles/defaulttmuxsession.sh
-#exec --no-startup-id xterm -fn 6x10 -e ~/dotfiles/defaulttmuxsession.sh
-#exec --no-startup-id xterm -e ~/dotfiles/defaulttmuxsession.sh
+exec --no-startup-id $default_terminal
+exec --no-startup-id firefox
+#exec --no-startup-id $default_terminal -fn 7x14 -e ~/dotfiles/defaulttmuxsession.sh
+#exec --no-startup-id $default_terminal -fn 6x10 -e ~/dotfiles/defaulttmuxsession.sh
+#exec --no-startup-id $default_terminal -e ~/dotfiles/defaulttmuxsession.sh
 #exec . ~/.screenlayout/setupscreens.sh
 
 #wifi applet
@@ -114,10 +112,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
 #}}}
 #Workspace naming {{{
-#set $ws1 1: xTerm
+#set $ws1 1: $default_terminal
 #set $ws2 2: Firefox
 #set $ws3 3: Zathura
-#set $ws1 1 xTerm
+#set $ws1 1 $default_terminal
 #set $ws2 2 Firefox
 #set $ws3 3 Zathura
 set $ws1 1
