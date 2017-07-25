@@ -14,8 +14,7 @@
 *xterm*color4: #30309b
 *xterm*color5: #7e40a5
 *xterm*color6: #3579a8
-*xterm*color7: #9999aa
-*xterm*color8: #303030
+*xterm*color7: #9999aa *xterm*color8: #303030
 *xterm*color9: #ff0090
 *xterm*color10: #80ff00
 *xterm*color11: #ffba68
@@ -98,3 +97,5 @@ URxvt*perl-ext-common: ""
 URxvt*font: -*-fixed-medium-r-*-*-14-*-*-*-*-*-iso8859-*
 URxvt*allow_bold: false
 URxvt.geometry: 130x55
+! Needed for urxvt to not steal ctrl+shift
+URxvt*iso14755: False
