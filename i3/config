@@ -90,6 +90,22 @@ bindsym Mod4+Return exec --no-startup-id i3-dmenu-desktop
 #bindsym $mod+Return exec $default_terminal -fn 7x14
 #bindsym $mod+Return exec $default_terminal -fn 6x10
 bindsym $mod+Return exec --no-startup-id $default_terminal
+
+set $splitmode Make split of currently focused window with nearby window in direction [h] [j] [k] [l]
+bindsym $mod+m mode $splitmode
+
+mode "$splitmode" {
+    bindsym l split vertical; focus right; split vertical; focus left; move right; mode "default"
+    bindsym h split vertical; focus left; split vertical; focus right; move left; mode "default"
+    bindsym j split horizontal; focus down; split horizontal; focus up; move down; mode "default"
+    bindsym k split horizontal; focus up; split horizontal; focus down; move up; mode "default"
+    bindsym Esc mode "default"
+    bindsym Return mode "default"
+    bindsym ctrl+c mode "default"
+    bindsym ctrl+d mode "default"
+}
+
+
 #}}}
 # Programs to run at start {{{
 exec --no-startup-id xrdb -load ~/.Xresources
