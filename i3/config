@@ -99,6 +99,17 @@ mode "$splitmode" {
     bindsym h split vertical; focus left; split vertical; focus right; move left; mode "default"
     bindsym j split horizontal; focus down; split horizontal; focus up; move down; mode "default"
     bindsym k split horizontal; focus up; split horizontal; focus down; move up; mode "default"
+    
+    bindsym $mod+l split vertical; focus right; split vertical; focus left; move right; mode "default"
+    bindsym $mod+h split vertical; focus left; split vertical; focus right; move left; mode "default"
+    bindsym $mod+j split horizontal; focus down; split horizontal; focus up; move down; mode "default"
+    bindsym $mod+k split horizontal; focus up; split horizontal; focus down; move up; mode "default"
+    
+    bindsym $mod+shift+l split vertical; focus right; split vertical; focus left; move right; mode "default"
+    bindsym $mod+shift+h split vertical; focus left; split vertical; focus right; move left; mode "default"
+    bindsym $mod+shift+j split horizontal; focus down; split horizontal; focus up; move down; mode "default"
+    bindsym $mod+shift+k split horizontal; focus up; split horizontal; focus down; move up; mode "default"
+    
     bindsym Esc mode "default"
     bindsym Return mode "default"
     bindsym ctrl+c mode "default"
@@ -226,9 +237,10 @@ set $inactiveframecolor "#000000"
 
 # Outline colors
 for_window [class="^.*"] border pixel 3
+#for_window [class="Firefox"] border pixel 4
 #set $focusedframecolor "#7fff00" #green
 set $focusedframecolor "#ff7f00" #orange
-#set $focusedframecolor "#5bb2ff" #orange
+#set $focusedframecolor "#5bb2ff" #blue
 #set $focusedframecolor "#ffffff"
 client.focused          #000000 $focusedframecolor    $text
 client.unfocused        #000000 $inactiveframecolor  $text
@@ -236,7 +248,7 @@ client.focused_inactive #000000 "#b0b0b0"  "#030303"
 
 #hide_edge_borders horizontal
 #hide_edge_borders both
-hide_edge_borders smart
+# hide_edge_borders smart
 
 bar {
     #mode hide
@@ -290,6 +302,8 @@ for_window [class="Tk"] floating enable, border normal
 for_window [class="Arandr"] floating enable, border normal
 for_window [class="libreoffice"] floating enable, border normal
 for_window [class="libreoffice-calc"] floating enable, border normal
+
+assign [class="vlc"] 3
 
 #}}}
 #i3-gaps specific {{{
