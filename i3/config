@@ -38,8 +38,10 @@ bindsym $mod+q kill
 #bindsym $mod+Shift+w layout tabbed
 bindsym $mod+t layout tabbed
 bindsym $mod+shift+t layout default
-bindsym $mod+o focus parent
-bindsym $mod+i focus child
+bindsym $mod+o exec ~/.i3/goto_next_workspace.bash
+bindsym $mod+shift+o exec ~/.i3/move_to_new_workspace.bash
+
+
 bindsym $mod+space floating toggle
 bindsym $mod+Shift+s sticky toggle
 
