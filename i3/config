@@ -40,6 +40,7 @@ bindsym $mod+t layout tabbed
 bindsym $mod+shift+t layout default
 bindsym $mod+o exec ~/.i3/goto_next_workspace.bash
 bindsym $mod+shift+o exec ~/.i3/move_to_new_workspace.bash
+bindsym $mod+b bar mode toggle
 
 
 bindsym $mod+space floating toggle
@@ -80,7 +81,6 @@ bindsym $mod+d exec python3 ~/.i3/runorfocus.py "$default_terminal" $default_ter
 bindsym $mod+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
 #bindsym $mod+ctrl+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
 bindsym $mod+z exec python3 ~/.i3/runorfocus.py "Zathura" zathura
-bindsym $mod+b exec python3 ~/.i3/runorfocus.py "Virtualbox" virtualbox
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
 
@@ -253,7 +253,8 @@ client.focused_inactive #000000 "#b0b0b0"  "#030303"
 # hide_edge_borders smart
 
 bar {
-    #mode hide
+    # Toggle the bar with the $mod+b command, but start it off hidden
+    mode hide
     #modifier mod4
     #position top
     status_command i3status --config ~/.i3/i3status.conf
