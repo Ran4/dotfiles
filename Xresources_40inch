@@ -95,7 +95,7 @@ URxvt.scrollBar: false
 ! Disable perl extensions
 URxvt*perl-ext-common: ""
 URxvt*font: -*-fixed-medium-r-*-*-14-*-*-*-*-*-iso8859-*
-URxvt*allow_bold: false
+URxvt.boldFont:
 URxvt.geometry: 130x55
 ! Needed for urxvt to not steal ctrl+shift
 URxvt*iso14755: False
