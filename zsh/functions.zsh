@@ -130,7 +130,11 @@ avail() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         _DISK_PATH="/dev/disk1"
     else
-        _DISK_PATH="/dev/sda1"
+        if [ -f ~/.identifiers/ran-ub ]; then
+            _DISK_PATH="/dev/sda6"
+        else
+            _DISK_PATH="/dev/sda1"
+        fi
     fi 
     FILESYSTEM=$(df -h | grep "^$_DISK_PATH" | tr -s " " | cut -d" " -f 1)
     SIZE=$(df -h | grep "^$_DISK_PATH" | tr -s " " | cut -d" " -f 2)

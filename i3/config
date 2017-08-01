@@ -3,6 +3,10 @@
 #set $mod Mod1
 #set $mod Mod4
 set $mod Mod1+ctrl
+set $default_terminal urxvt
+
+# Pressing workspace key again toggles back to the previous workspace
+workspace_auto_back_and_forth yes
 
 # movement
 bindsym $mod+h focus left
@@ -34,14 +38,13 @@ bindsym $mod+q kill
 #bindsym $mod+Shift+w layout tabbed
 bindsym $mod+t layout tabbed
 bindsym $mod+shift+t layout default
-bindsym $mod+o focus parent
-bindsym $mod+i focus child
+bindsym $mod+o exec ~/.i3/goto_next_workspace.bash
+bindsym $mod+shift+o exec ~/.i3/move_to_new_workspace.bash
+bindsym $mod+b bar mode toggle
+
+
 bindsym $mod+space floating toggle
-bindsym Mod1+space floating toggle
 bindsym $mod+Shift+s sticky toggle
-# bindsym ctrl+space floating toggle
-bindsym $mod+m scratchpad show
-bindsym $mod+shift+m move scratchpad
 
 # change focus between tiling / floating windows
 bindsym $mod+Shift+space focus mode_toggle
@@ -74,29 +77,57 @@ bindsym $mod+Shift+Right resize grow width 2 px or 2 ppt
 # Program specific bindings {{{
 #bindsym $mod+d exec pcmanfm
 bindsym $mod+shift+d exec python3 ~/.i3/runorfocus.py "pcmanfm" pcmanfm
-bindsym $mod+d exec python3 ~/.i3/runorfocus.py "xterm" xterm
+bindsym $mod+d exec python3 ~/.i3/runorfocus.py "$default_terminal" $default_terminal
 bindsym $mod+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
 #bindsym $mod+ctrl+f exec python3 ~/.i3/runorfocus.py "Firefox" firefox
 bindsym $mod+z exec python3 ~/.i3/runorfocus.py "Zathura" zathura
-bindsym $mod+b exec python3 ~/.i3/runorfocus.py "Virtualbox" virtualbox
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
 
-bindsym $mod+Shift+x [class="(?i)xterm"] kill
 bindsym $mod+Shift+Return exec --no-startup-id i3-dmenu-desktop
+bindsym Mod4+Return exec --no-startup-id i3-dmenu-desktop
 
 #bindsym $mod+ctrl+l exec --no-startup-id i3lock -d --color=102010 --no-unlock-indicator
 
-#bindsym $mod+Return exec xterm -fn 7x14
-#bindsym $mod+Return exec xterm -fn 6x10
-bindsym $mod+Return exec --no-startup-id xterm
+#bindsym $mod+Return exec $default_terminal -fn 7x14
+#bindsym $mod+Return exec $default_terminal -fn 6x10
+bindsym $mod+Return exec --no-startup-id $default_terminal
+
+set $splitmode Make split of currently focused window with nearby window in direction [h] [j] [k] [l]
+bindsym $mod+m mode $splitmode
+
+mode "$splitmode" {
+    bindsym l split vertical; focus right; split vertical; focus left; move right; mode "default"
+    bindsym h split vertical; focus left; split vertical; focus right; move left; mode "default"
+    bindsym j split horizontal; focus down; split horizontal; focus up; move down; mode "default"
+    bindsym k split horizontal; focus up; split horizontal; focus down; move up; mode "default"
+    
+    bindsym $mod+l split vertical; focus right; split vertical; focus left; move right; mode "default"
+    bindsym $mod+h split vertical; focus left; split vertical; focus right; move left; mode "default"
+    bindsym $mod+j split horizontal; focus down; split horizontal; focus up; move down; mode "default"
+    bindsym $mod+k split horizontal; focus up; split horizontal; focus down; move up; mode "default"
+    
+    bindsym $mod+shift+l split vertical; focus right; split vertical; focus left; move right; mode "default"
+    bindsym $mod+shift+h split vertical; focus left; split vertical; focus right; move left; mode "default"
+    bindsym $mod+shift+j split horizontal; focus down; split horizontal; focus up; move down; mode "default"
+    bindsym $mod+shift+k split horizontal; focus up; split horizontal; focus down; move up; mode "default"
+    
+    bindsym Esc mode "default"
+    bindsym Return mode "default"
+    bindsym ctrl+c mode "default"
+    bindsym ctrl+d mode "default"
+}
+
+
 #}}}
 # Programs to run at start {{{
 exec --no-startup-id xrdb -load ~/.Xresources
-exec --no-startup-id xterm
-#exec --no-startup-id xterm -fn 7x14 -e ~/dotfiles/defaulttmuxsession.sh
-#exec --no-startup-id xterm -fn 6x10 -e ~/dotfiles/defaulttmuxsession.sh
-#exec --no-startup-id xterm -e ~/dotfiles/defaulttmuxsession.sh
+exec --no-startup-id compton -b
+exec --no-startup-id $default_terminal
+exec --no-startup-id firefox
+#exec --no-startup-id $default_terminal -fn 7x14 -e ~/dotfiles/defaulttmuxsession.sh
+#exec --no-startup-id $default_terminal -fn 6x10 -e ~/dotfiles/defaulttmuxsession.sh
+#exec --no-startup-id $default_terminal -e ~/dotfiles/defaulttmuxsession.sh
 #exec . ~/.screenlayout/setupscreens.sh
 
 #wifi applet
@@ -110,13 +141,12 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
 #}}}
 #Workspace naming {{{
-#set $ws1 1: xTerm
+#set $ws1 1: $default_terminal
 #set $ws2 2: Firefox
 #set $ws3 3: Zathura
-#set $ws1 1 xTerm
+#set $ws1 1 $default_terminal
 #set $ws2 2 Firefox
 #set $ws3 3 Zathura
-#set $ws4 4 Mendeley
 set $ws1 1
 set $ws2 2
 set $ws3 3
@@ -208,20 +238,23 @@ set $inactivetextcolor "#808080"
 set $inactiveframecolor "#000000"
 
 # Outline colors
-for_window [class="^.*"] border pixel 4
+for_window [class="^.*"] border pixel 3
+#for_window [class="Firefox"] border pixel 4
 #set $focusedframecolor "#7fff00" #green
-#set $focusedframecolor "#ff7f00" #orange
-set $focusedframecolor "#5bb2ff" #orange
+set $focusedframecolor "#ff7f00" #orange
+#set $focusedframecolor "#5bb2ff" #blue
 #set $focusedframecolor "#ffffff"
 client.focused          #000000 $focusedframecolor    $text
 client.unfocused        #000000 $inactiveframecolor  $text
 client.focused_inactive #000000 "#b0b0b0"  "#030303"
 
-hide_edge_borders horizontal
+#hide_edge_borders horizontal
 #hide_edge_borders both
+# hide_edge_borders smart
 
 bar {
-    #mode hide
+    # Toggle the bar with the $mod+b command, but start it off hidden
+    mode hide
     #modifier mod4
     #position top
     status_command i3status --config ~/.i3/i3status.conf
@@ -273,8 +306,10 @@ for_window [class="Arandr"] floating enable, border normal
 for_window [class="libreoffice"] floating enable, border normal
 for_window [class="libreoffice-calc"] floating enable, border normal
 
+assign [class="vlc"] 3
+
 #}}}
 #i3-gaps specific {{{
-gaps inner 10
-gaps outer -14 #higher than inner, so no gap when there's just a single window
+gaps inner 8
+gaps outer -9 #higher than inner, so no gap when there's just a single window
 #}}}

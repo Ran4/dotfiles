@@ -210,7 +210,13 @@ fi
 if [ -f ~/.identifiers/ran-ub ]; then
     if [ -n "$DISPLAY" ]; then
         #set background image:
-        feh --bg-scale ~/other/backgrounds/lake_and_ocean_bg.jpg
+        # feh --bg-scale ~/other/backgrounds/lake_and_ocean_bg.jpg
+        feh --bg-scale /home/ran/Downloads/wallpaper/alena-aenami-atlast2k2.jpg
+    fi
+    
+    if command_exists gsettings && [ ! -f /tmp/suspend_on_ac_is_disabled ]; then
+        touch /tmp/suspend_on_ac_is_disabled
+        gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
     fi
 fi
 
