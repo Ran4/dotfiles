@@ -310,6 +310,8 @@ assign [class="vlc"] 3
 
 #}}}
 #i3-gaps specific {{{
-gaps inner 8
-gaps outer -9 #higher than inner, so no gap when there's just a single window
+# gaps inner 8
+# gaps outer -9 #higher than inner, so no gap when there's just a single window
+gaps inner 10
+gaps outer -13 #higher than inner, so no gap when there's just a single window
 #}}}
