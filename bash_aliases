@@ -112,6 +112,8 @@ alias dus='du -sch * | sort -h' #-s no recursive show, -c show total, -h human r
 
 if command_exists apt-get ; then
     alias sagi='sudo apt-get install'
+    alias i='sudo apt-get install'
+    alias s='apt-cache search'
     alias acs='apt-cache search'
 fi
 

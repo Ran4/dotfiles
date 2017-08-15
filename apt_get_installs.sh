@@ -22,6 +22,7 @@ else
     sudo apt-get -y install xdotool #used with ~/.i3/runorfocus.py
 
     sudo apt-get -y install zathura #pdf viewer with vim keybindings
+    sudo apt-get -y install imwheel #used to e.g. speed up mouse scroll speed in zathura
     ZATHRCFILE=/etc/zathurarc
     [ ! -f $ZATHRCFILE ] \
         && echo "writing $ZATHRCFILE" && sudo echo "set scroll-step 100" > $ZATHRCFILE \
