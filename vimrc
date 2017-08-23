@@ -466,10 +466,9 @@ endfunction
 if exists('+colorcolumn')
     "Set a default colorcolumn
     set colorcolumn=110
-    " Colorcolumn color is very dark grey
-    highlight colorcolumn ctermbg=0 guibg=black
 
-    "au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+    " Show remaining text as red when over colorcolumn columns:
+    " au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
