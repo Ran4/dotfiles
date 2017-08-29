@@ -1,0 +1,17 @@
+session_name: Hermod
+windows:
+  - window_name: STAGING
+    focus: true
+    layout: main-vertical
+    shell_command_before:
+      - tmux select-pane -t:.1 -P 'bg=#00004a' && cd ~/orexplore/git/hermod/
+    panes:
+      - clear
+      - clear && docker-compose logs -f
+  - window_name: PRODUCTION
+    layout: main-vertical
+    shell_command_before: # runs before, in all panes
+      - ssh hermod@njord
+    panes:
+      - cd /home/hermod/git/hermod && clear
+      - cd /home/hermod/git/hermod && docker-compose logs -f
