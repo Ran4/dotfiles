@@ -66,5 +66,4 @@ fi
 
 if [ -f "$HOME/dotfiles/private/zsh/computer_specific_configs.zsh" ]; then
     source ~/dotfiles/private/zsh/computer_specific_configs.zsh
-else
 fi
