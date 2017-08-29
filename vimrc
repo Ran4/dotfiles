@@ -928,7 +928,9 @@ endif
 ""vim-printf configuration
 
 "notational-fzf-vim configuration
-let g:nv_directories = ['/Users/ran/orexplore/git/misc-hermod/notes', '/home/rasmus/orexplore/git/misc-hermod/']
+if !empty(glob("/home/rasmus/.identifiers/orexplore"))
+    let g:nv_directories = ['/Users/ran/orexplore/git/misc-hermod/notes', '/home/rasmus/orexplore/git/misc-hermod/']
+endif
 
 " hide banner
 "let g:netrw_banner = 0
