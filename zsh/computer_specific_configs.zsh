@@ -64,6 +64,7 @@ if [ -f "/etc/arch-release" ]; then
     source ~/dotfiles/arch/zshrc_arch.sh
 fi
 
-if [ -f "~/dotfiles/private/zsh/computer_specific_configs.zsh" ]; then
+if [ -f "$HOME/dotfiles/private/zsh/computer_specific_configs.zsh" ]; then
     source ~/dotfiles/private/zsh/computer_specific_configs.zsh
+else
 fi
