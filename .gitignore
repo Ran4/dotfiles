@@ -11,3 +11,5 @@ vim/bundle/jedi-vim/jedi_vim.pyc
 vim/init.vim
 vim/view/
 i3/logs
+
+private
