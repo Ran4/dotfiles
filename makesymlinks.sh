@@ -94,13 +94,13 @@ sudo ln -sf $dir/scripts/nowplaying.sh  /usr/bin/nowplaying
 echo "...done"
 
 echo -e "${LBLUE}Creating symlink to ~/.tmuxp${NC}"
-ln -sf $dir/tmuxp ~/.tmuxp
+ln -sfn $dir/tmuxp ~/.tmuxp
 echo "...done"
 
 if command_exists nvim ; then
     echo -e "${LBLUE}Symlinking vim folder and vimrc for nvim to use${NC}"
-    ln -s ~/dotfiles/vim ~/.config/nvim
-    ln -s ~/dotfiles/vimrc ~/.config/nvim/init.vim
+    ln -sfn ~/dotfiles/vim ~/.config/nvim
+    ln -sfn ~/dotfiles/vimrc ~/.config/nvim/init.vim
     echo "...done"
 fi
 
@@ -109,7 +109,5 @@ cp $dir/oh-my-zsh/themes/sunrise-modified-ran.zsh-theme ~/.oh-my-zsh/themes/
 
 if command_exists i3 ; then
     echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3/config ~/.i3/config)${NC}"
-    #ln -s $dir/i3/config ~/.i3/config
-    ln -sf $dir/i3 ~/.i3
-    #ln -s $dir/i3config ~/.config/i3/config #use this if using the XDG directory scheme
+    ln -sfn $dir/i3 ~/.i3
 fi
