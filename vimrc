@@ -930,6 +930,8 @@ endif
 "notational-fzf-vim configuration
 if !empty(glob("/home/rasmus/.identifiers/orexplore"))
     let g:nv_directories = ['/Users/ran/orexplore/git/misc-hermod/notes', '/home/rasmus/orexplore/git/misc-hermod/']
+else
+    let g:nv_directories = ['/home/rasmus/']
 endif
 
 " hide banner
