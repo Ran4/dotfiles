@@ -5,4 +5,4 @@ CURRENT_WORKSPACE_NAME=$(i3-msg -t get_workspaces | \
     cut -d"\"" -f2)
 NEW_WORKSPACE=$(python3 ~/.i3/get_new_workspace.py $CURRENT_WORKSPACE_NAME)
 echo $NEW_WORKSPACE > /tmp/lol.txt
-i3-msg -t command move container to workspace $NEW_WORKSPACE
+i3-msg -t command move container to workspace $NEW_WORKSPACE\; workspace $NEW_WORKSPACE
