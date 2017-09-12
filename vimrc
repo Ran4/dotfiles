@@ -626,6 +626,9 @@ endif
 """deoplete-rust
 "!git clone https://github.com/sebastianmarkow/deoplete-rust ~/.vim/bundle/deoplete-rust
 
+"""deoplete-ternjs
+"!git clone https://github.com/carlitux/deoplete-ternjs ~/.vim/bundle/deoplete-ternjs
+
 """dracula-theme, a colortheme
 "!git clone https://github.com/dracula/vim.git ~/.vim/bundle/dracula-theme
 
@@ -674,6 +677,9 @@ endif
 
 """vim-javascript, improved syntax highlighting and improved indentation
 "!git clone https://github.com/pangloss/vim-javascript.git ~/.vim/bundle/vim-javascript
+
+"""jspc - JavaScript Parameter Complete
+"!git clone https://github.com/othree/jspc.vim ~/.vim/bundle/jspc.vim
 
 """jedi-vim is a vim-binding to the autocompletion library Jedi
 "!git clone --recursive https://github.com/davidhalter/jedi-vim.git ~/.vim/bundle/jedi-vim
@@ -724,6 +730,9 @@ endif
 
 ""tbone allows tmux commands
 "!git clone git://github.com/tpope/vim-tbone.git
+
+""tern_for_vim
+"!git clone https://github.com/ternjs/tern_for_vim ~/.vim/bundle/tern_for_vim
 
 ""vim-toml, adds syntax support for TOML files
 "!git clone https://github.com/cespare/vim-toml ~/.vim/bundle/vim-toml
@@ -803,14 +812,14 @@ let g:ctrlp_prompt_mappings = {
 
 ""Deoplete configuration
 
-if has("macunix")
-    let g:deoplete#sources#rust#racer_binary='/Users/ran/.cargo/bin/racer'
-    let g:deoplete#sources#rust#rust_source_path='/Users/ran/rust/src/src'
-else
-    let g:deoplete#sources#rust#racer_binary='/home/ran/.cargo/bin/racer'
-    let g:deoplete#sources#rust#rust_source_path='/home/ran/rust/src/src'
-endif
-let g:deoplete#sources#rust#documentation_max_height=40
+" if has("macunix")
+"     let g:deoplete#sources#rust#racer_binary='/Users/ran/.cargo/bin/racer'
+"     let g:deoplete#sources#rust#rust_source_path='/Users/ran/rust/src/src'
+" else
+"     let g:deoplete#sources#rust#racer_binary='/home/ran/.cargo/bin/racer'
+"     let g:deoplete#sources#rust#rust_source_path='/home/ran/rust/src/src'
+" endif
+" let g:deoplete#sources#rust#documentation_max_height=40
 
 ""incsearch configuration
 "map /  <Plug>(incsearch-forward)
