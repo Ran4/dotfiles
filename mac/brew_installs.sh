@@ -28,7 +28,7 @@ brew install python
 brew install python3
 brew install vim --override-system-vi
 brew install macvim
-#brew install macvim --override-system-vim --custom-system-icons
+brew install macvim --override-system-vim --custom-system-icons
 brew install tmux
 brew install wget
 brew install htop
@@ -39,9 +39,10 @@ brew install weechat
 brew install elm
 brew install youtube-dl
 brew install pandoc
+brew install boost  # Needed for KarabinerElements
 
 brew install moc
-brew services start jack #moc only works when jack is running
+#brew services start jack #moc only works when jack is running
 #Run
 #jackd -d coreaudio &
 #to start jackd
@@ -79,7 +80,7 @@ brew install homebrew/python/numpy --with-openblas
 
 brew install wxpython
 brew link numpy
-brew install homebrew/python/matplotlib
+#brew install homebrew/python/matplotlib
 pip install pandas
 pip install pep8
 
@@ -88,18 +89,17 @@ pip install pep8
 ################################################################################
 brew cask install xquartz
 brew cask install caskroom/fonts/font-hack #font
-brew install Caskroom/cask/anki
 brew cask install flip4mac #Needed to play wmv files on OS X
 brew cask install silverlight
 brew cask install vlc
 brew cask install slack #The chat program
 brew cask install mendeley-desktop
-brew cask install transmission #The torrent client
-brew cask install macdown #open source Markdown editor http://macdown.uranusjr.com
+#brew cask install transmission #The torrent client
+#brew cask install macdown #open source Markdown editor http://macdown.uranusjr.com
 brew cask install flux
 brew cask install haroopad
 brew cask install hammerspoon
-brew cask install music-manager #google music manager
+#brew cask install music-manager #google music manager
 
 ################################################################################
 # Fixes
@@ -107,7 +107,7 @@ brew cask install music-manager #google music manager
 
 #Fixes problem with using the open command in tmux
 #(found at https://www.elmund.io/osx/2015/07/10/open-command-in-osx-tmux/)
-brew install reattach-to-user-namespace
+#brew install reattach-to-user-namespace
 #run this:
 # echo "set -g default-command \"reattach-to-user-namespace -l ${SHELL}\"" >> ~/.tmux.conf
 

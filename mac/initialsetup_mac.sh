@@ -59,7 +59,7 @@ if [[ "yes" == $(ask_yes_or_no 'Install applications via brew and macports?')  ]
 then
     echo "Installing...."
     ~/dotfiles/mac/brew_installs.sh
-    ~/dotfiles/mac/macport_installs.sh
+    #~/dotfiles/mac/macport_installs.sh
 else
     echo "Not doing brew and macports installs."
 fi

@@ -35,6 +35,13 @@
 			<key>Text</key>
 			<string>a</string>
 		</dict>
+		<key>0x64-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>11</integer>
+			<key>Text</key>
+			<string>v</string>
+		</dict>
 		<key>0x68-0x100000</key>
 		<dict>
 			<key>Action</key>
@@ -76,6 +83,13 @@
 			<integer>10</integer>
 			<key>Text</key>
 			<string>p</string>
+		</dict>
+		<key>0x73-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>10</integer>
+			<key>Text</key>
+			<string>s</string>
 		</dict>
 		<key>0x9-0x40000</key>
 		<dict>
@@ -162,9 +176,9 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>758 2125 958 451 -451 1200 2560 1440 </string>
+	<string>724 2047 796 473 -451 1200 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>-181 1349 1578 1200 -451 1200 2560 1417 </string>
+	<string>-159 1430 1102 1183 -451 1200 2560 1417 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -459,6 +473,13 @@
 					<integer>11</integer>
 					<key>Text</key>
 					<string>0x7f</string>
+				</dict>
+				<key>0x64-0x100000</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Text</key>
+					<string>v</string>
 				</dict>
 				<key>0xf700-0x220000</key>
 				<dict>
