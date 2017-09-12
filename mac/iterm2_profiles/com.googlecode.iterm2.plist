@@ -478,6 +478,8 @@
 			<string></string>
 		</dict>
 	</dict>
+	<key>HideScrollbar</key>
+	<true/>
 	<key>HideTab</key>
 	<true/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
@@ -522,9 +524,9 @@
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>51 1870 958 451 -266 1200 2560 1440 </string>
+	<string>-58 1686 918 452 -266 1200 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>481 2188 570 452 -266 1200 2560 1440 </string>
+	<string>1014 1205 1275 1435 -266 1200 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>77 1386 570 452 -266 1200 2560 1440 </string>
 	<key>New Bookmarks</key>
@@ -1102,6 +1104,8 @@
 			<string>M</string>
 			<key>Silence Bell</key>
 			<false/>
+			<key>Space</key>
+			<integer>0</integer>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
@@ -1125,7 +1129,7 @@
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>0</integer>
+			<integer>12</integer>
 			<key>Working Directory</key>
 			<string>/Users/rasmus.ansin</string>
 		</dict>
@@ -1193,6 +1197,8 @@
 	<integer>0</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
+	<key>UseBorder</key>
+	<false/>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
