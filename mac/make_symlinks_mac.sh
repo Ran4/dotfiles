@@ -20,10 +20,12 @@ for file in $files; do
   echo "Moving any existing dotfiles from ~ to $olddir"
   mv ~/.$file $olddir
   echo "Creating symlink to $file in home directory."
-  ln -s $dir/$file ~/.$file
+  ln -sfn $dir/$file ~/.$file
 done
 
-#ln -s /Users/ran/dotfiles/mac/slate /Users/ran/.slate
+echo "Creating symlink to karabiner"
+mkdir -p ~/.config/karabiner
+ln -sfn /Users/$USER/dotfiles/mac/karabiner.json /Users/$USER/.config/karabiner/karabiner.json
 
 #For some reasons, DefaultKeyBinding.dict can't be symlinked
 mkdir -p ~/Library/KeyBindings/
