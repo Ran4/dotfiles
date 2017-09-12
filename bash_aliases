@@ -187,8 +187,6 @@ alias bat='cat /sys/class/power_supply/BAT1/capacity'
 alias p3='python3'
 alias zath='zathura'
 
-alias open=o
-
 if command_exists tmux ; then
     alias reset='reset && tmux clear-history'
     alias clear='clear && tmux clear-history'
