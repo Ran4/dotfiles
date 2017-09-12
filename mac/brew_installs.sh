@@ -107,7 +107,7 @@ brew cask install hammerspoon
 
 #Fixes problem with using the open command in tmux
 #(found at https://www.elmund.io/osx/2015/07/10/open-command-in-osx-tmux/)
-#brew install reattach-to-user-namespace
+brew install reattach-to-user-namespace
 #run this:
 # echo "set -g default-command \"reattach-to-user-namespace -l ${SHELL}\"" >> ~/.tmux.conf
 
