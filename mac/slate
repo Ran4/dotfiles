@@ -65,7 +65,7 @@ bind t:${hyper}      focus 'Tomahawk'
 # bind a:${hyper}      focus 'Slack'
 bind s:${hyper}      focus 'Skype'
 bind d:${hyper}      focus 'iTerm2'
-bind f:${hyper}      focus 'Chrome'
+bind f:${hyper}      focus 'Google Chrome'
 
 bind x:${hyper}      focus 'Finder'
 bind p:${hyper}      focus 'Preview'
