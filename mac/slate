@@ -62,10 +62,13 @@ bind 5:${hyper}  move screenOriginX+screenSizeX/3;screenOriginY    2*screenSizeX
 bind space:${hyper}  focus 'iTerm2'
 bind t:${hyper}      focus 'Tomahawk'
 
-# bind a:${hyper}      focus 'Slack'
-bind s:${hyper}      focus 'Skype'
+bind s:${hyper}      focus 'Slack'
+bind s:ctrl;cmd      focus 'Slack'
+# bind s:${hyper}      focus 'Skype'
 bind d:${hyper}      focus 'iTerm2'
+bind d:ctrl;cmd      focus 'iTerm2'
 bind f:${hyper}      focus 'Google Chrome'
+bind f:ctrl;cmd      focus 'Google Chrome'
 
 bind x:${hyper}      focus 'Finder'
 bind p:${hyper}      focus 'Preview'
