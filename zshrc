@@ -1,4 +1,7 @@
 # TICK() { # Good for time testing
+#    if [[ "$OSTYPE" == "darwin"* ]]; then
+#        alias date=gdate
+#    fi
 #    echo A $@ $(date +%s.%N | tail -c +7)
 #}
 
@@ -163,3 +166,8 @@ export NVM_DIR="~/.nvm/"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export_rvn_path() {
+    export PATH="$PATH:$HOME/.rvm/bin"
+}
