@@ -41,6 +41,7 @@ brew install youtube-dl
 brew install pandoc
 brew install boost  # Needed for KarabinerElements
 brew install cloc
+brew install yarn
 
 brew install moc
 #brew services start jack #moc only works when jack is running
