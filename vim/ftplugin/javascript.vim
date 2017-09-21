@@ -1,6 +1,6 @@
 if has('nvim')
     "Use :term instead of :!, since that supports input()
-    nnoremap <leader>p <c-w><c-v>:term node %<cr>
+    nnoremap <leader>p <c-w><c-v>:term node %<cr>:q
     " nnoremap <leader>p :!node %<cr>
 else
     nnoremap <leader>p :!clear && node %<cr>
