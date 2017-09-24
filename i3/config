@@ -125,10 +125,13 @@ exec --no-startup-id xrdb -load ~/.Xresources
 exec --no-startup-id compton -b
 exec --no-startup-id $default_terminal
 exec --no-startup-id firefox
+exec --no-startup-id xset dpms 0 0 3400
+exec --no-startup-id imwheel
 #exec --no-startup-id $default_terminal -fn 7x14 -e ~/dotfiles/defaulttmuxsession.sh
 #exec --no-startup-id $default_terminal -fn 6x10 -e ~/dotfiles/defaulttmuxsession.sh
 #exec --no-startup-id $default_terminal -e ~/dotfiles/defaulttmuxsession.sh
 #exec . ~/.screenlayout/setupscreens.sh
+exec --no-startup-id . ~/.screenlayout/main.sh
 
 #wifi applet
 exec --no-startup-id nm-applet &> /dev/null &
