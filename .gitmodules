@@ -1,3 +1,6 @@
 [submodule "vim/bundle/colorschemes"]
 	path = vim/bundle/colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
+[submodule "vim/bundle/tpope-vim-abolish"]
+	path = vim/bundle/tpope-vim-abolish
+	url = git@github.com:Ran4/dotfiles.git

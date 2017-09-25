@@ -608,6 +608,9 @@ endif
 "{{{ PLUGINS
 "cd ~/.vim/bundle
 """{{{ abcdef
+"vim-abolish, a plugin that does many things
+"!git clone https://github.com/tpope/tpope-vim-abolish ~/.vim/bundle/tpope-vim-abolish
+
 "Ack plugin for vim, usagE: :Ack [options] {pattern} [{directories}]
 "!git clone https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
 
