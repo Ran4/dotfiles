@@ -379,6 +379,13 @@
 			<key>Text</key>
 			<string>aH</string>
 		</dict>
+		<key>0x50-0x120000</key>
+		<dict>
+			<key>Action</key>
+			<integer>10</integer>
+			<key>Text</key>
+			<string>aP</string>
+		</dict>
 		<key>0x61-0x100000</key>
 		<dict>
 			<key>Action</key>
@@ -442,6 +449,13 @@
 			<key>Text</key>
 			<string>s</string>
 		</dict>
+		<key>0x7a-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>10</integer>
+			<key>Text</key>
+			<string>az</string>
+		</dict>
 		<key>0x9-0x40000</key>
 		<dict>
 			<key>Action</key>
@@ -488,6 +502,8 @@
 	<integer>2</integer>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
+	<key>NSFontPanelAttributes</key>
+	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/dotfiles/mac/iterm2_profiles</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -523,12 +539,18 @@
 	</data>
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
+	<key>NSWindow Frame NSFontPanel</key>
+	<string>1409 1994 636 402 -266 1200 2560 1440 </string>
+	<key>NSWindow Frame SUStatusFrame</key>
+	<string>2997 1975 400 129 2106 586 1440 2560 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>516 1986 620 392 -454 1200 2560 1440 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>-58 1686 918 452 -266 1200 2560 1440 </string>
+	<string>189 1927 796 473 -454 1200 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1014 1205 1275 1435 -266 1200 2560 1440 </string>
+	<string>1014 1204 1277 1436 -266 1200 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>77 1386 570 452 -266 1200 2560 1440 </string>
+	<string>2106 2006 1440 1279 2106 725 1440 2560 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1138,6 +1160,8 @@
 	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>BBF58431-A23A-4D7C-A21B-77E0AD2347C3</string>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>526911483.73912799</real>
 	<key>PMPrintingExpandedStateForPrint2</key>
@@ -1188,7 +1212,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-09-12T12:18:04Z</date>
+	<date>2017-09-21T13:52:44Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>StretchTabsToFillBar</key>
