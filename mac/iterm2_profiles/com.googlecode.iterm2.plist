@@ -393,12 +393,26 @@
 			<key>Text</key>
 			<string>a</string>
 		</dict>
+		<key>0x62-0x80000</key>
+		<dict>
+			<key>Action</key>
+			<integer>10</integer>
+			<key>Text</key>
+			<string>b</string>
+		</dict>
 		<key>0x64-0x100000</key>
 		<dict>
 			<key>Action</key>
 			<integer>11</integer>
 			<key>Text</key>
 			<string>v</string>
+		</dict>
+		<key>0x66-0x80000</key>
+		<dict>
+			<key>Action</key>
+			<integer>10</integer>
+			<key>Text</key>
+			<string>f</string>
 		</dict>
 		<key>0x68-0x100000</key>
 		<dict>
@@ -523,7 +537,7 @@
 	gAKACoAN0xAJChEVGVdOUy5rZXlzoxITFIADgASABaMWFxiABoAHgAiACVpJZGVudGlm
 	aWVyVVdpZHRoVkhpZGRlblEwI0BowAAAAAAACNIhIiMkWiRjbGFzc25hbWVYJGNsYXNz
 	ZXNcTlNEaWN0aW9uYXJ5oiMlWE5TT2JqZWN00xAJCicrGaMSExSAA4AEgAWjLC0YgAuA
-	DIAIgAlRMSNAdKGdsi0OVtIhIjM0Xk5TTXV0YWJsZUFycmF5ozM1JVdOU0FycmF5XxAP
+	DIAIgAlRMSNAc7Gdsi0OVtIhIjM0Xk5TTXV0YWJsZUFycmF5ozM1JVdOU0FycmF5XxAP
 	TlNLZXllZEFyY2hpdmVy0Tg5VUFycmF5gAEACAARABoAIwAtADIANwBGAEwAUQBcAGMA
 	ZgBoAGoAbABzAHsAfwCBAIMAhQCJAIsAjQCPAJEAnACiAKkAqwC0ALUAugDFAM4A2wDe
 	AOcA7gDyAPQA9gD4APwA/gEAAQIBBAEGAQ8BFAEjAScBLwFBAUQBSgAAAAAAAAIBAAAA
@@ -546,11 +560,11 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>516 1986 620 392 -454 1200 2560 1440 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>189 1927 796 473 -454 1200 2560 1440 </string>
+	<string>219 2063 958 451 -454 1200 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1014 1204 1277 1436 -266 1200 2560 1440 </string>
+	<string>826 2211 570 429 -454 1200 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>2106 2006 1440 1279 2106 725 1440 2560 </string>
+	<string>-454 2211 570 429 -454 1200 2560 1440 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1212,7 +1226,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-09-21T13:52:44Z</date>
+	<date>2017-09-26T07:36:42Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>StretchTabsToFillBar</key>
