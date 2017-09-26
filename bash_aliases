@@ -91,7 +91,7 @@ alias agi='ag -i'
 alias matnod='matlab -nosplash -nodesktop' #Run CLI version of Matlab
 alias hask="stack --verbosity silent runghc"
 
-alias tree='tree --dirsfirst -I "*.pyc" --matchdirs -I "__pycache__"'
+alias tree='tree --dirsfirst -I "*.pyc" --matchdirs -I "__pycache__" -I node_modules'
 
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias tmux='tmux -2'
