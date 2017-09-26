@@ -289,10 +289,6 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-" Call C/C++, assuming that there is an outfile with the output name %:r.out
-nnoremap <f5> :!clear && make && echo "    //// Output ////" && ./%:r.out<cr>
-map <F8> :setlocal spell! spelllang=en_gb<CR>
-
 " Inverse of join (J)
 "function! BreakHere()
 "    s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
@@ -352,7 +348,8 @@ set autoread
 set exrc
 
 "Toggles paste mode
-set pastetoggle=<F2>
+" set pastetoggle=<F2>
+set pastetoggle=<leader>t
 
 "Fixes slow responsiveness when scrolling in terms like iTerm(?)
 "set lazyredraw
@@ -776,6 +773,13 @@ let g:ale_linters = {
 \}
 let g:ale_python_pylint_executable = 'pylint3'
 let g:ale_python_pylint_options="--rcfile=~/.pylintrc"
+
+let g:ale_fixers = {
+\   'javascript': [
+\       'remove_trailing_lines',
+\       'eslint',
+\   ],
+\ }
 
 "Neovim-specific:
 if has('nvim')

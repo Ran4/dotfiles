@@ -25,13 +25,16 @@ nnoremap <localleader>R :TernRename<cr>
 " colo iceberg
 
 if exists('+colorcolumn')
-    set colorcolumn=100
+    set colorcolumn=80
 endif
 
 "remaps å¨Å^ to []{} in various ways
 source ~/.vim/ftplugin/remap_to_brackets.vim
 
 iabbrev cll console.log
+
+"ALE configuration
+let g:ale_javascript_eslint_executable = './node_modules/.bin/eslint'
 
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
