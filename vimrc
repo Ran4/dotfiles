@@ -347,8 +347,10 @@ set autoread
 "Read local .vimrc files
 set exrc
 
+" Disable help with f1 (mac touchbars are no fun...)
+map <f1> <nop>
+
 "Toggles paste mode
-" set pastetoggle=<F2>
 set pastetoggle=<leader>t
 
 "Fixes slow responsiveness when scrolling in terms like iTerm(?)
