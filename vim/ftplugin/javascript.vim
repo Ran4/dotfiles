@@ -35,6 +35,8 @@ iabbrev cll console.log
 
 "ALE configuration
 let g:ale_javascript_eslint_executable = './node_modules/.bin/eslint'
+" Bind F8 to fixing problems with ALE
+map <F12> <Plug>(ale_fix)
 
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
