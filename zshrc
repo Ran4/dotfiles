@@ -1,9 +1,9 @@
 # TICK() { # Good for time testing
-#    if [[ "$OSTYPE" == "darwin"* ]]; then
-#        alias date=gdate
-#    fi
-#    echo A $@ $(date +%s.%N | tail -c +7)
-#}
+#     if [[ "$OSTYPE" == "darwin"* ]]; then
+#         alias date=gdate
+#     fi
+#     echo A $@ $(date +%s.%N | tail -c +7)
+# }
 
 #ZSH related configuration {{{
 export ZSH=~/.oh-my-zsh
@@ -31,6 +31,7 @@ plugins=(git vi-mode docker)
 
 source ~/.zsh/exports.zsh
 source ~/.zsh/functions.zsh
+source ~/.zsh/npm_completion.zsh
 
 #Don't autocomplete hosts. Inspiration: https://tlvince.com/fixing-slow-zsh-command-completion
 zstyle ':completion:*' hosts off
