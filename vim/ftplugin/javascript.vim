@@ -9,8 +9,8 @@ endif
 inoremap <localleader>l console.log();<left><left>
 
 "hello´d -> console.log("hello: " + hello);
-inoremap <localleader>d <esc>"qdiwaconsole.log("<c-r>q: ", <c-r>q);
-nnoremap <localleader>d "qdiwaconsole.log("<c-r>q: ", <c-r>q);<esc>
+inoremap <localleader>d <esc>"qdiwaconsole.log("<c-r>q:", <c-r>q);
+nnoremap <localleader>d "qdiwaconsole.log("<c-r>q:", <c-r>q);<esc>
 
 " fs´q -> var fs = require("fs");
 inoremap <localleader>q <esc>"qdiwavar <c-r>q = require("<c-r>q");
