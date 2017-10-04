@@ -4,3 +4,6 @@
 [submodule "vim/bundle/tpope-vim-abolish"]
 	path = vim/bundle/tpope-vim-abolish
 	url = git@github.com:Ran4/dotfiles.git
+[submodule "vim/bundle/vim-javascript"]
+	path = vim/bundle/vim-javascript
+	url = git@github.com:Ran4/dotfiles.git
