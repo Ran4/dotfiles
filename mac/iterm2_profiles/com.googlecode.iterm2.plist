@@ -8,6 +8,8 @@
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
 	<integer>1</integer>
+	<key>AppleWindowTabbingMode</key>
+	<string>manual</string>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>main_profile_colors</key>
@@ -477,6 +479,62 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
+		<key>0xf708-0x0</key>
+		<dict>
+			<key>Action</key>
+			<integer>13</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf709-0x0</key>
+		<dict>
+			<key>Action</key>
+			<integer>13</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf70a-0x0</key>
+		<dict>
+			<key>Action</key>
+			<integer>13</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf70b-0x0</key>
+		<dict>
+			<key>Action</key>
+			<integer>13</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf70c-0x0</key>
+		<dict>
+			<key>Action</key>
+			<integer>13</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf70d-0x0</key>
+		<dict>
+			<key>Action</key>
+			<integer>13</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf70e-0x0</key>
+		<dict>
+			<key>Action</key>
+			<integer>13</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf70f-0x0</key>
+		<dict>
+			<key>Action</key>
+			<integer>13</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
 		<key>0xf72c-0x100000</key>
 		<dict>
 			<key>Action</key>
@@ -560,9 +618,9 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>516 1986 620 392 -454 1200 2560 1440 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>219 2063 958 451 -454 1200 2560 1440 </string>
+	<string>-181 1541 796 473 -454 1200 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>826 2211 570 429 -454 1200 2560 1440 </string>
+	<string>-70 2066 570 429 -454 1200 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>-454 2211 570 429 -454 1200 2560 1440 </string>
 	<key>New Bookmarks</key>
@@ -1176,6 +1234,8 @@
 	<string>BBF58431-A23A-4D7C-A21B-77E0AD2347C3</string>
 	<key>NoSyncPermissionToShowTip</key>
 	<false/>
+	<key>NoSyncSilenceAnnoyingBellAutomatically</key>
+	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>526911483.73912799</real>
 	<key>PMPrintingExpandedStateForPrint2</key>
@@ -1186,11 +1246,6 @@
 		<dict>
 			<key>Action</key>
 			<string>kContextMenuPointerAction</string>
-		</dict>
-		<key>Button,2,1,,</key>
-		<dict>
-			<key>Action</key>
-			<string>kPasteFromClipboardPointerAction</string>
 		</dict>
 		<key>Gesture,ThreeFingerSwipeDown,,</key>
 		<dict>
@@ -1226,7 +1281,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-09-26T07:36:42Z</date>
+	<date>2017-09-29T13:18:13Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>StretchTabsToFillBar</key>
@@ -1239,7 +1294,9 @@
 	<false/>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.1.beta.9</string>
+	<string>3.1.2</string>
 </dict>
 </plist>
