@@ -78,6 +78,9 @@ nnoremap <leader>ei :vert split ~/.i3/config<CR>
 nnoremap <leader><leader>n :set number!<CR>
 nnoremap <leader><leader>p :set paste<cr>"+p:set nopaste<cr>
 
+inoremap <c-r>+ :set paste<cr>a<c-r>+:set nopaste<cr>a
+inoremap <c-r>* :set paste<cr>a<c-r>*:set nopaste<cr>a
+
 " Prepends # to line and goes down, Q removes then
 nnoremap <leader>q I#<esc>j
 nnoremap <leader>Q kx
@@ -633,6 +636,9 @@ endif
 
 """dracula-theme, a colortheme
 "!git clone https://github.com/dracula/vim.git ~/.vim/bundle/dracula-theme
+
+"""editorconfig-vim
+"!git clone https://github.com/editorconfig/editorconfig-vim ~/.vim/bundle/editorconfig-vim
 
 """elm-vim - Elm support for Vim
 "!git clone https://github.com/elmcast/elm-vim.git ~/.vim/bundle/elm-vim
