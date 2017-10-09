@@ -1,3 +1,6 @@
+"set shiftwidth=2
+"set softtabstop=2 "Number of spaces in tab when editing
+
 if has('nvim')
     "Use :term instead of :!, since that supports input()
     nnoremap <leader>p <c-w><c-v>:term node %<cr>:q
@@ -33,7 +36,10 @@ source ~/.vim/ftplugin/remap_to_brackets.vim
 
 iabbrev cll console.log
 
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+" Enable syntax highlighting for Flow (the Facebook typechecker)
+let g:javascript_plugin_flow = 1
+
+"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 let g:deoplete#enable_at_startup = 1
 
