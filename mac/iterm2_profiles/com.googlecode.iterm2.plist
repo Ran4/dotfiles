@@ -381,6 +381,13 @@
 			<key>Text</key>
 			<string>aH</string>
 		</dict>
+		<key>0x4e-0x120000</key>
+		<dict>
+			<key>Action</key>
+			<integer>26</integer>
+			<key>Text</key>
+			<string>E8C1F24E-948B-47DC-8157-111C7FCFCFD5</string>
+		</dict>
 		<key>0x50-0x120000</key>
 		<dict>
 			<key>Action</key>
@@ -618,11 +625,15 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>516 1986 620 392 -454 1200 2560 1440 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>-181 1541 796 473 -454 1200 2560 1440 </string>
+	<string>-181 1563 796 473 -454 1200 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>-70 2066 570 429 -454 1200 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>-454 2211 570 429 -454 1200 2560 1440 </string>
+	<string>826 1200 1277 1440 -454 1200 2560 1440 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>-454 1200 1279 1440 -454 1200 2560 1440 </string>
+	<key>NSWindow Frame iTerm Window 3</key>
+	<string>-454 1202 1270 718 -454 1200 2560 1440 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1281,7 +1292,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-09-29T13:18:13Z</date>
+	<date>2017-10-05T09:49:23Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>StretchTabsToFillBar</key>
