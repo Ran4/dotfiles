@@ -147,3 +147,12 @@ avail() {
 app() {
     nohup google-chrome --app=$1 & > /dev/null 2>&1
 }
+
+# Prettyjson. Usage: `cat someFile.json | pj [indent=2]`
+pj() {
+    local DEFAULT_INDENT=2
+    local INDENT=${1:-$DEFAULT_INDENT}
+    python2 -c "import sys, json;\
+    print json.dumps(json.load(sys.stdin),\
+                     indent=$INDENT)" 
+}
