@@ -1,5 +1,5 @@
-"set shiftwidth=2
-"set softtabstop=2 "Number of spaces in tab when editing
+set shiftwidth=2
+set softtabstop=2 "Number of spaces in tab when editing
 
 if has('nvim')
     "Use :term instead of :!, since that supports input()
