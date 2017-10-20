@@ -875,7 +875,7 @@ let g:EasyMotion_enter_jump_first = 1
 
 " fzf.vim configuration
 set rtp+=/usr/local/opt/fzf
-set rtp+=/home/rasmus/.fzf
+set rtp+=~/.fzf
 
 nnoremap <leader>a :Ag<cr>
 
