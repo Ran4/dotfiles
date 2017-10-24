@@ -10,3 +10,6 @@
 [submodule "vim/bundle/editorconfig-vim"]
 	path = vim/bundle/editorconfig-vim
 	url = git@github.com:Ran4/dotfiles.git
+[submodule "vim/bundle/fzf.vim"]
+	path = vim/bundle/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
