@@ -350,8 +350,14 @@ set autoread
 "Read local .vimrc files
 set exrc
 
+" F bindings
 " Disable help with f1 (mac touchbars are no fun...)
 map <f1> <nop>
+" <F10> identifies the syntax highlighting group used at the cursor
+" See http://vim.wikia.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 "Toggles paste mode
 set pastetoggle=<leader>t
