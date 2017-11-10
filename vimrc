@@ -113,8 +113,16 @@ nnoremap <bs> <C-^>
 "" nnoremap <silent> <expr> <CR> empty(&buftype) \|\| &bt ==# 'help' \|\| &ft ==# 'man' ?
 ""                               \ 'za' : '<CR>'
 
+"nnoremap <silent> <expr> <CR> empty(&buftype) \|\| &bt ==# 'help' \|\| &ft ==# 'man' ?
+"                              \ '<Plug>(easymotion-s)' : '<CR>'
+
+
 nnoremap <silent> <expr> <CR> empty(&buftype) \|\| &bt ==# 'help' \|\| &ft ==# 'man' ?
-                              \ '<Plug>(easymotion-s)' : '<CR>'
+                              \ (&ft ==# 'fsharp' ? ':<C-u>call fsharpbinding#python#FsiSendLine()<CR>' : '<Plug>(easymotion-s)') : '<CR>'
+
+" nnoremap <buffer> <CR> :<C-u>call fsharpbinding#python#FsiSendLine()<CR>
+
+
 
 nnoremap + <c-a>
 nnoremap - <c-x>
