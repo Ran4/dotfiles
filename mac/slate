@@ -69,10 +69,11 @@ bind d:${hyper}      focus 'iTerm2'
 bind d:ctrl;cmd      focus 'iTerm2'
 bind f:${hyper}      focus 'Google Chrome'
 bind f:ctrl;cmd      focus 'Google Chrome'
+bind c:ctrl;cmd      focus 'Code'
 
 bind x:${hyper}      focus 'Finder'
 bind p:${hyper}      focus 'Preview'
-bind c:${hyper}      focus 'Google Chrome'
 bind v:${hyper}      focus 'VLC'
 
+bind r:ctrl;cmd      focus 'Rider'
 bind r:${hyper}      relaunch
