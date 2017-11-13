@@ -675,6 +675,9 @@ endif
 ""fzf.vim enables some fzf commands such as :Ag or :Files
 "!git clone https://github.com/junegunn/fzf.vim ~/.vim/bundle/fzf.vim
 
+""vim-fsharp includes syntax + indent + pathogen/synastic autocompletion for F#
+"!git clone https://github.com/fsharp/vim-fsharp ~/.vim/bundle/vim-fsharp
+
 """}}}
 """{{{ ghijk
 """gitgutter shows a git diff in the 'gutter' (sign column)
