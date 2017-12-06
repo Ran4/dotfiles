@@ -1,0 +1,56 @@
+{
+    "vim.insertModeKeyBindings": [
+        { "before": ["j","k"], "after": ["<Esc>"] },
+        { "before": ["z", "["], "after": ["å"] },
+        { "before": ["z", "Å"], "after": ["Å"] },
+        { "before": ["zÅ"], "after": ["Å"] },
+        { "before": ["å"], "after": ["["] },
+        { "before": ["¨"], "after": ["]"] },
+        { "before": ["Å"], "after": ["{"] },
+        { "before": ["^"], "after": ["}"] }
+    ],
+    "vim.otherModesKeyBindingsNonRecursive": [
+        { "before": ["o"], "after": ["o", "<Esc>"] },
+        { "before": ["O"], "after": ["O", "<Esc>"] },
+        { "before": ["0"], "after": ["^"] },
+
+        { "before": ["f", "å"], "after": ["f", "["] },
+        { "before": ["f", "¨"], "after": ["f", "]"] },
+        { "before": ["f", "Å"], "after": ["f", "{"] },
+        { "before": ["f", "^"], "after": ["f", "}"] },
+        { "before": ["F", "å"], "after": ["F", "["] },
+        { "before": ["F", "¨"], "after": ["F", "]"] },
+        { "before": ["F", "Å"], "after": ["F", "{"] },
+        { "before": ["F", "^"], "after": ["F", "}"] },
+
+        { "before": ["t", "å"], "after": ["t", "["] },
+        { "before": ["t", "¨"], "after": ["t", "]"] },
+        { "before": ["t", "Å"], "after": ["t", "{"] },
+        { "before": ["t", "^"], "after": ["t", "}"] },
+        { "before": ["T", "å"], "after": ["T", "["] },
+        { "before": ["T", "¨"], "after": ["T", "]"] },
+        { "before": ["T", "Å"], "after": ["T", "{"] },
+        { "before": ["T", "^"], "after": ["T", "}"] }
+    ],
+    "vim.disableAnnoyingNeovimMessage": true,
+    "vim.enableNeovim": true,
+    "vim.leader": "ä",
+    "vim.hlsearch": true,
+    "vim.visualstar": true,
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors": {
+        "normal": "#307f4f",
+        "insert": "#405f9f",
+        "visual": "#5f00af",
+        "visualline": "#5f00af",
+        "visualblock": "#86592d",
+        "replace": "#000000"
+    },
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#307f4f",
+        "statusBar.noFolderBackground": "#307f4f",
+        "statusBar.debuggingBackground": "#307f4f"
+    },
+    "vim.cmdLineInitialColon": true,
+    "window.zoomLevel": 0
+}
