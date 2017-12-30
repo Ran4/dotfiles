@@ -94,6 +94,7 @@ alias hask="stack --verbosity silent runghc"
 alias tree='tree --dirsfirst -I "*.pyc" --matchdirs -I "__pycache__" -I node_modules'
 
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias ccat='pygmentize -O bg=dark'
 alias tmux='tmux -2'
 alias tmuxs='~/dotfiles/defaulttmuxsession.sh'
 alias ts='~/dotfiles/defaulttmuxsession.sh'
