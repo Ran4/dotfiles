@@ -461,13 +461,14 @@ syntax enable
 " highlight trailing spaces. <leader>h to start highlight, <leader>H to stop.
 nmap <leader>h :highlight ExtraWhitespace ctermbg=red<CR>:match ExtraWhiteSpace /\S\(\s\+\)$/<CR>
 nmap <leader>H :highlight clear ExtraWhitespace<cr>
-"highlight current line in insert mode, also don't match extrawhitespace until
-"after leaving insertmode
+"highlight current line in insert mode
 if has("autocmd")
     augroup whitespace
         autocmd!
         "autocmd InsertEnter * set cursorline! | match ExtraWhitespace //
         "autocmd InsertLeave * set cursorline! | call HighlightExtraWhitespace()
+        autocmd InsertEnter * set cursorline
+        autocmd InsertLeave * set nocursorline
     augroup END
 endif
 
