@@ -951,8 +951,10 @@ let g:jedi#show_call_signatures_delay = 0
 "      "\ 'subseparator': { 'left': '|', 'right': '|' }
 
 "vim-mark configuration
-highlight MarkWord1 ctermbg=NONE ctermfg=Yellow guibg=#8CCBEA guifg=Black
-highlight MarkWord2 ctermbg=NONE cterm=underline ctermfg=Green guibg=#8CCBEA guifg=Black
+highlight MarkWord1 cterm=NONE ctermbg=NONE ctermfg=Yellow guibg=#8CCBEA guifg=Black
+highlight MarkWord2 cterm=NONE ctermbg=NONE ctermfg=Green  guibg=#3CCBEA guifg=Black
+highlight MarkWord3 cterm=NONE ctermbg=NONE ctermfg=Blue  guibg=#3CCBEA guifg=Black
+highlight MarkWord4 cterm=NONE ctermbg=NONE ctermfg=Red  guibg=#3CCBEA guifg=Black
 
 "vim-markdown configuration
 let g:markdown_fenced_languages = ['html', 'python', 'haskell', 'javascript', 'bash=sh']
