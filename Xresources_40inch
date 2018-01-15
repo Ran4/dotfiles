@@ -94,8 +94,18 @@ URxvt.scrollBar: false
 
 ! Disable perl extensions
 URxvt*perl-ext-common: ""
-URxvt*font: -*-fixed-medium-r-*-*-14-*-*-*-*-*-iso8859-*
 URxvt.boldFont:
 URxvt.geometry: 130x55
 ! Needed for urxvt to not steal ctrl+shift
 URxvt*iso14755: False
+
+
+! DPI Font name
+! 151 URxvt*font: -*-fixed-medium-r-*-*-14-*-*-*-*-*-iso8859-*
+! 140 xft:Ubuntu Mono:pixelsize=15
+! 131 xft:Ubuntu Mono                (equiv. pixelsize 16)
+! 116 xft:Ubuntu Mono:pixelsize=18
+! 95  xft:Ubuntu Mono:pixelsize=22
+
+!URxvt*font: -*-fixed-medium-r-*-*-14-*-*-*-*-*-iso8859-*
+URxvt*font: xft:Ubuntu Mono:pixelsize=16
