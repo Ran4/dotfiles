@@ -128,7 +128,7 @@ exec --no-startup-id firefox
 exec --no-startup-id xset dpms 0 0 3400
 exec --no-startup-id imwheel
 exec --no-startup-id xclock \
-    -digital -padding 2 -update 10 \
+    -digital -padding 3 -update 10 \
     -bg black -fg \#c0c0c0 -strftime "%a %Y-%m-%d  %H:%M  "
 #exec --no-startup-id $default_terminal -fn 7x14 -e ~/dotfiles/defaulttmuxsession.sh
 #exec --no-startup-id $default_terminal -fn 6x10 -e ~/dotfiles/defaulttmuxsession.sh
@@ -312,7 +312,7 @@ for_window [class="Arandr"] floating enable, border normal
 for_window [class="libreoffice"] floating enable, border normal
 for_window [class="libreoffice-calc"] floating enable, border normal
 for_window [class="spacefm"] floating enable, border normal
-for_window [instance="xclock"] floating enable, border none, move position 3655px 2137px, sticky enable
+for_window [instance="xclock"] floating enable, border none, move position 3641px 2137px, sticky enable
 
 #}}}
 #i3-gaps specific {{{
