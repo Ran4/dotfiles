@@ -14,6 +14,8 @@ export PAGER='less'
 # export $(dbus-launch)
 
 export PYLINTRC="~/.pylintrc"
+export GOPATH="$HOME/.go"
+export PATH="$GOPATH/bin:$PATH"
 #Node version manager:
 export NVM_DIR="~/.nvm/"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
