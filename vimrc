@@ -847,14 +847,14 @@ let g:ctrlp_prompt_mappings = {
 
 ""Deoplete configuration
 
-" if has("macunix")
-"     let g:deoplete#sources#rust#racer_binary='/Users/ran/.cargo/bin/racer'
-"     let g:deoplete#sources#rust#rust_source_path='/Users/ran/rust/src/src'
-" else
-"     let g:deoplete#sources#rust#racer_binary='/home/ran/.cargo/bin/racer'
-"     let g:deoplete#sources#rust#rust_source_path='/home/ran/rust/src/src'
-" endif
-" let g:deoplete#sources#rust#documentation_max_height=40
+if has("macunix")
+    let g:deoplete#sources#rust#racer_binary='/Users/ran/.cargo/bin/racer'
+    let g:deoplete#sources#rust#rust_source_path='/Users/ran/rust/src/src'
+else
+    let g:deoplete#sources#rust#racer_binary='/home/ran/.cargo/bin/racer'
+    let g:deoplete#sources#rust#rust_source_path='/home/ran/src/rust/src/src'
+endif
+let g:deoplete#sources#rust#documentation_max_height=40
 
 ""incsearch configuration
 "map /  <Plug>(incsearch-forward)
