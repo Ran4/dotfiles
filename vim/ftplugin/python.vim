@@ -21,8 +21,8 @@ if has('nvim')
     "Use :term instead of :!, since that supports input()
     "nnoremap <leader>P :term python %<cr>
     "nnoremap <leader>p :term python3 %<cr>
-    nnoremap <leader>P <c-w><c-v>:term python2 %<cr>
-    nnoremap <leader>p <c-w><c-v>:term python3 %<cr>
+    nnoremap <leader>P <c-w><c-v>:term python2 %<cr>i
+    nnoremap <leader>p <c-w><c-v>:term python3 %<cr>i
     
     nnoremap <leader>I <c-w><c-v>:term python -i %<cr>
     nnoremap <leader>i <c-w><c-v>:term python3 -i %<cr>

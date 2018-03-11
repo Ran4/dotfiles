@@ -3,10 +3,10 @@ source ~/.vim/ftplugin/remap_to_brackets.vim
 
 if has('nvim')
     "nnoremap <leader>p <c-w><c-v>:term rustc % && ./%:r<cr>
-    nnoremap <leader>p <c-w><c-v>:term cargo run<cr>
-    nnoremap <leader>P <c-w><c-s>:term cargo run<cr>
+    nnoremap <leader>p <c-w><c-v>:term cargo run -q<cr>i
+    nnoremap <leader>P <c-w><c-s>:term cargo run -q<cr>i
 else
-    nnoremap <leader>p :!rustc % && ./%:r<cr>
+    nnoremap <leader>p :!cargo run -q<cr>
 endif
 
 set rtp+=~/.vim/bundle/deoplete.nvim
