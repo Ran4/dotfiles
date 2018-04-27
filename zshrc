@@ -40,8 +40,6 @@ source ~/.zsh/setopt.zsh
 #Keyboard related {{{
 source $ZSH/oh-my-zsh.sh
 bindkey '^r' history-incremental-search-backward
-# bindkey '^p' history-search-backward
-# bindkey '^n' history-search-forward
 
 #^p/^n or up/down will search previous line based on what's written,
 #e.g. 'vim^p' -> 'vim file.py'
@@ -81,9 +79,6 @@ if command_exists xset ; then
     xset r rate 200 70 &> /dev/null ;
 fi
 
-#Prevent <c-s> from stopping the terminal
-#stty -ixon
-
 if [ ! -f /tmp/xkbmap_is_checked ]; then
     touch /tmp/xkbmap_is_checked
     if command_exists setxkbmap ; then
@@ -98,21 +93,7 @@ if [ ! -f /tmp/xkbmap_is_checked ]; then
     fi
 fi
 
-# xcape/xmodmap can be used instead of alexandre/caps2esc
-#if command_exists xcape ; then
-#    . ~/.xcape_config
-#    #echo "Not running xcape config!"
-#else
-#    if command_exists xmodmap ; then
-#        if [ ! -f "/etc/arch-release" ]; then
-#            xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-#            #echo "Not running xmodmap!"
-#        fi
-#    fi
-#fi
-
 # nohup sudo ./caps2esc &
-
 
 #}}}
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -125,10 +106,9 @@ fi
 [ -f ~/.hhighlighter.sh ] && source ~/.hhighlighter.sh && alias h='h -n'
 # [ -f ~/.mpdasrc ] && mpdas -c ~/.mpdasrc -d
 
-#open pdf by simply typing it's name.
+#open pdf by simply typing it's name. -s is explained here: http://zshwiki.org/home/examples/aliassuffix
 alias -s pdf=open
 
-#alias ls='ls --group-directories-first -hF' #human readable, append indicator (one of */=>@|)
 # Colors {{{
 if [ -x /usr/bin/dircolors ]; then
     #if we can read the file ~/.dircolors, then eval list of colors given by $(dircolors -b ~/.dircolors)
@@ -141,23 +121,16 @@ fi
 
 # Color for less {{{
 # See http://misc.flogisoft.com/bash/tip_colors_and_formatting for colors
-#export LESS_TERMCAP_mb=$'\E[01;31m'      # begin blinking
 #01 bold, 35 magenta
 export LESS_TERMCAP_md=$'\E[01;35m'      # begin bold: color for NAME, SYNOPSIS, DESCRIPTION...
 export LESS_TERMCAP_me=$'\E[0m'          # end mode
 #04 underline, 92 light green
-#export LESS_TERMCAP_so=$'\E[04;92m'   # begin standout-mode - Search highlighting
-#export LESS_TERMCAP_se=$'\E[0m'          # end standout-mode
 #45 bg=magenta
 export LESS_TERMCAP_so=$'\E[04;45m'   # begin standout-mode - Search highlighting
 export LESS_TERMCAP_se=$'\E[0m'          # end standout-mode
-#export LESS_TERMCAP_us=$'\E[01;45m'      # begin underline: color for commands etc.
-#export LESS_TERMCAP_ue=$'\E[0m'      # begin underline: color for commands etc.
 
 #}}}}}}
 source ~/.zsh/computer_specific_configs.zsh
-#e.g. "~/Applications $ " where the pwd is green, $ is yellow
-# PROMPT="%{$fg_no_bold[green]%}%2~%{$reset_color%}%{$fg_no_bold[yellow]%}$%{$reset_color%} "
 
 # See http://situmam.blogspot.se/2012/05/emacs-keybidings-in-ubuntu-1204-precise.html
 #gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"

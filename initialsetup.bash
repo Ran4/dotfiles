@@ -21,6 +21,8 @@ command_exists () {
   type "$1" >/dev/null 2>/dev/null
 }
 
+mkdir -p ~/.config
+
 if command_exists apt-get ; then
     if [[ "yes" == $(ask_yes_or_no 'Install applications via apt-get?')  ]]
     then

@@ -461,13 +461,14 @@ syntax enable
 " highlight trailing spaces. <leader>h to start highlight, <leader>H to stop.
 nmap <leader>h :highlight ExtraWhitespace ctermbg=red<CR>:match ExtraWhiteSpace /\S\(\s\+\)$/<CR>
 nmap <leader>H :highlight clear ExtraWhitespace<cr>
-"highlight current line in insert mode, also don't match extrawhitespace until
-"after leaving insertmode
+"highlight current line in insert mode
 if has("autocmd")
     augroup whitespace
         autocmd!
         "autocmd InsertEnter * set cursorline! | match ExtraWhitespace //
         "autocmd InsertLeave * set cursorline! | call HighlightExtraWhitespace()
+        autocmd InsertEnter * set cursorline
+        autocmd InsertLeave * set nocursorline
     augroup END
 endif
 
@@ -846,14 +847,14 @@ let g:ctrlp_prompt_mappings = {
 
 ""Deoplete configuration
 
-" if has("macunix")
-"     let g:deoplete#sources#rust#racer_binary='/Users/ran/.cargo/bin/racer'
-"     let g:deoplete#sources#rust#rust_source_path='/Users/ran/rust/src/src'
-" else
-"     let g:deoplete#sources#rust#racer_binary='/home/ran/.cargo/bin/racer'
-"     let g:deoplete#sources#rust#rust_source_path='/home/ran/rust/src/src'
-" endif
-" let g:deoplete#sources#rust#documentation_max_height=40
+if has("macunix")
+    let g:deoplete#sources#rust#racer_binary='/Users/ran/.cargo/bin/racer'
+    let g:deoplete#sources#rust#rust_source_path='/Users/ran/rust/src/src'
+else
+    let g:deoplete#sources#rust#racer_binary='/home/ran/.cargo/bin/racer'
+    let g:deoplete#sources#rust#rust_source_path='/home/ran/src/rust/src/src'
+endif
+let g:deoplete#sources#rust#documentation_max_height=40
 
 ""incsearch configuration
 "map /  <Plug>(incsearch-forward)
@@ -950,8 +951,10 @@ let g:jedi#show_call_signatures_delay = 0
 "      "\ 'subseparator': { 'left': '|', 'right': '|' }
 
 "vim-mark configuration
-highlight MarkWord1 ctermbg=NONE ctermfg=Yellow guibg=#8CCBEA guifg=Black
-highlight MarkWord2 ctermbg=NONE cterm=underline ctermfg=Green guibg=#8CCBEA guifg=Black
+highlight MarkWord1 cterm=NONE ctermbg=NONE ctermfg=Yellow guibg=#8CCBEA guifg=Black
+highlight MarkWord2 cterm=NONE ctermbg=NONE ctermfg=Green  guibg=#3CCBEA guifg=Black
+highlight MarkWord3 cterm=NONE ctermbg=NONE ctermfg=Blue  guibg=#3CCBEA guifg=Black
+highlight MarkWord4 cterm=NONE ctermbg=NONE ctermfg=Red  guibg=#3CCBEA guifg=Black
 
 "vim-markdown configuration
 let g:markdown_fenced_languages = ['html', 'python', 'haskell', 'javascript', 'bash=sh']

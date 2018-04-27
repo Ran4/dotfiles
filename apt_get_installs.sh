@@ -11,6 +11,7 @@ sudo apt-get -y install pandoc
 sudo apt-get -y install pandoc-citeproc
 sudo apt-get -y install httpie
 sudo apt-get -y install tree
+sudo apt-get -y install ncdu
 if [ -f ~/.identifiers/without_x ] ; then
     echo 'Ignoring X programs, please run:'
     echo '#sudo rm -rf $(which xset)'

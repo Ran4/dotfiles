@@ -1,19 +1,18 @@
+# vim: colorcolumn=80
 #Help function to see if a command exists
 command_exists () {
   type "$1" >/dev/null 2>/dev/null
 }
 
-#msDelay (higher=longer), rate (quicker=faster)
+#Keyrate delay: msDelay (higher=longer delay), rate (quicker=faster)
 set r rate 230 70
 xset r rate 230 70 &> /dev/null ;
 
+# Increase touchpad scroll speed on devices with the Synaptics input driver
 if command_exists synclient ; then
     #default value is 111, at least on the HP Mini 110
     synclient VertScrollDelta=200 &> /dev/null ;
 fi
-
-#Prevent <c-s> from stopping the terminal
-#stty -ixon
 
 #Set vim mode for bash
 set editing-mode vi
@@ -30,22 +29,16 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
-# append to the history file, don't overwrite it
-shopt -s histappend
+shopt -s histappend # append to the history file, don't overwrite it
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=4000000
 HISTFILESIZE=8000000
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+shopt -s checkwinsize # check the window size after each command and, if
+                      # necessary, update the values of LINES and COLUMNS.
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
-
-# make less more friendly for non-text input files, see lesspipe(1)
+# Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
@@ -58,19 +51,14 @@ case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
 
@@ -95,30 +83,13 @@ alias ls='ls -hF' #human readable, append indicator (one of */=>@|)
 if [ -x /usr/bin/dircolors ]; then
     #if we can read the file ~/.dircolors, then eval list of colors given by $(dircolors -b ~/.dircolors)
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    #alias ls='ls --color=auto'
-    #alias ls='ls --color=auto -h'
     alias ls='ls --color=auto -hF' #color, human readable, append indicator (one of */=>@|)
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    #alias grep='grep --color=auto'
+    alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-
-if [ -f ~/gitclones/z/z.sh ]; then
-    . ~/gitclones/z/z.sh
-fi
-
-if [ -f ~/.bash_setprompt ]; then
-    . ~/.bash_setprompt
-fi
-
+[ -f ~/.bash_setprompt ] && . ~/.bash_setprompt
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -168,19 +139,10 @@ if [ -f ~/.identifiers/ranlubuntu ]; then
     alias m='/etc/init.d/ran_mount_vb.sh'
 fi
 
-if [ -f ~/.identifiers/ranvb ]; then
-    . ~/.custom/ranvb_bash_setprompt
-fi
-
-if [ -f ~/.identifiers/ranmini ]; then
-    . ~/.custom/ranmini_bash_setprompt
-fi
+[ -f ~/.identifiers/ranvb ] && . ~/.custom/ranvb_bash_setprompt
+[ -f ~/.identifiers/ranmini ] && . ~/.custom/ranmini_bash_setprompt
 
 if [ -f ~/.identifiers/ranl412 ]; then
-    #. ~/.custom/ranl412_bash_setprompt
-    #unlink ~/.tmux.conf
-    #ln -s ~/.custom/ranl412_tmux.conf ~/.tmux.conf
-    
     #Disable TouchPad:
     declare -i ID
     ID=`xinput list | grep -Eo 'TouchPad\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}'`
@@ -194,7 +156,6 @@ fi
 
 if [ -f ~/.identifiers/kth ]; then
     . ~/.custom/kth_bash_setprompt
-    #cp ~/.custom/kth_tmux.conf ~/.tmux.conf
     unlink ~/.tmux.conf
     ln -s ~/.custom/kth_tmux.conf ~/.tmux.conf
     
