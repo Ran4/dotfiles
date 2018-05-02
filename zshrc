@@ -6,10 +6,14 @@
 # }
 
 #ZSH related configuration {{{
-export ZSH=~/.oh-my-zsh
+# Source Prezto
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+# export ZSH=~/.oh-my-zsh
 # Set name of the theme to load. Look in ~/.oh-my-zsh/themes/
 #ZSH_THEME="random"
-ZSH_THEME="sunrise-modified-ran"
+# ZSH_THEME="sunrise-modified-ran"
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
@@ -38,7 +42,7 @@ zstyle ':completion:*' hosts off
 source ~/.zsh/setopt.zsh
 #End of ZSH related configuration }}}
 #Keyboard related {{{
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 bindkey '^r' history-incremental-search-backward
 
 #^p/^n or up/down will search previous line based on what's written,

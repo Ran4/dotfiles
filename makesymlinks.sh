@@ -17,7 +17,7 @@ NC='\033[0m'
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="agignore bashrc bash_aliases bash_setprompt inputrc dircolors gitconfig gitignore_global vimrc ideavimrc vim xcape_config lesskey tmux.conf hhighlighter.sh custom/kth_tmux.conf custom/ranl412_tmux.conf zshrc zsh oh-my-zsh/plugins/git/git.plugin.zsh pylintrc django.pylintrc pep8 config/youtube-dl moc/config moc/keymap.conf mpdconf mpdasrc pdbrc imwheelrc"
+files="agignore bashrc bash_aliases bash_setprompt inputrc dircolors gitconfig gitignore_global vimrc ideavimrc vim xcape_config lesskey tmux.conf hhighlighter.sh custom/kth_tmux.conf custom/ranl412_tmux.conf zshrc zsh pylintrc django.pylintrc pep8 config/youtube-dl moc/config moc/keymap.conf mpdconf mpdasrc pdbrc imwheelrc"
 
 ##########
 
@@ -104,8 +104,12 @@ if command_exists nvim ; then
     echo "...done"
 fi
 
-echo -e "${LBLUE}Copying sunrise-modified-ran.zsh-theme file to ~/.oh-my-zsh/themes/${NC}"
-cp $dir/oh-my-zsh/themes/sunrise-modified-ran.zsh-theme ~/.oh-my-zsh/themes/
+# echo -e "${LBLUE}Copying sunrise-modified-ran.zsh-theme file to ~/.oh-my-zsh/themes/${NC}"
+# cp $dir/oh-my-zsh/themes/sunrise-modified-ran.zsh-theme ~/.oh-my-zsh/themes/
+
+echo -e "${LBLUE}Creating symlink ~/.zprezto/modules/prompt/functions/prompt_rangiddie_setup ${NC}"
+ln -sfn $dir/prompt_rangiddie_setup ~/.zprezto/modules/prompt/functions/prompt_rangiddie_setup
+echo "...done"
 
 if command_exists i3 ; then
     echo -e "${LBLUE}Creating symlink to i3 config (ln -s $dir/i3/config ~/.i3/config)${NC}"
