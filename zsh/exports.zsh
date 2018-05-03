@@ -3,6 +3,7 @@ export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:~/.local/bin
 export PATH="$HOME/.yarn/bin/:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+[[ "$OSTYPE" == "darwin"* ]] && export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 [[ -f "/etc/arch-release" ]] && export PATH=$PATH:/usr/bin/core_perl/
 export MANPATH="/opt/local/share/man:/usr/local/man:$MANPATH"
 export EDITOR=vim
@@ -15,6 +16,7 @@ export PAGER='less'
 
 export PYLINTRC="~/.pylintrc"
 export GOPATH="$HOME/.go"
+export RUST_SRC_PATH=~/src/rust/src/src
 export PATH="$GOPATH/bin:$PATH"
 #Node version manager:
 export NVM_DIR="~/.nvm/"
