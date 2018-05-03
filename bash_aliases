@@ -9,15 +9,6 @@ run() {
     ($@ &> /dev/null &)
 }
 
-o() {
-    if [ $# -eq 0 ]; then
-      xdg-open . &> /dev/null & disown
-    else
-      for file in "$@"; do
-        xdg-open "$file" &> /dev/null & disown
-      done
-    fi
-}
 #}}}
 #OS X specific {{{
 if [[ "$OSTYPE" == "darwin"* ]]; then
