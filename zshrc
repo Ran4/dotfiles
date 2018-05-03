@@ -10,6 +10,8 @@
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
+
+FPATH=~/.zsh/completion/:$FPATH
 # export ZSH=~/.oh-my-zsh
 # Set name of the theme to load. Look in ~/.oh-my-zsh/themes/
 #ZSH_THEME="random"
@@ -31,7 +33,7 @@ command_exists () {
 }
 
 # plugins loaded from ~/.oh-my-zsh/plugins/*, custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git vi-mode docker)
+plugins=(git vi-mode docker docker-compose)
 
 source ~/.zsh/exports.zsh
 source ~/.zsh/functions.zsh
