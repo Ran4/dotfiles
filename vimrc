@@ -833,7 +833,7 @@ nnoremap <b :CtrlPBuffer<cr>
 
 " The dir one means /__pycache__ OR /.git OR /.hg OR /.svn
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](__pycache__|node_modules|\.(git|hg|svn)|htmlcov|TAGS|tags)$',
+  \ 'dir':  '\v[\/](__pycache__|node_modules|target/doc|\.(git|hg|svn)|htmlcov|TAGS|tags)$',
   \ 'file': '\v\.(exe|so|dll|pyc)$',
   \ }
 " Use regexp search by default
@@ -848,8 +848,13 @@ let g:ctrlp_prompt_mappings = {
 ""Deoplete configuration
 
 if has("macunix")
-    let g:deoplete#sources#rust#racer_binary='/Users/ran/.cargo/bin/racer'
-    let g:deoplete#sources#rust#rust_source_path='/Users/ran/rust/src/src'
+    if !empty(glob("/Users/rasmus.ansin")) " Valtech laptop
+        let g:deoplete#sources#rust#racer_binary='/Users/rasmus.ansin/.cargo/bin/racer'
+        let g:deoplete#sources#rust#rust_source_path='/Users/rasmus.ansin/src/rust/src/src'
+    else
+        let g:deoplete#sources#rust#racer_binary='/Users/ran/.cargo/bin/racer'
+        let g:deoplete#sources#rust#rust_source_path='/Users/ran/rust/src/src'
+    endif
 else
     let g:deoplete#sources#rust#racer_binary='/home/ran/.cargo/bin/racer'
     let g:deoplete#sources#rust#rust_source_path='/home/ran/src/rust/src/src'
@@ -1026,6 +1031,9 @@ endif
 " 
 " let g:UltiSnipsEditSplit="vertical"
 " nnoremap <leader>eu :UltiSnipsEdit<cr>
+
+""pgsql.vim configuration
+let g:sql_type_default = 'pgsql'
 
 ""vim-rsi configuration
 ""alt-d will disable ä so remove the meta-bindings
