@@ -1,6 +1,7 @@
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/dotfiles/scripts
 export PATH="$HOME/.yarn/bin/:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 [[ "$OSTYPE" == "darwin"* ]] && export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
