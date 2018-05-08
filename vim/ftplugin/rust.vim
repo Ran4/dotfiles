@@ -13,5 +13,5 @@ set rtp+=~/.vim/bundle/deoplete.nvim
 call deoplete#enable()
 
 inoremap <localleader>d <esc>"qdiwaprintln!("<c-r>q: {}", <c-r>q)<esc>
-nnoremap <localleader>d "qdiwaprintln!("<c-r>q: {}", <c-r>q)<esc>
+nnoremap <localleader>d "qdiwaprintln!("<c-r>q: {}", <c-r>q);<esc>
 nnoremap <buffer> <localleader>g <Plug>DeopleteRustGoToDefinitionSplit

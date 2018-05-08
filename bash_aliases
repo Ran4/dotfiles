@@ -174,9 +174,6 @@ alias :qa='exit'
 alias :Qa='exit'
 #}}}
 #end of Program aliases }}}
-#show battery level
-alias bat='cat /sys/class/power_supply/BAT1/capacity'
-
 alias p3='python3'
 alias zath='zathura'
 alias prettyjson='python3 -m json.tool'
