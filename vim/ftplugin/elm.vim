@@ -14,7 +14,7 @@ nnoremap <leader>p :!clear && elm make --warn %<cr>
 "endfunction
 
 nnoremap <leader><space> :update<cr>:ElmMake<cr>
-nnoremap <silent> <space> :update<cr>:SyntasticCheck<cr>
+nnoremap <silent> <space> :update<cr>:%s/^\(    \)\+$//ge<cr>
 
 nnoremap <localleader>r :ElmRepl<cr><cr>
 nnoremap <localleader>t :ElmTest<cr>
@@ -51,7 +51,7 @@ endif
 "}}}
 
 "let b:commentary_format='#~ %s'
-"colorscheme luna
-colorscheme iceberg
+colorscheme luna
+"colorscheme iceberg
 
 iabbrev improt import
