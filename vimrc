@@ -876,14 +876,6 @@ map g# <Plug>(incsearch-nohl-g#)
 "the easymotion-prefix to <leader><leader>, which is not wanted
 map <Leader><Leader><Leader> <Plug>(easymotion-prefix)
 map S <Plug>(easymotion-s)
-"map / <Plug>(easymotion-sn)
-"map ? <Plug>(easymotion-tn)
-"map ö <Plug>(easymotion-sn)
-"map n <Plug>(easymotion-next)
-"map N <Plug>(easymotion-prev)
-"map <cr> <Plug>(easymotion-w)
-" default except ; key which is hard to type
-"let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
 let g:EasyMotion_keys = 'asdghklqwertuiopzxcvbnmfj1234890'
 "use smartcase, e.g. case-insensitive search unless search starts with a capital
 let g:EasyMotion_smartcase = 1
@@ -924,6 +916,13 @@ let g:jedi#show_call_signatures_delay = 0
 
 " Change this to use Python3 Python 3
 " let g:jedi#force_py_version = 3
+
+""LanguageClient-neovim configuration
+set rtp+=~/.vim/bundle/LanguageClient-neovim
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ }
 
 ""lightline configuration
 "let g:lightline = {
