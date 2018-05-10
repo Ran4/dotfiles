@@ -12,5 +12,11 @@ endif
 set rtp+=~/.vim/bundle/deoplete.nvim
 call deoplete#enable()
 
+call SuperTabSetDefaultCompletionType("<c-x><c-v>")
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
 inoremap <localleader>d <esc>"qdiwaprintln!("<c-r>q: {}", <c-r>q)<esc>
 nnoremap <localleader>d "qdiwaprintln!("<c-r>q: {}", <c-r>q)<esc>
