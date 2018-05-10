@@ -7,9 +7,7 @@
 
 #ZSH related configuration {{{
 # Source Prezto
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+[[ -f ~/.zprezto/init.zsh ]] && source ~/.zprezto/init.zsh
 # export ZSH=~/.oh-my-zsh
 # Set name of the theme to load. Look in ~/.oh-my-zsh/themes/
 #ZSH_THEME="random"
