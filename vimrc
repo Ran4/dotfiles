@@ -32,6 +32,7 @@ omap a¨ a]
 nmap å [
 nmap ¨ ]
 
+
 nnoremap di_ f_dF_
 nnoremap vi_ t_vF_
 vnoremap i_ F_
@@ -94,6 +95,8 @@ nnoremap <leader>s :%s//gc<Left><Left><Left>
 " visual mode replace helper
 vnoremap <leader>s :s/\%V/g<Left><Left>
 vnoremap <leader>s :s//g<Left><Left>
+" Search for something first (e.g. using *), then press S to substitute
+nnoremap S :%s///g<left><left>
 
 "Resize window
 "nnoremap <leader>r :vert resize 84<CR>
@@ -318,7 +321,7 @@ filetype plugin indent on
 if has('nvim')
     let $LANG = 'en'
     set langmenu=none
-    
+
     "Show :substitute substitutions in new split
     set inccommand=split
 endif
@@ -403,7 +406,7 @@ if has("gui_running")
     nnoremap <leader><leader>4 :set guifont=Terminus\ 13<cr>
     nnoremap <leader><leader>5 :set guifont=Terminus\ 14<cr>
     nnoremap <leader><leader>6 :set guifont=Terminus\ 16<cr>
-    
+
     "Quickly write and quit from insert mode.
     "Good with the itsalltext Firefox plugin
     "inoremap <s-cr> <esc>ZZ
@@ -413,7 +416,7 @@ else
     if !has('nvim')
         set ttymouse=xterm2 "xterm2 to support resizing with mouse
     endif
-    
+
     " workaround: enables mouse resize but helps with accidental clicks moving
     " the cursor
     "nnoremap <LeftMouse> m'<LeftMouse>
@@ -605,9 +608,9 @@ if has("autocmd")
         autocmd!
         autocmd BufRead,BufNewFile .bash_aliases,bash_aliases set filetype=sh
         autocmd BufRead,BufNewFile *.arff set filetype=arff
-        
+
         "autocmd BufRead,BufNewFile * call HighlightExtraWhitespace()
-        
+
         "Prevent auto-comments
         "c: Auto-wrap comments using textwidth, autoinserting the current comment leader
         "r: Autoinsert the current comment leader after hitting <CR> in Insert mode.
@@ -615,9 +618,9 @@ if has("autocmd")
         autocmd BufNewFile,BufWinEnter * setlocal formatoptions-=cro
         "set formatoptions-=cro "this won't work, will be owerwritten, see this link:
         "http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
-        
+
     augroup END
-    
+
     " Resize splits when the window is resized
     au VimResized * exe "normal! \<c-w>="
 endif
@@ -833,7 +836,7 @@ nnoremap <b :CtrlPBuffer<cr>
 
 " The dir one means /__pycache__ OR /.git OR /.hg OR /.svn
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](__pycache__|node_modules|\.(git|hg|svn)|htmlcov|TAGS|tags)$',
+  \ 'dir':  '\v[\/](__pycache__|node_modules|target/doc|\.(git|hg|svn)|htmlcov|TAGS|tags)$',
   \ 'file': '\v\.(exe|so|dll|pyc)$',
   \ }
 " Use regexp search by default
@@ -848,8 +851,13 @@ let g:ctrlp_prompt_mappings = {
 ""Deoplete configuration
 
 if has("macunix")
-    let g:deoplete#sources#rust#racer_binary='/Users/ran/.cargo/bin/racer'
-    let g:deoplete#sources#rust#rust_source_path='/Users/ran/rust/src/src'
+    if !empty(glob("/Users/rasmus.ansin")) " Valtech laptop
+        let g:deoplete#sources#rust#racer_binary='/Users/rasmus.ansin/.cargo/bin/racer'
+        let g:deoplete#sources#rust#rust_source_path='/Users/rasmus.ansin/src/rust/src/src'
+    else
+        let g:deoplete#sources#rust#racer_binary='/Users/ran/.cargo/bin/racer'
+        let g:deoplete#sources#rust#rust_source_path='/Users/ran/rust/src/src'
+    endif
 else
     let g:deoplete#sources#rust#racer_binary='/home/ran/.cargo/bin/racer'
     let g:deoplete#sources#rust#rust_source_path='/home/ran/src/rust/src/src'
@@ -870,7 +878,6 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 ""EasyMotion configuration
-"nnoremap S s
 "if exists('g:EasyMotion_loaded')
 "Without this, bundle/vim-easymotion/plugin/EasyMotion.vim:237 will set
 "the easymotion-prefix to <leader><leader>, which is not wanted
@@ -1025,6 +1032,9 @@ endif
 " 
 " let g:UltiSnipsEditSplit="vertical"
 " nnoremap <leader>eu :UltiSnipsEdit<cr>
+
+""pgsql.vim configuration
+let g:sql_type_default = 'pgsql'
 
 ""vim-rsi configuration
 ""alt-d will disable ä so remove the meta-bindings

@@ -93,6 +93,10 @@ echo -e "${LBLUE}Creating nowplaying.sh symlink to /usr/bin (ln -s $dir/scripts/
 sudo ln -sf $dir/scripts/nowplaying.sh  /usr/bin/nowplaying
 echo "...done"
 
+echo -e "${LBLUE}Creating reload_chrome symlink to /usr/bin${NC}"
+sudo ln -sf $dir/scripts/reload_chrome /usr/bin/reload_chrome
+echo "...done"
+
 echo -e "${LBLUE}Creating symlink to ~/.tmuxp${NC}"
 ln -sfn $dir/tmuxp ~/.tmuxp
 echo "...done"
