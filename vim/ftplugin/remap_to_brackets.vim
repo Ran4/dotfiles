@@ -130,12 +130,21 @@ nmap cT¨ cT]
 nmap cTÅ cT{
 nmap cT^ cT}
 
+nmap <iå <i[
+nmap <i¨ <i]
+nmap <iÅ <i{
+nmap <i^ <i}
+
+nmap >iå >i[
+nmap >i¨ >i]
+nmap >iÅ >i{
+nmap >i^ >i}
+
 "vim-surround
 nmap dså ds[
 nmap ds¨ ds]
 nmap dsÅ ds{
 nmap ds^ ds}
-
 
 " Found at https://gist.github.com/kshenoy/00497c02590444fda6f5c85a43c3f8cb
 
