@@ -72,7 +72,6 @@ bind f:ctrl;cmd      focus 'Google Chrome'
 bind c:ctrl;cmd      focus 'Code'
 
 bind x:${hyper}      focus 'Finder'
-bind p:${hyper}      focus 'Preview'
 bind v:${hyper}      focus 'VLC'
 
 bind r:${hyper}      relaunch
