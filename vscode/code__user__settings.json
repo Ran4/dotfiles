@@ -10,8 +10,9 @@
         { "before": ["^"], "after": ["}"] }
     ],
     "vim.otherModesKeyBindingsNonRecursive": [
-        { "before": ["o"], "after": ["o", "<Esc>"] },
-        { "before": ["O"], "after": ["O", "<Esc>"] },
+        { "before": ["o"], "after": ["o", "<c-f>", "<esc>"] },
+        { "before": ["O"], "after": ["O", "<c-f>", "<esc>"] },
+
         { "before": ["0"], "after": ["^"] },
 
         { "before": ["f", "å"], "after": ["f", "["] },
@@ -32,7 +33,6 @@
         { "before": ["T", "Å"], "after": ["T", "{"] },
         { "before": ["T", "^"], "after": ["T", "}"] }
     ],
-    "vim.disableAnnoyingNeovimMessage": true,
     "vim.enableNeovim": true,
     "vim.leader": "ä",
     "vim.hlsearch": true,
@@ -47,10 +47,12 @@
         "replace": "#000000"
     },
     "workbench.colorCustomizations": {
-        "statusBar.background": "#307f4f",
-        "statusBar.noFolderBackground": "#307f4f",
-        "statusBar.debuggingBackground": "#307f4f"
+        "statusBar.background": "#5f00af",
+        "statusBar.noFolderBackground": "#5f00af",
+        "statusBar.debuggingBackground": "#5f00af"
     },
     "vim.cmdLineInitialColon": true,
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "workbench.activityBar.visible": false,
+    "editor.minimap.enabled": false
 }
