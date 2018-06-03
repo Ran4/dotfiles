@@ -1,0 +1,3 @@
+__pycache__/
+bundle/LanguageClient-neovim/bin
+bundle/LanguageClient-neovim/target

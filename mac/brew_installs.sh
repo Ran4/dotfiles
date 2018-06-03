@@ -87,6 +87,8 @@ brew link numpy
 pip install pandas
 pip install pep8
 
+brew install caskroom/cask/dash #documentation lookup program
+
 ################################################################################
 # Brew cask installs
 ################################################################################

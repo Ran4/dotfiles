@@ -629,6 +629,8 @@ endif
 "{{{ PLUGINS
 "cd ~/.vim/bundle
 """{{{ abcdef
+"abnf - Agumented BNF syntax script
+"!git clone https://github.com/vim-scripts/abnf ~/.vim/bundle/abnf
 "vim-abolish, a plugin that does many things
 "!git clone https://github.com/tpope/tpope-vim-abolish ~/.vim/bundle/tpope-vim-abolish
 

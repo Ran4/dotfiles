@@ -1,3 +1,7 @@
+# Zpresto
+
+Update the ~/.zpreztorc by setting the theme to rangiddie
+
 # Firefox
 
 In Linux (well, *NIX \ OS X):
