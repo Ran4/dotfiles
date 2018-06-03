@@ -755,6 +755,9 @@ endif
 ""surround: use e.g. ds( to delete surrounding (
 "!git clone git://github.com/tpope/vim-surround.git
 
+""swift.vim, syntax+indent files for Swift
+"!git clone git://github.com/keith/swift.vim ~/.vim/bundle/swift.vim
+
 ""targets.vim allows movements like cin" (change in next ") and da,
 "!git clone git://github.com/wellle/targets.vim.git ~/.vim/bundle/targets.vim
 
