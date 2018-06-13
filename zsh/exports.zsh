@@ -5,6 +5,8 @@ export PATH=$PATH:~/dotfiles/scripts
 export PATH="$HOME/.yarn/bin/:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 [[ "$OSTYPE" == "darwin"* ]] && export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+[[ "$OSTYPE" == "darwin"* ]] && export PATH="/Library/TeX/texbin/:$PATH"
+[[ "$OSTYPE" == "darwin"* ]] && export PGDATA=/usr/local/var/postgres
 [[ -f "/etc/arch-release" ]] && export PATH=$PATH:/usr/bin/core_perl/
 export MANPATH="/opt/local/share/man:/usr/local/man:$MANPATH"
 export EDITOR=vim
