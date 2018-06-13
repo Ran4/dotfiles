@@ -3,6 +3,7 @@ export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/dotfiles/scripts
 export PATH="$HOME/.yarn/bin/:$PATH"
+[[ "$OSTYPE" != "darwin"* ]] && export PATH="$HOME/.local/share/swift-4.1.1-RELEASE-ubuntu16.10/usr/bin/:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 [[ "$OSTYPE" == "darwin"* ]] && export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 [[ "$OSTYPE" == "darwin"* ]] && export PATH="/Library/TeX/texbin/:$PATH"
