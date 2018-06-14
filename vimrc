@@ -646,15 +646,6 @@ endif
 """vim-css3-syntax - better syntax highlighting (also see ~/.vim/after/ftplugin/css.vim)
 "!git clone https://github.com/hail2u/vim-css3-syntax ~/.vim/bundle/vim-css3-syntax
 
-"""deoplete.nvim
-"!git clone https://github.com/Shougo/deoplete.nvim ~/.vim/bundle/deoplete.nvim
-
-"""deoplete-rust
-"!git clone https://github.com/sebastianmarkow/deoplete-rust ~/.vim/bundle/deoplete-rust
-
-"""deoplete-ternjs
-"!git clone https://github.com/carlitux/deoplete-ternjs ~/.vim/bundle/deoplete-ternjs
-
 """dracula-theme, a colortheme
 "!git clone https://github.com/dracula/vim.git ~/.vim/bundle/dracula-theme
 
