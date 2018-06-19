@@ -17,3 +17,5 @@ nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 inoremap <localleader>d <esc>"qdiwaprintln!("<c-r>q: {}", <c-r>q)<esc>
 nnoremap <localleader>d "qdiwaprintln!("<c-r>q: {}", <c-r>q);<esc>
+
+colorscheme luna
