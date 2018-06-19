@@ -9,7 +9,7 @@
         { "before": ["Å"], "after": ["{"] },
         { "before": ["^"], "after": ["}"] }
     ],
-    "vim.otherModesKeyBindingsNonRecursive": [
+    "vim.normalModeKeyBindings": [
         { "before": ["o"], "after": ["o", "<c-f>", "<esc>"] },
         { "before": ["O"], "after": ["O", "<c-f>", "<esc>"] },
 
@@ -47,12 +47,13 @@
         "replace": "#000000"
     },
     "workbench.colorCustomizations": {
-        "statusBar.background": "#5f00af",
-        "statusBar.noFolderBackground": "#5f00af",
-        "statusBar.debuggingBackground": "#5f00af"
+        "statusBar.background": "#307f4f",
+        "statusBar.noFolderBackground": "#307f4f",
+        "statusBar.debuggingBackground": "#307f4f"
     },
     "vim.cmdLineInitialColon": true,
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
     "workbench.activityBar.visible": false,
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "Base16 Tomorrow Night"
 }
