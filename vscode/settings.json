@@ -55,5 +55,8 @@
     "window.zoomLevel": 1,
     "workbench.activityBar.visible": false,
     "editor.minimap.enabled": false,
-    "workbench.colorTheme": "Base16 Tomorrow Night"
+    "workbench.colorTheme": "Base16 Tomorrow Night",
+    "[rust]": {
+        "editor.formatOnSave": true
+    }
 }
