@@ -14,6 +14,14 @@
         { "before": ["O"], "after": ["O", "<c-f>", "<esc>"] },
 
         { "before": ["0"], "after": ["^"] },
+        
+        { "before":["g", "t"], "after":[],
+           "commands": [ { "command": "workbench.action.nextEditor",
+                           "when": "vim.active && !inDebugRepl && vim.mode != 'Insert'" } ] },
+        { "before":["g", "shift+t"], "after":[],
+            "commands": [ { "command": "workbench.action.previousEditor",
+                            "when": "vim.active && !inDebugRepl && vim.mode != 'Insert'" } ] },
+
 
         { "before": ["f", "å"], "after": ["f", "["] },
         { "before": ["f", "¨"], "after": ["f", "]"] },

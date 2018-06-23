@@ -1,25 +1,16 @@
 // Place your key bindings in this file to overwrite the defaults
 [
-    {
-        "key": "cmd+r",
-        "command": "workbench.action.tasks.runTask"
-    },
-    {
-        "key": "cmd+j",
-        "command": "workbench.action.terminal.focus"
-    },
-    {
-        "key": "cmd+k",
-        "command": "workbench.action.terminal.toggleTerminal",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "cmd+r",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Rust: cargo run"
-    }, {
-        "key": "space",
-        "command": "workbench.action.files.save",
-        "when": "!inDebugMode && !inDebugRepl && vim.active &&  && vim.mode != 'Insert'"
-    }
+    { "key": "ctrl+shift+alt+b", "command": "workbench.action.tasks.configureDefaultBuildTask" },
+    { "key": "cmd+j", "command": "workbench.action.terminal.focus" },
+    { "key": "alt+j", "command": "workbench.action.terminal.focus" },
+    { "key": "ctrl+[Semicolon]", "command": "workbench.action.terminal.toggleTerminal" },
+    { "key": "ctrl+p", "command": "workbench.action.quickOpen", "when": "!terminalFocus" },
+    { "key": "ctrl+p", "command": "-workbench.action.quickOpen" },
+    { "key": "ctrl+e", "command": "-workbench.action.quickOpen" },
+    { "key": "alt+k", "command": "workbench.action.focusActiveEditorGroup" },
+    { "key": "cmd+k", "command": "workbench.action.focusActiveEditorGroup" },
+    //{ "key": "cmd+k", "command": "workbench.action.terminal.toggleTerminal", "when": "terminalFocus" },
+    { "key": "cmd+r", "command": "workbench.action.tasks.runTask", "args": "Rust: cargo run" },
+    { "key": "alt+r", "command": "workbench.action.tasks.runTask", "args": "Rust: cargo run" },
+    { "key": "space", "command": "workbench.action.files.save", "when": "!inDebugMode && !inDebugRepl && vim.active &&  && vim.mode != 'Insert'" }
 ]
