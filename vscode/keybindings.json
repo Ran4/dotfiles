@@ -4,7 +4,7 @@
     { "key": "cmd+j", "command": "workbench.action.terminal.focus" },
     { "key": "alt+j", "command": "workbench.action.terminal.focus" },
     { "key": "ctrl+[Semicolon]", "command": "workbench.action.terminal.toggleTerminal" },
-    { "key": "ctrl+p", "command": "workbench.action.quickOpen", "when": "!terminalFocus" },
+    { "key": "ctrl+p", "command": "workbench.action.quickOpen", "when": "!terminalFocus && !suggestWidgetVisible" },
     { "key": "ctrl+p", "command": "-workbench.action.quickOpen" },
     { "key": "ctrl+e", "command": "-workbench.action.quickOpen" },
     { "key": "alt+k", "command": "workbench.action.focusActiveEditorGroup" },
