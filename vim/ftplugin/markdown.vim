@@ -1,5 +1,7 @@
 "remaps å¨Å^ to []{} in various ways
 "source ~/.vim/ftplugin/remap_to_brackets.vim
+" Override the å remapping because I write markdown Swedish often enough...
+inoremap å å
 
 nnoremap <leader>p :!pandoc -s % -o /tmp/out_%:r.html && xdg-open /tmp/out_%:r.html &<cr><cr>
 nnoremap <silent> <leader>P :!pandoc -s % -o /tmp/out_%:r.html &> /dev/null &<cr><cr>
