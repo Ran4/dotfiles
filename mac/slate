@@ -70,6 +70,7 @@ bind f:${hyper}      focus 'Google Chrome'
 bind f:ctrl;cmd      focus 'Google Chrome'
 # bind e:ctrl;cmd      focus 'Dash'
 bind c:${hyper}      focus 'Code'
+bind c:ctrl;cmd      focus 'Code'
 
 bind x:${hyper}      focus 'Finder'
 bind v:${hyper}      focus 'VLC'
