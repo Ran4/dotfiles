@@ -62,6 +62,10 @@ sudo apt-get -y install python-tk
 # volume control and e.g. setting microphone input
 sudo apt -y install pavucontrol
 
+# Used by caps2esc
+sudo apt-get install libudev-dev
+git clone https://github.com/oblitum/caps2esc ~/git/other/caps2esc/
+
 ##Installing i3-gaps. Needs i3 first!
 # Dependencies has been updated, and are rather complicated for ubuntu. See the project wiki for install
 # instructions
