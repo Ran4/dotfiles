@@ -54,16 +54,16 @@ echo "...done"
 if [ -f ~/.identifiers/hidpi ]; then
     echo -e "${LBLUE}Creating hi-dpi Xresources symlink${NC}"
     ln -sf $dir/Xresources_hidpi ~/.Xresources
-    echo "...done"
 else
-    if [ -f ~/.identifiers/hidpi ]; then
-    ln -sf $dir/Xresources_40inch ~/.Xresources
+    if [ -f ~/.identifiers/40inch ]; then
+        echo -e "${LBLUE}Creating Xresources_40inch symlink${NC}"
+        ln -sf $dir/Xresources_40inch ~/.Xresources
     else
         echo -e "${LBLUE}Creating Xresources symlink${NC}"
         ln -sf $dir/Xresources ~/.Xresources
-        echo "...done"
     fi
 fi
+echo "...done"
 
 if command_exists xrdb ; then
     echo -e "${LBLUE}Loading X resources (xrdb -load ~/.Xresources)${NC}"
