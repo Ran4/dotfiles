@@ -96,7 +96,7 @@ echo 'Creating some default folders'
 mkdir -p ~/.ssh
 mkdir -p ~/other
 mkdir -p ~/git/other
-mkdir -p ~/pyy
+mkdir -p ~/src/{pyy,rust,js}/{play,other}
 
 #echo "Downloading and symlinking og"
 #git clone git@github.com:ran4/og ~/pyy
