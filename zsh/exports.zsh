@@ -22,6 +22,8 @@ export PYLINTRC="~/.pylintrc"
 export GOPATH="$HOME/.go"
 export RUST_SRC_PATH=~/src/rust/src/src
 export PATH="$GOPATH/bin:$PATH"
+export JAVA_HOME="/usr/lib/jvm/java-8-oracle/"
+export PATH="$JAVA_HOME/bin:$PATH"
 #Node version manager:
 export NVM_DIR="~/.nvm/"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
