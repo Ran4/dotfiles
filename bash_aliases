@@ -86,7 +86,10 @@ alias tree='tree --dirsfirst -I "*.pyc" --matchdirs -I "__pycache__" -I node_mod
 
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias ccat='pygmentize -O bg=dark'
-alias scala='sbt console'
+
+if [[ "$OSTYPE" != "darwin"* ]]; then
+    alias scala='sbt console'
+fi
 alias tmux='tmux -2'
 alias tmuxs='~/dotfiles/defaulttmuxsession.sh'
 alias ts='~/dotfiles/defaulttmuxsession.sh'
