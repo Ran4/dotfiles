@@ -44,6 +44,7 @@ brew install cloc
 brew install yarn
 brew install mono
 brew install graphviz # Graphviz dot graph tool
+brew install jq
 
 brew install moc
 #brew services start jack #moc only works when jack is running
