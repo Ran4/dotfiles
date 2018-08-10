@@ -38,6 +38,9 @@ killall Dock
 #Disable the standard delay in rendering a web page in Safari.
 defaults write com.apple.Safari WebKitInitialTimedLayoutDelay 0.15
 
+#Fix key repeat in VSCode (by default there's no key repeat! See https://github.com/VSCodeVim/Vim#mac-setup)
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+
 #################
 
 #Increase keyboard repeat speed
