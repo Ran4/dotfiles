@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
 	<key>AppleScrollAnimationEnabled</key>
@@ -588,8 +590,6 @@
 	<integer>2</integer>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
-	<key>NSFontPanelAttributes</key>
-	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/dotfiles/mac/iterm2_profiles</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -609,7 +609,7 @@
 	gAKACoAN0xAJChEVGVdOUy5rZXlzoxITFIADgASABaMWFxiABoAHgAiACVpJZGVudGlm
 	aWVyVVdpZHRoVkhpZGRlblEwI0BowAAAAAAACNIhIiMkWiRjbGFzc25hbWVYJGNsYXNz
 	ZXNcTlNEaWN0aW9uYXJ5oiMlWE5TT2JqZWN00xAJCicrGaMSExSAA4AEgAWjLC0YgAuA
-	DIAIgAlRMSNAdKGdsi0OVtIhIjM0Xk5TTXV0YWJsZUFycmF5ozM1JVdOU0FycmF5XxAP
+	DIAIgAlRMSNAc7Gdsi0OVtIhIjM0Xk5TTXV0YWJsZUFycmF5ozM1JVdOU0FycmF5XxAP
 	TlNLZXllZEFyY2hpdmVy0Tg5VUFycmF5gAEACAARABoAIwAtADIANwBGAEwAUQBcAGMA
 	ZgBoAGoAbABzAHsAfwCBAIMAhQCJAIsAjQCPAJEAnACiAKkAqwC0ALUAugDFAM4A2wDe
 	AOcA7gDyAPQA9gD4APwA/gEAAQIBBAEGAQ8BFAEjAScBLwFBAUQBSgAAAAAAAAIBAAAA
@@ -625,24 +625,18 @@
 	</data>
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
-	<key>NSWindow Frame NSFontPanel</key>
-	<string>1409 1994 636 402 -266 1200 2560 1440 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
-	<string>2997 1975 400 129 2106 586 1440 2560 </string>
+	<string>629 628 400 129 0 0 1680 1050 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>650 607 620 392 0 0 1920 1200 </string>
+	<string>3290 1046 620 392 1680 -280 3840 2160 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>-46 1326 606 469 -315 1200 2560 1440 </string>
+	<string>1949 -154 606 469 1680 -280 3840 2160 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>862 618 1018 447 0 0 1920 1200 </string>
+	<string>3074 705 796 486 1680 -280 3840 2160 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 4 1920 1196 0 0 1920 1200 </string>
+	<string>3600 -280 1914 2160 1680 -280 3840 2160 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>2106 586 1440 2560 2106 586 1440 2560 </string>
-	<key>NSWindow Frame iTerm Window 2</key>
-	<string>-454 1200 1279 1440 -454 1200 2560 1440 </string>
-	<key>NSWindow Frame iTerm Window 3</key>
-	<string>-454 1202 1270 718 -454 1200 2560 1440 </string>
+	<string>46 1715 570 429 -907 1200 3840 2137 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -661,12 +655,16 @@
 			</dict>
 			<key>Ansi 1 Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.0</real>
+				<real>0.078431375324726105</real>
+				<key>Color Space</key>
+				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.0</real>
+				<real>0.13333334028720856</real>
 				<key>Red Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.94509803921568625</real>
 			</dict>
 			<key>Ansi 10 Color</key>
 			<dict>
@@ -742,12 +740,16 @@
 			</dict>
 			<key>Ansi 4 Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.894622802734375</real>
+				<key>Color Space</key>
+				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.0</real>
+				<real>0.61184445558792666</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.55134461028501391</real>
 			</dict>
 			<key>Ansi 5 Color</key>
 			<dict>
@@ -1251,13 +1253,11 @@
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>BBF58431-A23A-4D7C-A21B-77E0AD2347C3</string>
+	<string>2E4A808C-36CB-44C6-8AD9-AE8FA1100582</string>
 	<key>NoSyncPermissionToShowTip</key>
 	<false/>
-	<key>NoSyncSilenceAnnoyingBellAutomatically</key>
-	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>526911483.73912799</real>
+	<real>554822040.39308906</real>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
 	<key>PointerActions</key>
@@ -1289,7 +1289,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/rasmus.ansin/dotfiles/mac/iterm2_profiles</string>
+	<string>/Users/ran/dotfiles/mac/iterm2_profiles</string>
 	<key>Print In Black And White</key>
 	<true/>
 	<key>SUEnableAutomaticChecks</key>
@@ -1297,11 +1297,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final.xml?shard=87</string>
+	<string>https://iterm2.com/appcasts/final.xml?shard=77</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-04-30T07:40:56Z</date>
+	<date>2018-08-14T09:14:07Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>StretchTabsToFillBar</key>
@@ -1317,6 +1317,10 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.1.6</string>
+	<string>3.2.0</string>
+	<key>kCPKSelectionViewPreferredModeKey</key>
+	<integer>0</integer>
+	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
+	<false/>
 </dict>
 </plist>
