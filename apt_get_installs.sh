@@ -35,13 +35,13 @@ sudo apt-get -y install zsh
 sudo apt-get -y install python-pip
 
 # Git, `apt install git` will install an older version
-sudo apt-add-repository ppa:git-core/ppa
+sudo apt-add-repository -y ppa:git-core/ppa
 sudo apt-get update
 sudo apt-get install -y git
 
 # Neovim
-sudo apt-get install software-properties-common && \
-    sudo add-apt-repository ppa:neovim-ppa/unstable && \
+sudo apt-get install -y software-properties-common && \
+    sudo add-apt-repository -y ppa:neovim-ppa/unstable && \
     sudo apt-get update && \
     sudo apt-get -y install neovim && \
     pip3 install neovim && \
