@@ -19,6 +19,11 @@ Host mac
 Host ran-ub
 	HostName 192.168.1.12
 	User ran
+# ~Nicknamed stuff
+Host vb
+	HostName 192.168.35.44
+	User ran
+	IdentityFile ~/.ssh/id_rsa
 # Orexplore stuff
 Host ore
 	HostName git.orexplore.se
