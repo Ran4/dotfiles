@@ -37,7 +37,7 @@ sudo apt-get -y install python-pip
 # Git, `apt install git` will install an older version
 sudo apt-add-repository ppa:git-core/ppa
 sudo apt-get update
-sudo apt-get install git
+sudo apt-get install -y git
 
 # Neovim
 sudo apt-get install software-properties-common && \
@@ -63,7 +63,7 @@ sudo apt-get -y install python-tk
 sudo apt -y install pavucontrol
 
 # Used by caps2esc
-sudo apt-get install libudev-dev
+sudo apt-get install -y libudev-dev
 git clone https://github.com/oblitum/caps2esc ~/git/other/caps2esc/
 
 ##Installing i3-gaps. Needs i3 first!
