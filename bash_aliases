@@ -102,6 +102,7 @@ alias m='./manage.py'
 
 # Docker
 alias docker-clean='docker container prune -f; docker image prune -f'
+alias dockerip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
 
 alias du='du -h' #-h human readable
 alias dus='du -sch * | sort -h' #-s no recursive show, -c show total, -h human readable
