@@ -12,10 +12,10 @@ alias hyper shift;ctrl
 alias full         move screenOriginX;screenOriginY                screenSizeX;screenSizeY
 alias lefthalf     move screenOriginX;screenOriginY                screenSizeX/2;screenSizeY
 alias righthalf    move screenOriginX+screenSizeX/2;screenOriginY  screenSizeX/2;screenSizeY
-# alias topleft      corner top-left                                 resize:screenSizeX/2;screenSizeY/2
-# alias topright     corner top-right                                resize:screenSizeX/2;screenSizeY/2
-# alias bottomleft   corner bottom-left                              resize:screenSizeX/2;screenSizeY/2
-# alias bottomright  corner bottom-right                             resize:screenSizeX/2;screenSizeY/2
+alias topleft      corner top-left                                 resize:screenSizeX/2;screenSizeY/2
+alias topright     corner top-right                                resize:screenSizeX/2;screenSizeY/2
+alias bottomleft   corner bottom-left                              resize:screenSizeX/2;screenSizeY/2
+alias bottomright  corner bottom-right                             resize:screenSizeX/2;screenSizeY/2
 alias tophalf      move screenOriginX;screenOriginY                  screenSizeX;screenSizeY/2
 alias bottomhalf   move screenOriginX;screenOriginY+screenSizeY/2    screenSizeX;screenSizeY/2
 alias center       move screenOriginX+0.15*screenSizeX;screenOriginY+0.1*screenSizeY        0.7*screenSizeX;0.8*screenSizeY
@@ -25,8 +25,8 @@ alias center       move screenOriginX+0.15*screenSizeX;screenOriginY+0.1*screenS
 ################################################################################
 
 ## Focus
-# bind k:${hyper}  focus up
-# bind j:${hyper}  focus down
+bind k:ctrl;cmd  focus up
+bind j:ctrl;cmd  focus down
 
 bind h:ctrl;cmd  focus left
 bind l:ctrl;cmd  focus right
@@ -42,6 +42,10 @@ bind e:${hyper}  ${full}
 bind n:${hyper}  chain ${lefthalf} | sequence throw next > ${righthalf}
 bind m:${hyper}  chain ${righthalf} | sequence throw prev > ${lefthalf}
 bind j:${hyper}  ${bottomhalf}
+bind n:shift;ctrl;cmd  ${bottomleft}
+bind m:shift;ctrl;cmd  ${bottomright}
+bind j:shift;ctrl;cmd  ${topleft}
+bind k:shift;ctrl;cmd  ${topright}
 bind k:${hyper}  ${tophalf}
 bind w:${hyper}  ${center}
 
