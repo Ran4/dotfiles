@@ -448,7 +448,11 @@ set t_Co=256
 " cd ~/.vim/colors
 " wget -O ~/.vim/colors/wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 "color wombat256mod
-color wombat256mod-darker
+if !empty(glob("/home/ran/.identifiers/virtualbox"))
+    color iceberg
+else
+    color wombat256mod-darker
+endif
 "au FileType elm colorscheme predawn
 "au FileType elm colorscheme github
 
