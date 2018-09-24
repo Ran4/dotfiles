@@ -6,7 +6,6 @@ source ~/.vim/ftplugin/remap_to_brackets.vim
 "nnoremap <leader>p :ElmMake<cr>
 "nnoremap <leader>P :!clear && elm make --warn %<cr>
 nnoremap <leader>p :!clear && elm make --warn %<cr>
-
 "nnoremap <leader>P :call ElmMakeWithWarning()<cr>
 "function ElmMakeWithWarning()
 "    !clear && elm make --warn %

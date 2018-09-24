@@ -20,7 +20,7 @@ export PAGER='less'
 
 export PYLINTRC="~/.pylintrc"
 export GOPATH="$HOME/.go"
-export RUST_SRC_PATH=~/src/rust/src/src
+# export RUST_SRC_PATH=~/src/rust/src/src # Racer auto-detects this, use `rustup component add rust-rc`
 export PATH="$GOPATH/bin:$PATH"
 export JAVA_HOME="/usr/lib/jvm/java-8-oracle/"
 export PATH="$JAVA_HOME/bin:$PATH"

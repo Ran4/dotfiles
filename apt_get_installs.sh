@@ -10,6 +10,7 @@ sudo apt-get -y install silversearcher-ag
 sudo apt-get -y install pandoc
 sudo apt-get -y install pandoc-citeproc
 sudo apt-get -y install httpie
+sudo apt-get -y install jq
 sudo apt-get -y install tree
 sudo apt-get -y install ncdu
 if [ -f ~/.identifiers/without_x ] ; then
