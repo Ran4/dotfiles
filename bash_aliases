@@ -53,7 +53,7 @@ function __cdls {
     cd $1
     ls
 }
-alias c='__cdls'
+# alias c='__cdls'
 alias c..='__cdls ..'
 alias cl='__cdls'
 alias cdl='__cdls'
@@ -180,6 +180,10 @@ alias :Qa='exit'
 #}}}
 #end of Program aliases }}}
 alias p3='python3'
+
+# "pandas play"
+alias pp='source ~/src/pyy/play/pandas/.venv/bin/activate && python3 -i ~/src/pyy/play/pandas/go.py; deactivate'
+
 alias zath='zathura'
 alias prettyjson='python3 -m json.tool'
 
@@ -232,3 +236,6 @@ fi
 alias exp="source /tmp/export"
 alias twitch='nohup google-chrome --app=https://www.twitch.tv/escapeaoe/videos/all &'
 alias netflix='nohup google-chrome --app=https://www.netflix.com &'
+
+alias curlj='curl -H "Content-Type: application/json" -H "Accept: application/json; indent=4"'
+alias typora='open -a typora'
