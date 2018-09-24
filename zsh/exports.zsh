@@ -35,3 +35,4 @@ fi
 
 #Needed for tmuxp?
 export DISABLE_AUTO_TITLE='true'
+export IS_LOCALHOST="true"
