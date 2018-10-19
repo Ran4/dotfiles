@@ -1,1 +1,3 @@
 source ~/dotfiles/simple_vimrc_for_ideavim
+nnoremap gN :action GotoNextError<CR>
+nnoremap gP :action GotoPreviousError<CR>
