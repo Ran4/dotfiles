@@ -803,7 +803,7 @@ let g:ale_linters = {
 \       'pylint',
 \   ],
 \}
-let g:ale_python_pylint_executable = 'pylint3'
+let g:ale_python_pylint_executable = 'pylint'
 let g:ale_python_pylint_options="--rcfile=~/.pylintrc"
 
 let g:ale_fixers = {
