@@ -798,15 +798,22 @@ map <leader>f <Plug>(ale_fix)
 
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 0
+let g:ale_fix_on_save = 1
 let g:ale_linters = {
 \   'python': [
-\       'pylint',
+\       'mypy',
 \   ],
 \}
+let g:ale_virtualenv_dir_names = ['.env', 'env', 've-py3', 've', 'virtualenv', '.venv']
 let g:ale_python_pylint_executable = 'pylint'
 let g:ale_python_pylint_options="--rcfile=~/.pylintrc"
 
 let g:ale_fixers = {
+\   'python': [
+\       'remove_trailing_lines',
+\       'isort',
+\       'autopep8',
+\   ],
 \   'javascript': [
 \       'remove_trailing_lines',
 \       'eslint',
@@ -867,7 +874,7 @@ let g:deoplete#sources#rust#documentation_max_height=40
 
 ""incsearch configuration
 "map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
+map ?  ?
 map g/ <Plug>(incsearch-stay)
 
 let g:incsearch#auto_nohlsearch = 1
