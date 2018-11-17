@@ -57,7 +57,8 @@ extension-pkg-whitelist=
 #C0330 bad-continuation
 #W0141 bad-builtin
 #R0903: Too few public methods (0/2) (too-few-public-methods)
-disable=C0303,C0330,W0141,R0903
+#C0111: Missing module docstring (missing-docstring)
+disable=C0303,C0330,W0141,R0903,C0111
 
 
 [REPORTS]

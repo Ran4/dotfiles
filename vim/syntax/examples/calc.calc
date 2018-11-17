@@ -1,0 +1,13 @@
+# vim: ft=calc
+
+#
+#A
+# Comment
+
+nu: hyra = 6500
+sen: ränta + avgift = 7800
+
+nu: spara = 23_500
+om samma: 23_500 - 7800 = 15700 kvar till amortering
+
+
