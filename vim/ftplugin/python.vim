@@ -116,3 +116,6 @@ endfun
 set foldmethod=marker
 norm zi
 "nnoremap <cr> zizt
+
+" call deoplete#enable()
+" let g:deoplete#enable_at_startup = 1

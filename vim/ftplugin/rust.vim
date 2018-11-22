@@ -19,3 +19,6 @@ inoremap <localleader>d <esc>"qdiwaprintln!("<c-r>q: {}", <c-r>q)<esc>
 nnoremap <localleader>d "qdiwaprintln!("<c-r>q: {}", <c-r>q);<esc>
 
 colorscheme luna
+set cc=100
+" Auto-formatting using rustfmt (rustup component add rustfmt-preview)
+let g:rustfmt_autosave = 1
