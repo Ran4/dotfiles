@@ -13,6 +13,8 @@ nnoremap <leader><leader>l :let g:syntastic_python_checkers=['python3']
 "Disable pylint
 nnoremap <leader>L :let g:syntastic_python_checkers=['python']<cr>
 
+nnoremap gd :YcmCompleter GoTo<cr>
+nnoremap gr :YcmCompleter GoToReferences<cr>
 
 let g:syntastic_python_checkers=['python3', 'pep8']
 
