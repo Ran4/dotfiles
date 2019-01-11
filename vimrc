@@ -801,12 +801,15 @@ let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
 \   'python': [
-\       'mypy',
+\       'flake8'
 \   ],
 \}
+" \       'mypy',
+\       'pylint'
 let g:ale_virtualenv_dir_names = ['.env', 'env', 've-py3', 've', 'virtualenv', '.venv']
 let g:ale_python_pylint_executable = 'pylint'
-let g:ale_python_pylint_options="--rcfile=~/.pylintrc"
+" let g:ale_python_pylint_options="--rcfile=~/.pylintrc"
+let g:ale_python_pylint_options="--load-plugins pylint_django"
 
 let g:ale_fixers = {
 \   'python': [
@@ -819,6 +822,7 @@ let g:ale_fixers = {
 \       'eslint',
 \   ],
 \ }
+"\       'isort',
 
 "Neovim-specific:
 if has('nvim')
