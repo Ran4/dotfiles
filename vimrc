@@ -696,6 +696,9 @@ endif
 """haskell-vim, a bunch of scripts for Haskell and Cabal
 "!git clone https://github.com/neovimhaskell/haskell-vim.git ~/.vim/bundle/haskell-vim
 
+"""purescript-vim, syntax highlighting and indentation for Purescript
+"!git clone https://github.com/raichoo/purescript-vim.git ~/.vim/bundle/purescript-vim
+
 """incsearch incrementally highlights all pattern being matched.
 "!git clone https://github.com/haya14busa/incsearch.vim ~/.vim/bundle/incsearch.vim
 
