@@ -17,7 +17,7 @@ NC='\033[0m'
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="agignore bashrc bash_aliases bash_setprompt inputrc dircolors gitconfig gitignore_global vimrc ideavimrc vim xcape_config lesskey tmux.conf hhighlighter.sh custom/kth_tmux.conf custom/ranl412_tmux.conf zshrc zsh pylintrc django.pylintrc pep8 config/youtube-dl moc/config moc/keymap.conf mpdconf mpdasrc pdbrc imwheelrc"
+files="agignore bashrc bash_aliases bash_setprompt curlrc inputrc dircolors gitconfig gitignore_global vimrc ideavimrc vim xcape_config lesskey tmux.conf hhighlighter.sh custom/kth_tmux.conf custom/ranl412_tmux.conf zshrc zsh pylintrc django.pylintrc pep8 config/youtube-dl moc/config moc/keymap.conf mpdconf mpdasrc pdbrc imwheelrc"
 
 ##########
 
