@@ -9,11 +9,14 @@ else
     nnoremap <leader>p :!cargo run -q<cr>
 endif
 
-call SuperTabSetDefaultCompletionType("<c-x><c-v>")
+call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> gh :call LanguageClient#explainErrorAtPoint()<CR>
+nnoremap <silent> ga :call LanguageClient#textDocument_codeAction()<CR>
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
 inoremap <localleader>d <esc>"qdiwaprintln!("<c-r>q: {}", <c-r>q)<esc>
 nnoremap <localleader>d "qdiwaprintln!("<c-r>q: {}", <c-r>q);<esc>
