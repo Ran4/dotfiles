@@ -1,3 +1,8 @@
 source ~/dotfiles/simple_vimrc_for_ideavim
 nnoremap gN :action GotoNextError<CR>
 nnoremap gP :action GotoPreviousError<CR>
+
+" See https://stackoverflow.com/questions/30149091/how-to-configure-in-ideavim-ctrl-n-and-ctrl-p-completion-from-vim
+imap <C-n> <ESC>:action HippieCompletion<CR>a
+imap <C-p> <ESC>:action HippieBackwardCompletion<CR>a
+
