@@ -1,366 +1,222 @@
 use super::*;
-use std::str::FromStr;
+use crate::rpcclient::RpcClient;
+use crate::sign::Sign;
+use crate::viewport::Viewport;
 
-pub trait IVim {
-    fn get<F, T>(&self, f: F) -> Result<T>
-    where
-        F: FnOnce(&State) -> Result<T>;
-    fn update<F, T>(&self, f: F) -> Result<T>
-    where
-        F: FnOnce(&mut State) -> Result<T>;
-    fn loop_message<T: BufRead>(&self, input: T, languageId: Option<String>) -> Result<()>;
+/// Try get value of an variable from RPC params.
+pub fn try_get<R: DeserializeOwned>(key: &str, params: &Value) -> Fallible<Option<R>> {
+    let value = &params[key];
+    if value == &Value::Null {
+        Ok(None)
+    } else {
+        Ok(serde_json::from_value(value.clone())?)
+    }
+}
 
-    /// Handle an incoming message.
-    fn handle_message<H: IRpcHandler>(
-        &self,
-        handler: H,
-        languageId: Option<String>,
-        message: String,
-    ) -> Result<()> {
-        if let Ok(output) = serde_json::from_str::<rpc::Output>(&message) {
-            let tx = self.update(|state| {
-                state.txs.remove(&output.id().to_int()?).ok_or_else(|| {
-                    format_err!("Failed to get channel sender! id: {:?}", output.id())
-                })
-            })?;
-            let result = match output {
-                rpc::Output::Success(success) => Ok(success.result),
-                rpc::Output::Failure(failure) => Err(format_err!("{}", failure.error.message)),
-            };
-            tx.send(result)?;
-            return Ok(());
-        }
+#[derive(Clone, Serialize)]
+pub struct Vim {
+    pub rpcclient: RpcClient,
+}
 
-        // FIXME
-        let message = message.replace(r#","meta":{}"#, "");
-
-        let call = serde_json::from_str(&message)?;
-        match call {
-            rpc::Call::MethodCall(method_call) => {
-                let result = handler.handle_request(&method_call);
-                if let Err(err) = result.as_ref() {
-                    if err.downcast_ref::<LCError>().is_none() {
-                        error!(
-                            "Error handling message. Message: {}. Error: {:?}",
-                            message, result
-                        );
-                    }
-                }
-                self.output(
-                    languageId.as_ref().map(|s| s.as_str()),
-                    method_call.id,
-                    result,
-                )
-            }
-            rpc::Call::Notification(notification) => handler.handle_notification(&notification),
-            rpc::Call::Invalid(id) => bail!("Invalid message of id: {:?}", id),
-        }
+impl Vim {
+    pub fn new(rpcclient: RpcClient) -> Self {
+        Self { rpcclient }
     }
 
-    /// Send message to RPC server.
-    fn write(&self, languageId: Option<&str>, message: &str) -> Result<()> {
-        if let Some(languageId) = languageId {
-            self.update(|state| {
-                let writer = state
-                    .writers
-                    .get_mut(languageId)
-                    .ok_or(LCError::NoLanguageServer {
-                        languageId: languageId.to_owned(),
-                    })?;
-                write!(
-                    writer,
-                    "Content-Length: {}\r\n\r\n{}",
-                    message.len(),
-                    message
-                )?;
-                writer.flush()?;
-                Ok(())
-            })?;
-        } else {
-            println!("Content-Length: {}\n\n{}", message.len(), message);
-        }
+    /// Fundamental functions.
 
-        Ok(())
+    pub fn command(&self, cmds: impl Serialize) -> Fallible<()> {
+        self.rpcclient.notify("s:command", &cmds)
     }
 
-    /// Write an RPC call output.
-    fn output(&self, languageId: Option<&str>, id: rpc::Id, result: Result<Value>) -> Result<()> {
-        let response = match result {
-            Ok(ok) => rpc::Output::Success(rpc::Success {
-                jsonrpc: Some(rpc::Version::V2),
-                id,
-                result: ok,
-            }),
-            Err(err) => rpc::Output::Failure(rpc::Failure {
-                jsonrpc: Some(rpc::Version::V2),
-                id,
-                error: err.to_rpc_error(),
-            }),
-        };
-
-        let message = serde_json::to_string(&response)?;
-        info!("=> {}", message);
-        self.write(languageId, &message)?;
-        Ok(())
-    }
-
-    /// RPC method call.
-    fn call<P: Serialize>(
-        &self,
-        languageId: Option<&str>,
-        method: &str,
-        params: P,
-    ) -> Result<Value> {
-        let id = self.update(|state| {
-            state.id += 1;
-            Ok(state.id)
-        })?;
-
-        let method_call = rpc::MethodCall {
-            jsonrpc: Some(rpc::Version::V2),
-            id: rpc::Id::Num(id),
-            method: method.into(),
-            params: Some(params.to_params()?),
-        };
-
-        let (tx, cx) = channel();
-        self.update(|state| {
-            state.txs.insert(id, tx);
-            Ok(())
-        })?;
-
-        let message = serde_json::to_string(&method_call)?;
-        info!("=> {}", message);
-        self.write(languageId, &message)?;
-
-        cx.recv_timeout(std::time::Duration::from_secs(60 * 5))?
-    }
-
-    /// RPC notification.
-    fn notify<P: Serialize>(
-        &self,
-        languageId: Option<&str>,
-        method: &str,
-        params: P,
-    ) -> Result<()> {
-        let notification = rpc::Notification {
-            jsonrpc: Some(rpc::Version::V2),
-            method: method.to_owned(),
-            params: Some(params.to_params()?),
-        };
-
-        let message = serde_json::to_string(&notification)?;
-        info!("=> {}", message);
-        self.write(languageId, &message)?;
-
-        Ok(())
-    }
-
-    fn eval<E, T>(&self, exp: E) -> Result<T>
+    pub fn eval<E, T>(&self, exp: E) -> Fallible<T>
     where
         E: VimExp,
         T: DeserializeOwned,
     {
-        let result = self.call(None, "eval", exp.to_exp())?;
-        Ok(serde_json::from_value(result)?)
+        self.rpcclient.call("eval", &exp.to_exp())
     }
 
-    fn command<S: AsRef<str>>(&self, cmd: S) -> Result<()> {
-        self.notify(None, "execute", cmd.as_ref())
+    /// Function wrappers.
+
+    pub fn getbufvar<R: DeserializeOwned>(&self, bufname: &str, var: &str) -> Fallible<R> {
+        self.rpcclient.call("getbufvar", json!([bufname, var]))
     }
 
-    ////// Vim builtin function wrappers ///////
+    pub fn get_filename(&self, params: &Value) -> Fallible<String> {
+        let key = "filename";
+        let expr = "LSP#filename()";
 
-    fn echo<S: AsRef<str>>(&self, message: S) -> Result<()> {
-        let message = escape_single_quote(message.as_ref());
-        let cmd = format!("echo '{}'", message);
-        self.command(cmd)
+        try_get(key, params)?.map_or_else(|| self.eval(expr), Ok)
     }
 
-    fn echo_ellipsis<S: AsRef<str>>(&self, message: S) -> Result<()> {
-        let columns: usize = self.eval("&columns")?;
-        let mut message = message.as_ref().replace('\n', ". ");
-        if message.len() > columns - 12 {
-            message = message[..columns - 15].to_owned();
-            message += "...";
-        }
-        self.echo(message)
+    pub fn get_languageId(&self, filename: &str, params: &Value) -> Fallible<String> {
+        let key = "languageId";
+        let expr = "&filetype";
+
+        try_get(key, params)?.map_or_else(|| self.getbufvar(filename, expr), Ok)
     }
 
-    fn echomsg<S: AsRef<str>>(&self, message: S) -> Result<()> {
-        let message = escape_single_quote(message);
-        let cmd = format!("echomsg '{}'", message);
-        self.command(cmd)
+    pub fn get_bufnr(&self, filename: &str, params: &Value) -> Fallible<Bufnr> {
+        let key = "bufnr";
+
+        try_get(key, params)?.map_or_else(|| self.eval(format!("bufnr('{}')", filename)), Ok)
     }
 
-    fn echoerr<S: AsRef<str>>(&self, message: S) -> Result<()> {
-        let message = escape_single_quote(message);
-        let cmd = format!("echohl Error | echomsg '{}' | echohl None", message);
-        self.command(cmd)
+    pub fn get_viewport(&self, params: &Value) -> Fallible<Viewport> {
+        let key = "viewport";
+        let expr = "LSP#viewport()";
+
+        try_get(key, params)?.map_or_else(|| self.eval(expr), Ok)
     }
 
-    fn echowarn<S: AsRef<str>>(&self, message: S) -> Result<()> {
-        let message = escape_single_quote(message);
-        let cmd = format!("echohl WarningMsg | echomsg '{}' | echohl None", message);
-        self.command(cmd)
+    pub fn get_position(&self, params: &Value) -> Fallible<Position> {
+        let key = "position";
+        let expr = "LSP#position()";
+
+        try_get(key, params)?.map_or_else(|| self.eval(expr), Ok)
     }
 
-    fn getbufline<P: AsRef<Path>>(&self, bufexp: P) -> Result<Vec<String>> {
-        let bufexp = bufexp.as_ref().to_string_lossy();
-        let result = self.call(None, "getbufline", json!([bufexp, 1, '$']))?;
-        Ok(serde_json::from_value(result)?)
+    pub fn get_current_word(&self, params: &Value) -> Fallible<String> {
+        let key = "cword";
+        let expr = "expand('<cword>')";
+
+        try_get(key, params)?.map_or_else(|| self.eval(expr), Ok)
     }
 
-    fn goto_location<P: AsRef<Path>>(
-        &self,
-        goto_cmd: &Option<String>,
-        path: P,
-        line: u64,
-        character: u64,
-    ) -> Result<()> {
+    pub fn get_goto_cmd(&self, params: &Value) -> Fallible<Option<String>> {
+        let key = "gotoCmd";
+
+        try_get(key, params)
+    }
+
+    pub fn get_tab_size(&self) -> Fallible<u64> {
+        let expr = "shiftwidth()";
+
+        self.eval(expr)
+    }
+
+    pub fn get_insert_spaces(&self, filename: &str) -> Fallible<bool> {
+        let insert_spaces: i8 = self.getbufvar(filename, "&expandtab")?;
+        Ok(insert_spaces == 1)
+    }
+
+    pub fn get_text(&self, bufname: &str) -> Fallible<Vec<String>> {
+        self.rpcclient.call("LSP#text", json!([bufname]))
+    }
+
+    pub fn get_handle(&self, params: &Value) -> Fallible<bool> {
+        let key = "handle";
+
+        try_get(key, params)?.map_or_else(|| Ok(true), Ok)
+    }
+
+    pub fn echo(&self, message: impl AsRef<str>) -> Fallible<()> {
+        self.rpcclient.notify("s:Echo", message.as_ref())
+    }
+
+    pub fn echo_ellipsis(&self, message: impl AsRef<str>) -> Fallible<()> {
+        let message = message.as_ref().lines().collect::<Vec<_>>().join(" ");
+        self.rpcclient.notify("s:EchoEllipsis", message)
+    }
+
+    pub fn echomsg_ellipsis(&self, message: impl AsRef<str>) -> Fallible<()> {
+        let message = message.as_ref().lines().collect::<Vec<_>>().join(" ");
+        self.rpcclient.notify("s:EchomsgEllipsis", message)
+    }
+
+    pub fn echomsg(&self, message: impl AsRef<str>) -> Fallible<()> {
+        self.rpcclient.notify("s:Echomsg", message.as_ref())
+    }
+
+    pub fn echoerr(&self, message: impl AsRef<str>) -> Fallible<()> {
+        self.rpcclient.notify("s:Echoerr", message.as_ref())
+    }
+
+    pub fn echowarn(&self, message: impl AsRef<str>) -> Fallible<()> {
+        self.rpcclient.notify("s:Echowarn", message.as_ref())
+    }
+
+    pub fn cursor(&self, lnum: u64, col: u64) -> Fallible<()> {
+        self.rpcclient.notify("cursor", json!([lnum, col]))
+    }
+
+    #[allow(dead_code)]
+    pub fn setline(&self, lnum: u64, text: &[String]) -> Fallible<()> {
+        self.rpcclient.notify("setline", json!([lnum, text]))
+    }
+
+    pub fn edit(&self, goto_cmd: &Option<String>, path: impl AsRef<Path>) -> Fallible<()> {
         let path = path.as_ref().to_string_lossy();
-        let mut cmd = "echo | ".to_string();
-        let goto;
-        if let Some(ref goto_cmd) = *goto_cmd {
-            goto = goto_cmd.as_str();
-        } else if self.eval::<_, i64>(format!("bufnr('{}')", path))? == -1 {
-            goto = "edit";
-        } else {
-            cmd += "execute 'normal m`' | ";
-            goto = "buffer";
-        };
-        cmd += &format!(
-            "execute 'normal! m`' | execute '{} +:call\\ cursor({},{}) ' . fnameescape('{}')",
-            goto,
-            line + 1,
-            character + 1,
-            path
-        );
 
-        self.command(cmd)
-    }
-}
+        let goto = goto_cmd.as_deref().unwrap_or("edit");
+        self.rpcclient.notify("s:Edit", json!([goto, path]))?;
 
-impl IVim for Arc<Mutex<State>> {
-    fn get<F, T>(&self, f: F) -> Result<T>
-    where
-        F: FnOnce(&State) -> Result<T>,
-    {
-        let state = self.lock()
-            .or_else(|_| Err(err_msg("Failed to lock state")))?;
-        f(&state)
-    }
+        if path.starts_with("jdt://") {
+            self.command("setlocal buftype=nofile filetype=java noswapfile")?;
 
-    fn update<F, T>(&self, f: F) -> Result<T>
-    where
-        F: FnOnce(&mut State) -> Result<T>,
-    {
-        use log::Level;
-
-        let mut state = self.lock()
-            .or_else(|_| Err(err_msg("Failed to lock state")))?;
-        let before = if log_enabled!(Level::Debug) {
-            let s = serde_json::to_string(state.deref())?;
-            serde_json::from_str(&s)?
-        } else {
-            Value::default()
-        };
-        let result = f(&mut state);
-        let after = if log_enabled!(Level::Debug) {
-            let s = serde_json::to_string(state.deref())?;
-            serde_json::from_str(&s)?
-        } else {
-            Value::default()
-        };
-        for (k, (v1, v2)) in diff_value(&before, &after, "state") {
-            debug!("{}: {} ==> {}", k, v1, v2);
+            // TODO
+            // let result = self.java_classFileContents(&json!({
+            //     VimVar::LanguageId.to_key(): "java",
+            //     "uri": path,
+            // }))?;
+            // let content = match result {
+            //     Value::String(s) => s,
+            //     _ => bail!("Unexpected type: {:?}", result),
+            // };
+            // let lines: Vec<String> = content
+            //     .lines()
+            //     .map(std::string::ToString::to_string)
+            //     .collect();
+            // self.setline(1, &lines)?;
         }
-        result
-    }
-
-    fn loop_message<T: BufRead>(&self, input: T, languageId: Option<String>) -> Result<()> {
-        // Count how many consequent empty lines.
-        let mut count_empty_lines = 0;
-
-        let mut input = input;
-        let mut content_length = 0;
-        loop {
-            let mut message = String::new();
-            let mut line = String::new();
-            if let Some(languageId) = languageId.clone() {
-                input.read_line(&mut line)?;
-                line = line.strip();
-                if line.is_empty() {
-                    count_empty_lines += 1;
-                    if count_empty_lines > 5 {
-                        if let Err(err) = self.cleanup(&languageId) {
-                            error!("Error when cleanup: {:?}", err);
-                        }
-
-                        let mut message =
-                            format!("Language server ({}) exited unexpectedly!", languageId);
-                        match get_log_server() {
-                            Ok(log_server) => {
-                                message += "\n\nlanguage server stderr:\n";
-                                message += &log_server;
-                            }
-                            Err(err) => error!("Error when get_log_server: {:?}", err),
-                        }
-                        if let Err(err) = self.echoerr(&message) {
-                            error!("Error in echoerr: {:?}", err);
-                        };
-                        bail!("{}", message);
-                    }
-
-                    let mut buf = vec![0; content_length];
-                    input.read_exact(buf.as_mut_slice())?;
-                    message = String::from_utf8(buf)?;
-                } else {
-                    count_empty_lines = 0;
-                    if !line.starts_with("Content-Length") {
-                        continue;
-                    }
-
-                    let tokens: Vec<&str> = line.splitn(2, ':').collect();
-                    let len = tokens
-                        .get(1)
-                        .ok_or_else(|| format_err!("Failed to get length! tokens: {:?}", tokens))?
-                        .trim();
-                    content_length = usize::from_str(len)?;
-                }
-            } else if input.read_line(&mut message)? == 0 {
-                break;
-            }
-
-            message = message.strip();
-            if message.is_empty() {
-                continue;
-            }
-            info!("<= {}", message);
-            let state = self.clone();
-            let languageId_clone = languageId.clone();
-            let spawn_result = std::thread::Builder::new()
-                .name(format!(
-                    "Handler-{}",
-                    languageId.clone().unwrap_or_else(|| "main".to_owned())
-                ))
-                .spawn(move || {
-                    if let Err(err) =
-                        state.handle_message(state.clone(), languageId_clone, message.clone())
-                    {
-                        if err.downcast_ref::<LCError>().is_none() {
-                            error!(
-                                "Error handling message. Message: {}. Error: {:?}",
-                                message, err
-                            );
-                        }
-                    }
-                });
-            if let Err(err) = spawn_result {
-                error!("Failed to spawn handler: {:?}", err);
-            }
-        }
-
         Ok(())
+    }
+
+    pub fn setqflist(&self, list: &[QuickfixEntry], action: &str, title: &str) -> Fallible<()> {
+        info!("Begin setqflist");
+        let parms = json!([list, action]);
+        self.rpcclient.notify("setqflist", parms)?;
+        let parms = json!([[], "a", { "title": title }]);
+        self.rpcclient.notify("setqflist", parms)?;
+        Ok(())
+    }
+
+    pub fn setloclist(&self, list: &[QuickfixEntry], action: &str, title: &str) -> Fallible<()> {
+        let parms = json!([0, list, action]);
+        self.rpcclient.notify("setloclist", parms)?;
+        let parms = json!([0, [], "a", { "title": title }]);
+        self.rpcclient.notify("setloclist", parms)?;
+        Ok(())
+    }
+
+    pub fn create_namespace(&self, name: &str) -> Fallible<i64> {
+        self.rpcclient.call("nvim_create_namespace", [name])
+    }
+
+    pub fn set_virtual_texts(
+        &self,
+        buf_id: i64,
+        ns_id: i64,
+        line_start: u64,
+        line_end: u64,
+        virtual_texts: &[VirtualText],
+    ) -> Fallible<i8> {
+        self.rpcclient.call(
+            "s:set_virtual_texts",
+            json!([buf_id, ns_id, line_start, line_end, virtual_texts]),
+        )
+    }
+
+    pub fn set_signs(
+        &self,
+        filename: &str,
+        signs_to_add: &[Sign],
+        signs_to_delete: &[Sign],
+    ) -> Fallible<i8> {
+        self.rpcclient.call(
+            "s:set_signs",
+            json!([filename, signs_to_add, signs_to_delete]),
+        )
     }
 }

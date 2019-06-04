@@ -1,4 +1,9 @@
-all: check build fmt clippy
+all: release
+
+dev: build fmt clippy vint
+
+ci: vint python-lint test integration-test
+	cargo fmt -- --check
 
 check:
 	cargo check
@@ -7,29 +12,34 @@ build:
 	cargo build
 
 fmt:
-	cargo +nightly fmt
+	cargo fmt
 
 clippy:
-	cargo +nightly clippy
+	cargo clippy
 
 vint:
-	vint .
+	vint autoload plugin
 
 release:
 	cargo build --release
 	cp -f target/release/languageclient bin/
+	chmod a+x bin/languageclient
 
 bump-version:
-	cargo release --level=patch
+	[[ `git rev-parse --abbrev-ref HEAD` == "next" ]] || (echo "Not on branch next"; exit 1)
+	cargo release patch
 
 test:
 	cargo test
 
-integration-test-lint:
-	mypy tests rplugin/python3/denite/source rplugin/python3/deoplete/sources
+python-lint:
+	mypy --ignore-missing-imports \
+		tests \
+		rplugin/python3/denite/source \
+		rplugin/python3/deoplete/sources
 	flake8 .
 
-integration-test: build integration-test-lint
+integration-test: build
 	tests/test.sh
 
 integration-test-docker:
@@ -48,8 +58,14 @@ clean:
 	cargo clean
 	rm -rf bin/languageclient
 
-build-docker-image: Dockerfile
-	docker build --tag autozimu/languageclientneovim .
+DATE := $(shell date +%F)
+
+build-docker-image: ci/Dockerfile
+	docker build \
+		--tag autozimu/languageclientneovim:latest \
+		--tag autozimu/languageclientneovim:$(DATE) \
+		ci
 
 publish-docker-image:
-	docker push autozimu/languageclientneovim
+	docker push autozimu/languageclientneovim:latest
+	docker push autozimu/languageclientneovim:$(DATE)

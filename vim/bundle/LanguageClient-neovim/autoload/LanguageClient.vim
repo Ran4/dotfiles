@@ -8,6 +8,7 @@ let s:TYPE = {
 \   'dict':    type({}),
 \   'funcref': type(function('call'))
 \ }
+let s:FLOAT_WINDOW_AVAILABLE = has('nvim') && exists('*nvim_open_win')
 
 function! s:AddPrefix(message) abort
     return '[LC] ' . a:message
@@ -79,6 +80,19 @@ function! s:Echowarn(message) abort
     echohl WarningMsg | echomsg s:AddPrefix(a:message) | echohl None
 endfunction
 
+" timeout: skip function call f until this timeout, in seconds.
+function! s:Debounce(timeout, f) abort
+    " Map function to its last execute time.
+    let s:DebounceMap = {}
+    let l:lastexectime = get(s:DebounceMap, a:f)
+    if l:lastexectime == 0 || reltimefloat(reltime(l:lastexectime)) < a:timeout
+        let s:DebounceMap[a:f] = reltime()
+        return v:true
+    else
+        return v:false
+    endif
+endfunction
+
 function! s:Debug(message) abort
     if !exists('g:LanguageClient_loggingLevel')
         return
@@ -90,24 +104,25 @@ function! s:Debug(message) abort
 endfunction
 
 function! s:hasSnippetSupport() abort
-    if get(g:, 'LanguageClient_hasSnippetSupport', 1) !=# 1
-        return 0
+    if exists('g:LanguageClient_hasSnippetSupport')
+        return g:LanguageClient_hasSnippetSupport !=# 0
     endif
 
-    " https://github.com/SirVer/ultisnips
-    if exists('g:did_plugin_ultisnips')
-        return 1
-    endif
     " https://github.com/Shougo/neosnippet.vim
     if exists('g:loaded_neosnippet')
         return 1
     endif
-    " https://github.com/garbas/vim-snipmate
-    if exists('g:loaded_snips')
-        return 1
-    endif
 
     return 0
+endfunction
+
+function! s:useVirtualText() abort
+    let l:use = s:GetVar('LanguageClient_useVirtualText')
+    if l:use isnot v:null
+        return !!l:use
+    endif
+
+    return exists('*nvim_buf_set_virtual_text')
 endfunction
 
 function! s:IsTrue(v) abort
@@ -129,11 +144,51 @@ function! s:Bufnames() abort
     return map(filter(range(0,bufnr('$')), 'buflisted(v:val)'), 'fnamemodify(bufname(v:val), '':p'')')
 endfunction
 
+" Clear and set virtual texts between line_start and line_end (exclusive).
+function! s:set_virtual_texts(buf_id, ns_id, line_start, line_end, virtual_texts) abort
+    " VirtualText: map with keys line, text and hl_group.
+
+    if !exists('*nvim_buf_set_virtual_text')
+        return
+    endif
+
+    call nvim_buf_clear_namespace(a:buf_id, a:ns_id, a:line_start, a:line_end)
+
+    for vt in a:virtual_texts
+        call nvim_buf_set_virtual_text(a:buf_id, a:ns_id, vt['line'], [[vt['text'], vt['hl_group']]], {})
+    endfor
+endfunction
+
+function! s:set_signs(file, signs_to_add, signs_to_delete) abort
+    " TODO: Optimize to update sign instead of add + remove sign.
+    for l:sign in a:signs_to_add
+        let l:line = l:sign['line'] + 1
+        execute ':sign place ' . l:sign['id'] . ' line=' . l:line . ' name=' . l:sign['name'] . ' file=' . a:file
+    endfor
+    for l:sign in a:signs_to_delete
+        execute ':sign unplace ' . l:sign['id']
+    endfor
+endfunction
+
+" Execute serious of ex commands.
+function! s:command(...) abort
+    for l:cmd in a:000
+        execute l:cmd
+    endfor
+endfunction
+
 function! s:getInput(prompt, default) abort
     call inputsave()
     let l:input = input(a:prompt, a:default)
     call inputrestore()
     return l:input
+endfunction
+
+function! s:inputlist(...) abort
+    call inputsave()
+    let l:selection = inputlist(a:000)
+    call inputrestore()
+    return l:selection
 endfunction
 
 function! s:FZF(source, sink) abort
@@ -155,7 +210,7 @@ function! s:FZF(source, sink) abort
                 \ 'sink': function(a:sink),
                 \ 'options': l:options,
                 \ }))
-    if has('nvim')
+    if has('nvim') && !has('nvim-0.4')
         call feedkeys('i')
     endif
 endfunction
@@ -164,7 +219,7 @@ function! s:Edit(action, path) abort
     " If editing current file, push current location to jump list.
     let l:bufnr = bufnr(a:path)
     if l:bufnr == bufnr('%')
-        execute 'normal m`'
+        execute 'normal! m`'
         return
     endif
 
@@ -194,7 +249,7 @@ function! s:AddHighlights(source, highlights) abort
 endfunction
 
 " Get an variable value.
-" First try buffer local, then global, then default, then v:null.
+" Get variable from uffer local, or else global, or else default, or else v:null.
 function! s:GetVar(...) abort
     let name = a:1
 
@@ -205,6 +260,150 @@ function! s:GetVar(...) abort
     else
         return get(a:000, 1, v:null)
     endif
+endfunction
+
+function! s:ShouldUseFloatWindow() abort
+    let use = s:GetVar('LanguageClient_useFloatingHover')
+    return s:FLOAT_WINDOW_AVAILABLE && (use || use is v:null)
+endfunction
+
+function! s:CloseFloatingHoverOnCursorMove(win_id, opened) abort
+    if getpos('.') == a:opened
+        " Just after opening floating window, CursorMoved event is run.
+        " To avoid closing floating window immediately, check the cursor
+        " was really moved
+        return
+    endif
+    autocmd! plugin-LC-neovim-close-hover
+    let winnr = win_id2win(a:win_id)
+    if winnr == 0
+        return
+    endif
+    execute winnr . 'wincmd c'
+endfunction
+
+function! s:CloseFloatingHoverOnBufEnter(win_id, bufnr) abort
+    let winnr = win_id2win(a:win_id)
+    if winnr == 0
+        " Float window was already closed
+        autocmd! plugin-LC-neovim-close-hover
+        return
+    endif
+    if winnr == winnr()
+        " Cursor is moving into floating window. Do not close it
+        return
+    endif
+    if bufnr('%') == a:bufnr
+        " When current buffer opened hover window, it's not another buffer. Skipped
+        return
+    endif
+    autocmd! plugin-LC-neovim-close-hover
+    execute winnr . 'wincmd c'
+endfunction
+
+" Open preview window. Window is open in:
+"   - Floating window on Neovim (0.4.0 or later)
+"   - Preview window on Neovim (0.3.0 or earlier) or Vim
+function! s:OpenHoverPreview(bufname, lines, filetype) abort
+    " Use local variable since parameter is not modifiable
+    let lines = a:lines
+    let bufnr = bufnr('%')
+
+    let use_float_win = s:ShouldUseFloatWindow()
+    if use_float_win
+        let pos = getpos('.')
+
+        " Calculate width and height and give margin to lines
+        let width = 0
+        for index in range(len(lines))
+            let line = lines[index]
+            if line !=# ''
+                " Give a left margin
+                let line = ' ' . line
+            endif
+            let lw = strdisplaywidth(line)
+            if lw > width
+                let width = lw
+            endif
+            let lines[index] = line
+        endfor
+
+        " Give margin
+        let width += 1
+        let lines = [''] + lines + ['']
+        let height = len(lines)
+
+        " Calculate anchor
+        " Prefer North, but if there is no space, fallback into South
+        let bottom_line = line('w0') + winheight(0) - 1
+        if pos[1] + height <= bottom_line
+            let vert = 'N'
+            let row = 1
+        else
+            let vert = 'S'
+            let row = 0
+        endif
+
+        " Prefer West, but if there is no space, fallback into East
+        if pos[2] + width <= &columns
+            let hor = 'W'
+            let col = 0
+        else
+            let hor = 'E'
+            let col = 1
+        endif
+
+        let float_win_id = nvim_open_win(bufnr, v:true, {
+        \   'relative': 'cursor',
+        \   'anchor': vert . hor,
+        \   'row': row,
+        \   'col': col,
+        \   'width': width,
+        \   'height': height,
+        \ })
+
+        execute 'noswapfile edit!' a:bufname
+
+        setlocal winhl=Normal:CursorLine
+    else
+        execute 'silent! noswapfile pedit!' a:bufname
+        wincmd P
+    endif
+
+    setlocal buftype=nofile nobuflisted bufhidden=wipe nonumber norelativenumber signcolumn=no
+
+    if a:filetype isnot v:null
+        let &filetype = a:filetype
+    endif
+
+    call setline(1, lines)
+    setlocal nomodified nomodifiable
+
+    wincmd p
+
+    if use_float_win
+        " Unlike preview window, :pclose does not close window. Instead, close
+        " hover window automatically when cursor is moved.
+        let call_after_move = printf('<SID>CloseFloatingHoverOnCursorMove(%d, %s)', float_win_id, string(pos))
+        let call_on_bufenter = printf('<SID>CloseFloatingHoverOnBufEnter(%d, %d)', float_win_id, bufnr)
+        augroup plugin-LC-neovim-close-hover
+            execute 'autocmd CursorMoved,CursorMovedI,InsertEnter <buffer> call ' . call_after_move
+            execute 'autocmd BufEnter * call ' . call_on_bufenter
+        augroup END
+    endif
+endfunction
+
+function! s:MoveIntoHoverPreview() abort
+    for bufnr in range(1, bufnr('$'))
+        if bufname(bufnr) ==# '__LanguageClient__'
+            let winnr = bufwinnr(bufnr)
+            if winnr != -1
+                execute winnr . 'wincmd w'
+            endif
+            return v:true
+        endif
+    endfor
+    return v:false
 endfunction
 
 let s:id = 1
@@ -254,16 +453,9 @@ function! s:HandleMessage(job, lines, event) abort
                 let l:method = get(l:message, 'method')
                 let l:params = get(l:message, 'params')
                 try
-                    if l:method ==# 'execute'
-                        for l:cmd in l:params
-                            execute l:cmd
-                        endfor
-                        let l:result = 0
-                    else
-                        let l:params = type(l:params) == s:TYPE.list ? l:params : [l:params]
-                        let l:result = call(l:method, l:params)
-                    endif
-                    if l:id != v:null
+                    let l:params = type(l:params) == s:TYPE.list ? l:params : [l:params]
+                    let l:result = call(l:method, l:params)
+                    if l:id isnot v:null
                         call LanguageClient#Write(json_encode({
                                     \ 'jsonrpc': '2.0',
                                     \ 'id': l:id,
@@ -272,7 +464,7 @@ function! s:HandleMessage(job, lines, event) abort
                     endif
                 catch
                     let l:exception = v:exception
-                    if l:id != v:null
+                    if l:id isnot v:null
                         try
                             call LanguageClient#Write(json_encode({
                                         \ 'jsonrpc': '2.0',
@@ -339,7 +531,7 @@ function! s:HandleOutput(output, ...) abort
 
     if has_key(a:output, 'result')
         " let l:result = string(a:result)
-        " if l:result !=# 'v:null'
+        " if l:result isnot v:null
             " echomsg l:result
         " endif
         return get(a:output, 'result')
@@ -447,6 +639,7 @@ function! LanguageClient#Call(method, params, callback, ...) abort
     let l:skipAddParams = get(a:000, 0, v:false)
     let l:params = a:params
     if type(a:params) == s:TYPE.dict && !skipAddParams
+        " TODO: put inside context.
         let l:params = extend({
                     \ 'bufnr': bufnr(''),
                     \ 'languageId': &filetype,
@@ -481,6 +674,9 @@ function! LanguageClient#Notify(method, params) abort
 endfunction
 
 function! LanguageClient#textDocument_hover(...) abort
+    if s:ShouldUseFloatWindow() && s:MoveIntoHoverPreview()
+        return
+    endif
     let l:Callback = get(a:000, 1, v:null)
     let l:params = {
                 \ 'filename': LSP#filename(),
@@ -498,9 +694,7 @@ function! LanguageClient#findLocations(...) abort
     let l:Callback = get(a:000, 1, v:null)
     let l:params = {
                 \ 'filename': LSP#filename(),
-                \ 'text': LSP#text(),
-                \ 'line': LSP#line(),
-                \ 'character': LSP#character(),
+                \ 'position': LSP#position(),
                 \ 'gotoCmd': v:null,
                 \ 'handle': s:IsFalse(l:Callback),
                 \ }
@@ -621,6 +815,13 @@ function! LanguageClient#textDocument_formatting(...) abort
     call extend(l:params, a:0 >= 1 ? a:1 : {})
     let l:Callback = a:0 >= 2 ? a:2 : v:null
     return LanguageClient#Call('textDocument/formatting', l:params, l:Callback)
+endfunction
+
+function! LanguageClient#textDocument_formatting_sync(...) abort
+    let l:result = LanguageClient_runSync('LanguageClient#textDocument_formatting', {
+                \ 'handle': v:true,
+                \ })
+    return l:result isnot v:null
 endfunction
 
 function! LanguageClient#textDocument_rangeFormatting(...) abort
@@ -768,9 +969,13 @@ endfunction
 
 function! LanguageClient#handleFileType() abort
     try
-        call LanguageClient#Notify('languageClient/handleFileType', {
-                    \ 'filename': LSP#filename(),
-                    \ })
+        if s:Debounce(2, 'LanguageClient#handleFileType')
+            call LanguageClient#Notify('languageClient/handleFileType', {
+                        \ 'filename': LSP#filename(),
+                        \ 'position': LSP#position(),
+                        \ 'viewport': LSP#viewport(),
+                        \ })
+        endif
     catch
         call s:Debug('LanguageClient caught exception: ' . string(v:exception))
     endtry
@@ -811,6 +1016,8 @@ function! LanguageClient#handleBufDelete() abort
     endtry
 endfunction
 
+" TODO: Separate CursorMoved and ViewportChanged events. But after separating,
+" there will Mutex poison error.
 let s:last_cursor_line = -1
 function! LanguageClient#handleCursorMoved() abort
     let l:cursor_line = getcurpos()[1] - 1
@@ -823,9 +1030,8 @@ function! LanguageClient#handleCursorMoved() abort
         call LanguageClient#Notify('languageClient/handleCursorMoved', {
                     \ 'buftype': &buftype,
                     \ 'filename': LSP#filename(),
-                    \ 'line': l:cursor_line,
-                    \ 'LSP#visible_line_start()': LSP#visible_line_start(),
-                    \ 'LSP#visible_line_end()': LSP#visible_line_end(),
+                    \ 'position': LSP#position(),
+                    \ 'viewport': LSP#viewport(),
                     \ })
     catch
         call s:Debug('LanguageClient caught exception: ' . string(v:exception))

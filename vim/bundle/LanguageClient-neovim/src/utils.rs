@@ -13,7 +13,7 @@ pub fn get_rootPath<'a>(
     path: &'a Path,
     languageId: &str,
     rootMarkers: &Option<RootMarkers>,
-) -> Result<&'a Path> {
+) -> Fallible<&'a Path> {
     if let Some(ref rootMarkers) = *rootMarkers {
         let empty = vec![];
         let rootMarkers = match *rootMarkers {
@@ -44,36 +44,45 @@ pub fn get_rootPath<'a>(
     match languageId {
         "rust" => traverse_up(path, |dir| dir.join("Cargo.toml").exists()),
         "php" => traverse_up(path, |dir| dir.join("composer.json").exists()),
-        "javascript" | "typescript" => traverse_up(path, |dir| dir.join("package.json").exists()),
+        "javascript" | "typescript" | "javascript.jsx" | "typescript.tsx" => {
+            traverse_up(path, |dir| dir.join("package.json").exists())
+        }
         "python" => traverse_up(path, |dir| {
-            dir.join("__init__.py").exists() || dir.join("setup.py").exists()
+            dir.join("setup.py").exists()
+                || dir.join("Pipfile").exists()
+                || dir.join("requirements.txt").exists()
+                || dir.join("pyproject.toml").exists()
         }),
         "c" | "cpp" => traverse_up(path, |dir| dir.join("compile_commands.json").exists()),
         "cs" => traverse_up(path, is_dotnet_root),
         "java" => traverse_up(path, |dir| {
-            dir.join(".project").exists() || dir.join("pom.xml").exists()
+            dir.join(".project").exists()
+                || dir.join("pom.xml").exists()
+                || dir.join("build.gradle").exists()
         }),
         "scala" => traverse_up(path, |dir| dir.join("build.sbt").exists()),
         "haskell" => traverse_up(path, |dir| dir.join("stack.yaml").exists())
             .or_else(|_| traverse_up(path, |dir| dir.join(".cabal").exists())),
         _ => Err(format_err!("Unknown languageId: {}", languageId)),
-    }.or_else(|_| {
+    }
+    .or_else(|_| {
         traverse_up(path, |dir| {
             dir.join(".git").exists() || dir.join(".hg").exists() || dir.join(".svn").exists()
         })
     })
-        .or_else(|_| {
-            let parent = path.parent()
-                .ok_or_else(|| format_err!("Failed to get parent dir! path: {:?}", path));
-            warn!(
-                "Unknown project type. Fallback to use dir as project root: {:?}",
-                parent
-            );
+    .or_else(|_| {
+        let parent = path
+            .parent()
+            .ok_or_else(|| format_err!("Failed to get parent dir! path: {:?}", path));
+        warn!(
+            "Unknown project type. Fallback to use dir as project root: {:?}",
             parent
-        })
+        );
+        parent
+    })
 }
 
-fn traverse_up<F>(path: &Path, predicate: F) -> Result<&Path>
+fn traverse_up<F>(path: &Path, predicate: F) -> Fallible<&Path>
 where
     F: Fn(&Path) -> bool,
 {
@@ -110,62 +119,18 @@ fn is_dotnet_root(dir: &Path) -> bool {
 }
 
 pub trait ToUrl {
-    fn to_url(&self) -> Result<Url>;
+    fn to_url(&self) -> Fallible<Url>;
 }
 
 impl<P: AsRef<Path> + std::fmt::Debug> ToUrl for P {
-    fn to_url(&self) -> Result<Url> {
-        Url::from_file_path(self).or_else(|_| {
-            Err(format_err!(
-                "Failed to convert from path ({:?}) to Url",
-                self
-            ))
-        })
+    fn to_url(&self) -> Fallible<Url> {
+        Url::from_file_path(self)
+            .or_else(|_| Url::from_str(&self.as_ref().to_string_lossy()))
+            .or_else(|_| Err(format_err!("Failed to convert ({:?}) to Url", self)))
     }
 }
 
-pub fn get_logpath() -> PathBuf {
-    let dir = env::var("TMP")
-        .or_else(|_| env::var("TEMP"))
-        .unwrap_or_else(|_| "/tmp".to_owned());
-
-    Path::new(&dir).join("LanguageClient.log")
-}
-
-pub fn get_logpath_server() -> PathBuf {
-    let dir = env::var("TMP")
-        .or_else(|_| env::var("TEMP"))
-        .unwrap_or_else(|_| "/tmp".to_owned());
-
-    Path::new(&dir).join("LanguageServer.log")
-}
-
-pub fn get_log_server() -> Result<String> {
-    let mut f = std::fs::OpenOptions::new()
-        .read(true)
-        .open(get_logpath_server())?;
-    let mut buffer = String::new();
-    f.read_to_string(&mut buffer)?;
-    Ok(buffer)
-}
-
-pub trait Strip {
-    fn strip(&self) -> Self;
-}
-
-impl<'a> Strip for &'a str {
-    fn strip(&self) -> Self {
-        self.trim().trim_matches(|c| c == '\r' || c == '\n')
-    }
-}
-
-impl Strip for String {
-    fn strip(&self) -> Self {
-        self.as_str().strip().to_owned()
-    }
-}
-
-pub fn apply_TextEdits(lines: &[String], edits: &[TextEdit]) -> Result<Vec<String>> {
+pub fn apply_TextEdits(lines: &[String], edits: &[TextEdit]) -> Fallible<Vec<String>> {
     // Edits are ordered from bottom to top, from right to left.
     let mut edits_by_index = vec![];
     for edit in edits {
@@ -176,12 +141,14 @@ pub fn apply_TextEdits(lines: &[String], edits: &[TextEdit]) -> Result<Vec<Strin
 
         let start = lines[..std::cmp::min(start_line, lines.len())]
             .iter()
-            .map(|l| l.len())
-            .fold(0, |acc, l| acc + l + 1 /*line ending*/) + start_character;
+            .map(String::len)
+            .fold(0, |acc, l| acc + l + 1 /*line ending*/)
+            + start_character;
         let end = lines[..std::cmp::min(end_line, lines.len())]
             .iter()
-            .map(|l| l.len())
-            .fold(0, |acc, l| acc + l + 1 /*line ending*/) + end_character;
+            .map(String::len)
+            .fold(0, |acc, l| acc + l + 1 /*line ending*/)
+            + end_character;
         edits_by_index.push((start, end, &edit.new_text));
     }
 
@@ -192,7 +159,7 @@ pub fn apply_TextEdits(lines: &[String], edits: &[TextEdit]) -> Result<Vec<Strin
         text = String::new() + &text[..start] + new_text + &text[end..];
     }
 
-    Ok(text.split('\n').map(|l| l.to_owned()).collect())
+    Ok(text.lines().map(ToOwned::to_owned).collect())
 }
 
 #[test]
@@ -200,16 +167,18 @@ fn test_apply_TextEdit() {
     let lines: Vec<String> = r#"fn main() {
 0;
 }
-"#.split('\n')
-        .map(|l| l.to_owned())
-        .collect();
+"#
+    .lines()
+    .map(|l| l.to_owned())
+    .collect();
 
     let expect: Vec<String> = r#"fn main() {
     0;
 }
-"#.split('\n')
-        .map(|l| l.to_owned())
-        .collect();
+"#
+    .lines()
+    .map(|l| l.to_owned())
+    .collect();
 
     let edit = TextEdit {
         range: Range {
@@ -225,7 +194,8 @@ fn test_apply_TextEdit() {
         new_text: r#"fn main() {
     0;
 }
-"#.to_owned(),
+"#
+        .to_owned(),
     };
 
     assert_eq!(apply_TextEdits(&lines, &[edit]).unwrap(), expect);
@@ -233,9 +203,9 @@ fn test_apply_TextEdit() {
 
 #[test]
 fn test_apply_TextEdit_overlong_end() {
-    let lines: Vec<String> = r#"abc = 123"#.split('\n').map(|l| l.to_owned()).collect();
+    let lines: Vec<String> = r#"abc = 123"#.lines().map(|l| l.to_owned()).collect();
 
-    let expect: Vec<String> = r#"nb = 123"#.split('\n').map(|l| l.to_owned()).collect();
+    let expect: Vec<String> = r#"nb = 123"#.lines().map(|l| l.to_owned()).collect();
 
     let edit = TextEdit {
         range: Range {
@@ -254,110 +224,19 @@ fn test_apply_TextEdit_overlong_end() {
     assert_eq!(apply_TextEdits(&lines, &[edit]).unwrap(), expect);
 }
 
-fn get_command_add_sign(sign: &Sign, filename: &str) -> String {
-    format!(
-        " | execute 'sign place {} line={} name=LanguageClient{:?} file={}'",
-        sign.id, sign.line, sign.severity, filename
-    )
-}
-
-#[test]
-fn test_get_command_add_sign() {
-    let sign = Sign::new(1, "".to_owned(), DiagnosticSeverity::Error);
-    assert_eq!(
-        get_command_add_sign(&sign, ""),
-        " | execute 'sign place 75000 line=1 name=LanguageClientError file='"
-    );
-
-    let sign = Sign::new(7, "".to_owned(), DiagnosticSeverity::Error);
-    assert_eq!(
-        get_command_add_sign(&sign, ""),
-        " | execute 'sign place 75024 line=7 name=LanguageClientError file='"
-    );
-
-    let sign = Sign::new(7, "".to_owned(), DiagnosticSeverity::Hint);
-    assert_eq!(
-        get_command_add_sign(&sign, ""),
-        " | execute 'sign place 75027 line=7 name=LanguageClientHint file='"
-    );
-}
-
-fn get_command_delete_sign(sign: &Sign, filename: &str) -> String {
-    format!(" | execute 'sign unplace {} file={}'", sign.id, filename)
-}
-
-#[test]
-fn test_get_command_delete_sign() {}
-
-use diff;
-
-pub fn get_command_update_signs(
-    signs_prev: &[Sign],
-    signs: &[Sign],
-    filename: &str,
-) -> (Vec<Sign>, String) {
-    // Sign id might become different due to lines shifting. Use sign's existing sign id to
-    // track same sign.
-    let mut signs_next = vec![];
-
-    let mut cmd = "echo".to_owned();
-    for comp in diff::slice(signs_prev, signs) {
-        match comp {
-            diff::Result::Left(sign) => {
-                cmd += &get_command_delete_sign(sign, filename);
-            }
-            diff::Result::Right(sign) => {
-                cmd += &get_command_add_sign(sign, filename);
-                signs_next.push(sign.clone());
-            }
-            diff::Result::Both(sign, _) => {
-                signs_next.push(sign.clone());
-            }
-        }
-    }
-
-    (signs_next, cmd)
-}
-
-#[test]
-fn test_get_command_update_signs() {
-    let signs_prev = vec![Sign::new(1, "abcde".to_string(), DiagnosticSeverity::Error)];
-    let signs = vec![Sign::new(3, "abcde".to_string(), DiagnosticSeverity::Error)];
-    let (signs_next, cmd) = get_command_update_signs(&signs_prev, &signs, "f");
-    assert_eq!(
-        serde_json::to_string(&signs_next).unwrap(),
-        "[{\"id\":75000,\"line\":1,\"text\":\"abcde\",\"severity\":1}]"
-    );
-    assert_eq!(cmd, "echo");
-}
-
-pub trait Merge {
-    fn merge(&mut self, other: Self) -> ();
-}
-
-impl<K: std::hash::Hash + Eq, V, S: std::hash::BuildHasher> Merge for HashMap<K, V, S>
-where
-    K: std::cmp::Eq + std::hash::Hash,
-{
-    fn merge(&mut self, other: Self) -> () {
-        for (k, v) in other {
-            self.insert(k, v);
-        }
-    }
-}
-
 pub trait Combine {
-    fn combine(self, other: Self) -> Self
+    /// Recursively combine two objects.
+    fn combine(&self, other: &Self) -> Self
     where
-        Self: Sized;
+        Self: Sized + Clone;
 }
 
 impl Combine for Value {
-    fn combine(self, other: Self) -> Self {
+    fn combine(&self, other: &Self) -> Self {
         match (self, other) {
-            (this, Value::Null) => this,
+            (this, Value::Null) => this.clone(),
             (Value::Object(this), Value::Object(other)) => {
-                let mut map = serde_json::map::Map::new();
+                let mut map = serde_json::Map::new();
                 let mut keys: HashSet<String> = HashSet::new();
                 for k in this.keys() {
                     keys.insert(k.clone());
@@ -366,28 +245,83 @@ impl Combine for Value {
                     keys.insert(k.clone());
                 }
                 for k in keys.drain() {
-                    let v1 = this.get(&k).unwrap_or(&Value::Null).clone();
-                    let v2 = other.get(&k).unwrap_or(&Value::Null).clone();
+                    let v1 = this.get(&k).unwrap_or(&Value::Null);
+                    let v2 = other.get(&k).unwrap_or(&Value::Null);
                     map.insert(k, v1.combine(v2));
                 }
                 Value::Object(map)
             }
-            (_, other) => other,
+            (_, other) => other.clone(),
         }
     }
 }
 
-pub fn vim_cmd_args_to_value(args: &[String]) -> Result<Value> {
+/// Expand condensed json path as in VSCode.
+///
+/// e.g.,
+/// ```json
+/// {
+///   "rust.rls": true
+/// }
+/// ```
+/// will be expanded to
+/// ```json
+/// {
+///   "rust": {
+///     "rls": true
+///   }
+/// }
+/// ```
+pub fn expand_json_path(value: Value) -> Value {
+    match value {
+        Value::Object(map) => {
+            let mut value_expanded = json!({});
+            for (k, v) in map {
+                let mut v = v;
+                for token in k.rsplit('.') {
+                    v = json!({ token: v });
+                }
+                value_expanded = value_expanded.combine(&v);
+            }
+            value_expanded
+        }
+        _ => value,
+    }
+}
+
+#[test]
+fn test_expand_json_path() {
+    assert_eq!(
+        expand_json_path(json!({
+            "k": "v"
+        })),
+        json!({
+            "k": "v"
+        })
+    );
+    assert_eq!(
+        expand_json_path(json!({
+            "rust.rls": true
+        })),
+        json!({
+            "rust": {
+                "rls": true
+            }
+        })
+    );
+}
+
+pub fn vim_cmd_args_to_value(args: &[String]) -> Fallible<Value> {
     let mut map = serde_json::map::Map::new();
     for arg in args {
         let mut tokens: Vec<_> = arg.splitn(2, '=').collect();
         tokens.reverse();
-        let key = tokens
-            .pop()
-            .ok_or_else(|| format_err!("Failed to parse command arguments! tokens: {:?}", tokens))?;
-        let value = tokens
-            .pop()
-            .ok_or_else(|| format_err!("Failed to parse command arguments! tokens: {:?}", tokens))?;
+        let key = tokens.pop().ok_or_else(|| {
+            format_err!("Failed to parse command arguments! tokens: {:?}", tokens)
+        })?;
+        let value = tokens.pop().ok_or_else(|| {
+            format_err!("Failed to parse command arguments! tokens: {:?}", tokens)
+        })?;
         let value = Value::String(value.to_owned());
         map.insert(key.to_owned(), value);
     }
@@ -401,8 +335,8 @@ fn test_vim_cmd_args_to_value() {
     assert_eq!(
         vim_cmd_args_to_value(&cmdargs).unwrap(),
         json!({
-        "rootPath": "/tmp"
-    })
+            "rootPath": "/tmp"
+        })
     );
 }
 
@@ -413,9 +347,11 @@ pub fn diff_value<'a>(v1: &'a Value, v2: &'a Value, path: &str) -> HashMap<Strin
         | (&Value::Bool(_), &Value::Bool(_))
         | (&Value::Number(_), &Value::Number(_))
         | (&Value::String(_), &Value::String(_))
-        | (&Value::Array(_), &Value::Array(_)) => if v1 != v2 {
-            diffs.insert(path.to_owned(), (v1.clone(), v2.clone()));
-        },
+        | (&Value::Array(_), &Value::Array(_)) => {
+            if v1 != v2 {
+                diffs.insert(path.to_owned(), (v1.clone(), v2.clone()));
+            }
+        }
         (&Value::Object(ref map1), &Value::Object(ref map2)) => {
             let keys1: HashSet<&String> = map1.keys().collect();
             let keys2: HashSet<&String> = map2.keys().collect();
@@ -428,7 +364,7 @@ pub fn diff_value<'a>(v1: &'a Value, v2: &'a Value, path: &str) -> HashMap<Strin
                     map2.get(*k).unwrap_or(&Value::Null),
                     &next_path,
                 );
-                diffs.merge(next_diffs);
+                diffs.extend(next_diffs);
             }
         }
         _ => {
@@ -452,7 +388,7 @@ fn test_diff_value() {
             }),
             "state"
         ),
-        hashmap!{
+        hashmap! {
             "state.line".to_owned() => (json!(1), json!(3)),
         }
     );
@@ -467,15 +403,64 @@ where
     P: AsRef<Path>,
 {
     fn canonicalize(&self) -> String {
-        if let Ok(fc) = std::fs::canonicalize(self) {
-            if let Some(fs) = fc.to_str() {
-                return fs.to_owned();
-            }
-        }
+        let path = match std::fs::canonicalize(self) {
+            Ok(path) => path.to_string_lossy().into_owned(),
+            _ => self.as_ref().to_string_lossy().into_owned(),
+        };
 
-        self.as_ref()
-            .to_str()
-            .map(|s| s.to_owned())
-            .unwrap_or_default()
+        // Trim UNC prefixes.
+        // See https://github.com/rust-lang/rust/issues/42869
+        path.trim_start_matches("\\\\?\\").into()
+    }
+}
+
+pub fn get_default_initializationOptions(languageId: &str) -> Value {
+    match languageId {
+        "java" => json!({
+            "extendedClientCapabilities": {
+                "classFileContentsSupport": true
+            }
+        }),
+        _ => json!(Value::Null),
+    }
+}
+
+/// Given a parameter label and its containing signature, return the part before the label, the
+/// label itself, and the part after the label.
+pub fn decode_parameterLabel(
+    parameter_label: &lsp::ParameterLabel,
+    signature: &str,
+) -> Fallible<(String, String, String)> {
+    match *parameter_label {
+        lsp::ParameterLabel::Simple(ref label) => {
+            let chunks: Vec<&str> = signature.split(label).collect();
+            if chunks.len() != 2 {
+                return Err(err_msg("Parameter is not part of signature"));
+            }
+            let begin = chunks[0].to_string();
+            let label = label.to_string();
+            let end = chunks[1].to_string();
+            Ok((begin, label, end))
+        }
+        lsp::ParameterLabel::LabelOffsets([start, finish]) => {
+            // Offsets are based on a UTF-16 string representation, inclusive start,
+            // exclusive finish.
+            let start = start.to_usize()?;
+            let finish = finish.to_usize()?;
+            let utf16: Vec<u16> = signature.encode_utf16().collect();
+            let begin = utf16
+                .get(..start)
+                .ok_or_else(|| err_msg("Offset out of range"))?;
+            let begin = String::from_utf16(begin)?;
+            let label = utf16
+                .get(start..finish)
+                .ok_or_else(|| err_msg("Offset out of range"))?;
+            let label = String::from_utf16(label)?;
+            let end = utf16
+                .get(finish..)
+                .ok_or_else(|| err_msg("Offset out of range"))?;
+            let end = String::from_utf16(end)?;
+            Ok((begin, label, end))
+        }
     }
 }

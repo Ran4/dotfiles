@@ -1,6 +1,6 @@
-# 1. Install neovim or vim
-
-Obviously you need [neovim](https://github.com/neovim/neovim#install-from-package) or [vim](http://www.vim.org/)!
+# 1. Requirements
+- neovim or
+- vim >= 8.0
 
 # 2. Install dependencies
 
@@ -14,6 +14,8 @@ None.
 > If you don't want to use pre-built binaries, specify branch `next` and `make
 > release` as post action after plugin installation and update. e.g., `Plug
 > 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'make release'}`.
+
+> Android is not supported using the `install.sh` script.
 
 Choose steps matching your plugin manager.
 
@@ -67,22 +69,24 @@ Example configuration
 set hidden
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
     \ }
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 ```
 
 # 6. Troubleshooting
 
-1. Backup your vimrc and use [min-init.vim](min-init.vim) as vimrc.
+1. Backup your vimrc and use [min-vimrc.vim](min-vimrc.vim) as vimrc.
 1. Try on [sample projects](tests/data).
 1. Execute `:echo &runtimepath` and make sure the plugin path is in the list.
 1. Make sure language server could be started when invoked manually from shell.
-1. Check content of language server standard error `($TMP || $TEMP |
-   /tmp)/LanguageServer.log` and language client log `($TMP || $TEMP |
-   /tmp)/LanguageClient.log`. Also note language server might have separate
-   log files.
+ Also try use absolute path for server commands, as PATH in vim might be different from shell env, especially on macOS.
+1. Check content of log file. Also worth noting language server might have
+   separate log file.

@@ -1,49 +1,52 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 # Try install by
 #   - download binary
 #   - build with cargo
 
 set -o nounset    # error when referencing undefined variable
 set -o errexit    # exit when command fails
-set -o pipefail
 
-version=0.1.40
+version=0.1.146
 name=languageclient
 
-function try_curl() {
+try_curl() {
     command -v curl > /dev/null && \
-        curl --fail --location $1 --output bin/$name
+        curl --fail --location "$1" --output bin/$name
 }
 
-function try_wget() {
+try_wget() {
     command -v wget > /dev/null && \
-        wget --output-document=bin/$name $1
+        wget --output-document=bin/$name "$1"
 }
 
-function download() {
+download() {
     echo "Downloading bin/${name}..."
-    local url=https://github.com/autozimu/LanguageClient-neovim/releases/download/$version/${1}
-    if (try_curl $url || try_wget $url); then
+    url=https://github.com/autozimu/LanguageClient-neovim/releases/download/$version/${1}
+    if (try_curl "$url" || try_wget "$url"); then
         chmod a+x bin/$name
         return
     else
-        echo "Failed to download with curl and wget"
-        try_build
+        try_build || echo "Prebuilt binary might not be ready yet. Please check minutes later."
     fi
 }
 
-function try_build() {
-    echo "Trying build locally ..."
-    make release
+try_build() {
+    if command -v cargo > /dev/null; then
+        echo "Trying build locally ..."
+        make release
+    else
+        return 1
+    fi
 }
 
 rm -f bin/languageclient
 
 arch=$(uname -sm)
-binary=""
 case "${arch}" in
-    Linux\ *64) download $name-$version-x86_64-unknown-linux-musl ;;
-    Linux\ *86) download $name-$version-i686-unknown-linux-musl ;;
-    Darwin\ *64) download $name-$version-x86_64-apple-darwin ;;
+    "Linux x86_64") download $name-$version-x86_64-unknown-linux-musl ;;
+    "Linux i686") download $name-$version-i686-unknown-linux-musl ;;
+    "Linux aarch64") download $name-$version-aarch64-unknown-linux-gnu ;;
+    "Darwin x86_64") download $name-$version-x86_64-apple-darwin ;;
+    "FreeBSD amd64") download $name-$version-x86_64-unknown-freebsd ;;
     *) echo "No pre-built binary available for ${arch}."; try_build ;;
 esac

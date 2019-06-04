@@ -1,7 +1,7 @@
 from .base import Base
 
 
-CompleteResults = "g:LanguageClient_completeResults"
+CompleteOutputs = "g:LanguageClient_omniCompleteResults"
 
 
 class Source(Base):
@@ -11,19 +11,39 @@ class Source(Base):
         self.name = "LanguageClient"
         self.mark = "[LC]"
         self.rank = 1000
+        self.min_pattern_length = 1
         self.filetypes = vim.eval(
             "get(g:, 'LanguageClient_serverCommands', {})").keys()
+        self.input_pattern += r'(\.|::|->)\w*$'
+
+    def get_complete_position(self, context):
+        return self.vim.call(
+            'LanguageClient#get_complete_start', context['input'])
 
     def gather_candidates(self, context):
-        if not context["is_async"]:
+        if context["is_async"]:
+            outputs = self.vim.eval(CompleteOutputs)
+            if len(outputs) != 0:
+                context["is_async"] = False
+                # TODO: error handling.
+                candidates = outputs[0].get("result", [])
+                # log(str(candidates))
+                return candidates
+        else:
             context["is_async"] = True
-            self.vim.funcs.LanguageClient_omniComplete()
-            return []
-        elif self.vim.funcs.eval("len({})".format(CompleteResults)) == 0:
-            return []
+            self.vim.command("let {} = []".format(CompleteOutputs))
+            character = (context["complete_position"]
+                         + len(context["complete_str"]))
+            self.vim.funcs.LanguageClient_omniComplete({
+                "character": character,
+                "complete_position": context["complete_position"],
+            })
+        return []
 
-        context["is_async"] = False
-        result = self.vim.funcs.eval("remove({}, 0)".format(CompleteResults))
-        if not isinstance(result, list):
-            result = []
-        return result
+
+# f = open("/tmp/deoplete.log", "w")
+
+
+# def log(message):
+#     f.writelines([message])
+#     f.flush()

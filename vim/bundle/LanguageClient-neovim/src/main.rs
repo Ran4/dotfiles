@@ -1,108 +1,67 @@
 #![allow(non_snake_case, non_upper_case_globals)]
 
 use std::collections::{HashMap, HashSet};
-use std::sync::mpsc::{channel, Sender};
-use std::sync::{Arc, Mutex};
-use std::path::{Path, PathBuf};
+use std::fmt::Debug;
+use std::fs::{read_to_string, File};
 use std::io::prelude::*;
-use std::io::{BufReader, BufWriter};
-use std::fs::File;
-use std::env;
-use std::process::{ChildStdin, Stdio};
-pub use std::ops::Deref;
+use std::io::{BufRead, BufReader, BufWriter};
+use std::net::TcpStream;
+use std::ops::Deref;
+use std::path::{Path, PathBuf};
+use std::process::{ChildStdin, ChildStdout, Stdio};
+use std::str::FromStr;
+use std::sync::{Arc, Mutex, MutexGuard};
+use std::thread;
+use std::time::{Duration, Instant};
 
-#[macro_use]
-extern crate log;
-extern crate log4rs;
+use log::{debug, error, info, log_enabled, warn};
 
-#[macro_use]
-extern crate failure;
-use failure::{err_msg, Error};
+#[allow(unused_imports)]
+use failure::{bail, err_msg, format_err, Error, Fail, ResultExt};
 
-extern crate libc;
+use maplit::hashmap;
 
-extern crate chrono;
-
-#[macro_use]
-extern crate maplit;
-
-extern crate serde;
-use serde::Serialize;
 use serde::de::DeserializeOwned;
+use serde::Serialize;
 #[macro_use]
 extern crate serde_derive;
-#[macro_use]
-extern crate serde_json;
+use serde_json::json;
 
-extern crate jsonrpc_core as rpc;
-pub use rpc::{Params, Value};
+use jsonrpc_core::{self as rpc, Params, Value};
 
-extern crate languageserver_types as lsp;
-use lsp::*;
+use lsp_types::{self as lsp, *};
 
-extern crate url;
 use url::Url;
 
-extern crate pathdiff;
 use pathdiff::diff_paths;
 
-extern crate diff;
-
-extern crate glob;
-extern crate regex;
-
-extern crate structopt;
 use structopt::StructOpt;
-#[macro_use]
-extern crate structopt_derive;
-
-#[macro_use]
-extern crate lazy_static;
 
 mod types;
-use types::*;
+use crate::types::*;
 mod utils;
-use utils::*;
-mod vim;
-use vim::*;
-mod rpchandler;
-use rpchandler::*;
-mod languageclient;
-pub use languageclient::*;
+use crate::utils::*;
+mod language_client;
+mod language_server_protocol;
 mod logger;
+mod rpchandler;
+mod sign;
+mod viewport;
+mod vim;
+mod vimext;
+
+mod rpcclient;
 
 #[derive(Debug, StructOpt)]
-struct Opt {}
+struct Arguments {}
 
-lazy_static! {
-    pub static ref LOGGER: Result<log4rs::Handle> = logger::init();
-}
+fn main() -> Fallible<()> {
+    let version = format!("{} {}", env!("CARGO_PKG_VERSION"), env!("GIT_HASH"));
+    let args = Arguments::clap().version(version.as_str());
+    let _ = args.get_matches();
 
-fn run() -> Result<()> {
-    // Whether should it be Mutex or RwLock?
-    // Even though RwLock allows several readers at the same time, it won't bring too much good in
-    // this use case. As in this project, read and write are almost same amount of short
-    // operations. For RwLock to work, a writer still needs to wait for all readers finish their
-    // work before making the change.
-    let state = Arc::new(Mutex::new(State::new()));
+    let (tx, rx) = crossbeam_channel::unbounded();
+    let language_client = language_client::LanguageClient(Arc::new(Mutex::new(State::new(tx)?)));
 
-    let stdin = std::io::stdin();
-    let stdin = stdin.lock();
-    state.loop_message(stdin, None)
-}
-
-fn main() {
-    let version = format!(
-        "{} ({} {:?})",
-        env!("CARGO_PKG_VERSION"),
-        option_env!("TRAVIS_COMMIT").unwrap_or("NULL"),
-        chrono::Utc::now(),
-    );
-
-    let app = Opt::clap().version(version.as_str());
-    let _ = app.get_matches();
-
-    if let Err(err) = run() {
-        eprintln!("{:?}", err);
-    }
+    language_client.loop_call(&rx)
 }

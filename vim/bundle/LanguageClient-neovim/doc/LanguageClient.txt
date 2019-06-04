@@ -1,4 +1,4 @@
-*LanguageClient*  Language Server Protocol support for neovim
+*LanguageClient.txt* Language Server Protocol support for vim and neovim *LanguageClient*
 
 
 ==============================================================================
@@ -21,7 +21,7 @@ going to be used to start language server. See |LanguageClient_serverCommands|
 for detail. Here is a simple example config: >
 
     let g:LanguageClient_serverCommands = {
-        \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+        \ 'rust': ['rustup', 'run', 'stable', 'rls'],
         \ }
 
 After that, open a file with one of the above filetypes, functionalities
@@ -31,9 +31,22 @@ At this point, call any provided function as you like. See
 |LanguageClientFunctions| for a complete list of functions. Usually one would
 like to map these functions to shortcuts, for example: >
 
-    nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-    nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-    nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+    nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+    nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+    nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+You can apply these mappings only for buffers with supported filetypes with a
+simple function: >
+
+    function LC_maps()
+      if has_key(g:LanguageClient_serverCommands, &filetype)
+        nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
+        nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
+        nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+      endif
+    endfunction
+
+    autocmd FileType * call LC_maps()
 
 If one is using deoplete/nvim-completion-manager at the same time, completion
 should work out of the box. Otherwise, completion is available with 'C-X C-O'
@@ -44,13 +57,12 @@ Alternatively, set 'completefunc': >
 <
 If the language server supports, diagnostic/lint information will be displayed
 via gutter and syntax highlighting with real time editing. At the same time,
-those info are populated into quickfix list (or location list), which can be
+that info is populated into the quickfix list (or location list), which can be
 accessed by regular quickfix/location list operations.
 
 To use the language server with Vim's formatting operator |gq|, set 'formatexpr': >
-    set formatexpr=LanguageClient_textDocument_rangeFormatting()
+    set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 <
-
 ==============================================================================
 2. Configuration                                 *LanguageClientConfiguration*
 
@@ -60,10 +72,21 @@ String to list map. Defines commands to start language server for specific
 filetype. For example: >
 
     let g:LanguageClient_serverCommands = {
-        \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+        \ 'rust': ['rustup', 'run', 'stable', 'rls'],
         \ }
 
+In the example above, 'run', 'stable', and 'rls' are arguments to the
+'rustup' command line tool.
+
+Or tcp connection string to the server, >
+    let g:LanguageClient_serverCommands = {
+        \ 'javascript': ['tcp://127.0.0.1:2089'],
+        \ }
+
+Note: environmental variables are not supported except home directory alias `~`.
+
 Default: {}
+Valid Option: Map<String, List<String> | String>
 
 2.2 g:LanguageClient_diagnosticsDisplay  *g:LanguageClient_diagnosticsDisplay*
 
@@ -76,26 +99,37 @@ Default: >
             "texthl": "ALEError",
             "signText": "✖",
             "signTexthl": "ALEErrorSign",
+            "virtualTexthl": "Error",
         },
         2: {
             "name": "Warning",
             "texthl": "ALEWarning",
             "signText": "⚠",
             "signTexthl": "ALEWarningSign",
+            "virtualTexthl": "Todo",
         },
         3: {
             "name": "Information",
             "texthl": "ALEInfo",
             "signText": "ℹ",
             "signTexthl": "ALEInfoSign",
+            "virtualTexthl": "Todo",
         },
         4: {
             "name": "Hint",
             "texthl": "ALEInfo",
             "signText": "➤",
             "signTexthl": "ALEInfoSign",
+            "virtualTexthl": "Todo",
         },
     }
+
+2.3 g:LanguageClient_diagnosticsSignsMax  *g:LanguageClient_diagnosticsSignsMax*
+
+Control how many diagnostics signs are displayed.
+
+Default: v:null (Show all signs)
+Valid options: v:null | number
 
 2.4 g:LanguageClient_changeThrottle      *g:LanguageClient_changeThrottle*
 
@@ -104,10 +138,11 @@ example: >
 
     let g:LanguageClient_changeThrottle = 0.5
 
-This will make LanguageClient pause 0.5 second to send text changes to server
-after one textDocument_didChange is sent.
+This will make LanguageClient pause 0.5 second to send text changes to
+server after one textDocument_didChange is sent.
 
-Default: 0. No throttling.
+Default: v:null (No throttling)
+Valid options: v:null | number
 
 2.5 g:LanguageClient_autoStart                  *g:LanguageClient_autoStart*
 
@@ -116,28 +151,41 @@ associated filetype.
 
 Default: 1.
 
-2.6 g:LanguageClient_selectionUI                *g:LanguageClient_selectionUI*
+2.6 g:LanguageClient_autoStop                   *g:LanguageClient_autoStop*
+
+Whether to stop language servers automatically when closing vim.
+associated filetype.
+
+Default: 1.
+
+2.7 g:LanguageClient_selectionUI                *g:LanguageClient_selectionUI*
 
 Selection UI used when there are multiple entries.
 
 Default: If fzf is loaded, use "fzf", otherwise use "location-list".
-Valid options: "fzf" | "location-list"
+Valid options: "fzf" | "quickfix" | "location-list"
 
-2.7 g:LanguageClient_trace                           *g:LanguageClient_trace*
+2.7 g:LanguageClient_selectionUI_autoOpen                *LanguageClient_selectionUI_autoOpen*
+Selection UI auto open when selectionUI is not "fzf"
+
+Valid options: 1 | 0
+Default: 1
+
+2.8 g:LanguageClient_trace                           *g:LanguageClient_trace*
 
 Trace setting passed to server.
 
 Default: "off"
 Valid options: "off" | "messages" | "verbose"
 
-2.8 g:LanguageClient_diagnosticsList        *g:LanguageClient_diagnosticsList*
+2.9 g:LanguageClient_diagnosticsList        *g:LanguageClient_diagnosticsList*
 
 List used to fill diagnostic messages.
 
-Default: "quickfix"
-Valid options: "quickfix" | "location" | ""
+Default: "Quickfix"
+Valid options: "Quickfix" | "Location" | "Disabled"
 
-2.9 g:LanguageClient_diagnosticsEnable    *g:LanguageClient_diagnosticsEnable*
+2.10 g:LanguageClient_diagnosticsEnable    *g:LanguageClient_diagnosticsEnable*
 
 Whether to handle diagnostic messages, including gutter, highlight and
 quickfix/location list.
@@ -145,34 +193,60 @@ quickfix/location list.
 Default: 1
 Valid options: 1 | 0
 
-2.10 g:LanguageClient_windowLogMessageLevel  *g:LanguageClient_windowLogMessageLevel*
+2.11 g:LanguageClient_windowLogMessageLevel  *g:LanguageClient_windowLogMessageLevel*
 
 Maximum MessageType to show messages from window/logMessage notifications.
 
 Default: "Warning"
 Valid options: "Error" | "Warning" | "Info" | "Log"
 
-2.11 g:LanguageClient_settingsPath              *g:LanguageClient_settingsPath*
+2.12 g:LanguageClient_settingsPath              *g:LanguageClient_settingsPath*
 
-Default path for language server settings
+Path for language server settings. If not an absolute path this is relative
+to the workspace directory.
+
+Example settings file content: >
+    {
+        "rust.clippy_preference": "on"
+    }
 
 Default: ".vim/settings.json"
 
-2.12 g:LanguageClient_loadSettings             *g:LanguageClient_loadSettings*
+2.13 g:LanguageClient_loadSettings             *g:LanguageClient_loadSettings*
 
 Whether to load language server settings.
 
 Default: 1
 Valid options: 1 | 0
 
-2.13 g:LanguageClient_loggingLevel           *g:LanguageClient_loggingLevel*
+2.14 g:LanguageClient_loggingFile               *g:LanguageClient_loggingFile*
+
+Log file location.
+
+Default: null
+Valid options: any valid path. Please note that `~` is not a valid path and you
+need to `expand` it.
+
+Example:
+
+    `let g:LanguageClient_loggingFile = expand('~/.vim/LanguageClient.log')``
+
+
+2.15 g:LanguageClient_loggingLevel           *g:LanguageClient_loggingLevel*
 
 Logging level.
 
 Default: 'WARN'
 Valid options: 'DEBUG' | 'INFO' | 'WARN' | 'ERROR'
 
-2.14 g:LanguageClient_rootMarkers              *g:LanguageClient_rootMarkers*
+2.16 g:LanguageClient_serverStderr             *g:LanguageClient_serverStderr*
+
+Path for language server stderr.
+
+Default: None
+Valid options: any valid path.
+
+2.17 g:LanguageClient_rootMarkers              *g:LanguageClient_rootMarkers*
 
 Customized project root markers. Generally a heuristic algorithm within this
 plugin should be able to detect project root automatically. This option is
@@ -190,12 +264,98 @@ Example setting 2. Map filetype to string array. >
 Default: v:null
 Valid option: Array<String> | Map<String, Array<String>>
 
-2.15 g:LanguageClient_fzfOptions                *g:LanguageClient_fzfOptions*
+2.18 g:LanguageClient_fzfOptions                *g:LanguageClient_fzfOptions*
 
 Customize fzf. Check fzf documentation for available options.
 
 Default: v:null
 Valid option: Array<String> | String
+
+2.19 g:LanguageClient_hasSnippetSupport   *g:LanguageClient_hasSnippetSupport*
+
+Override detection of snippet support.
+
+If this is not set, the language client will determine whether snippets are
+supported by looking for installed plugins that are known to support them.
+
+Set to 1 (or 0) to enable (or disable) snippet support, skipping the automatic
+detection.
+
+Valid options: 1 | 0
+
+2.20 g:LanguageClient_waitOutputTimeout   *g:LanguageClient_waitOutputTimeout*
+
+Duration of time (in seconds) to wait for language server to return output
+before timing out.
+
+Default: 10
+Valid options: number
+
+2.21 g:LanguageClient_hoverPreview             *g:LanguageClient_hoverPreview*
+
+Controls how hover output is displayed. Must be one of the following:
+    Never  - Never use preview window, always echo hover output
+    Auto   - Use preview window for hover entries longer than one line (default)
+    Always - Always use preview window, never echo hover output
+
+Default: "Auto"
+Valid options: "Never", "Auto", "Always"
+
+2.22 g:LanguageClient_fzfContextMenu         *g:LanguageClient_fzfContextMenu*
+
+Should FZF be used for `LanguageClient_contextMenu()`.
+
+Default: 1
+Valid options: 1 | 0
+
+2.23 g:LanguageClient_completionPreferTextEdit
+*g:LanguageClient_completionPreferTextEdit*
+
+(Experimental) Should prefer use textEdit it is present in
+CompletionItem.
+
+Note: textEdit support requires vim >= v8.0.1493, or vim >= v8.1.0039, or
+neovim >= 0.3.0.
+
+Default: 0
+Valid options: 1 | 0
+
+2.24 g:LanguageClient_documentHighlightDisplay *g:LanguageClient_documentHighlightDisplay*
+
+Control how document highlights are displayed.
+
+Default: >
+    {
+        1: {
+            "name": "Text",
+            "texthl": "SpellCap",
+        },
+        2: {
+            "name": "Read",
+            "texthl": "SpellLocal",
+        },
+        3: {
+            "name": "Write",
+            "texthl": "SpellRare",
+        },
+    }
+
+2.25 g:LanguageClient_useVirtualText          *g:LanguageClient_useVirtualText*
+
+Specify whether to use virtual text to display diagnostics.
+
+Default: 1 whenever virtual text is supported.
+Valid Options: 1 | 0
+
+2.26 g:LanguageClient_useFloatingHover *g:LanguageClient_useFloatingHover*
+
+When the value is set to 1, |LanguageClient#textDocument_hover()| opens
+documentation in a floating window instead of preview.
+This variable is effective only when the floating window feature is
+supported.
+
+Default: 1 when a floating window is supported, otherwise 0
+Valid Options: 1 | 0
 
 ==============================================================================
 3. Commands                                           *LanguageClientCommands*
@@ -211,23 +371,98 @@ Stop current language server.
 ==============================================================================
 4. Functions                                          *LanguageClientFunctions*
 
-4.1 LanguageClient_textDocument_hover()
-*LanguageClient_textDocument_hover*
+*LanguageClient#Call()*
+*LanguageClient_Call()*
+Signature: LanguageClient#Call(method: String, params: Map | List, callback: Funcref | String | List | Null)
+
+Call a method of current language server. After receiving response, if
+callback is a function, it is invoked with response as params, if the callback
+is a list, the response is pushed at the end of it, if callback is null, it is
+handled by this plugin default handler.
+
+*LanguageClient#Notify()*
+*LanguageClient_Notify()*
+Signature: LanguageClient#Notify(method: String, params: Map | List)
+
+Send a notification to the current language server.
+
+*LanguageClient_contextMenu()*
+Signature: LanguageClient#contextMenu(...)
+
+Show list of all available actions.
+
+If optional dependency FZF is installed, actions will be displayed in a FZF
+prompt, selecting one of the action will then call the action's function.
+
+To skip FZF prompt even if FZF is installed and use native numbered list,
+add this variable to vimrc:
+`let g:LanguageClient_fzfContextMenu = 0`
+
+For Denite users, a source with name 'contextMenu' is provided.
+
+*LanguageClient#textDocument_hover()*
+*LanguageClient_textDocument_hover()*
+Signature: LanguageClient#textDocument_hover(...)
 
 Show type info (and short doc) of identifier under cursor.
 
-4.2 LanguageClient_textDocument_definition()
-*LanguageClient_textDocument_definition*
+If you're using Neovim 0.4.0 or later, this function opens documentation in a
+floating window. The window is automatically closed when you move the cursor.
+Or calling this function again just after opening the floating window moves
+the cursor into the window. It is useful when documentation is longer and you
+need to scroll down or you want to yank some text in the documentation.
 
-Goto definition of identifier under cursor.
+*LanguageClient#textDocument_definition()*
+*LanguageClient_textDocument_definition()*
+Signature: LanguageClient#textDocument_definition(...)
 
-4.3 LanguageClient_textDocument_rename()
-*LanguageClient_textDocument_rename*
+Goto definition under cursor.
+
+*LanguageClient#textDocument_typeDefinition()*
+*LanguageClient_textDocument_typeDefinition()*
+Signature: LanguageClient#textDocument_typeDefinition(...)
+
+Goto type definition under cursor.
+
+*LanguageClient#textDocument_implementation()*
+*LanguageClient_textDocument_implementation()*
+Signature: LanguageClient#textDocument_implementation(...)
+
+Goto implementation under cursor.
+
+*LanguageClient#textDocument_rename()*
+Signature: LanguageClient#textDocument_rename()
+           LanguageClient#textDocument_rename({"newName": ...})
 
 Rename identifier under cursor.
 
-4.4 LanguageClient_textDocument_documentSymbol()
-*LanguageClient_textDocument_documentSymbol*
+Accepts an optional dictionary argument, which if passed with the {newName}
+property, will rename to the provided value without prompting the user. This
+can be useful in situations where {newName} can be wholly determined from the
+existing name (e.g. capitalization, camelCase, etc).
+
+
+Example bindings combining with tpope/vim-abolish:
+>
+    " Rename - rn => rename
+    noremap <leader>rn :call LanguageClient#textDocument_rename()<CR>
+
+    " Rename - rc => rename camelCase
+    noremap <leader>rc :call LanguageClient#textDocument_rename(
+                \ {'newName': Abolish.camelcase(expand('<cword>'))})<CR>
+
+    " Rename - rs => rename snake_case
+    noremap <leader>rs :call LanguageClient#textDocument_rename(
+                \ {'newName': Abolish.snakecase(expand('<cword>'))})<CR>
+
+    " Rename - ru => rename UPPERCASE
+    noremap <leader>ru :call LanguageClient#textDocument_rename(
+                \ {'newName': Abolish.uppercase(expand('<cword>'))})<CR>
+<
+
+*LanguageClient#textDocument_documentSymbol()*
+*LanguageClient_textDocument_documentSymbol()*
+Signature: LanguageClient#textDocument_documentSymbol(...)
 
 List of current buffer's symbols.
 
@@ -236,8 +471,9 @@ prompt, selecting one of the symbol will then goto the symbol's definition.
 
 For Denite users, a source with name 'documentSymbol' is provided.
 
-4.5 LanguageClient_textDocument_references()
-*LanguageClient_textDocument_references*
+*LanguageClient#textDocument_references()*
+*LanguageClient_textDocument_references()*
+Signature: LanguageClient#textDocument_references(...)
 
 List all references of identifier under cursor.
 
@@ -246,8 +482,49 @@ prompt, selecting one of the entry will then goto the reference location.
 
 For Denite users, a source with name 'references' is provided.
 
-4.6 LanguageClient_workspace_symbol()
-*LanguageClient_workspace_symbol*
+*LanguageClient#textDocument_codeAction()*
+*LanguageClient_textDocument_codeAction()*
+Signature: LanguageClient#textDocument_codeAction(...)
+
+Show code actions at current location.
+
+*LanguageClient#textDocument_completion()*
+*LanguageClient_textDocument_completion()*
+Signature: LanguageClient#textDocument_completion(...)
+
+Get a list of completion items at current editing location. Note, this is a
+synchronous call.
+
+When using a supported completion manager (deoplete and
+nvim-completion-manager are supported), completion should work out of the box.
+
+*LanguageClient#textDocument_formatting()*
+*LanguageClient_textDocument_formatting()*
+Signature: LanguageClient#textDocument_formatting(...)
+
+Format current document.
+
+*LanguageClient#textDocument_rangeFormatting()*
+*LanguageClient_textDocument_rangeFormatting()*
+Signature: LanguageClient#textDocument_rangeFormatting(...)
+
+Format selected lines.
+
+*LanguageClient#textDocument_documentHighlight()*
+*LanguageClient_textDocument_documentHighlight()*
+Signature: LanguageClient#textDocument_documentHighlight(...)
+
+Highlight usages of the symbol under the cursor.
+
+*LanguageClient#clearDocumentHighlight()*
+*LanguageClient_clearDocumentHighlight()*
+Signature: LanguageClient#clearDocumentHighlight()
+
+Clear the symbol usages highlighting.
+
+*LanguageClient#workspace_symbol()*
+*LanguageClient_workspace_symbol()*
+Signature: LanguageClient#workspace_symbol([query: String], ...)
 
 List of project's symbols.
 
@@ -256,76 +533,104 @@ prompt, selecting one of the symbol will then goto the symbol's definition.
 
 For Denite users, a source with name 'workspaceSymbol' is provided.
 
-4.7 LanguageClient_textDocument_completion()
-*LanguageClient_textDocument_completion*
-
-Get a list of completion items at current editing location. Note, this is an
-synchronous call.
-
-When using a supported completion manager (deoplete and
-nvim-completion-manager are supported), completion should work out of the box.
-
-4.8 LanguageClient_setLoggingLevel(level: str)
-*LanguageClient_setLoggingLevel*
-
-Set the plugin logging level. By default, only errors are logged into
-/tmp/LanguageClient.log (%TMP%/LanguageClient.log for Windows).
-
-Valid logging levels are 'ERROR'(default), 'INFO', 'DEBUG'.
-
-4.9 LanguageClient_textDocument_formatting()
-*LanguageClient_textDocument_formatting*
-
-Format current document.
-
-4.10 LanguageClient_textDocument_rangeFormatting()
-*LanguageClient_textDocument_rangeFormatting*
-
-Format selected lines.
-
-4.11 LanguageClient#Notify(method: str, params: Dict)
-*LanguageClient#Notify*
-
-Send a notification to the current language server.
-
-4.12 LanguageClient#Call(method: str, params: Dict, callback: function | list)
-*LanguageClient#Call*
-
-Call a method to the current language server.
-
-4.12 LanguageClient_serverStatus()           *LanguageClient_serverStatus*
-
-Get language server status. 0 for server idle. 1 for server busy.
-
-4.13 LanguageClient_serverStatusMessage()
-*LanguageClient_serverStatusMessage*
-
-Get a detail message of server status.
-
-4.14 LanguageClient_statusLine() *LanguageClient_statusLine*
-
-Example status line making use of LanguageClient_serverStatusMessage.
-
-4.15 LanguageClient_workspace_applyEdit(params: Dict, callback: function | list)
-*LanguageClient_workspace_applyEdit*
+*LanguageClient#workspace_applyEdit()*
+*LanguageClient_workspace_applyEdit()*
+Signature: LanguageClient#workspace_applyEdit(params: Dict, callback: Function | List | Null)
 
 Apply a workspace edit.
 
-4.16 LanguageClient_cquery_base()                *LanguageClient_cquery_base*
+*LanguageClient#workspace_executeCommand()*
+*LanguageClient_workspace_executeCommand()*
+Signature: LanguageClient#workspace_executeCommand(command: String, [arguments: Any], [callback: Function | List | Null])
+
+Execute a workspace command.
+
+*LanguageClient#setLoggingLevel()*
+*LanguageClient_setLoggingLevel()*
+Signature: LanguageClient#setLoggingLevel(level: String)
+
+Set the plugin logging level.
+
+Valid logging levels are 'ERROR', 'WARN'(default), 'INFO', 'DEBUG'.
+
+*LanguageClient#setDiagnosticsList()*
+Signature: LanguageClient#setDiagnosticsList(diagnosticsList: String)
+
+Set the destination of diagnostics.
+
+Valid options are 'Quickfix', 'Location', 'Disabled'.
+
+*LanguageClient#registerServerCommands()*
+*LanguageClient_registerServerCommands()*
+Signature: LanguageClient#registerServerCommands(commands: Map)
+
+Register/Override commands to start language servers.
+
+*LanguageClient#registerHandlers*
+*LanguageClient_registerHandlers*
+Signature: LanguageClient#registerHandlers(handlers: Map)
+
+Register/Override method/notification handlers.
+
+Example >
+    function! HandleWindowProgress(params) abort
+        echomsg json_encode(a:params)
+    endfunction
+
+    call LanguageClient#registerHandlers({
+        \ 'window/progress': 'HandleWindowProgress',
+        \ })
+
+*LanguageClient#serverStatus()*
+*LanguageClient_serverStatus()*
+Signature: LanguageClient#serverStatus()
+
+Get language server status. 0 for server idle. 1 for server busy.
+
+*LanguageClient#serverStatusMessage()*
+*LanguageClient_serverStatusMessage()*
+Signature: LanguageClient#serverStatusMessage()
+
+Get a detail message of server status.
+
+*LanguageClient#statusLine()*
+*LanguageClient_statusLine()*
+Signature: LanguageClient#statusLine()
+
+Example status line making use of |LanguageClient_serverStatusMessage|.
+
+*LanguageClient#cquery_base*
+*LanguageClient_cquery_base*
+Signature: LanguageClient#cquery_base(...)
 
 Call $cquery/base.
 
-4.17 LanguageClient_cquery_derived()          *LanguageClient_cquery_derived*
-
-Call $cquery/derived.
-
-4.18 LanguageClient_cquery_callers()          *LanguageClient_cquery_callers*
+*LanguageClient#cquery_callers*
+*LanguageClient_cquery_callers*
+Signature: LanguageClient#cquery_callers(...)
 
 Call $cquery/callers.
 
-4.19 LanguageClient_cquery_vars()              *LanguageClient_cquery_vars*
+*LanguageClient#cquery_vars*
+*LanguageClient_cquery_vars*
+Signature: LanguageClient#cquery_vars(...)
 
 Call $cquery/vars.
+
+*LanguageClient#java_classFileContent*
+Signature: LanguageClient#java_classFileContent(...)
+
+Call java/classFileContent.
+
+*LanguageClient#explainErrorAtPoint*
+Signature: LanguageClient#explainErrorAtPoint(...)
+
+Show detailed error under cursor.
+
+*LanguageClient#debugInfo*
+Signature: LanguageClient#debugInfo(...)
+
+Print out debug info.
 
 ==============================================================================
 5. Events                                               *LanguageClientEvents*
@@ -354,6 +659,11 @@ Example: >
 
 This event is triggered when diagnostics changed.
 
+5.4 LanguageClientTextDocumentDidOpenPost
+*LanguageClientTextDocumentDidOpenPost*
+
+Triggered after textDocument/didOpen notification is sent to language server.
+
 ==============================================================================
 6. License                                             *LanguageClientLicense*
 
@@ -364,16 +674,18 @@ The MIT License.
 
 Please report all bugs at https://github.com/autozimu/LanguageClient-neovim/issues
 
-If you believe you've find a bug in this plugin, please first try to help
+If you believe you've found a bug in this plugin, please first try to help
 narrow down where the error happens, which will reduce bug fix time/effort
-tremendously.
+significantly.
+
+Experiment with VS Code plugin if the language server has one.
 
 Try increasing logging level to 'INFO' or 'DEBUG' using the
 |LanguageClient_setLoggingLevel| function, and check the log file.
 
-There is also an utility script in: >
+There is also a utility script in: >
 
-    $RUNTIME/rplugin/python3/LanguageClient/wrapper.sh
+    $RUNTIME/tests/wrapper-server.sh
 
 which can work like a proxy and logs all stdin and stdout of the language
 server into a log file.

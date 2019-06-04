@@ -24,8 +24,6 @@ GREP_LINE_HIGHLIGHT = 'highlight default link deniteSource_grepLineNR LineNR'
 
 GREP_PATTERNS_HIGHLIGHT = 'highlight default link deniteGrepPatterns Function'
 
-ReferencesResults = "g:LanguageClient_referencesResults"
-
 
 def uri_to_path(uri: str) -> str:
     return request.url2pathname(parse.urlparse(uri).path)
@@ -41,8 +39,9 @@ class Source(Base):
 
     def define_syntax(self):
         self.vim.command(
-                'syntax region ' + self.syntax_name + ' start=// end=/$/ '
-                'contains=deniteSource_grepHeader,deniteMatchedRange contained')
+            'syntax region ' + self.syntax_name + ' start=// end=/$/ '
+            'contains=deniteSource_grepHeader,deniteMatchedRange'
+            ' contained')
         # TODO: make this match the 'range' on each location
         # self.vim.command(
         #         'syntax match deniteGrepPatterns ' +
@@ -84,19 +83,6 @@ class Source(Base):
         return candidates
 
     def gather_candidates(self, context):
-        if not context["is_async"]:
-            context["is_async"] = True
-            self.vim.funcs.LanguageClient_textDocument_references({
-                "handle": False
-            })
-            return []
-        elif self.vim.funcs.eval("len({})".format(ReferencesResults)) == 0:
-            return []
-
-        context["is_async"] = False
-        locations = self.vim.funcs.eval("remove({}, 0)".format(ReferencesResults))
-
-        if locations is None:
-            return []
-
-        return self.convert_to_candidates(locations)
+        result = self.vim.funcs.LanguageClient_runSync(
+            "LanguageClient#textDocument_references", {}) or []
+        return self.convert_to_candidates(result)

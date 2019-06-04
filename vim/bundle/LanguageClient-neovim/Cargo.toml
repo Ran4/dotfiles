@@ -1,32 +1,34 @@
 [package]
 name = "languageclient"
-version = "0.1.40"
+version = "0.1.146"
 authors = ["Junfeng Li <autozimu@gmail.com>"]
 description = "Language Server Protocol (LSP) support for vim and neovim"
 publish = false
+edition = "2018"
 
 [dependencies]
-failure = "*"
-log = "*"
-log4rs = "*"
-structopt = "*"
-structopt-derive = "*"
-libc = "*"
-lazy_static = "*"
-chrono = "*"
-maplit = "*"
+failure = "0"
+itertools = "0.8"
+log = "0.4"
+log4rs = "0"
+structopt = "0"
+maplit = "1"
+serde = "1"
+serde_derive = "1"
+serde_json = "1"
 
-serde = "*"
-serde_derive = "*"
-serde_json = "*"
+crossbeam-channel = "0.3"
 
-jsonrpc-core = "*"
-languageserver-types = "*"
-url = "*"
-pathdiff = "*"
-diff = "*"
-regex = "*"
-glob = "*"
+jsonrpc-core = "11"
+lsp-types = "0.57"
+url = "1"
+pathdiff = "0"
+diff = "0"
+regex = "1"
+glob = "0"
+notify = "4"
+shellexpand = "1"
+lazycell = "1"
 
 [package.metadata.release]
 no-dev-version = true
@@ -34,4 +36,4 @@ pre-release-replacements = [
     { file = "install.sh", search = "version=.*", replace = "version={{version}}" },
     { file = "install.ps1", search = "version = '.*'", replace = "version = '{{version}}'" }
 ]
-pre-release-hook = 'ci/release-hook.sh'
+pre-release-hook = ["cargo", "build"]
