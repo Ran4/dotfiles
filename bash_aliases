@@ -90,7 +90,6 @@ alias ccat='pygmentize -O bg=dark'
 if [[ "$OSTYPE" != "darwin"* ]]; then
     alias scala='sbt console'
 fi
-alias tmux='tmux -2'
 alias tmuxs='~/dotfiles/defaulttmuxsession.sh'
 alias ts='~/dotfiles/defaulttmuxsession.sh'
 # alias tns='tmux new -s' #Create new session with tns sessionname
