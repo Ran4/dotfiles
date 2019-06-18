@@ -715,8 +715,9 @@ endif
 "!git clone --recursive https://github.com/davidhalter/jedi-vim.git ~/.vim/bundle/jedi-vim
 """}}}
 """{{{ lmnop
-"""lightline.vim is a light and configurable statusline/tabline for Vim.
-"!git clone https://github.com/itchyny/lightline.vim ~/.vim/bundle/lightline.vim
+"""LanguageClient-neovim - Language Server Protcol (LSP) support for vim and neovim
+"!git clone --depth 1 https://github.com/autozimu/LanguageClient-neovim.git ~/.vim/bundle/LanguageClient-neovim
+
 
 """vim-mark, clone of the 'Mark.vim' plugin, allows highlighting of words
 "!git clone https://github.com/Yggdroot/vim-mark ~/.vim/bundle/vim-mark
@@ -804,7 +805,8 @@ let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
 \   'python': [
-\       'flake8'
+\       'flake8',
+\       'mypy'
 \   ],
 \}
 " \       'mypy',
@@ -817,7 +819,6 @@ let g:ale_python_pylint_options="--load-plugins pylint_django"
 let g:ale_fixers = {
 \   'python': [
 \       'remove_trailing_lines',
-\       'isort',
 \       'autopep8',
 \   ],
 \   'javascript': [
