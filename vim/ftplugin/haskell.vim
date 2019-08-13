@@ -4,7 +4,7 @@ source ~/.vim/ftplugin/remap_to_brackets.vim
 "Just a regular file.hs:
 "nnoremap <leader>p <c-w><c-v>:term stack --verbosity silent runghc %<cr>
 "nnoremap <leader>p <c-w><c-v>:term stack build && stack %<cr>
-nnoremap <leader>p <c-w><c-v>:term stack build && stack app/Main.hs<cr>
+nnoremap <leader>p <c-w><c-v>:term stack build && stack app/Main.hs<cr>i
 
 "Using stack:
 nnoremap <leader>P :tabe \| term<cr>stack build && stack exec $(basename "$PWD")-exe && exit<cr>
