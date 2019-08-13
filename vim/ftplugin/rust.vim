@@ -5,6 +5,7 @@ if has('nvim')
     "nnoremap <leader>p <c-w><c-v>:term rustc % && ./%:r<cr>
     nnoremap <leader>p <c-w><c-v>:term cargo run -q<cr>i
     nnoremap <leader>P <c-w><c-s>:term cargo run -q<cr>i
+    nnoremap <leader>b <c-w><c-v>:term cargo build<cr>i
 else
     nnoremap <leader>p :!cargo run -q<cr>
 endif
