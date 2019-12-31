@@ -1,4 +1,8 @@
-set -ex
+#!/bin/bash
+
+set -o nounset
+set -o errexit
+set -o xtrace
 
 package() {
     BIN_NAME_TAG=$CRATE_NAME-$TRAVIS_TAG-$TARGET
@@ -25,6 +29,10 @@ release_tag() {
 
     git reset --hard HEAD^
 }
+
+if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+fi
 
 TARGETS=(${TARGETS//:/ })
 for TARGET in "${TARGETS[@]}"; do

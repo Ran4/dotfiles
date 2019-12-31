@@ -55,8 +55,6 @@ pub const NOTIFICATION__WindowProgress: &str = "window/progress";
 pub const NOTIFICATION__LanguageStatus: &str = "language/status";
 pub const REQUEST__ClassFileContents: &str = "java/classFileContents";
 
-pub const CommandsClient: &[&str] = &["java.apply.workspaceEdit"];
-
 // Vim variable names
 pub const VIM__ServerStatus: &str = "g:LanguageClient_serverStatus";
 pub const VIM__ServerStatusMessage: &str = "g:LanguageClient_serverStatusMessage";
@@ -137,7 +135,7 @@ pub struct State {
     pub is_nvim: bool,
     pub last_cursor_line: u64,
     pub last_line_diagnostic: String,
-    pub stashed_codeAction_commands: Vec<Command>,
+    pub stashed_codeAction_actions: Vec<CodeAction>,
     pub viewports: HashMap<String, Viewport>,
 
     // User settings.
@@ -150,6 +148,7 @@ pub struct State {
     pub diagnosticsList: DiagnosticsList,
     pub diagnosticsDisplay: HashMap<u64, DiagnosticsDisplay>,
     pub diagnosticsSignsMax: Option<u64>,
+    pub diagnostics_max_severity: DiagnosticSeverity,
     pub documentHighlightDisplay: HashMap<u64, DocumentHighlightDisplay>,
     pub windowLogMessageLevel: MessageType,
     pub settingsPath: String,
@@ -213,7 +212,7 @@ impl State {
             is_nvim: false,
             last_cursor_line: 0,
             last_line_diagnostic: " ".into(),
-            stashed_codeAction_commands: vec![],
+            stashed_codeAction_actions: vec![],
             viewports: HashMap::new(),
 
             serverCommands: HashMap::new(),
@@ -225,6 +224,7 @@ impl State {
             diagnosticsList: DiagnosticsList::Quickfix,
             diagnosticsDisplay: DiagnosticsDisplay::default(),
             diagnosticsSignsMax: None,
+            diagnostics_max_severity: DiagnosticSeverity::Hint,
             documentHighlightDisplay: DocumentHighlightDisplay::default(),
             windowLogMessageLevel: MessageType::Warning,
             settingsPath: format!(".vim{}settings.json", std::path::MAIN_SEPARATOR),
@@ -527,15 +527,41 @@ pub struct VimCompleteItemUserData {
 
 impl VimCompleteItem {
     pub fn from_lsp(lspitem: &CompletionItem, complete_position: Option<u64>) -> Fallible<Self> {
-        info!(
+        debug!(
             "LSP CompletionItem to VimCompleteItem: {:?}, {:?}",
             lspitem, complete_position
         );
         let abbr = lspitem.label.clone();
-        let word = lspitem
-            .insert_text
-            .clone()
-            .unwrap_or_else(|| lspitem.label.clone());
+
+        let word = lspitem.insert_text.clone().unwrap_or_else(|| {
+            if lspitem.insert_text_format == Some(InsertTextFormat::Snippet)
+                || lspitem
+                    .text_edit
+                    .as_ref()
+                    .map(|text_edit| text_edit.new_text.is_empty())
+                    .unwrap_or(true)
+            {
+                return lspitem.label.clone();
+            }
+
+            match (lspitem.text_edit.clone(), complete_position) {
+                (Some(ref text_edit), Some(complete_position)) => {
+                    // TextEdit range start might be different from vim expected completion start.
+                    // From spec, TextEdit can only span one line, i.e., the current line.
+                    if text_edit.range.start.character != complete_position {
+                        text_edit
+                            .new_text
+                            .get((complete_position as usize)..)
+                            .and_then(|line| line.split_whitespace().next())
+                            .map_or_else(String::new, ToOwned::to_owned)
+                    } else {
+                        text_edit.new_text.clone()
+                    }
+                }
+                (Some(ref text_edit), _) => text_edit.new_text.clone(),
+                (_, _) => lspitem.label.clone(),
+            }
+        });
 
         let snippet;
         if lspitem.insert_text_format == Some(InsertTextFormat::Snippet) {
@@ -1019,6 +1045,53 @@ impl FromLSP<SymbolInformation> for QuickfixEntry {
     }
 }
 
+impl FromLSP<Vec<lsp::SymbolInformation>> for Vec<QuickfixEntry> {
+    fn from_lsp(symbols: &Vec<lsp::SymbolInformation>) -> Fallible<Self> {
+        symbols.iter().map(QuickfixEntry::from_lsp).collect()
+    }
+}
+
+impl FromLSP<Vec<lsp::DocumentSymbol>> for Vec<QuickfixEntry> {
+    fn from_lsp(document_symbols: &Vec<lsp::DocumentSymbol>) -> Fallible<Self> {
+        let mut symbols = Vec::new();
+
+        fn walk_document_symbol(
+            buffer: &mut Vec<QuickfixEntry>,
+            parent: Option<&str>,
+            ds: &lsp::DocumentSymbol,
+        ) {
+            let start = ds.selection_range.start;
+
+            let name = if let Some(parent) = parent {
+                format!("{}::{}", parent, ds.name)
+            } else {
+                ds.name.clone()
+            };
+
+            buffer.push(QuickfixEntry {
+                filename: "".to_string(),
+                lnum: start.line + 1,
+                col: Some(start.character + 1),
+                text: Some(name),
+                nr: None,
+                typ: None,
+            });
+
+            if let Some(children) = &ds.children {
+                for child in children {
+                    walk_document_symbol(buffer, Some(&ds.name), child);
+                }
+            }
+        }
+
+        for ds in document_symbols {
+            walk_document_symbol(&mut symbols, None, ds);
+        }
+
+        Ok(symbols)
+    }
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RawMessage {
@@ -1032,4 +1105,10 @@ pub struct VirtualText {
     pub line: u64,
     pub text: String,
     pub hl_group: String,
+}
+
+#[derive(Debug, Eq, PartialEq, Serialize, Deserialize)]
+pub struct WorkspaceEditWithCursor {
+    pub workspaceEdit: WorkspaceEdit,
+    pub cursorPosition: Option<TextDocumentPositionParams>,
 }

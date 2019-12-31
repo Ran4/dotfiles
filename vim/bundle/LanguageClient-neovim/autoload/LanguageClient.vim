@@ -148,6 +148,11 @@ endfunction
 function! s:set_virtual_texts(buf_id, ns_id, line_start, line_end, virtual_texts) abort
     " VirtualText: map with keys line, text and hl_group.
 
+    let l:prefix = s:GetVar('LanguageClient_virtualTextPrefix')
+    if l:prefix is v:null
+        let l:prefix = ''
+    endif
+
     if !exists('*nvim_buf_set_virtual_text')
         return
     endif
@@ -155,7 +160,7 @@ function! s:set_virtual_texts(buf_id, ns_id, line_start, line_end, virtual_texts
     call nvim_buf_clear_namespace(a:buf_id, a:ns_id, a:line_start, a:line_end)
 
     for vt in a:virtual_texts
-        call nvim_buf_set_virtual_text(a:buf_id, a:ns_id, vt['line'], [[vt['text'], vt['hl_group']]], {})
+        call nvim_buf_set_virtual_text(a:buf_id, a:ns_id, vt['line'], [[l:prefix . vt['text'], vt['hl_group']]], {})
     endfor
 endfunction
 
@@ -267,7 +272,20 @@ function! s:ShouldUseFloatWindow() abort
     return s:FLOAT_WINDOW_AVAILABLE && (use || use is v:null)
 endfunction
 
-function! s:CloseFloatingHoverOnCursorMove(win_id, opened) abort
+function! s:CloseFloatingHover() abort
+    if !exists('s:float_win_id')
+        return
+    endif
+
+    autocmd! plugin-LC-neovim-close-hover
+    let winnr = win_id2win(s:float_win_id)
+    if winnr == 0
+        return
+    endif
+    execute winnr . 'wincmd c'
+endfunction
+
+function! s:CloseFloatingHoverOnCursorMove(opened) abort
     if getpos('.') == a:opened
         " Just after opening floating window, CursorMoved event is run.
         " To avoid closing floating window immediately, check the cursor
@@ -275,15 +293,15 @@ function! s:CloseFloatingHoverOnCursorMove(win_id, opened) abort
         return
     endif
     autocmd! plugin-LC-neovim-close-hover
-    let winnr = win_id2win(a:win_id)
+    let winnr = win_id2win(s:float_win_id)
     if winnr == 0
         return
     endif
     execute winnr . 'wincmd c'
 endfunction
 
-function! s:CloseFloatingHoverOnBufEnter(win_id, bufnr) abort
-    let winnr = win_id2win(a:win_id)
+function! s:CloseFloatingHoverOnBufEnter(bufnr) abort
+    let winnr = win_id2win(s:float_win_id)
     if winnr == 0
         " Float window was already closed
         autocmd! plugin-LC-neovim-close-hover
@@ -311,6 +329,14 @@ function! s:OpenHoverPreview(bufname, lines, filetype) abort
 
     let use_float_win = s:ShouldUseFloatWindow()
     if use_float_win
+        " When a language server takes a while to initialize and the user
+        " calls hover multiple times during that time (for example, via an
+        " automatic hover on cursor move setup), we will get a number of
+        " successive calls into this function resulting in many hover windows
+        " opened. This causes a number of issues, and we only really want one,
+        " so make sure that the previous hover window is closed.
+        call s:CloseFloatingHover()
+
         let pos = getpos('.')
 
         " Calculate width and height and give margin to lines
@@ -353,7 +379,7 @@ function! s:OpenHoverPreview(bufname, lines, filetype) abort
             let col = 1
         endif
 
-        let float_win_id = nvim_open_win(bufnr, v:true, {
+        let s:float_win_id = nvim_open_win(bufnr, v:true, {
         \   'relative': 'cursor',
         \   'anchor': vert . hor,
         \   'row': row,
@@ -370,7 +396,7 @@ function! s:OpenHoverPreview(bufname, lines, filetype) abort
         wincmd P
     endif
 
-    setlocal buftype=nofile nobuflisted bufhidden=wipe nonumber norelativenumber signcolumn=no
+    setlocal buftype=nofile nobuflisted bufhidden=wipe nonumber norelativenumber signcolumn=no modifiable
 
     if a:filetype isnot v:null
         let &filetype = a:filetype
@@ -384,8 +410,8 @@ function! s:OpenHoverPreview(bufname, lines, filetype) abort
     if use_float_win
         " Unlike preview window, :pclose does not close window. Instead, close
         " hover window automatically when cursor is moved.
-        let call_after_move = printf('<SID>CloseFloatingHoverOnCursorMove(%d, %s)', float_win_id, string(pos))
-        let call_on_bufenter = printf('<SID>CloseFloatingHoverOnBufEnter(%d, %d)', float_win_id, bufnr)
+        let call_after_move = printf('<SID>CloseFloatingHoverOnCursorMove(%s)', string(pos))
+        let call_on_bufenter = printf('<SID>CloseFloatingHoverOnBufEnter(%d)', bufnr)
         augroup plugin-LC-neovim-close-hover
             execute 'autocmd CursorMoved,CursorMovedI,InsertEnter <buffer> call ' . call_after_move
             execute 'autocmd BufEnter * call ' . call_on_bufenter
@@ -502,7 +528,7 @@ function! s:HandleMessage(job, lines, event) abort
     elseif a:event ==# 'stderr'
         call s:Echoerr('LanguageClient stderr: ' . string(a:lines))
     elseif a:event ==# 'exit'
-        if type(a:lines) == type(0) && a:lines == 0
+        if type(a:lines) == type(0) && (a:lines == 0 || a:lines == 143)
             return
         endif
         call s:Debug('LanguageClient exited with: ' . string(a:lines))
@@ -623,8 +649,16 @@ function! LanguageClient#Write(message) abort
     endif
 endfunction
 
+function! s:SkipSendingMessage() abort
+    if expand('%') =~# '^jdt://'
+        return v:false
+    endif
+
+    return &buftype !=# '' || &filetype ==# '' || expand('%') ==# ''
+endfunction
+
 function! LanguageClient#Call(method, params, callback, ...) abort
-    if &buftype !=# '' || &filetype ==# '' || expand('%') ==# ''
+    if s:SkipSendingMessage()
         " call s:Debug('Skip sending message')
         return
     endif
@@ -654,7 +688,7 @@ function! LanguageClient#Call(method, params, callback, ...) abort
 endfunction
 
 function! LanguageClient#Notify(method, params) abort
-    if &buftype !=# '' || &filetype ==# '' || expand('%') ==# ''
+    if s:SkipSendingMessage()
         " call s:Debug('Skip sending message')
         return
     endif
@@ -687,6 +721,10 @@ function! LanguageClient#textDocument_hover(...) abort
                 \ }
     call extend(l:params, get(a:000, 0, {}))
     return LanguageClient#Call('textDocument/hover', l:params, l:Callback)
+endfunction
+
+function! LanguageClient#closeFloatingHover() abort
+    call s:CloseFloatingHover()
 endfunction
 
 " Meta methods to go to various places.
@@ -831,8 +869,8 @@ function! LanguageClient#textDocument_rangeFormatting(...) abort
                 \ 'text': LSP#text(),
                 \ 'line': LSP#line(),
                 \ 'character': LSP#character(),
-                \ 'LSP#range_start_line()': LSP#range_start_line(),
-                \ 'LSP#range_end_line()': LSP#range_end_line(),
+                \ 'range_start_line': LSP#range_start_line(),
+                \ 'range_end_line': LSP#range_end_line(),
                 \ 'handle': s:IsFalse(l:Callback),
                 \ }
     call extend(l:params, get(a:000, 0, {}))
@@ -1240,10 +1278,10 @@ function! LanguageClient#cquery_vars(...) abort
     return call('LanguageClient#findLocations', [l:params] + a:000[1:])
 endfunction
 
-function! LanguageClient#java_classFileContent(...) abort
+function! LanguageClient#java_classFileContents(...) abort
     let l:params = get(a:000, 0, {})
     let l:Callback = get(a:000, 1, v:null)
-    return LanguageClient#Call('java/classFileContent', l:params, l:Callback)
+    return LanguageClient#Call('java/classFileContents', l:params, l:Callback)
 endfunction
 
 function! LanguageClient_contextMenuItems() abort

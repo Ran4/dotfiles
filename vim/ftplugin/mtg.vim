@@ -1,3 +1,6 @@
+"remaps å¨Å^ to []{} in various ways
+source ~/.vim/ftplugin/remap_to_brackets.vim
+
 " <leader>s on a line with a card name will replace that line with info for that card
 " e.g. on a line containing
 " Essence Capture
