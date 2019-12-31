@@ -133,7 +133,7 @@ avail() {
         if [ -f ~/.identifiers/ran-ub ]; then
             _DISK_PATH="/dev/sda6"
         else
-            _DISK_PATH="/dev/sda1"
+            _DISK_PATH="/dev/sda2"
         fi
     fi 
     FILESYSTEM=$(df -h | grep "^$_DISK_PATH" | tr -s " " | cut -d" " -f 1)
