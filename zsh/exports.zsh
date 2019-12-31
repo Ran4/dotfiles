@@ -17,6 +17,11 @@ export LC_CTYPE=en_US.UTF-8
 
 export PAGER='less'
 
+# Style for bat https://github.com/sharkdp/bat
+# Possible values: auto (default), full, plain, changes, header, grid, numbers.
+# Can be combined with e.g. BAT_STYLE=header,numbers
+export BAT_STYLE=plain
+
 # export $(dbus-launch)
 
 export PYLINTRC="~/.pylintrc"
