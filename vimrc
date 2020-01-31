@@ -338,8 +338,8 @@ set softtabstop=4 "Number of spaces in tab when editing
 " Use the same symbols as TextMate for tabstops and EOLs
 set list
 "set listchars=tab:▸▸,eol:¬
-set listchars=tab:▸▸
-"set listchars=tab:▸▸,trail:·
+"set listchars=tab:▸▸
+set listchars=tab:>>,trail:·
 set fillchars=
 set expandtab "Expands tabs into spaces
 
@@ -951,8 +951,10 @@ let g:jedi#show_call_signatures_delay = 0
 set rtp+=~/.vim/bundle/LanguageClient-neovim
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ }
+
+    " \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
 
 ""lightline configuration
 "let g:lightline = {
@@ -997,7 +999,7 @@ if has("macunix")
     let g:netrw_browsex_viewer="open"
 else
     let g:netrw_browsex_viewer="xdg-open"
-    set listchars=tab:>>
+    " set listchars=tab:>>
 endif
 
 ""vim-printf configuration
