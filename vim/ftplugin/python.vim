@@ -3,6 +3,10 @@ source ~/.vim/ftplugin/remap_to_brackets.vim
 
 "colorscheme iceberg
 
+" Space will strip lines-with-only-spaces-in-them, then save-if-needed (:update)
+" e is added to the substitution pattern to ignore E486: Pattern not found: }\s\+$
+nnoremap <space> mz:%s/^\s\+$//e<CR>`z:update<CR>
+
 "Initially, only use the 'python' checker, which warns much less than pylint
 let g:syntastic_python_checkers=['python3', 'pep8']
 let g:syntastic_always_populate_loc_list = 1
@@ -18,6 +22,9 @@ nnoremap gr :YcmCompleter GoToReferences<cr>
 
 let g:syntastic_python_checkers=['python3', 'pep8']
 
+nnoremap <leader>f :!autopep8 -i --select E302 %<CR><CR>:e!<CR>:w<CR>
+
+
 "nvim will auto clear
 if has('nvim')
     "Use :term instead of :!, since that supports input()
@@ -25,7 +32,7 @@ if has('nvim')
     "nnoremap <leader>p :term python3 %<cr>
     nnoremap <leader>P <c-w><c-v>:term python2 %<cr>i
     nnoremap <leader>p <c-w><c-v>:term python3 %<cr>i
-    
+
     nnoremap <leader>I <c-w><c-v>:term python -i %<cr>
     nnoremap <leader>i <c-w><c-v>:term python3 -i %<cr>
 else

@@ -798,8 +798,6 @@ endif
 "PLUGIN CONFIGURATION {{{
 
 "ALE configuration
-map <leader>f <Plug>(ale_fix)
-
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 1
@@ -810,14 +808,18 @@ let g:ale_linters = {
 \   ],
 \}
 " \       'mypy',
-\       'pylint'
+" \       'pylint'
 let g:ale_virtualenv_dir_names = ['.env', 'env', 've-py3', 've', 'virtualenv', '.venv']
 let g:ale_python_pylint_executable = 'pylint'
 " let g:ale_python_pylint_options="--rcfile=~/.pylintrc"
 let g:ale_python_pylint_options="--load-plugins pylint_django"
 
+" E2 - Fix missing whitespace around X
+" E3x - Line-related. Like add missing blank line, remove extra blank line...
+let g:ale_python_autopep8_options = '--select E251,E3'
 let g:ale_fixers = {
 \   'python': [
+\       'trim_whitespace',
 \       'remove_trailing_lines',
 \       'autopep8',
 \   ],
