@@ -185,6 +185,11 @@ if command_exists setxkbmap ; then
     if [ -f "/etc/arch-release" ]; then
         setxkbmap -model pc105 -layout "se" -variant "nodeadkeys"
     else
-        setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin" -option ctrl:nocaps
+        # Non-macbook keyboards: TODO detect this automatically
+        # setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin" -option ctrl:nocaps
+
+        # Swaps left alt and win key on mac keyboards.
+        # The lv3:rwin_switch makes rcmd+¨ perform ~ (as opposed to option+¨)
+        setxkbmap -option altwin:swap_lalt_lwin -variant "nodeadkeys" -layout "se" -option lv3:rwin_switch
     fi
 fi
