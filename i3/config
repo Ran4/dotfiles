@@ -266,8 +266,6 @@ client.focused_inactive #000000 "#b0b0b0"  "#030303"
 # hide_edge_borders smart
 
 bar {
-    # Toggle the bar with the $mod+b command, but start it off hidden
-    mode hide
     #modifier mod4
     #position top
     status_command i3status --config ~/.i3/i3status.conf
