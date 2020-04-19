@@ -89,8 +89,11 @@ if [ ! -f /tmp/xkbmap_is_checked ]; then
             if [ -f "/etc/arch-release" ]; then
                 setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
             else
-                # setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin" -option ctrl:nocaps
-                setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
+                # REGULAR KEYBOARD:
+                # setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
+
+                # Swaps left alt and win key on mac keyboards.  The lv3:rwin_switch makes rcmd+¨ perform ~ (as opposed to option+¨)
+                setxkbmap -option altwin:swap_lalt_lwin -variant "nodeadkeys" -layout "se" -option lv3:rwin_switch
             fi
         fi
     fi
