@@ -63,10 +63,11 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 echo -e "${LBLUE}Copying gtk3.0__gtk.css to ~/.config/gtk-3.0/ (no-clobber)${NC}"
+mkdir -p ~/.config/gtk-3.0
 cp --no-clobber "$dir/gtk3.0___gtk.css" "~/.config/gtk-3.0/gtk.css"
 
 #install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 echo "Changing shell to zsh..."
 sudo chsh -s $(which zsh)
