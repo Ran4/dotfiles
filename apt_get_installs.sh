@@ -34,7 +34,7 @@ else
 fi
 sudo apt-get -y install zsh
 
-sudo apt-get -y install python-pip
+sudo apt-get -y install python3-pip
 
 # Git, `apt install git` will install an older version
 sudo apt-add-repository -y ppa:git-core/ppa
@@ -43,13 +43,12 @@ sudo apt-get install -y git
 
 # Neovim
 sudo apt-get install -y software-properties-common && \
-    sudo add-apt-repository -y ppa:neovim-ppa/unstable && \
     sudo apt-get update && \
     sudo apt-get -y install neovim && \
     pip3 install neovim && \
     pip2 install neovim
 
-sudo apt-get -y install python-dev python-pip python3-dev python3-pip
+sudo apt-get -y install python-dev python-pip python3-dev
 
 sudo apt-get -y install ruby-dev
 
@@ -59,14 +58,20 @@ sudo apt-get -y install ruby-dev
 #sudo apt-get -y install texlive-full  # 3 GB...
 
 #used for clip.py
-sudo apt-get -y install python-tk
+# sudo apt-get -y install python-tk
 
 # volume control and e.g. setting microphone input
 sudo apt -y install pavucontrol
 
 # Used by caps2esc
-sudo apt-get install -y libudev-dev
+sudo apt-get install -y libudev-dev libevdev-dev
 git clone https://github.com/oblitum/caps2esc ~/git/other/caps2esc/
+# To compile: go to ~/git/other/caps2esc/,
+# then run `gcc caps2esc.c -o caps2esc -I/usr/include/libevdev-1.0 -levdev -ludev`
+# then `sudo cp ~/git/other/caps2esc/caps2esc /root`
+# sudo echo "#!/usr/bin/env bash\nnohup sudo ./caps2esc &" > /root/c
+# sudo chmod +x /root/c
+# Then to run, `sudo su - root`, then run `./c`
 
 ##Installing i3-gaps. Needs i3 first!
 # Dependencies has been updated, and are rather complicated for ubuntu. See the project wiki for install
