@@ -268,7 +268,7 @@ client.focused_inactive #000000 "#b0b0b0"  "#030303"
 bar {
     #modifier mod4
     #position top
-    status_command i3status --config ~/.i3/i3status.conf
+    status_command i3status --config ~/.config/i3/i3status.conf
     colors {
         #colorclass <border> <background> <text>
         background         #040404 #bar color
@@ -321,8 +321,6 @@ for_window [instance="xclock"] floating enable, border none, move position 3641p
 
 #}}}
 #i3-gaps specific {{{
-# gaps inner 8
-# gaps outer -9 #higher than inner, so no gap when there's just a single window
-gaps inner 4
-gaps outer -7 #higher than inner, so no gap when there's just a single window
+# gaps inner 4
+# gaps outer -7 #higher than inner, so no gap when there's just a single window
 #}}}
