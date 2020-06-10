@@ -65,6 +65,7 @@ next <patterns:>
 next,more,newer,>,›,→,»,≫,>>,nästa,senare,nyare
 
 CSS for link hints
+
 ```
 div > .vimiumHintMarker {
 /* linkhint boxes */
