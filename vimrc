@@ -815,8 +815,10 @@ let g:ale_python_pylint_executable = 'pylint'
 let g:ale_python_pylint_options="--load-plugins pylint_django"
 
 " E2 - Fix missing whitespace around X
+" E27 - Fix missing whitespace around X
 " E3x - Line-related. Like add missing blank line, remove extra blank line...
-let g:ale_python_autopep8_options = '--select E251,E3'
+" E7x - multiple spaces/tabs before/after keyword
+let g:ale_python_autopep8_options = '--select E2,E251,E3,E27'
 let g:ale_fixers = {
 \   'python': [
 \       'trim_whitespace',
@@ -950,13 +952,13 @@ let g:jedi#show_call_signatures_delay = 0
 " let g:jedi#force_py_version = 3
 
 ""LanguageClient-neovim configuration
-set rtp+=~/.vim/bundle/LanguageClient-neovim
+" set rtp+=~/.vim/bundle/LanguageClient-neovim
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-    \ }
-
-    " \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+" let g:LanguageClient_serverCommands = {
+"     \ 'rust': ['rust-analyzer', 'rustup', 'run', 'stable', 'rls'],
+"     \ }
+" 
+"     " \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
 
 ""lightline configuration
 "let g:lightline = {

@@ -17,8 +17,24 @@ nnoremap <leader><leader>l :let g:syntastic_python_checkers=['python3']
 "Disable pylint
 nnoremap <leader>L :let g:syntastic_python_checkers=['python']<cr>
 
-nnoremap gd :YcmCompleter GoTo<cr>
-nnoremap gr :YcmCompleter GoToReferences<cr>
+" nnoremap gd :YcmCompleter GoTo<cr>
+" nnoremap gr :YcmCompleter GoToReferences<cr>
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 let g:syntastic_python_checkers=['python3', 'pep8']
 
@@ -68,6 +84,8 @@ let b:commentary_format='#~ %s'
 "Used for the vim-printf plugin
 let b:printf_pattern = 'print("%{}".format(%s))'
 let b:printf_delim = ': '
+
+let g:ale_enabled = 0
 
 set tabstop=8
 set expandtab
