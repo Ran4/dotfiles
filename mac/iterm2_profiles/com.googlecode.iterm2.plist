@@ -590,6 +590,8 @@
 	<integer>2</integer>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
+	<key>NSFontPanelAttributes</key>
+	<string>1, 1</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/dotfiles/mac/iterm2_profiles</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -625,18 +627,24 @@
 	</data>
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
+	<key>NSWindow Frame NSFontPanel</key>
+	<string>3431 -45 703 486 1680 -367 3840 2160 </string>
+	<key>NSWindow Frame ProfilesPanel</key>
+	<string>4494 1109 735 382 1680 -152 3840 2160 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
-	<string>629 628 400 129 0 0 1680 1050 </string>
+	<string>4025 414 400 129 1680 -152 3840 2160 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>3290 1046 620 392 1680 -280 3840 2160 </string>
+	<string>3290 1174 620 392 1680 -152 3840 2160 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>1949 -154 606 469 1680 -280 3840 2160 </string>
+	<string>1949 -26 606 469 1680 -152 3840 2160 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>3074 705 796 486 1680 -280 3840 2160 </string>
+	<string>2430 459 958 451 1680 -152 3840 2160 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>3600 -266 1914 2146 1680 -280 3840 2160 </string>
+	<string>3600 -152 1914 2160 1680 -152 3840 2160 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>46 1715 570 429 -907 1200 3840 2137 </string>
+	<string>0 1 1674 1049 0 0 1680 1050 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>3600 -152 1914 2160 1680 -152 3840 2160 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1301,11 +1309,13 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-08-14T09:14:07Z</date>
+	<date>2018-11-02T11:27:39Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>StretchTabsToFillBar</key>
 	<false/>
+	<key>SuppressRestartAnnouncement</key>
+	<true/>
 	<key>TabStyle</key>
 	<integer>0</integer>
 	<key>TabViewType</key>
