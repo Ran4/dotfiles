@@ -27,14 +27,18 @@ nnoremap <localleader>R :source ~/.vim/ftplugin/elm.vim<cr>
 
 "}}}
 " Let {{{
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_elm_checkers=['elm_make']
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_elm_checkers=['elm_make']
 
-let g:elm_detailed_complete = 1
-"let g:elm_make_show_warnings = 1
-let g:elm_syntastic_show_warnings = 1
-let g:elm_detailed_complete = 1
-let g:elm_classic_highlighting = 1
+" let g:elm_detailed_complete = 1
+" "let g:elm_make_show_warnings = 1
+" " let g:elm_syntastic_show_warnings = 1
+" let g:elm_detailed_complete = 1
+" let g:elm_classic_highlighting = 1
+
+let g:ycm_semantic_triggers = {
+     \ 'elm' : ['.'],
+     \}
 
 "}}}
 " Set {{{
