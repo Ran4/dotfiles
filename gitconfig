@@ -5,6 +5,8 @@
 	user = ran4
 [user]
 	editor = vim
+[pull]
+	rebase = true
 [push]
 	default = simple
 [core]
