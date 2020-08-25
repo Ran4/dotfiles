@@ -9,10 +9,7 @@
 # Source Prezto
 [[ -f ~/.zprezto/init.zsh ]] && source ~/.zprezto/init.zsh
 FPATH=~/.zsh/completion/:$FPATH
-# export ZSH=~/.oh-my-zsh
-# Set name of the theme to load. Look in ~/.oh-my-zsh/themes/
-#ZSH_THEME="random"
-# ZSH_THEME="sunrise-modified-ran"
+
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
@@ -21,8 +18,12 @@ FPATH=~/.zsh/completion/:$FPATH
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd" # Command execution time stamp shown in the history command output.
+HISTFILE=~/.zsh_history
 HISTSIZE=400000
 HISTFILESIZE=8000000
+SAVEHIST=400000
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt SHARE_HISTORY
 
 #Help function to see if a command exists
 command_exists () {
@@ -38,6 +39,8 @@ source ~/.zsh/npm_completion.zsh
 
 #Don't autocomplete hosts. Inspiration: https://tlvince.com/fixing-slow-zsh-command-completion
 zstyle ':completion:*' hosts off
+# Ignore casing when using autocomplete 
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 source ~/.zsh/setopt.zsh
 #End of ZSH related configuration }}}
 #Keyboard related {{{
@@ -82,8 +85,13 @@ if command_exists xset ; then
     xset r rate 200 70 &> /dev/null ;
 fi
 
+autoload -Uz promptinit
+promptinit
+
+PROMPT="%B%~%b%F{green}$%f "
+
 if [ ! -f /tmp/xkbmap_is_checked ]; then
-    touch /tmp/xkbmap_is_checked
+    # touch /tmp/xkbmap_is_checked
     if command_exists setxkbmap ; then
         if [ -n "$DISPLAY" ]; then
             if [ -f "/etc/arch-release" ]; then
@@ -140,12 +148,6 @@ source ~/.zsh/computer_specific_configs.zsh
 
 # See http://situmam.blogspot.se/2012/05/emacs-keybidings-in-ubuntu-1204-precise.html
 #gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
-
-export NVM_DIR="~/.nvm/"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
