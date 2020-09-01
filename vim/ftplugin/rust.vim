@@ -4,6 +4,7 @@ source ~/.vim/ftplugin/remap_to_brackets.vim
 if has('nvim')
     "nnoremap <leader>p <c-w><c-v>:term rustc % && ./%:r<cr>
     nnoremap <leader>p <c-w><c-v>:term cargo run -q<cr>i
+    nnoremap <leader>t <c-w><c-v>:term cargo test -q<cr>i
     nnoremap <leader>P <c-w><c-s>:term cargo run<cr>i
     nnoremap <leader>b <c-w><c-v>:term cargo build<cr>i
 else
@@ -22,25 +23,14 @@ call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 inoremap <localleader>d <esc>"qdiwaprintln!("<c-r>q: {}", <c-r>q)<esc>
 nnoremap <localleader>d "qdiwaprintln!("<c-r>q: {}", <c-r>q);<esc>
 
-colorscheme luna
+" We can't do :update here, as coc only triggers on actual save?
+nnoremap <space> :w<CR>
+
+colorscheme lunacocmod
 set cc=100
 " Auto-formatting using rustfmt (rustup component add rustfmt-preview)
 let g:rustfmt_autosave = 1
 
-
-"auto close {
-function! s:CloseBracket()
-    let line = getline('.')
-    if line =~# '^\s*\(struct\|class\|enum\) '
-        return "{\<Enter>}\<Esc>O"
-    elseif searchpair('(', '', ')', 'bmn', '', line('.'))
-        " Probably inside a function call. Close it off.
-        return "{\<Enter>});\<Esc>O"
-    else
-        return "{\<Enter>}\<Esc>O"
-    endif
-endfunction
-inoremap <expr> {<Enter> <SID>CloseBracket()
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
