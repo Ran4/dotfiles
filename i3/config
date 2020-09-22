@@ -5,10 +5,6 @@
 set $mod Mod1+ctrl
 set $default_terminal alacritty
 
-# Pressing workspace key again toggles back to the previous workspace
-# workspace_auto_back_and_forth yes
-workspace_auto_back_and_forth no
-
 # movement
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -149,12 +145,6 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
 #}}}
 #Workspace naming {{{
-#set $ws1 1: $default_terminal
-#set $ws2 2: Firefox
-#set $ws3 3: Zathura
-#set $ws1 1 $default_terminal
-#set $ws2 2 Firefox
-#set $ws3 3 Zathura
 set $ws1 " 1 "
 set $ws2 " 2 "
 set $ws3 " 3 "
@@ -164,6 +154,15 @@ set $ws6 " 6 "
 set $ws7 " 7 "
 set $ws8 " 8 "
 set $ws9 " 9 "
+# set $ws1 one
+# set $ws2 two
+# set $ws3 three
+# set $ws4 four
+# set $ws5 five
+# set $ws6 six
+# set $ws7 seven
+# set $ws8 eight
+# set $ws9 nine
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -199,15 +198,15 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 
 # alt also works...
-bindsym Mod1+Shift+1 move container to workspace $ws1; workspace $ws1
-bindsym Mod1+Shift+2 move container to workspace $ws2; workspace $ws2
-bindsym Mod1+Shift+3 move container to workspace $ws3; workspace $ws3
-bindsym Mod1+Shift+4 move container to workspace $ws4; workspace $ws4
-bindsym Mod1+Shift+5 move container to workspace $ws5; workspace $ws5
-bindsym Mod1+Shift+6 move container to workspace $ws6; workspace $ws6
-bindsym Mod1+Shift+7 move container to workspace $ws8; workspace $ws7
-bindsym Mod1+Shift+8 move container to workspace $ws8; workspace $ws8
-bindsym Mod1+Shift+9 move container to workspace $ws9; workspace $ws9
+# bindsym Mod1+Shift+1 move container to workspace $ws1; workspace $ws1
+# bindsym Mod1+Shift+2 move container to workspace $ws2; workspace $ws2
+# bindsym Mod1+Shift+3 move container to workspace $ws3; workspace $ws3
+# bindsym Mod1+Shift+4 move container to workspace $ws4; workspace $ws4
+# bindsym Mod1+Shift+5 move container to workspace $ws5; workspace $ws5
+# bindsym Mod1+Shift+6 move container to workspace $ws6; workspace $ws6
+# bindsym Mod1+Shift+7 move container to workspace $ws8; workspace $ws7
+# bindsym Mod1+Shift+8 move container to workspace $ws8; workspace $ws8
+# bindsym Mod1+Shift+9 move container to workspace $ws9; workspace $ws9
 
 ########################################}}}
 #Mouse stuff {{{
