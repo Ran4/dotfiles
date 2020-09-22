@@ -800,7 +800,7 @@ endif
 "ALE configuration
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 0
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_linters = {
 \   'python': [
 \       'flake8',
@@ -856,7 +856,7 @@ nnoremap <b :CtrlPBuffer<cr>
 
 " The dir one means /__pycache__ OR /.git OR /.hg OR /.svn
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](__pycache__|node_modules|target/doc|\.(git|hg|svn)|htmlcov|TAGS|tags)$',
+  \ 'dir':  '\v[\/](__pycache__|node_modules|target|target/release|target/debug|target/doc|\.(git|hg|svn)|htmlcov|TAGS|tags)$',
   \ 'file': '\v\.(exe|so|dll|pyc)$',
   \ }
 " Use regexp search by default
