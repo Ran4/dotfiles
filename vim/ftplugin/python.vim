@@ -23,7 +23,6 @@ nnoremap <leader>L :let g:syntastic_python_checkers=['python']<cr>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
