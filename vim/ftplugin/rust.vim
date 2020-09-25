@@ -54,6 +54,9 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+nmap <silent> ]l <Plug>(coc-diagnostic-next)
+nmap <silent> [l <Plug>(coc-diagnostic-prev)
+
 xmap ga  <Plug>(coc-codeaction-selected)
 " nmap ga  <Plug>(coc-codeaction-selected)
 " nmap ga  <Plug>(coc-codeaction)
