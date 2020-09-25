@@ -1,0 +1,7 @@
+{
+    "python.jediEnabled": false,
+    "prettier.tabWidth": 4,
+    "prettier.bracketSpacing": false,
+    "diagnostic.checkCurrentLine": true,
+    "coc.preferences.extensionUpdateCheck": "weekly"
+}
