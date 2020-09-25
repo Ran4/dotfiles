@@ -3,6 +3,7 @@ export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/dotfiles/scripts
 export PATH="$HOME/.yarn/bin/:$PATH"
+[[ "$OSTYPE" == "darwin"* ]] && export PATH="$PATH:/usr/local/opt/python@3.7/bin"
 export MYPYPATH=${HOME}/.local/share/mypy-path
 [[ "$OSTYPE" != "darwin"* ]] && export PATH="$HOME/.local/share/swift-4.1.1-RELEASE-ubuntu16.10/usr/bin/:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"

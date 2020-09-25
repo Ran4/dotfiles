@@ -6,6 +6,12 @@
 " Last Change:	2004 April 17
 " Version: 0.04
 "
+
+" BEGIN MODIFIED BY RAN
+"remaps å¨Å^ to []{} in various ways
+source ~/.vim/ftplugin/remap_to_brackets.vim
+" END MODIFIED BY RAN
+
 set expandtab
 set tabstop=4
 

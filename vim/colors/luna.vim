@@ -201,3 +201,5 @@ hi SignifySignDelete ctermfg=196 ctermbg=234 cterm=NONE
 "
 " vim:foldmethod=marker:foldlevel=0:textwidth=79
 "
+" Rust type hints that are shown to the right of some code
+hi! CocHintSign ctermfg=240

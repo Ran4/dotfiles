@@ -108,6 +108,7 @@ brew cask install haroopad
 brew cask install hammerspoon
 brew cask install discord
 brew cask install google-cloud-sdk
+brew cask install sccache
 #brew cask install music-manager #google music manager
 
 ################################################################################
