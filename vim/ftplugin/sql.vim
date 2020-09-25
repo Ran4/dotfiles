@@ -34,7 +34,7 @@ syn case ignore
 
 syn keyword psqlSpecial  false null true
 
-syn keyword psqlKeyword	access add as asc begin by case check cluster column
+syn keyword psqlKeyword	access add as asc begin by case check cluster column foreign key references
 syn keyword psqlKeyword	compress connect current cursor decimal default desc
 syn keyword psqlKeyword	else elsif end exception exclusive file for from
 syn keyword psqlKeyword	function group having identified if immediate increment
@@ -64,7 +64,7 @@ syn match  psqlOperator 	"\(@@\|@-@\|^\||\|||\|||\/\|\~\|\~\*\)"
 syn match  psqlOperator 	"\(\~=\|\~\~\|\~\~\*\|:=\)"
 
 syn keyword psqlStatement alter analyze audit comment commit create
-syn keyword psqlStatement delete drop execute explain grant insert lock 
+syn keyword psqlStatement delete drop execute explain grant insert lock constraint
 syn keyword psqlStatement rename revoke rollback savepoint select set
 syn keyword psqlStatement truncate update analyze vacuum replace
 
