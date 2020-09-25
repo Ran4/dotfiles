@@ -835,8 +835,9 @@ let g:ale_fixers = {
 "Neovim-specific:
 if has('nvim')
     if has("macunix")
-        let g:python_host_prog = '/usr/local/bin/python2'
+        let g:python_host_prog = '/usr/bin/python'
         let g:python3_host_prog = '/usr/local/bin/python3'
+        let g:ycm_server_python_interpreter="/usr/local/bin/python3"
     else
         let g:python_host_prog = '/usr/bin/python'
         let g:python3_host_prog = '/usr/bin/python3'
