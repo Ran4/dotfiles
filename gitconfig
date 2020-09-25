@@ -22,3 +22,7 @@
 	verbose
 [alias]
 	stat = log --stat --graph --pretty=oneline --abbrev-commit --date=relative
+[color]
+	ui = auto
+[pull]
+	rebase = true
