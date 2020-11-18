@@ -51,8 +51,10 @@ bindkey '^r' history-incremental-search-backward
 #e.g. 'vim^p' -> 'vim file.py'
 autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
+autoload -Uz edit-command-line
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
+zle -N edit-command-line
 bindkey '^p' up-line-or-beginning-search
 bindkey '^n' down-line-or-beginning-search
 
@@ -66,6 +68,7 @@ bindkey '^k' vi-kill-eol
 bindkey "\eb" vi-backward-word
 bindkey "\ef" vi-forward-word
 bindkey "\ed" kill-word
+bindkey -M vicmd q edit-command-line
 
 #Arrows keys up/down
 bindkey '\eOA' up-line-or-beginning-search
