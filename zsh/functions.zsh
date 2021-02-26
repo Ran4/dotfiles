@@ -156,3 +156,11 @@ pj() {
     print json.dumps(json.load(sys.stdin),\
                      indent=$INDENT)" 
 }
+
+
+
+# Update messages-layke
+ur() {
+    export NEW_REV=$(cd ~/other/layke/messages-layke && git rev-parse HEAD)
+    sed -i "s/messages-layke.git@.\+#/messages-layke.git@${NEW_REV}#/g" requirements.txt && git add requirements.txt && git commit -m "Update messages-layke version to ${NEW_REV}" -e
+} 
