@@ -36,6 +36,7 @@ plugins=(git vi-mode docker docker-compose)
 source ~/.zsh/exports.zsh
 source ~/.zsh/functions.zsh
 source ~/.zsh/npm_completion.zsh
+emulate sh -c "source /etc/profile"
 
 #Don't autocomplete hosts. Inspiration: https://tlvince.com/fixing-slow-zsh-command-completion
 zstyle ':completion:*' hosts off
