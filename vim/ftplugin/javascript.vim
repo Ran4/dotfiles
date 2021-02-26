@@ -19,10 +19,16 @@ nnoremap <localleader>d "qdiwaconsole.log('<c-r>q:', <c-r>q)<esc>
 inoremap <localleader>q <esc>"qdiwavar <c-r>q = require("<c-r>q");
 nnoremap <localleader>q "qdiwavar <c-r>q = require("<c-r>q");<esc>
 
-nnoremap gd :TernDef<cr>
-nnoremap <localleader>t :TernType<cr>
-nnoremap <localleader>r :TernRefs<cr>
-nnoremap <localleader>R :TernRename<cr>
+" nnoremap gd :TernDef<cr>
+" nnoremap <localleader>t :TernType<cr>
+" nnoremap <localleader>r :TernRefs<cr>
+" nnoremap <localleader>R :TernRename<cr>
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+nnoremap <silent> <leader>f :call CocAction('format')<cr>
+
+nmap <silent> gd <Plug>(coc-definition)
 
 " colo luna
 " colo iceberg
