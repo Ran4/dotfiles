@@ -35,7 +35,7 @@ alias ghostscript='/opt/local/bin/gs'
 alias gs='git status'
 alias gc='git commit'
 alias gp='git push'
-alias gu='git pull'
+alias gu='git pull --rebase'
 alias gd='git diff'
 alias gdw='git diff --color-words=.'
 alias gdc='git diff --cached'
@@ -92,6 +92,8 @@ if [[ "$OSTYPE" != "darwin"* ]]; then
 fi
 alias tmuxs='~/dotfiles/defaulttmuxsession.sh'
 alias ts='~/dotfiles/defaulttmuxsession.sh'
+alias work='sess work'
+alias sess='~/dotfiles/sess.sh'
 # alias tns='tmux new -s' #Create new session with tns sessionname
 alias t='~/dotfiles/tmux_attach_to_or_create_new_session.bash' #Create new session $1 or attach to it
 alias tskth='ts && tmux source-file ~/dotfiles/custom/kth_tmux.conf'
@@ -125,7 +127,7 @@ alias va='[[ -f .venv/bin/activate ]] && source .venv/bin/activate || ([[ -f Pip
 #metal archives lyrics search: mly
 if [ -f ~/git/other/metallum/metallum.py ]; then
     alias mly='python ~/git/other/metallum/metallum.py'
-    
+
     if [ -f ~/dotfiles/scripts/mly_nowplaying.sh ]; then
         alias ly='~/dotfiles/scripts/mly_nowplaying.sh'
     fi
@@ -155,7 +157,7 @@ function vimr {
     fi
 }
 
-alias rmpyc='rm *.pyc'
+alias rmpyc='rm **/*__pycache__'
 alias rmswp='rm .*.swp'
 alias manvim='function _domanvim() { man $1 | vim -R -; }; _domanvim'
 alias http='http --style fruity'
@@ -185,6 +187,8 @@ alias pp='source ~/src/pyy/play/pandas/.venv/bin/activate && python3 -i ~/src/py
 
 alias zath='zathura'
 alias prettyjson='python3 -m json.tool'
+alias glances='glances --percpu'
+alias transfer='rsync -ah --progress'
 
 if command_exists tmux ; then
     alias reset='reset && tmux clear-history'
@@ -217,13 +221,13 @@ if [ -f ~/.identifiers/orexplore ]; then
     # Screen layouts:
     # alias xrm="~/.screenlayout/T460s_and_1920x1200.sh"
     alias xrmain="~/.screenlayout/T460s_and_4k.sh"
-    
+
     # alias xrs="~/.screenlayout/same_T460s_and_1920x1080.sh"
     alias xrsame="~/.screenlayout/same_T460s_and_1920x1080.sh"
     alias xrsamedp="~/.screenlayout/same_T460s_and_1920x1080_minidp.sh"
-    
+
     alias xrone="~/.screenlayout/T460s_only.sh"
-    
+
     # Docker exec shortcuts
     alias web='docker exec -it $(docker-compose ps -q web)'
 fi
