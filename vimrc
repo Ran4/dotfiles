@@ -772,6 +772,13 @@ endif
 ""vim-toml, adds syntax support for TOML files
 "!git clone https://github.com/cespare/vim-toml ~/.vim/bundle/vim-toml
 
+""typescript-vim
+"!git clone https://github.com/leafgarland/typescript-vim.git ~/.vim/bundle/typescript-vim
+
+"" vim-jsx-typescript (needed alongside typescript-vim)
+"!git clone https://github.com/peitalin/vim-jsx-typescript ~/.vim/bundle/vim-jsx-typescript
+
+
 ""unimpaired - add a bunch of handy bracket mappings
 "!git clone https://github.com/tpope/vim-unimpaired ~/.vim/bundle/vim-unimpaired
 
@@ -805,7 +812,6 @@ let g:ale_fix_on_save = 0
 let g:ale_linters = {
 \   'python': [
 \       'flake8',
-\       'mypy'
 \   ],
 \}
 " \       'mypy',
@@ -844,6 +850,9 @@ if has('nvim')
         let g:python3_host_prog = '/usr/bin/python3'
     endif
 endif
+
+" coc configuration
+let g:coc_global_extensions = ['coc-tsserver']
 
 "ack-vim configuration
 "Change default size of copen window in ag from 10 to 7
