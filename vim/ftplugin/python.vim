@@ -17,13 +17,21 @@ nnoremap <leader><leader>l :let g:syntastic_python_checkers=['python3']
 "Disable pylint
 nnoremap <leader>L :let g:syntastic_python_checkers=['python']<cr>
 
-" nnoremap gd :YcmCompleter GoTo<cr>
-" nnoremap gr :YcmCompleter GoToReferences<cr>
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gi <Plug>(coc-implementation)
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>rn <Plug>(coc-rename)
 
-
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+nnoremap <leader>f :call CocAction('format')<cr>
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -37,7 +45,7 @@ endfunction
 
 let g:syntastic_python_checkers=['python3', 'pep8']
 
-nnoremap <leader>f :!autopep8 -i --select E302 %<CR><CR>:e!<CR>:w<CR>
+" nnoremap <leader>f :!autopep8 -i --select E302 %<CR><CR>:e!<CR>:w<CR>
 
 
 "nvim will auto clear
