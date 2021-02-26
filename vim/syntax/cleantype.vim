@@ -2,7 +2,7 @@
      finish
  endif
 
-syn keyword Keyword else deriving alias trait
+syn keyword Keyword else deriving alias trait where
 syn keyword Constant AWESOME
 syn match Number '\d\*'
 syn match Comment '--.*'

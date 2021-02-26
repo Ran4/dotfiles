@@ -613,6 +613,7 @@ if has("autocmd")
         autocmd BufRead,BufNewFile .bash_aliases,bash_aliases set filetype=sh
         autocmd BufRead,BufNewFile .pyre_configuration set ft=json
         autocmd BufRead,BufNewFile *.arff set filetype=arff
+        autocmd BufRead,BufNewFile *.ct set filetype=cleantype
 
         "autocmd BufRead,BufNewFile * call HighlightExtraWhitespace()
 
