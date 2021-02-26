@@ -1,7 +1,28 @@
 {
-    "python.jediEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.formatting.provider": "autopep8",
     "prettier.tabWidth": 4,
     "prettier.bracketSpacing": false,
     "diagnostic.checkCurrentLine": true,
-    "coc.preferences.extensionUpdateCheck": "weekly"
+    "coc.preferences.extensionUpdateCheck": "weekly",
+    "coc.preferences.formatOnSaveFiletypes": [
+        "elm"
+    ],
+    "languageserver": {
+        "elmLS": {
+            "command": "elm-language-server",
+            "filetypes": [
+                "elm"
+            ],
+            "rootPatterns": [
+                "elm.json"
+            ],
+            "trace.server": "verbose",
+            "initializationOptions": {
+                "disableElmLSDiagnostics": false,
+                "skipInstallPackageConfirmation": false
+            }
+        }
+    },
+    "codeLens.enable": true
 }
