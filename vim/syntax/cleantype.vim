@@ -9,6 +9,8 @@ syn match Comment '--.*'
 
 " The non-greedy version of * is \{-}
 syn match String '".\{-}"'
+syn region String start=/\"\"\"/ end=/\"\"\"/
+
 " syn match Type '\<[ABCDEFGHIJKLMNOPQRSTUVWXYZ].\{-}\>'
 syn match Type '\<\u\l\{-}\>'
 syn match Macro '\w\+!\|=>'
