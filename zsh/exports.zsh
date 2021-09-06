@@ -14,6 +14,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 [[ -f "/etc/arch-release" ]] && export PATH=$PATH:/usr/bin/core_perl/
 export MANPATH="/opt/local/share/man:/usr/local/man:$MANPATH"
 export EDITOR=vim
+export EXPORT PYTHONPYCACHEPREFIX=/tmp/__pycaches
 
 export LC_CTYPE=en_US.UTF-8
 
