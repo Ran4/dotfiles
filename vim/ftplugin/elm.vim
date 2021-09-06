@@ -12,8 +12,11 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 
+" The elm languageserver doesn't seem to like using update?
+nnoremap <space> :w<CR>
+
 if exists('+colorcolumn')
-    set colorcolumn=80
+    set colorcolumn=90
 endif
 
 "let b:commentary_format='#~ %s'
@@ -21,3 +24,5 @@ colorscheme luna
 "colorscheme iceberg
 
 iabbrev improt import
+
+let g:ale_pattern_options = {'\.Elm$': {'ale_enabled': 0}}

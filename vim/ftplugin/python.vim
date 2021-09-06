@@ -28,6 +28,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>rn <Plug>(coc-rename)
+nnoremap S :CocCommand python.sortImports<CR>
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -92,7 +93,7 @@ let b:commentary_format='#~ %s'
 let b:printf_pattern = 'print("%{}".format(%s))'
 let b:printf_delim = ': '
 
-let g:ale_enabled = 0
+let g:ale_enabled = 1
 
 set tabstop=8
 set expandtab
