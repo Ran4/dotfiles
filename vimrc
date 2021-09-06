@@ -90,11 +90,6 @@ nnoremap <leader>Q kx
 nnoremap <leader><space> i<space><esc>2li<space><esc>h
 vnoremap <space> <esc>`<i<space><esc>`>la<space><esc>`<l
 
-" Substitution  helper: press <leader>vname/newname<CR> to replace globally
-nnoremap <leader>s :%s//gc<Left><Left><Left>
-" visual mode replace helper
-vnoremap <leader>s :s/\%V/g<Left><Left>
-vnoremap <leader>s :s//g<Left><Left>
 " Search for something first (e.g. using *), then press S to substitute
 nnoremap S :%s///g<left><left>
 
