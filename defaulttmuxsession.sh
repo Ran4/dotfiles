@@ -14,8 +14,8 @@ if [ "$?" -eq 1 ] ; then
     cd ~
     tmux -2 attach || tmux new-session -s "$sn" -d
 
-    cd ~/dotfiles
-    tmux new-window -n dotfiles
+    cd ~/other/layke/api-layke/
+    tmux new-window -n api-layke
 
     # Select window #1 and attach to the session
     tmux select-window -t "$sn:1"
