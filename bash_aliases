@@ -94,6 +94,7 @@ alias tmuxs='~/dotfiles/defaulttmuxsession.sh'
 alias ts='~/dotfiles/defaulttmuxsession.sh'
 alias work='sess work'
 alias sess='~/dotfiles/sess.sh'
+alias priv='~/dotfiles/sess.sh priv'
 # alias tns='tmux new -s' #Create new session with tns sessionname
 alias t='~/dotfiles/tmux_attach_to_or_create_new_session.bash' #Create new session $1 or attach to it
 alias tskth='ts && tmux source-file ~/dotfiles/custom/kth_tmux.conf'
@@ -157,7 +158,7 @@ function vimr {
     fi
 }
 
-alias rmpyc='rm **/*__pycache__'
+alias rmpyc='rm -rf **/*__pycache__'
 alias rmswp='rm .*.swp'
 alias manvim='function _domanvim() { man $1 | vim -R -; }; _domanvim'
 alias http='http --style fruity'
