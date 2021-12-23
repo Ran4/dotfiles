@@ -1,11 +1,14 @@
 {
     "python.linting.flake8Enabled": true,
     "python.formatting.provider": "autopep8",
+    "python.formatting.blackPath": "/home/ran/.local/bin/black",
+    "python.formatting.autopep8Path": "/home/ran/.local/bin/autopep8",
+    "python.linting.flake8Args": ["--select", "E302"],
     "pyright.organizeimports.provider": "isort",
     "python.sortImports.path": "/home/ran/.local/bin/isort",
     "prettier.tabWidth": 4,
     "prettier.bracketSpacing": false,
-    "diagnostic.checkCurrentLine": true,
+    "diagnostic.checkCurrentLine": false,
     "coc.preferences.extensionUpdateCheck": "weekly",
     "coc.preferences.formatOnSaveFiletypes": ["elm"],
     "languageserver": {

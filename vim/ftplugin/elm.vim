@@ -26,3 +26,5 @@ colorscheme luna
 iabbrev improt import
 
 let g:ale_pattern_options = {'\.Elm$': {'ale_enabled': 0}}
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
