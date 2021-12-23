@@ -8,11 +8,11 @@ function has-session {
 
 has-session "s0"
 if [ "$?" -eq 1 ] ; then
-    # Start the session and window 0 in /etc
-    #   This will also be the default cwd for new windows created
-    #   via a binding unless overridden with default-path.
-    cd ~
-    tmux -2 attach || tmux new-session -s "$sn" -d
+    cd ~/other/layke/api-layke/
+    tmux -2 attach || tmux new-session -s "$sn" -n "postgres+rmq" -d
+    tmux send-keys -t "$sn:1" "make postgres" Enter
+    tmux split-window -t "$sn:1"
+    tmux send-keys -t "$sn:1" "make rabbitmq" Enter
 
     cd ~/other/layke/api-layke/
     tmux new-window -n api-layke
