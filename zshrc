@@ -157,5 +157,5 @@ source ~/.zsh/computer_specific_configs.zsh
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:/usr/local/share/dotnet"
 
-# Always the set the volume to 79%
-[ -f ~/.identifiers/ran-main ] && amixer sset -q Master 58 2>&1 /dev/null
+# Always the set the volume to 74%
+[ -f ~/.identifiers/ran-main ] && amixer sset -q Master 56 2>&1 /dev/null
