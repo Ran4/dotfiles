@@ -84,9 +84,13 @@ bindkey -sM vicmd '^[' '^G'
 bindkey -rM viins '^X'
 
 #Key delay. msDelay (higher=longer), rate (quicker=faster)
-set r rate 200 70
-if command_exists xset ; then
-    xset r rate 200 70 &> /dev/null ;
+if [ ! -f /.identifiers/mac ]; then
+    set r rate 200 70
+    if command_exists xset ; then
+        # echo -n "(commandexists done, xset begin)"
+        # xset r rate 200 70 &> /dev/null ;
+        # echo -n "(xset end)"
+    fi
 fi
 
 autoload -Uz promptinit
@@ -98,6 +102,7 @@ if [ ! -f /tmp/xkbmap_is_checked ]; then
     # touch /tmp/xkbmap_is_checked
     if command_exists setxkbmap ; then
         if [ -n "$DISPLAY" ]; then
+            echo "7"
             if [ -f "/etc/arch-release" ]; then
                 setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
             else
@@ -107,6 +112,7 @@ if [ ! -f /tmp/xkbmap_is_checked ]; then
                 # Swaps left alt and win key on mac keyboards.  The lv3:rwin_switch makes rcmd+¨ perform ~ (as opposed to option+¨)
                 setxkbmap -option altwin:swap_lalt_lwin -variant "nodeadkeys" -layout "se" -option lv3:rwin_switch
             fi
+            touch /tmp/xkbmap_is_checked
         fi
     fi
 fi
