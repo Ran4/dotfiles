@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Retrieves the score for a certain IMDB url, and prints if it's at 6.0 or more,
 without printing the actual rating if it is.
