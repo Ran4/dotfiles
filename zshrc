@@ -88,7 +88,7 @@ if [ ! -f /.identifiers/mac ]; then
     set r rate 200 70
     if command_exists xset ; then
         # echo -n "(commandexists done, xset begin)"
-        # xset r rate 200 70 &> /dev/null ;
+        xset r rate 200 70 &> /dev/null ;
         # echo -n "(xset end)"
     fi
 fi
@@ -163,5 +163,5 @@ source ~/.zsh/computer_specific_configs.zsh
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:/usr/local/share/dotnet"
 
-# Always the set the volume to 83%
-[ -f ~/.identifiers/ran-main ] && amixer sset -q Master 59 2>&1 /dev/null
+# Always the set the volume to 66%
+[ -f ~/.identifiers/ran-main ] && amixer sset -q Master 53 2>&1 /dev/null
