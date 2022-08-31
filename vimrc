@@ -920,6 +920,7 @@ let g:EasyMotion_enter_jump_first = 1
 set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
 
+" The :Ag command is added by fzf.vim
 nnoremap <leader>a :Ag<cr>
 
 let g:fzf_action = {
@@ -933,6 +934,11 @@ let g:fzf_action = {
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_layout = { 'down': '50%' }
+
+" Hide the status bar while the :Ag window is open, then re-add it when done
+autocmd! FileType fzf
+autocmd  FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 
 ""Gitgutter configuration
