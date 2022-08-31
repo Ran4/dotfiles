@@ -243,3 +243,4 @@ alias netflix='nohup google-chrome --app=https://www.netflix.com &'
 
 alias curlj='curl -H "Content-Type: application/json" -H "Accept: application/json; indent=4"'
 alias typora='open -a typora'
+alias car='python3 ~/dotfiles/scripts/car.py'
