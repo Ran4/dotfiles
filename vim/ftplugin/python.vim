@@ -85,7 +85,7 @@ inoremap <localleader>d <esc>"qdiwaprint("<c-r>q:", <c-r>q)<esc>
 nnoremap <localleader>d "qdiwaprint("<c-r>q:", <c-r>q)<esc>
 
 if exists('+colorcolumn')
-    set colorcolumn=80
+    set colorcolumn=89
 endif
 
 set makeprg=python\ -u\ %

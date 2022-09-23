@@ -920,8 +920,7 @@ let g:EasyMotion_enter_jump_first = 1
 set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
 
-" The :Ag command is added by fzf.vim
-nnoremap <leader>a :Ag<cr>
+nnoremap <leader>a :Rg<cr>
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',

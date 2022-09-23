@@ -110,7 +110,9 @@ if [ ! -f /tmp/xkbmap_is_checked ]; then
                 # setxkbmap -model pc105 -layout "se" -variant "nodeadkeys" -option "compose:rwin"
 
                 # Swaps left alt and win key on mac keyboards.  The lv3:rwin_switch makes rcmd+¨ perform ~ (as opposed to option+¨)
+                echo "7b"
                 setxkbmap -option altwin:swap_lalt_lwin -variant "nodeadkeys" -layout "se" -option lv3:rwin_switch
+                echo "7c"
             fi
             touch /tmp/xkbmap_is_checked
         fi
@@ -165,3 +167,6 @@ export PATH="$PATH:/usr/local/share/dotnet"
 
 # Always the set the volume to 58%
 [ -f ~/.identifiers/ran-main ] && amixer sset -q Master 50 2>&1 /dev/null
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc
