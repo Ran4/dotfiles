@@ -1,5 +1,5 @@
 import argparse
-from typing import Optional
+from typing import Optional, List
 
 """
 x = 300
@@ -19,8 +19,9 @@ print("ratio", ratio)
 def print_costs(
     cost: float,
     insurance: Optional[float],
-    extra: bool,
+    extra: int,  # 0, 1 or 2
 ):
+    assert 0 <= extra <= 2, "extra must be between 0 and 2 inclusive"
     print(
         "ratio",
         "down",
@@ -28,8 +29,19 @@ def print_costs(
         "p.m(6yrs)",
         "p.m(7yrs)",
     )
-    if extra:
-        ratios = [0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5]
+    if extra > 0:
+        ratios = [0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65]
+
+        if extra > 1:
+            # Put a ratio between each previous ratio
+            ratios_inbetween: List[float] = [
+                (ratios[i] + ratios[i+1])/2.0
+                for i in range(len(ratios) - 1)
+            ]
+            new_ratios = []
+            for ratio, ratio_after in zip(ratios, ratios_inbetween):
+                new_ratios.extend([ratio, round(ratio_after, 3)])
+            ratios = new_ratios
 
     else:
         ratios = [0.2, 0.3, 0.4, 0.5]
@@ -55,8 +67,8 @@ def main():
     parser.add_argument(
         "-e",
         "--extra",
-        action="store_true",
-        default=False,
+        action="count",
+        default=0,
     )
     args = parser.parse_args()
 
