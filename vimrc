@@ -921,7 +921,11 @@ let g:EasyMotion_enter_jump_first = 1
 set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
 
-nnoremap <leader>a :Rg<cr>
+if executable('rg')
+    nnoremap <leader>a :Rg<cr>
+else
+    nnoremap <leader>a :Ag<cr>
+endif
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
