@@ -8,11 +8,10 @@
     "pyright.organizeimports.provider": "isort",
     "python.sortImports.path": "/home/ran/.local/bin/isort",
     "prettier.tabWidth": 4,
-    "python.jediEnabled": false,
     "prettier.bracketSpacing": false,
     "diagnostic.checkCurrentLine": false,
     "coc.preferences.extensionUpdateCheck": "weekly",
-    "coc.preferences.formatOnSaveFiletypes": ["elm"],
+    "suggest.noselect": true,
     "languageserver": {
         "elmLS": {
             "command": "elm-language-server",
