@@ -850,6 +850,13 @@ endif
 " coc configuration
 let g:coc_global_extensions = ['coc-tsserver']
 
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocActionAsync('format')
+
+xmap <leader>f  <Plug>(coc-format-selected)
+nnoremap <leader>f :call CocAction('format')<cr>
+nmap <leader>rn <Plug>(coc-rename)
+
 "ack-vim configuration
 "Change default size of copen window in ag from 10 to 7
 "let g:ag_qhandler="copen 7"

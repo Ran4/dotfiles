@@ -16,6 +16,7 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
 nmap <silent> ]l <Plug>(coc-diagnostic-next)
 nmap <silent> [l <Plug>(coc-diagnostic-prev)
 
