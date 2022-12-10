@@ -10,6 +10,7 @@
     "prettier.tabWidth": 4,
     "prettier.bracketSpacing": false,
     "diagnostic.checkCurrentLine": false,
+    "diagnostic.virtualText": true,
     "coc.preferences.extensionUpdateCheck": "weekly",
     "suggest.noselect": true,
     "languageserver": {
@@ -27,5 +28,6 @@
     "codeLens.enable": true,
     "[typescript]": {
       "coc.preferences.formatOnSave": true,
+      "diagnostic.virtualTextCurrentLineOnly": false
     }
 }
