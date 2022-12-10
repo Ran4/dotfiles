@@ -24,5 +24,8 @@
             }
         }
     },
-    "codeLens.enable": true
+    "codeLens.enable": true,
+    "[typescript]": {
+      "coc.preferences.formatOnSave": true,
+    }
 }
