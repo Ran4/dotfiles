@@ -21,7 +21,7 @@ def print_costs(
     insurance: Optional[float],
     extra: int,  # 0, 1 or 2
 ):
-    assert 0 <= extra <= 2, "extra must be between 0 and 2 inclusive"
+    assert 0 <= extra <= 3, "extra must be between 0 and 3 inclusive"
     print(
         "ratio",
         "down",
@@ -42,6 +42,9 @@ def print_costs(
             for ratio, ratio_after in zip(ratios, ratios_inbetween):
                 new_ratios.extend([ratio, round(ratio_after, 3)])
             ratios = new_ratios
+            if extra > 2:
+                # Include values under 20%
+                ratios = [0.1, 0.125, 0.15, .175] + ratios
 
     else:
         ratios = [0.2, 0.3, 0.4, 0.5]
