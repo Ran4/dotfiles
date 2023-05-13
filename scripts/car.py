@@ -21,7 +21,7 @@ def print_costs(
     insurance: Optional[float],
     extra: int,  # 0, 1 or 2
 ):
-    assert 0 <= extra <= 3, "extra must be between 0 and 3 inclusive"
+    assert 0 <= extra <= 2, "extra must be between 0 and 2 inclusive"
     print(
         "ratio",
         "down",
@@ -29,25 +29,20 @@ def print_costs(
         "p.m(6yrs)",
         "p.m(7yrs)",
     )
+    ratios = [0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65]
+
     if extra > 0:
-        ratios = [0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65]
-
+        # Put a ratio between each previous ratio
+        ratios_inbetween: List[float] = [
+            (ratios[i] + ratios[i + 1]) / 2.0 for i in range(len(ratios) - 1)
+        ]
+        new_ratios = []
+        for ratio, ratio_after in zip(ratios, ratios_inbetween):
+            new_ratios.extend([ratio, round(ratio_after, 3)])
+        ratios = new_ratios
         if extra > 1:
-            # Put a ratio between each previous ratio
-            ratios_inbetween: List[float] = [
-                (ratios[i] + ratios[i+1])/2.0
-                for i in range(len(ratios) - 1)
-            ]
-            new_ratios = []
-            for ratio, ratio_after in zip(ratios, ratios_inbetween):
-                new_ratios.extend([ratio, round(ratio_after, 3)])
-            ratios = new_ratios
-            if extra > 2:
-                # Include values under 20%
-                ratios = [0.1, 0.125, 0.15, .175] + ratios
-
-    else:
-        ratios = [0.2, 0.3, 0.4, 0.5]
+            # Include values under 20%
+            ratios = [0.1, 0.125, 0.15, 0.175] + ratios
 
     for ratio in ratios:
         remaining = cost - cost * ratio
@@ -64,7 +59,9 @@ def print_costs(
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Calculate total car costs over time")
+    parser = argparse.ArgumentParser(
+        description="Calculate total car costs over time",
+    )
     parser.add_argument("start_cost_in_thousands", type=float)
     parser.add_argument("--insurance", type=float, default=None)
     parser.add_argument(
