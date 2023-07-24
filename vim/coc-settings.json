@@ -29,5 +29,9 @@
     "[typescript]": {
       "coc.preferences.formatOnSave": true,
       "diagnostic.virtualTextCurrentLineOnly": false
+    },
+    "[typescriptreact]": {
+      "coc.preferences.formatOnSave": true,
+      "diagnostic.virtualTextCurrentLineOnly": false
     }
 }
