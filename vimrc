@@ -856,6 +856,8 @@ command! -nargs=0 Format :call CocActionAsync('format')
 xmap <leader>f  <Plug>(coc-format-selected)
 nnoremap <leader>f :call CocAction('format')<cr>
 nmap <leader>rn <Plug>(coc-rename)
+" c as in "correct" something
+nmap <leader>c <Plug>(coc-codeaction-selected)<cr>
 
 "ack-vim configuration
 "Change default size of copen window in ag from 10 to 7
@@ -1127,8 +1129,6 @@ let g:syntastic_enable_elixir_checker = 1
 "let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
-nnoremap <leader>c :SyntasticCheck<cr>
-nnoremap <leader>C :SyntasticToggle<cr>
 ""}}}
 ""vim-vertical-move configuration
 let g:vertical_move_default_mapping = 0
