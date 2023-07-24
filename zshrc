@@ -118,6 +118,9 @@ if [ ! -f /tmp/xkbmap_is_checked ]; then
         fi
     fi
 fi
+# We need to run this every time we re-connect a keyboard... TODO: Fix this!
+alias rmx="rm /tmp/xkbmap_is_checked"
+
 
 # nohup sudo ./caps2esc &
 
@@ -166,7 +169,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:/usr/local/share/dotnet"
 
 # Always the set the volume to 58%
-[ -f ~/.identifiers/ran-main ] && amixer sset -q Master 50 2>&1 /dev/null
+# [ -f ~/.identifiers/ran-main ] && amixer sset -q Master 50 2>&1 /dev/null
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
