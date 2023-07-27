@@ -436,6 +436,21 @@ set showbreak=↪
 
 "Disable Bram's start message
 set shortmess+=I
+
+" python3_host_prog must be set before vim-plug initialization below
+" since otherwise black-nvim won't work
+"Neovim-specific:
+if has('nvim')
+    if has("macunix")
+        let g:python_host_prog = '/usr/bin/python'
+        let g:python3_host_prog = '/usr/local/bin/python3'
+        let g:ycm_server_python_interpreter="/usr/local/bin/python3"
+    else
+        let g:python_host_prog = '/usr/bin/python'
+        " let g:python3_host_prog = '/usr/bin/python3'
+        let g:python3_host_prog = $HOME . '/.local/venv/nvim/bin/python'
+    endif
+endif
 "}}}
 "{{{ COLORS AND HIGHLIGHTING
 set t_Co=256
@@ -628,6 +643,11 @@ if has("autocmd")
 endif
 "}}}
 "{{{ PLUGINS
+
+call plug#begin()
+Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
+call plug#end()
+
 "cd ~/.vim/bundle
 """{{{ abcdef
 "abnf - Agumented BNF syntax script
@@ -834,18 +854,6 @@ let g:ale_fixers = {
 \   ],
 \ }
 "\       'isort',
-
-"Neovim-specific:
-if has('nvim')
-    if has("macunix")
-        let g:python_host_prog = '/usr/bin/python'
-        let g:python3_host_prog = '/usr/local/bin/python3'
-        let g:ycm_server_python_interpreter="/usr/local/bin/python3"
-    else
-        let g:python_host_prog = '/usr/bin/python'
-        let g:python3_host_prog = '/usr/bin/python3'
-    endif
-endif
 
 " coc configuration
 let g:coc_global_extensions = ['coc-tsserver']
