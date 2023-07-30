@@ -65,6 +65,16 @@ if [ -f ~/.identifiers/ran-main ]; then
     fi
 fi
 
+if [ -f ~/.identifiers/ran-4070 ]; then
+    # Set the bg, but only if it hasn't been set before
+    if [ ! -f /tmp/bg_is_set ]; then
+        touch /tmp/bg_is_set
+        feh --bg-scale \
+            ~/other/backgrounds/Clouds-Meet-The-Sea-AI-Generated-4K-Wallpaper.jpg \
+            &> /dev/null
+    fi
+fi
+
 #Mac-specific stuff
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     source ~/dotfiles/mac/zshrc_mac.sh
