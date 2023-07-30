@@ -15,7 +15,13 @@ Start about:config, set these values:
 No need to change in Firefox 50, but could change in the future:
 
     ui.key.generalAccessKey -1
-    
+
+Also, to setup emacs keybindings:
+
+```bash
+echo "[Settings]\ngtk-key-theme-name = Emacs" >> ~/.config/gtk-3.0/settings.ini
+```
+
 ----------------    
 
 # vimium for chrome 
