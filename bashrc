@@ -193,3 +193,4 @@ if command_exists setxkbmap ; then
         setxkbmap -option altwin:swap_lalt_lwin -variant "nodeadkeys" -layout "se" -option lv3:rwin_switch
     fi
 fi
+. "$HOME/.cargo/env"
