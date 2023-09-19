@@ -679,6 +679,9 @@ call plug#end()
 """eunuch.vim - vim sugar for multiple UNIX shell commands like :Move, :Rename
 "!git clone https://github.com/tpope/vim-eunuch ~/.vim/bundle/vim-eunuch
 
+" vim-python-pep8-indent automatically indents python code correctly
+"!git clone https://github.com/Vimjas/vim-python-pep8-indent.git
+
 ""{{{ Clojure plugins
 """Clojure runtime files, extracted from the VimClojure project, required for vim-clojure-highlight
 ""!git clone https://github.com/guns/vim-clojure-static ~/.vim/bundle/vim-clojure-highlight
