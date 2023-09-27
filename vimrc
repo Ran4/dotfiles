@@ -646,6 +646,8 @@ endif
 
 call plug#begin()
 Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 "cd ~/.vim/bundle
