@@ -25,6 +25,7 @@
             }
         }
     },
+    "list.height": 20,
     "codeLens.enable": true,
     "[typescript]": {
       "coc.preferences.formatOnSave": true,
