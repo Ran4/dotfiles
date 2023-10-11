@@ -1,6 +1,6 @@
 {
     "python.linting.flake8Enabled": true,
-    "python.formatting.provider": "autopep8",
+    "python.formatting.provider": "black",
     "python.formatting.blackPath": "/home/ran/.local/bin/black",
     "python.formatting.autopep8Path": "/home/ran/.local/bin/autopep8",
     "python.analysis.autoImportCompletions": true,
@@ -34,5 +34,8 @@
     "[typescriptreact]": {
       "coc.preferences.formatOnSave": true,
       "diagnostic.virtualTextCurrentLineOnly": false
+    },
+    "[python]": {
+      "coc.preferences.formatOnSave": true
     }
 }
