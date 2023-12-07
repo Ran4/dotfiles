@@ -24,6 +24,7 @@ endif
 
 nmap cså cs[
 nmap cs¨ cs]
+nmap cs¨^ cs]}
 omap iå i[
 omap i¨ i]
 omap aå a[
