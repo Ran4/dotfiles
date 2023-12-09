@@ -28,8 +28,6 @@ nnoremap <space> :w<CR>
 
 colorscheme lunacocmod
 set cc=100
-" Auto-formatting using rustfmt (rustup component add rustfmt-preview)
-let g:rustfmt_autosave = 1
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
