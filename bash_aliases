@@ -247,3 +247,5 @@ alias car='python3 ~/dotfiles/scripts/car.py'
 alias mpg='python3 ~/dotfiles/scripts/mpg.py'
 alias add='python3 ~/dotfiles/scripts/add.py'
 alias månadskostnad='python3 ~/src/pyy/månadskostnad.py'
+# Usage: `whatport 2646` -> tells you which pids are binding to port 2646
+alias whatport='lsof -nP -iTCP -sTCP:LISTEN | tr -s " " | cut -d " " -f 1,2,9 | grep '
