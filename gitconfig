@@ -9,6 +9,7 @@
 	rebase = true
 [push]
 	default = simple
+	autoSetupRemote = true
 [core]
 	pager = less -F -X
 	excludesfile = "~/.gitignore_global"
