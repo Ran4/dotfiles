@@ -30,7 +30,7 @@ export BAT_STYLE=plain
 export PYLINTRC="~/.pylintrc"
 export GOPATH="$HOME/.go"
 export PATH="$GOPATH/bin:$PATH"
-export JAVA_HOME="/usr/lib/jvm/java-8-oracle/"
+export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH="$JAVA_HOME/bin:$PATH"
 
 #This will overwrite ~/.gitconfig
