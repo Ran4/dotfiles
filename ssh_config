@@ -5,10 +5,11 @@ Host eps
 	HostName epsilon.nordlinglab.org
 	Port 2222
 	User ran
-Host bb
+Host bitbucket.org
 	HostName bitbucket.org
 	User git
-	IdentityFile ~/.ssh/id_rsa
+	AddKeysToAgent yes
+	IdentityFile ~/.ssh/id_ed25519
 # https://blog.developer.atlassian.com/different-ssh-keys-multiple-bitbucket-accounts/
 # Add a new repo url like this:
 # git remote set-url origin git@bitbucket.org-personal:projectname/reponame.git
