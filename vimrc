@@ -645,6 +645,7 @@ call plug#begin()
 Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 "cd ~/.vim/bundle
@@ -746,6 +747,10 @@ call plug#end()
 
 """vim-printf, turn lines into printf statements
 "!git clone git://github.com/mptre/vim-printf ~/.vim/bundle/vim-printf
+
+"""vim-python-pep8-indent, fixes vim indentation behaviour for python
+"!git clone https://github.com/Vimjas/vim-python-pep8-indent.git ~/.vim/bundle/vim-python-pep8-indent
+
 """}}}
 """{{{ qrstu
 ""repeat - helper plugin that enables repetition with dot in plugins such as vim-surround
@@ -877,16 +882,12 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-"use CtrlP to quickly switch between buffers
-nnoremap <b :CtrlPBuffer<cr>
-
 " The dir one means /__pycache__ OR /.git OR /.hg OR /.svn
+" TODO: migrate to fzf
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](__pycache__|node_modules|target|target/release|target/debug|target/doc|\.(git|hg|svn)|htmlcov|TAGS|tags)$',
   \ 'file': '\v\.(exe|so|dll|pyc)$',
   \ }
-" Use regexp search by default
-" let g:ctrlp_regexp = 1
 
 " Add <c-o> to AcceptSelection("h") and don't use it for OpenMulti()
 let g:ctrlp_prompt_mappings = {
@@ -939,6 +940,7 @@ let g:EasyMotion_enter_jump_first = 1
 " fzf.vim configuration
 set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
+nnoremap <c-p> :Files<cr>
 
 if executable('rg')
     nnoremap <leader>a :Rg<cr>
