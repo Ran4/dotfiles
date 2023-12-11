@@ -42,6 +42,8 @@ emulate sh -c "source /etc/profile"
 zstyle ':completion:*' hosts off
 # Ignore casing when using autocomplete 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*:*:make:*' tag-order 'targets'
+autoload -U compinit && compinit
 source ~/.zsh/setopt.zsh
 #End of ZSH related configuration }}}
 #Keyboard related {{{
