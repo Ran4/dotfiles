@@ -1,5 +1,157 @@
 live_config_reload = true
 
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Alt"
+[[keyboard.bindings]]
+action = "Paste"
+key = "Paste"
+[[keyboard.bindings]]
+action = "Copy"
+key = "Copy"
+[[keyboard.bindings]]
+action = "Quit"
+key = "Q"
+mods = "Command"
+[[keyboard.bindings]]
+action = "Quit"
+key = "W"
+mods = "Command"
+[[keyboard.bindings]]
+action = "PasteSelection"
+key = "Insert"
+mods = "Shift"
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Control"
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Plus"
+mods = "Control"
+# [[keyboard.bindings]]
+# key = "Home"
+# chars: "\x1bOH", mode: AppCursor }
+# [[keyboard.bindings]]
+# key = "Home"
+# chars: "\x1b[H", mode: ~AppCursor }
+# [[keyboard.bindings]]
+# key = "End"
+# chars: "\x1bOF", mode: AppCursor }
+# [[keyboard.bindings]]
+# key = "End"
+# chars: "\x1b[F", mode: ~AppCursor }
+# [[keyboard.bindings]]
+# key = "PageUp"
+# mods: Shift, chars: "\x1b[5;2~" }
+# [[keyboard.bindings]]
+# key = "PageUp"
+# mods: Control, chars: "\x1b[5;5~" }
+# [[keyboard.bindings]]
+# key = "PageUp"
+# chars: "\x1b[5~" }
+# [[keyboard.bindings]]
+# key = "PageDown"
+# mods: Shift, chars: "\x1b[6;2~" }
+# [[keyboard.bindings]]
+# key = "PageDown"
+# mods: Control, chars: "\x1b[6;5~" }
+# [[keyboard.bindings]]
+# key = "PageDown"
+# chars: "\x1b[6~" }
+# [[keyboard.bindings]]
+# key = "Tab"
+# mods: Shift, chars: "\x1b[Z" }
+# [[keyboard.bindings]]
+# key = "Back"
+# chars: "\x7f" }
+# [[keyboard.bindings]]
+# key = "Back"
+# mods: Alt, chars: "\x1b\x7f" }
+# [[keyboard.bindings]]
+# key = "Insert"
+# chars: "\x1b[2~" }
+# [[keyboard.bindings]]
+# key = "Delete"
+# chars: "\x1b[3~" }
+# [[keyboard.bindings]]
+# key = "Left"
+# mods: Shift, chars: "\x1b[1;2D" }
+# [[keyboard.bindings]]
+# key = "Left"
+# mods: Control, chars: "\x1b[1;5D" }
+# [[keyboard.bindings]]
+# key = "Left"
+# mods: Alt, chars: "\x1b[1;3D" }
+# [[keyboard.bindings]]
+# key = "Left"
+# chars: "\x1b[D", mode: ~AppCursor }
+# [[keyboard.bindings]]
+# key = "Left"
+# chars: "\x1bOD", mode: AppCursor }
+# [[keyboard.bindings]]
+# key = "Right"
+# mods: Shift, chars: "\x1b[1;2C" }
+# [[keyboard.bindings]]
+# key = "Right"
+# mods: Control, chars: "\x1b[1;5C" }
+# [[keyboard.bindings]]
+# key = "Right"
+# mods: Alt, chars: "\x1b[1;3C" }
+# [[keyboard.bindings]]
+# key = "Right"
+# chars: "\x1b[C", mode: ~AppCursor }
+# [[keyboard.bindings]]
+# key = "Right"
+# chars: "\x1bOC", mode: AppCursor }
+# [[keyboard.bindings]]
+# key = "Up"
+# mods: Shift, chars: "\x1b[1;2A" }
+# [[keyboard.bindings]]
+# key = "Up"
+# mods: Control, chars: "\x1b[1;5A" }
+# [[keyboard.bindings]]
+# key = "Up"
+# mods: Alt, chars: "\x1b[1;3A" }
+# [[keyboard.bindings]]
+# key = "Up"
+# chars: "\x1b[A", mode: ~AppCursor }
+# [[keyboard.bindings]]
+# key = "Up"
+# chars: "\x1bOA", mode: AppCursor }
+# [[keyboard.bindings]]
+# key = "Down"
+# mods: Shift, chars: "\x1b[1;2B" }
+# [[keyboard.bindings]]
+# key = "Down"
+# mods: Control, chars: "\x1b[1;5B" }
+# [[keyboard.bindings]]
+# key = "Down"
+# mods: Alt, chars: "\x1b[1;3B" }
+# [[keyboard.bindings]]
+# key = "Down"
+# chars: "\x1b[B", mode: ~AppCursor }
+# [[keyboard.bindings]]
+# key = "Down"
+# chars: "\x1bOB", mode: AppCursor }
+
 [bell]
 animation = "EaseOutExpo"
 duration = 0
