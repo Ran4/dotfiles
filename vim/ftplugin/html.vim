@@ -12,4 +12,3 @@ set colorcolumn=110
 
 inoremap ><< ><<esc>F<"lyi<f<a/<c-r>l><esc>F>a
 inoremap >§§ ><<esc>F<"lyi<f<a/<c-r>l><esc>F>a
-
