@@ -46,10 +46,10 @@ def print_costs(
 
     for ratio in ratios:
         remaining = cost - cost * ratio
-        # 1.12 is 4% over 6 years, 1.15 is 4% over 7 years
-        # 1.35 is 10% over 7 years
-        six_years = (remaining / 6.0 / 12.0) * 1.3 + (insurance or 0)
-        seven_years = (remaining / 7.0 / 12.0) * 1.35 + (insurance or 0)
+        # 1.245 is 10% (effective) over 6 years
+        # 1.31 is 10% (effective) over 7 years
+        six_years = (remaining / 6.0 / 12.0) * 1.245 + (insurance or 0)
+        seven_years = (remaining / 7.0 / 12.0) * 1.31 + (insurance or 0)
 
         print(
             str(ratio).ljust(5),
