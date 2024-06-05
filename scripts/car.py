@@ -48,6 +48,20 @@ def print_costs(
         remaining = cost - cost * ratio
         # 1.245 is 10% (effective) over 6 years
         # 1.31 is 10% (effective) over 7 years
+        """
+        To calculate:
+
+        ränta = 0.1
+        lån = 453.5
+        for NUM_YEARS in [6, 7]:
+            NUM_MONTHS = NUM_YEARS * 12
+            vals = [
+                (lån / NUM_MONTHS, 0.79 * ((lån * (1 - mån / NUM_MONTHS)) * ränta / 12))
+                for mån in range(NUM_MONTHS)
+            ]
+            ratio: float = sum([amort + ränta for amort, ränta in vals]) / lån
+            print(f"{NUM_YEARS} years has ratio {ratio:.3f}")
+        """
         six_years = (remaining / 6.0 / 12.0) * 1.245 + (insurance or 0)
         seven_years = (remaining / 7.0 / 12.0) * 1.31 + (insurance or 0)
 
