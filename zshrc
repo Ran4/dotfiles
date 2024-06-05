@@ -182,3 +182,7 @@ if [ -f '/home/ran/other/google-cloud-sdk/path.zsh.inc' ]; then . '/home/ran/oth
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/ran/other/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/ran/other/google-cloud-sdk/completion.zsh.inc'; fi
+
+if [ -x /opt/homebrew/opt/postgresql@11 ]; then
+    export PATH="/opt/homebrew/opt/postgresql@11/bin:$PATH"
+fi
