@@ -77,7 +77,11 @@ def main():
     parser = argparse.ArgumentParser(
         description="Calculate total car costs over time",
     )
-    parser.add_argument("start_cost_in_thousands", type=float)
+    parser.add_argument(
+        "start_cost_in_thousands",
+        # We can for example give "395+18" instead of 313
+        type=lambda s: float(eval(s)),
+    )
     parser.add_argument("--insurance", type=float, default=None)
     parser.add_argument(
         "-e",
