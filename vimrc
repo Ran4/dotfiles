@@ -458,6 +458,8 @@ set t_Co=256
 " mkdir -p ~/.vim/colors
 " cd ~/.vim/colors
 " wget -O ~/.vim/colors/wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
+" notermguicolors is needed in newer neovim to make most colorschemes look good...
+set notermguicolors
 "color wombat256mod
 color wombat256mod-darker
 "au FileType elm colorscheme predawn
@@ -1161,6 +1163,9 @@ function! s:AppendCharEOL()
     execute 'keepjumps normal! ' . v:count1 . 'A' . c . "\<Esc>"
     call winrestview(v)
 endfunction
+
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 "nnoremap <silent> R :<C-u>call <SID>AppendCharEOL()<CR>
 "}}}
