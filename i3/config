@@ -238,6 +238,7 @@ mouse_warping output
 font -misc-fixed-small-r-normal--13-120-75-75-C-70-iso10646-1
 
 default_orientation horizontal
+workspace_layout default
 
 #colors copied from http://textuploader.com/aqpma
 set $text         "#000000"
