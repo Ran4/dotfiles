@@ -1,10 +1,18 @@
-for kontantinsats in [320]:
+for kontantinsats in [200]:
     kontantinsats *= 1000
 
-    bilpris = 390 * 1000
-    restvarde = bilpris * 0.0
-    lanetid_månader = 6 * 12
-    ranta_effektiv = (6.95 * 0.79 + 0.2) / 100
+    bilpris = 744.3 * 1000
+
+    with_restvärde = True
+    if with_restvärde:
+        restvarde = bilpris * 0.5
+        lanetid_månader = 3 * 12
+
+    else:
+        restvarde = bilpris * 0.0
+        lanetid_månader = 6 * 12
+
+    ranta_effektiv = (2.95 * 0.79 + 0.2) / 100
 
     manadsranta = (1 + ranta_effektiv) ** (1 / 12) - 1
     lanebelopp = bilpris - kontantinsats  # kr
@@ -21,5 +29,5 @@ for kontantinsats in [320]:
         round(lanetid_månader / 12)
         if (lanetid_månader / 12).is_integer()
         else round(lanetid_månader / 12, 2),
-        "år",
+        "år (med restvärde)" if with_restvärde else "år",
     )
