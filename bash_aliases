@@ -185,7 +185,7 @@ alias :qa='exit'
 alias :Qa='exit'
 #}}}
 #end of Program aliases }}}
-alias python3='/opt/homebrew/bin/python3.11'
+alias python3='python3.13'
 alias p3='python3'
 
 # "pandas play"
