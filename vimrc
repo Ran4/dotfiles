@@ -441,10 +441,11 @@ set shortmess+=I
 " python3_host_prog must be set before vim-plug initialization below
 " since otherwise black-nvim won't work
 "Neovim-specific:
+let g:black_virtualenv = $HOME . '/.local/venv/nvim'
 if has('nvim')
     if has("macunix")
         let g:python_host_prog = '/usr/bin/python'
-        let g:python3_host_prog = '/usr/local/bin/python3'
+        let g:python3_host_prog = $HOME . '/.local/venv/nvim/bin/python3'
         let g:ycm_server_python_interpreter="/usr/local/bin/python3"
     else
         let g:python_host_prog = '/usr/bin/python'

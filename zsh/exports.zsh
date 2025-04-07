@@ -1,4 +1,4 @@
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/usr/local/sbin:/opt/homebrew/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/dotfiles/scripts
@@ -12,9 +12,15 @@ export PATH="$HOME/.cargo/bin:$PATH"
 [[ "$OSTYPE" == "darwin"* ]] && export PATH="/Library/TeX/texbin/:$PATH"
 [[ "$OSTYPE" == "darwin"* ]] && export PGDATA=/usr/local/var/postgres
 [[ -f "/etc/arch-release" ]] && export PATH=$PATH:/usr/bin/core_perl/
+export PATH=$PATH:/usr/local/bin/roc_nightly-macos_apple_silicon-2024-04-29-e424f4bacca/
 export MANPATH="/opt/local/share/man:/usr/local/man:$MANPATH"
-export EDITOR=vim
+export AWS_DEFAULT_PROFILE=20nine-dev
+export EDITOR=nvim
 export EXPORT PYTHONPYCACHEPREFIX=/tmp/__pycaches
+
+# Needed to install psycopg2-binary using poetry
+export LDFLAGS="-L/opt/homebrew/opt/openssl/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl/include"
 
 export LC_CTYPE=en_US.UTF-8
 
@@ -41,3 +47,4 @@ fi
 #Needed for tmuxp?
 export DISABLE_AUTO_TITLE='true'
 export IS_LOCALHOST="true"
+export LLVM_CONFIG=/opt/homebrew/opt/llvm/bin/llvm-config

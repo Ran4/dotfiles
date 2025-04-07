@@ -843,7 +843,7 @@
 	<key>RightOption</key>
 	<integer>3</integer>
 	<key>ShowFullScreenTabBar</key>
-	<true/>
+	<false/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>StretchTabsToFillBar</key>

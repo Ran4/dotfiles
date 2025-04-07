@@ -34,6 +34,12 @@ Host bitbucket.org-personal
 	User git
 	IdentityFile ~/.ssh/personal
 	IdentitiesOnly yes
+Host bitbucket.org-20nine
+	HostName bitbucket.org
+	User git
+	AddKeysToAgent yes
+	IdentityFile ~/.ssh/id_ed25519_20nine
+	IdentitiesOnly yes
 Host gh
 	HostName github.com
 	User git

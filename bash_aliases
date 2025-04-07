@@ -20,10 +20,14 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 #}}}
 #ls {{{
-alias ll='ls --group-directories-first -l'
-alias la='ls --group-directories-first -A'
-alias l='ls --group-directories-first -C'
-alias lah='ls --group-directories-first -lAh'
+# alias ll='ls --group-directories-first -l'
+# alias la='ls --group-directories-first -A'
+# alias l='ls --group-directories-first -C'
+# alias lah='ls --group-directories-first -lAh'
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -C'
+alias lah='ls -lAh'
 alias laht='ls -lAht'
 alias lg='ls -lAh | ack -i'
 #}}}
@@ -181,6 +185,7 @@ alias :qa='exit'
 alias :Qa='exit'
 #}}}
 #end of Program aliases }}}
+alias python3='/opt/homebrew/bin/python3.11'
 alias p3='python3'
 
 # "pandas play"

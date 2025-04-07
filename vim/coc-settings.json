@@ -1,7 +1,8 @@
 {
     "python.linting.flake8Enabled": true,
-    "python.formatting.provider": "black",
-    "python.formatting.blackPath": "/home/ran/advania/backend-procai/.venv/bin/black",
+    "python.formatting.provider": "ruff",
+    "python.formatting.ruffPath": "/Users/ran/Library/Caches/pypoetry/virtualenvs/non-package-mode-pjd74mXZ-py3.11/bin/ruff",
+    "python.formatting.blackPath": "/Users/ran/advania/backend-procai/.venv/bin/black",
     "python.formatting.autopep8Path": "/home/ran/.local/bin/autopep8",
     "python.analysis.autoImportCompletions": true,
     "python.linting.flake8Args": ["--select", "E302"],
