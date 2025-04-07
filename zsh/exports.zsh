@@ -1,6 +1,7 @@
 export PATH="/usr/local/sbin:/opt/homebrew/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.rocinstallation/roc_nightly-linux_x86_64-2025-02-04-59ff9bd
 export PATH=$PATH:~/dotfiles/scripts
 export PATH="$HOME/.yarn/bin/:$PATH"
 [[ "$OSTYPE" == "darwin"* ]] && export PATH="$PATH:/usr/local/opt/python@3.7/bin"

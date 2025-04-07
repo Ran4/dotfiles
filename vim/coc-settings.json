@@ -15,6 +15,9 @@
     "diagnostic.virtualText": true,
     "coc.preferences.extensionUpdateCheck": "weekly",
     "suggest.noselect": true,
+    "eslint.options": {
+        "configFile": "./eslint.config.js"
+     },
     "languageserver": {
         "elmLS": {
             "command": "elm-language-server",

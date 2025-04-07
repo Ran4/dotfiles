@@ -186,3 +186,10 @@ if [ -f '/home/ran/other/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/r
 if [ -x /opt/homebrew/opt/postgresql@11 ]; then
     export PATH="/opt/homebrew/opt/postgresql@11/bin:$PATH"
 fi
+
+# bun completions
+[ -s "/home/ran/.local/share/reflex/bun/_bun" ] && source "/home/ran/.local/share/reflex/bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.local/share/reflex/bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
