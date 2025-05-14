@@ -130,8 +130,8 @@ avail() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         _DISK_PATH="/dev/disk1"
     else
-        if [ -f ~/.identifiers/ran-ub ]; then
-            _DISK_PATH="/dev/sda6"
+        if [ -f ~/.identifiers/ran-4070 ]; then
+            _DISK_PATH="/dev/nvme0n1p5"
         else
             _DISK_PATH="/dev/mapper/vgubuntu-root"
         fi
