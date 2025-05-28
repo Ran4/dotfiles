@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+import sys
+import openai
+import os
+
+
+# Manually load the OPENAI_API_KEY from the .env file
+def load_api_key(dotenv_path):
+    with open(dotenv_path, "r") as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#"):  # Ignore comments and empty lines
+                key, value = line.split("=", 1)
+                if key.strip() == "OPENAI_API_KEY":
+                    return value.strip('"').strip("'")
+    return None
+
+
+# Load the API key from the specified .env file
+dotenv_path = os.path.expanduser("~/it_total/ttyd/backend-ttyd/.env")
+openai.api_key = load_api_key(dotenv_path)
+
+
+def main():
+    query = " ".join(sys.argv[1:])
+    if not query:
+        print("Usage: ai <your query>")
+        sys.exit(1)
+
+    try:
+        response = openai.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are a helpful assistant who answers concisely.",
+                },
+                {"role": "user", "content": query},
+            ],
+            temperature=0,
+        )
+        answer = response.choices[0].message.content
+        assert answer, "Got no answer from llm!"
+        print(answer.strip())
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+
+if __name__ == "__main__":
+    main()
