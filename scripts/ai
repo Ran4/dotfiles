@@ -2,6 +2,7 @@
 import sys
 import openai
 import os
+import argparse
 
 
 # Manually load the OPENAI_API_KEY from the .env file
@@ -22,14 +23,22 @@ openai.api_key = load_api_key(dotenv_path)
 
 
 def main():
-    query = " ".join(sys.argv[1:])
+    parser = argparse.ArgumentParser(description="AI CLI tool", add_help=False)
+    parser.add_argument(
+        "--model", default="gpt-4.1", help="Model to use (default: gpt-4.1)"
+    )
+
+    # Parse known args to separate --model from the query
+    args, remaining = parser.parse_known_args()
+
+    query = " ".join(remaining)
     if not query:
-        print("Usage: ai <your query>")
+        print("Usage: ai [--model MODEL_NAME] <your query>")
         sys.exit(1)
 
     try:
         response = openai.chat.completions.create(
-            model="gpt-4.1",
+            model=args.model,
             messages=[
                 {
                     "role": "system",
