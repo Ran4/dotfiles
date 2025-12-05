@@ -18,6 +18,7 @@ export MANPATH="/opt/local/share/man:/usr/local/man:$MANPATH"
 export AWS_DEFAULT_PROFILE=20nine-dev
 export EDITOR=nvim
 export EXPORT PYTHONPYCACHEPREFIX=/tmp/__pycaches
+export UV_PYTHON=3.13
 
 # Needed to install psycopg2-binary using poetry
 export LDFLAGS="-L/opt/homebrew/opt/openssl/lib"
