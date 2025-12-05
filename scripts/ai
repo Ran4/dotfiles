@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-import sys
-import openai
 import os
 import argparse
+
+from openai import OpenAI
 
 
 # Manually load the OPENAI_API_KEY from the .env file
@@ -19,41 +19,94 @@ def load_api_key(dotenv_path):
 
 # Load the API key from the specified .env file
 dotenv_path = os.path.expanduser("~/it_total/ttyd/backend-ttyd/.env")
-openai.api_key = load_api_key(dotenv_path)
+api_key = load_api_key(dotenv_path)
 
 
 def main():
     parser = argparse.ArgumentParser(description="AI CLI tool", add_help=False)
     parser.add_argument(
-        "--model", default="gpt-4.1", help="Model to use (default: gpt-4.1)"
+        "--model",
+        default=(DEFAULT_MODEL := "gpt-5.1"),
+        help=f"Model to use (default: {DEFAULT_MODEL})",
+    )
+
+    parser.add_argument(
+        "--uncensored",
+        default=False,
+        action="store_true",
+        help="""
+Use uncensored model. If True, ignores the model arg.
+
+Requires running:
+ollama run hf.co/DavidAU/Llama-3.2-8X3B-MOE-Dark-Champion-Instruct-uncensored-abliterated-18.4B-GGUF:Q4_K_M
+""".strip(),  # noqa
     )
 
     # Parse known args to separate --model from the query
     args, remaining = parser.parse_known_args()
+    initial_query = " ".join(remaining)
 
-    query = " ".join(remaining)
-    if not query:
-        print("Usage: ai [--model MODEL_NAME] <your query>")
-        sys.exit(1)
+    if args.uncensored:
+        model = "hf.co/DavidAU/Llama-3.2-8X3B-MOE-Dark-Champion-Instruct-uncensored-abliterated-18.4B-GGUF:Q4_K_M"
+        base_url = "http://localhost:11434/v1"
 
-    try:
-        response = openai.chat.completions.create(
-            model=args.model,
-            messages=[
-                {
-                    "role": "system",
-                    "content": "You are a helpful assistant who answers concisely.",
-                },
-                {"role": "user", "content": query},
-            ],
-            temperature=0,
-        )
-        answer = response.choices[0].message.content
-        assert answer, "Got no answer from llm!"
-        print(answer.strip())
+    else:
+        model = args.model
+        base_url = None  # Use openai
 
-    except Exception as e:
-        print(f"Error: {e}")
+    # Initialize conversation history
+    messages = [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant who answers concisely.",
+        }
+    ]
+
+    openai_client = OpenAI(
+        api_key=api_key,
+        base_url=base_url,
+    )
+
+    messages = []
+    while True:
+        try:
+            if len(messages) > 1:
+                # Continuation of the initial message
+                content = input("\n> ").strip()
+
+                if content.lower() in ["quit", "exit", "q"]:
+                    print("Goodbye!")
+                    break
+
+                if not content:
+                    continue
+
+            else:
+                content = initial_query
+
+            messages.append({"role": "user", "content": content})
+
+            response = openai_client.chat.completions.create(
+                model=model,
+                messages=messages,
+                temperature=0.7,
+            )
+            answer = response.choices[0].message.content
+            assert answer, "Got no answer from llm!"
+            print(answer.strip())
+            messages.append({"role": "assistant", "content": answer})
+
+        except KeyboardInterrupt:
+            print("\n\nGoodbye!")
+            break
+
+        except EOFError:
+            print("\nGoodbye!")
+            break
+
+        except Exception as e:
+            print(f"Error: {e}")
+            continue
 
 
 if __name__ == "__main__":
