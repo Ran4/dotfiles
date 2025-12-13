@@ -114,12 +114,6 @@
             background: #f9fafb;
             border-radius: 8px;
             border: 1px solid #e5e7eb;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .result.show {
-            opacity: 1;
         }
         
         @keyframes slideIn {
@@ -176,11 +170,76 @@
             font-size: 28px;
             font-weight: 700;
         }
+
+        .blocket-status {
+            margin-bottom: 20px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .blocket-status.disconnected {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            color: #92400e;
+        }
+
+        .blocket-status.connected {
+            background: #d1fae5;
+            border: 1px solid #10b981;
+            color: #065f46;
+        }
+
+        .blocket-status .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .blocket-status.disconnected .indicator {
+            background: #f59e0b;
+        }
+
+        .blocket-status.connected .indicator {
+            background: #10b981;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .blocket-info {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        .blocket-info a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .blocket-info a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Bilfinansieringskalkylator</h1>
+
+        <div class="blocket-status disconnected" id="blocketStatus">
+            <span class="indicator"></span>
+            <div>
+                <div id="blocketStatusText">Väntar på Blocket-data...</div>
+                <div class="blocket-info" id="blocketInfo">Öppna en bilannons på blocket.se</div>
+            </div>
+        </div>
 
         <div class="main-layout">
             <div class="form-section">
@@ -197,7 +256,7 @@
 
                 <div class="input-group">
                     <label for="ranta">Ränta (%)</label>
-                    <input type="number" id="ranta" step="0.01">
+                    <input type="number" id="ranta" step="0.01" value="6">
                     <div class="small-text">Effektiv ränta efter 30% ränteavdrag beräknas automatiskt</div>
                 </div>
 
@@ -301,74 +360,137 @@
         document.getElementById('restvarde').addEventListener('input', berakna);
         
         function berakna() {
+            const placeholder = '—';
+
             // Hämta värden
-            const bilprisTkr = parseFloat(document.getElementById('bilpris').value);
-            const bilpris = bilprisTkr * 1000; // Konvertera tkr till kr
+            const bilprisTkr = parseFloat(document.getElementById('bilpris').value) || 0;
+            const bilpris = bilprisTkr * 1000;
             let kontantinsatsTkr = parseFloat(document.getElementById('kontantinsats').value);
-            
-            // Om ingen kontantinsats angiven, använd 20% som standard
-            if (!kontantinsatsTkr || kontantinsatsTkr <= 0) {
+
+            // Om ingen kontantinsats angiven, använd 20% som standard (om bilpris finns)
+            if ((!kontantinsatsTkr || kontantinsatsTkr <= 0) && bilprisTkr > 0) {
                 kontantinsatsTkr = bilprisTkr * 0.2;
+            } else if (!kontantinsatsTkr) {
+                kontantinsatsTkr = 0;
             }
-            
-            const kontantinsats = kontantinsatsTkr * 1000; // Konvertera tkr till kr
-            const ranta = parseFloat(document.getElementById('ranta').value);
+
+            const kontantinsats = kontantinsatsTkr * 1000;
+            const ranta = parseFloat(document.getElementById('ranta').value) || 0;
             const loptidAr = parseFloat(document.getElementById('loptid').value) || 5;
             const restvardeTkr = parseFloat(document.getElementById('restvarde').value) || 0;
-            const restvarde = restvardeTkr * 1000; // Konvertera tkr till kr
-            
-            // Validering - returnera tyst om värden saknas
-            if (!bilprisTkr || bilprisTkr <= 0) {
-                return;
-            }
-            
-            if (!ranta || ranta <= 0) {
-                return;
-            }
-            
-            // Beräkningar
+            const restvarde = restvardeTkr * 1000;
+
+            // Visa värden som kan visas direkt
+            document.getElementById('resBilpris').textContent = bilpris > 0 ? formatKr(bilpris) : placeholder;
+            document.getElementById('resKontantinsats').textContent = bilpris > 0 ? formatKr(kontantinsats) : placeholder;
+
             const lanebelopp = bilpris - kontantinsats;
-            const rantaEfterAvdrag = ranta * 0.7; // 30% ränteavdrag
-            const manadligRanta = rantaEfterAvdrag / 100 / 12;
+            document.getElementById('resLanebelopp').textContent = bilpris > 0 ? formatKr(lanebelopp) : placeholder;
+
+            document.getElementById('resRantaFore').textContent = ranta > 0 ? ranta.toFixed(2) + '%' : placeholder;
+            const rantaEfterAvdrag = ranta * 0.7;
+            document.getElementById('resRantaEfter').textContent = ranta > 0 ? rantaEfterAvdrag.toFixed(2) + '%' : placeholder;
+
             const antalManader = loptidAr * 12;
-            
-            // Beräkna månadskostnad med restvärde
-            // Formel för ballonglån: M = (P - FV/(1+r)^n) * [r(1+r)^n] / [(1+r)^n - 1]
-            // Där FV = restvärde (future value)
-            let mandskostnad;
-            if (restvarde > 0) {
-                const nuvardeFaktor = Math.pow(1 + manadligRanta, antalManader);
-                const nuvardeRestvarde = restvarde / nuvardeFaktor;
-                const lanebeloppMinusRestvarde = lanebelopp - nuvardeRestvarde;
-                mandskostnad = lanebeloppMinusRestvarde * (manadligRanta * nuvardeFaktor) / (nuvardeFaktor - 1);
-            } else {
-                // Vanligt annuitetslån utan restvärde
-                mandskostnad = lanebelopp * (manadligRanta * Math.pow(1 + manadligRanta, antalManader)) / 
-                                (Math.pow(1 + manadligRanta, antalManader) - 1);
-            }
-            
-            const totalManadsbetalningar = mandskostnad * antalManader;
-            const totalKostnad = kontantinsats + totalManadsbetalningar + restvarde;
-            const totalRanta = totalKostnad - bilpris;
-            
-            // Visa resultat
-            document.getElementById('resBilpris').textContent = formatKr(bilpris);
-            document.getElementById('resKontantinsats').textContent = formatKr(kontantinsats);
-            document.getElementById('resLanebelopp').textContent = formatKr(lanebelopp);
-            document.getElementById('resRantaFore').textContent = ranta.toFixed(2) + '%';
-            document.getElementById('resRantaEfter').textContent = rantaEfterAvdrag.toFixed(2) + '%';
             document.getElementById('resLoptid').textContent = loptidAr + ' år (' + antalManader + ' månader)';
             document.getElementById('resRestvarde').textContent = formatKr(restvarde);
-            document.getElementById('resMandskostnad').textContent = formatKr(mandskostnad);
-            document.getElementById('resTotalKostnad').textContent = formatKr(totalKostnad);
-            document.getElementById('resTotalRanta').textContent = formatKr(totalRanta);
-            
-            document.getElementById('result').classList.add('show');
+
+            // Beräkna månadskostnad endast om vi har tillräcklig data
+            if (bilpris > 0 && ranta > 0 && lanebelopp > 0) {
+                const manadligRanta = rantaEfterAvdrag / 100 / 12;
+
+                let mandskostnad;
+                if (restvarde > 0) {
+                    const nuvardeFaktor = Math.pow(1 + manadligRanta, antalManader);
+                    const nuvardeRestvarde = restvarde / nuvardeFaktor;
+                    const lanebeloppMinusRestvarde = lanebelopp - nuvardeRestvarde;
+                    mandskostnad = lanebeloppMinusRestvarde * (manadligRanta * nuvardeFaktor) / (nuvardeFaktor - 1);
+                } else {
+                    mandskostnad = lanebelopp * (manadligRanta * Math.pow(1 + manadligRanta, antalManader)) /
+                                    (Math.pow(1 + manadligRanta, antalManader) - 1);
+                }
+
+                const totalManadsbetalningar = mandskostnad * antalManader;
+                const totalKostnad = kontantinsats + totalManadsbetalningar + restvarde;
+                const totalRanta = totalKostnad - bilpris;
+
+                document.getElementById('resMandskostnad').textContent = formatKr(mandskostnad);
+                document.getElementById('resTotalKostnad').textContent = formatKr(totalKostnad);
+                document.getElementById('resTotalRanta').textContent = formatKr(totalRanta);
+            } else {
+                document.getElementById('resMandskostnad').textContent = placeholder;
+                document.getElementById('resTotalKostnad').textContent = placeholder;
+                document.getElementById('resTotalRanta').textContent = placeholder;
+            }
         }
-        
+
+        // Kör beräkning vid sidladdning för att visa initiala värden
+        berakna();
+
         function formatKr(belopp) {
             return Math.round(belopp).toLocaleString('sv-SE') + ' kr';
         }
+
+        // Blocket Tracker - Polling
+        const BLOCKET_SERVER = 'http://localhost:8765';
+        let lastBlocketTimestamp = null;
+
+        async function pollBlocket() {
+            const statusEl = document.getElementById('blocketStatus');
+            const statusText = document.getElementById('blocketStatusText');
+            const statusInfo = document.getElementById('blocketInfo');
+
+            try {
+                const response = await fetch(BLOCKET_SERVER + '/car');
+                const data = await response.json();
+
+                if (data.status === 'no_data') {
+                    statusEl.className = 'blocket-status disconnected';
+                    statusText.textContent = 'Väntar på Blocket-data...';
+                    statusInfo.innerHTML = 'Öppna en bilannons på blocket.se';
+                    return;
+                }
+
+                // Kolla om det är ny data
+                if (data.timestamp && data.timestamp !== lastBlocketTimestamp) {
+                    lastBlocketTimestamp = data.timestamp;
+
+                    // Uppdatera bilpris
+                    if (data.prisTkr) {
+                        const bilprisInput = document.getElementById('bilpris');
+                        bilprisInput.value = data.prisTkr;
+
+                        // Trigga input-events för att uppdatera kontantinsats-label och beräkning
+                        bilprisInput.dispatchEvent(new Event('input'));
+                        bilprisInput.dispatchEvent(new Event('blur'));
+                    }
+                }
+
+                // Uppdatera status
+                statusEl.className = 'blocket-status connected';
+
+                let statusParts = [];
+                if (data.regNummer) statusParts.push(data.regNummer);
+                if (data.pris) statusParts.push(data.pris.toLocaleString('sv-SE') + ' kr');
+
+                statusText.textContent = statusParts.join(' - ') || data.titel || 'Bil hämtad';
+
+                if (data.url) {
+                    statusInfo.innerHTML = `<a href="${data.url}" target="_blank">${data.titel || 'Öppna annons'}</a>`;
+                } else if (data.titel) {
+                    statusInfo.textContent = data.titel;
+                }
+
+            } catch (err) {
+                statusEl.className = 'blocket-status disconnected';
+                statusText.textContent = 'Server ej ansluten';
+                statusInfo.innerHTML = 'Starta server: <code>python server.py</code>';
+            }
+        }
+
+        // Polla var tredje sekund
+        pollBlocket();
+        setInterval(pollBlocket, 3000);
     </script>
 </body>
 </html>

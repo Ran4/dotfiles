@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "Blocket Car Tracker",
+  "version": "1.1",
+  "description": "Extraherar registreringsnummer och pris från Blocket bilannonser",
+  "permissions": [
+    "activeTab",
+    "*://www.blocket.se/*",
+    "*://localhost/*"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.blocket.se/mobility/item/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "48": "icon.svg"
+  }
+}
