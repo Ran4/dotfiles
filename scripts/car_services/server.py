@@ -81,6 +81,8 @@ class BlocketHandler(BaseHTTPRequestHandler):
                     print(f"Reg.nr: {data['regNummer']}")
                 if data.get("pris"):
                     print(f"Pris: {data['pris']:,} kr ({data.get('prisTkr')} tkr)")
+                if data.get("farg"):
+                    print(f"Färg: {data['farg']}")
                 if data.get("url"):
                     print(f"URL: {data['url']}")
                 print(f"{'='*50}\n")
@@ -119,13 +121,21 @@ def main():
     port = 8765
     server = HTTPServer(("localhost", port), BlocketHandler)
 
+    pr = port
     print(f"""
 ╔══════════════════════════════════════════════════════════╗
 ║           BLOCKET CAR TRACKER SERVER                     ║
 ╠══════════════════════════════════════════════════════════╣
-║  Server körs på: http://localhost:{port}                   ║
-║  Kalkylator:     http://localhost:{port}/                  ║
-║  API endpoint:   http://localhost:{port}/car               ║
+║  Server körs på: http://localhost:{pr}                   ║
+║  Kalkylator:     http://localhost:{pr}/                  ║
+║  API endpoint:   http://localhost:{pr}/car               ║
+╠══════════════════════════════════════════════════════════╣
+║  Installera först Firefox-pluginet:                      ║
+║  1. Öppna Firefox och gå till `about:debugging`          ║
+║  2. Klicka på "This Firefox" i vänstermenyn              ║
+║  3. Klicka "Load Temporary Add-on..."                    ║
+║  4. Navigera till denna mapp och välj `manifest.json`    ║
+║                                                          ║
 ╠══════════════════════════════════════════════════════════╣
 ║  Väntar på data från Firefox-extensionen...              ║
 ║  Tryck Ctrl+C för att avsluta                            ║

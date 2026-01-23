@@ -227,6 +227,15 @@
         .blocket-info a:hover {
             text-decoration: underline;
         }
+
+        .color-swatch {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            border: 1px solid rgba(0,0,0,0.2);
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
@@ -238,6 +247,10 @@
             <div>
                 <div id="blocketStatusText">Väntar på Blocket-data...</div>
                 <div class="blocket-info" id="blocketInfo">Öppna en bilannons på blocket.se</div>
+                <div class="blocket-info" id="blocketFarg" style="display: none; align-items: center; gap: 6px;">
+                    <span class="color-swatch" id="colorSwatch"></span>
+                    <span id="colorText"></span>
+                </div>
             </div>
         </div>
 
@@ -439,6 +452,7 @@
             const statusEl = document.getElementById('blocketStatus');
             const statusText = document.getElementById('blocketStatusText');
             const statusInfo = document.getElementById('blocketInfo');
+            const statusFarg = document.getElementById('blocketFarg');
 
             try {
                 const response = await fetch(BLOCKET_SERVER + '/car');
@@ -448,6 +462,7 @@
                     statusEl.className = 'blocket-status disconnected';
                     statusText.textContent = 'Väntar på Blocket-data...';
                     statusInfo.innerHTML = 'Öppna en bilannons på blocket.se';
+                    statusFarg.style.display = 'none';
                     return;
                 }
 
@@ -481,10 +496,32 @@
                     statusInfo.textContent = data.titel;
                 }
 
+                // Visa färg (default: Vit)
+                const farg = data.farg || 'Vit';
+                const colorMap = {
+                    'vit': '#ffffff',
+                    'svart': '#1a1a1a',
+                    'silver': '#c0c0c0',
+                    'grå': '#808080',
+                    'röd': '#dc2626',
+                    'blå': '#2563eb',
+                    'grön': '#16a34a',
+                    'gul': '#eab308',
+                    'brun': '#78350f',
+                    'orange': '#ea580c',
+                    'beige': '#d4b896',
+                    'guld': '#d4af37'
+                };
+                const cssColor = colorMap[farg.toLowerCase()] || '#cccccc';
+                document.getElementById('colorSwatch').style.backgroundColor = cssColor;
+                document.getElementById('colorText').textContent = farg;
+                statusFarg.style.display = 'flex';
+
             } catch (err) {
                 statusEl.className = 'blocket-status disconnected';
                 statusText.textContent = 'Server ej ansluten';
                 statusInfo.innerHTML = 'Starta server: <code>python server.py</code>';
+                statusFarg.style.display = 'none';
             }
         }
 

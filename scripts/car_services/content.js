@@ -8,6 +8,7 @@
         let regNummer = null;
         let pris = null;
         let titel = null;
+        let farg = null;
 
         // Försök hitta registreringsnummer
         // Leta specifikt efter "Reg" label följt av värdet
@@ -85,11 +86,21 @@
             titel = titleEl.innerText.trim();
         }
 
+        // Försök hitta färg
+        // Leta efter "Färg" label följt av värdet
+        const fargMatch = allText.match(/(?:Färg|Kulör)[:\s]*([A-Za-zÅÄÖåäö]+)/i);
+        if (fargMatch) {
+            farg = fargMatch[1].trim();
+            // Gör första bokstaven stor
+            farg = farg.charAt(0).toUpperCase() + farg.slice(1).toLowerCase();
+        }
+
         return {
             regNummer,
             pris,
             prisTkr: pris ? Math.round(pris / 1000) : null,
             titel,
+            farg,
             url: window.location.href,
             timestamp: Date.now()
         };
