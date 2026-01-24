@@ -34,3 +34,5 @@
 	required = true
 [init]
 	defaultBranch = develop
+[fetch]
+	prune = true
