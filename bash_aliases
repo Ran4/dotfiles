@@ -255,3 +255,5 @@ alias add='python3 ~/dotfiles/scripts/add.py'
 alias månadskostnad='python3 ~/src/pyy/månadskostnad.py'
 # Usage: `whatport 2646` -> tells you which pids are binding to port 2646
 alias whatport='lsof -nP -iTCP -sTCP:LISTEN | tr -s " " | cut -d " " -f 1,2,9 | grep '
+
+alias foof="mkdir -p /tmp/foof && cd /tmp/foof && claude"
