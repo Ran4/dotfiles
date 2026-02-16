@@ -188,18 +188,20 @@ if [ -x /opt/homebrew/opt/postgresql@11 ]; then
 fi
 
 # bun completions
-[ -s "/home/ran/.local/share/reflex/bun/_bun" ] && source "/home/ran/.local/share/reflex/bun/_bun"
+[ -s "/Users/ran/.bun/_bun" ] && source "/Users/ran/.bun/_bun"
 
 # bun
-export BUN_INSTALL="$HOME/.local/share/reflex/bun"
+export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
 
 
 # fnm
-FNM_PATH="/home/ran/.local/share/fnm"
+FNM_PATH="/Users/ran/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "`fnm env`"
 fi
+
+export PATH="$PATH:/Users/ran/.claude/local"
