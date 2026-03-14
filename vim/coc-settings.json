@@ -1,7 +1,7 @@
 {
     "python.linting.flake8Enabled": true,
     "python.formatting.provider": "ruff",
-    "python.formatting.ruffPath": "/Users/ran/Library/Caches/pypoetry/virtualenvs/non-package-mode-pjd74mXZ-py3.11/bin/ruff",
+    "python.formatting.ruffPath": "/home/ran/.local/bin/ruff",
     "python.formatting.blackPath": "/Users/ran/advania/backend-procai/.venv/bin/black",
     "python.formatting.autopep8Path": "/home/ran/.local/bin/autopep8",
     "python.analysis.autoImportCompletions": true,
@@ -37,7 +37,7 @@
       "diagnostic.virtualTextCurrentLineOnly": false
     },
     "[typescriptreact]": {
-      "coc.preferences.formatOnSave": true
+      "coc.preferences.formatOnSave": false
     },
     "[python]": {
       "diagnostic.virtualTextCurrentLineOnly": true,

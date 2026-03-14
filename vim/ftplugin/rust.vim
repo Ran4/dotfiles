@@ -11,7 +11,7 @@ else
     nnoremap <leader>p :!cargo run -q<cr>
 endif
 
-call SuperTabSetDefaultCompletionType("<c-x><c-o>")
+" call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 
 " nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 " nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>

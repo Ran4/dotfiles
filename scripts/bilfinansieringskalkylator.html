@@ -245,7 +245,7 @@
         <div class="blocket-status disconnected" id="blocketStatus">
             <span class="indicator"></span>
             <div>
-                <div id="blocketStatusText">Väntar på Blocket-data...</div>
+                <div id="blocketStatusText">Väntar på Blocket-data... (öppna about:debugging och lägg till pluginet)</div>
                 <div class="blocket-info" id="blocketInfo">Öppna en bilannons på blocket.se</div>
                 <div class="blocket-info" id="blocketFarg" style="display: none; align-items: center; gap: 6px;">
                     <span class="color-swatch" id="colorSwatch"></span>
@@ -460,7 +460,7 @@
 
                 if (data.status === 'no_data') {
                     statusEl.className = 'blocket-status disconnected';
-                    statusText.textContent = 'Väntar på Blocket-data...';
+                    statusText.textContent = 'Väntar på Blocket-data... (öppna about:debugging och lägg till pluginet)';
                     statusInfo.innerHTML = 'Öppna en bilannons på blocket.se';
                     statusFarg.style.display = 'none';
                     return;

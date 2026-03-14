@@ -19,7 +19,13 @@ if [ $? -eq 1 ] ; then
     tmux -2 attach -t "$session_name" || tmux new-session -s "$session_name" -d
 
     tmux set-option status-style bg=#109f10
+    if [ "$session_name" = "priv" ]; then
+        tmux set-option status-bg colour161
+    fi
     tmux -2 attach-session -t "$session_name"
 else
+    if [ "$session_name" = "priv" ]; then
+        tmux set-option -t "$session_name" status-bg colour161
+    fi
     tmux -2 attach-session -t "$session_name"
 fi

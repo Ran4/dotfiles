@@ -119,6 +119,11 @@ if [ ! -f /tmp/xkbmap_is_checked ]; then
             touch /tmp/xkbmap_is_checked
         fi
     fi
+    if [ -f ~/.identifiers/ran-4070 ]; then
+        if [ -n "$DISPLAY" ]; then
+            xmodmap ~/.Xmodmap 2>/dev/null
+        fi
+    fi
 fi
 # We need to run this every time we re-connect a keyboard... TODO: Fix this!
 alias rmx="rm /tmp/xkbmap_is_checked"
@@ -204,4 +209,4 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
-export PATH="$PATH:/Users/ran/.claude/local"
+[ -d "$HOME/.claude/local" ] && export PATH="$PATH:$HOME/.claude/local"

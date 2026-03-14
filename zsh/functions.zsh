@@ -164,3 +164,27 @@ ur() {
     export NEW_REV=$(cd ~/other/layke/messages-layke && git rev-parse HEAD)
     sed -i "s/messages-layke.git@.\+#/messages-layke.git@${NEW_REV}#/g" requirements.txt && git add requirements.txt && git commit -m "Update messages-layke version to ${NEW_REV}" -e
 } 
+
+# Go to mounted Anbernic rg557
+rg557() {
+  cd "/run/user/1000/gvfs/mtp:host=Anbernic_RG557_RG557001943950/Internal shared storage"
+}
+
+# Uses claude to one-shot something
+htmlp() {
+    local out=$(command claude -p "Output html matching the description below. NO markdown triple ticks, just raw html code. NO full html document, JUST the html component. Description: $*");
+    local tmp=$(mktemp /tmp/htmlp-XXXX.html);
+    echo '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body>'"${out}"'</body></html>' \
+        > "$tmp";
+    # google-chrome "$tmp" &;
+    cat "$tmp"
+}
+
+htmlpfast() {
+    local out=$(command claude --model sonnet -p "Output html matching the description below. NO markdown triple ticks, just raw html code. NO full html document, JUST the html component. Description: $*");
+    local tmp=$(mktemp /tmp/htmlp-XXXX.html);
+    echo '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body>'"${out}"'</body></html>' \
+        > "$tmp"
+    # google-chrome "$tmp" &;
+    cat "$tmp"
+}

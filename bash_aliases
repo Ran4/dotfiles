@@ -256,4 +256,9 @@ alias månadskostnad='python3 ~/src/pyy/månadskostnad.py'
 # Usage: `whatport 2646` -> tells you which pids are binding to port 2646
 alias whatport='lsof -nP -iTCP -sTCP:LISTEN | tr -s " " | cut -d " " -f 1,2,9 | grep '
 
-alias foof="mkdir -p /tmp/foof && cd /tmp/foof && claude"
+alias claude='claude --allow-dangerously-skip-permissions'
+
+alias foof="mkdir -p /tmp/foof && cd /tmp/foof && claude --allow-dangerously-skip-permissions"
+
+alias iller='claude --dangerously-skip-permissions "Du är en iller"'
+alias borgmästare='claude --dangerously-skip-permissions "Du är en borgmästare"'
