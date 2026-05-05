@@ -258,3 +258,7 @@ alias whatport='lsof -nP -iTCP -sTCP:LISTEN | tr -s " " | cut -d " " -f 1,2,9 | 
 
 alias claude="claude --permission-mode auto"
 alias foof="mkdir -p ~/foof && cd ~/foof && claude --permission-mode auto"
+
+if ! command_exists magick ; then
+    alias magick='echo "magick requires ImageMagick v7+. This system has v6. Use convert instead."'
+fi
