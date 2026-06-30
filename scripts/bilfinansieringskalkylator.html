@@ -236,6 +236,69 @@
             border: 1px solid rgba(0,0,0,0.2);
             vertical-align: middle;
         }
+
+        .label-row {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .label-row label {
+            margin-bottom: 0;
+        }
+
+        .input-with-action {
+            display: flex;
+            align-items: stretch;
+            gap: 10px;
+        }
+
+        .input-with-action input {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .pct-btn {
+            width: auto;
+            flex: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            padding: 6px 14px;
+            border: 1px solid #2563eb;
+            border-radius: 6px;
+            background: white;
+            color: #2563eb;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.15;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pct-btn:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        .pct-btn-value {
+            font-size: 11px;
+            font-weight: 400;
+            color: #6b7280;
+        }
+
+        .pct-btn:hover .pct-btn-value {
+            color: white;
+        }
+
+        .pct-hint {
+            font-size: 12px;
+            color: #6b7280;
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
@@ -245,7 +308,7 @@
         <div class="blocket-status disconnected" id="blocketStatus">
             <span class="indicator"></span>
             <div>
-                <div id="blocketStatusText">Väntar på Blocket-data... (öppna about:debugging och lägg till pluginet)</div>
+                <div id="blocketStatusText">Väntar på Blocket-data... (öppna <a href="about:debugging">about:debugging</a> och lägg till pluginet)</div>
                 <div class="blocket-info" id="blocketInfo">Öppna en bilannons på blocket.se</div>
                 <div class="blocket-info" id="blocketFarg" style="display: none; align-items: center; gap: 6px;">
                     <span class="color-swatch" id="colorSwatch"></span>
@@ -279,8 +342,20 @@
                 </div>
 
                 <div class="input-group">
-                    <label for="restvarde">Restvärde (tkr)</label>
-                    <input type="number" id="restvarde" step="1" value="0">
+                    <div class="label-row">
+                        <label for="restvarde">Restvärde (tkr)</label>
+                        <span class="pct-hint" id="restvarde50Hint"></span>
+                    </div>
+                    <div class="input-with-action">
+                        <input type="number" id="restvarde" step="1" value="0">
+                        <button type="button" id="restvarde0Btn" class="pct-btn">
+                            <span class="pct-btn-label">0%</span>
+                        </button>
+                        <button type="button" id="restvarde50Btn" class="pct-btn">
+                            <span class="pct-btn-label">50%</span>
+                            <span class="pct-btn-value" id="restvarde50BtnValue"></span>
+                        </button>
+                    </div>
                     <div class="small-text">Ballong/slutbetalning vid lånets slut (default: 0 kr)</div>
                 </div>
             </div>
@@ -371,7 +446,39 @@
         document.getElementById('ranta').addEventListener('input', berakna);
         document.getElementById('loptid').addEventListener('input', berakna);
         document.getElementById('restvarde').addEventListener('input', berakna);
-        
+
+        // Uppdatera grå hint "50% är X tkr" till höger om restvärde-fältet
+        function uppdateraRestvarde50() {
+            const bilprisTkr = parseFloat(document.getElementById('bilpris').value);
+            const hint = document.getElementById('restvarde50Hint');
+            const btnValue = document.getElementById('restvarde50BtnValue');
+
+            if (bilprisTkr && bilprisTkr > 0) {
+                const halvaProcentTkr = (bilprisTkr * 0.5).toFixed(0);
+                hint.textContent = `50% är ${halvaProcentTkr} tkr`;
+                btnValue.textContent = `${halvaProcentTkr} tkr`;
+            } else {
+                hint.textContent = '';
+                btnValue.textContent = '';
+            }
+        }
+
+        // Nollställ restvärde när man klickar på 0%-knappen
+        document.getElementById('restvarde0Btn').addEventListener('click', function() {
+            document.getElementById('restvarde').value = '0';
+            berakna();
+        });
+
+        // Fyll i 50% av bilpriset som restvärde när man klickar på knappen
+        document.getElementById('restvarde50Btn').addEventListener('click', function() {
+            const bilprisTkr = parseFloat(document.getElementById('bilpris').value);
+
+            if (bilprisTkr && bilprisTkr > 0) {
+                document.getElementById('restvarde').value = (bilprisTkr * 0.5).toFixed(0);
+                berakna();
+            }
+        });
+
         function berakna() {
             const placeholder = '—';
 
@@ -392,6 +499,9 @@
             const loptidAr = parseFloat(document.getElementById('loptid').value) || 5;
             const restvardeTkr = parseFloat(document.getElementById('restvarde').value) || 0;
             const restvarde = restvardeTkr * 1000;
+
+            // Uppdatera "50% är X tkr"-hinten bredvid restvärde-fältet
+            uppdateraRestvarde50();
 
             // Visa värden som kan visas direkt
             document.getElementById('resBilpris').textContent = bilpris > 0 ? formatKr(bilpris) : placeholder;
@@ -460,7 +570,7 @@
 
                 if (data.status === 'no_data') {
                     statusEl.className = 'blocket-status disconnected';
-                    statusText.textContent = 'Väntar på Blocket-data... (öppna about:debugging och lägg till pluginet)';
+                    statusText.innerHTML = 'Väntar på Blocket-data... (öppna <a href="about:debugging">about:debugging</a> och lägg till pluginet)';
                     statusInfo.innerHTML = 'Öppna en bilannons på blocket.se';
                     statusFarg.style.display = 'none';
                     return;
