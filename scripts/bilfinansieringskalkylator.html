@@ -299,6 +299,91 @@
             color: #6b7280;
             white-space: nowrap;
         }
+
+        .finance-gauge {
+            margin: 6px 0 16px;
+        }
+
+        .gauge-bar {
+            display: flex;
+            height: 22px;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #e5e7eb;
+        }
+
+        .gauge-segment {
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .gauge-kontant { background: #22c55e; }
+        .gauge-lan { background: #3b82f6; }
+
+        .gauge-legend {
+            display: flex;
+            gap: 18px;
+            margin-top: 8px;
+            font-size: 12px;
+            color: #4a4a4a;
+        }
+
+        .gauge-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .gauge-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+
+        .gauge-dot-kontant { background: #22c55e; }
+        .gauge-dot-lan { background: #3b82f6; }
+
+        .gauge-top-labels {
+            display: flex;
+            width: 100%;
+            margin-bottom: 3px;
+        }
+
+        .gauge-seg-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 0;
+        }
+
+        .gauge-num {
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            margin-bottom: 2px;
+        }
+
+        .gauge-kontant-col .gauge-num { color: #16a34a; }
+        .gauge-lan-col .gauge-num { color: #2563eb; }
+
+        .brace-svg {
+            width: 100%;
+            height: 7px;
+            display: block;
+        }
+
+        .brace-bottom {
+            margin-top: 3px;
+        }
+
+        .gauge-total {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: #4a4a4a;
+            margin-top: 2px;
+        }
     </style>
 </head>
 <body>
@@ -374,6 +459,30 @@
             <div class="result-item">
                 <span class="result-label">Lånebelopp:</span>
                 <span class="result-value" id="resLanebelopp"></span>
+            </div>
+            <div class="finance-gauge">
+                <div class="gauge-top-labels">
+                    <div class="gauge-seg-label gauge-kontant-col" id="gaugeKontantTop">
+                        <span class="gauge-num" id="gaugeKontantTkr"></span>
+                        <svg class="brace-svg" viewBox="0 0 100 10" preserveAspectRatio="none">
+                            <path d="M0,10 Q25,10 25,5 Q25,0 50,0 Q75,0 75,5 Q75,10 100,10" fill="none" stroke="#16a34a" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+                        </svg>
+                    </div>
+                    <div class="gauge-seg-label gauge-lan-col" id="gaugeLanTop">
+                        <span class="gauge-num" id="gaugeLanTkr"></span>
+                        <svg class="brace-svg" viewBox="0 0 100 10" preserveAspectRatio="none">
+                            <path d="M0,10 Q25,10 25,5 Q25,0 50,0 Q75,0 75,5 Q75,10 100,10" fill="none" stroke="#2563eb" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="gauge-bar">
+                    <div class="gauge-segment gauge-kontant" id="gaugeKontant"></div>
+                    <div class="gauge-segment gauge-lan" id="gaugeLan"></div>
+                </div>
+                <svg class="brace-svg brace-bottom" viewBox="0 0 100 10" preserveAspectRatio="none">
+                    <path d="M0,0 Q25,0 25,5 Q25,10 50,10 Q75,10 75,5 Q75,0 100,0" fill="none" stroke="#9ca3af" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+                </svg>
+                <div class="gauge-total" id="gaugeTotalTkr"></div>
             </div>
             <div class="result-item">
                 <span class="result-label">Ränta (före avdrag):</span>
@@ -509,6 +618,25 @@
 
             const lanebelopp = bilpris - kontantinsats;
             document.getElementById('resLanebelopp').textContent = bilpris > 0 ? formatKr(lanebelopp) : placeholder;
+
+            // Uppdatera mätaren: vänster = kontantinsats, höger = lånebelopp, hela = bilpris
+            let kontantProcent = bilpris > 0 ? (kontantinsats / bilpris) * 100 : 0;
+            kontantProcent = Math.max(0, Math.min(100, kontantProcent));
+            const lanProcent = bilpris > 0 ? 100 - kontantProcent : 0;
+            document.getElementById('gaugeKontant').style.width = kontantProcent + '%';
+            document.getElementById('gaugeLan').style.width = lanProcent + '%';
+            document.getElementById('gaugeKontantTop').style.width = kontantProcent + '%';
+            document.getElementById('gaugeLanTop').style.width = lanProcent + '%';
+
+            if (bilpris > 0) {
+                document.getElementById('gaugeKontantTkr').textContent = Math.round(kontantinsats / 1000) + ' tkr';
+                document.getElementById('gaugeLanTkr').textContent = Math.round(lanebelopp / 1000) + ' tkr';
+                document.getElementById('gaugeTotalTkr').textContent = Math.round(bilpris / 1000) + ' tkr';
+            } else {
+                document.getElementById('gaugeKontantTkr').textContent = '';
+                document.getElementById('gaugeLanTkr').textContent = '';
+                document.getElementById('gaugeTotalTkr').textContent = '';
+            }
 
             document.getElementById('resRantaFore').textContent = ranta > 0 ? ranta.toFixed(2) + '%' : placeholder;
             const rantaEfterAvdrag = ranta * 0.7;
