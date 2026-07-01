@@ -1,0 +1,176 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["rich"]
+# ///
+"""Hämta bilförsäkringspris från Länsförsäkringar och skriv ut en tabell.
+
+Användning:
+    export LF_PNR=199010172436      # ditt personnummer (12 siffror, ingen bindestreck)
+    ./pris.py WAW77J
+    ./pris.py WAW77J --pnr 199010172436
+
+Personnumret loggas aldrig och sparas inte någonstans.
+"""
+import argparse
+import json
+import os
+import re
+import sys
+import urllib.error
+import urllib.request
+
+from rich.console import Console
+from rich.table import Table
+from rich import box
+
+ENDPOINT = "https://api.lansforsakringar.se/insurance/nonlife/vehicle/v2/general-offers"
+# Hårdkodad i deras JS-bundle (apip.appId). Kan rotera – kolla då bundeln på
+# /kop/fordonsforsakring/js/index-*.js
+APP_ID = 'Atmosphere atmosphere_app_id="LFAB-Aroyo5AlYub4waVy9Lgj4b3j"'
+
+console = Console()
+
+
+def fetch(pnr: str, regnr: str, product_id: str | None = None) -> dict:
+    """Ett POST-anrop mot general-offers. product_id => prisa den produkten."""
+    body = {
+        "soleProprietor": False,
+        "customerId": pnr,
+        "registrationNumber": regnr,
+    }
+    if product_id is not None:
+        body["productId"] = product_id
+    req = urllib.request.Request(
+        ENDPOINT,
+        data=json.dumps(body).encode(),
+        headers={
+            "Authorization": APP_ID,
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Origin": "https://www.lansforsakringar.se",
+            "Referer": "https://www.lansforsakringar.se/kop/fordonsforsakring/",
+            "User-Agent": "Mozilla/5.0",
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.load(resp)["response"]
+    except urllib.error.HTTPError as e:
+        raw = e.read().decode(errors="replace")
+        _friendly_http_error(e.code, raw)
+        raise SystemExit(1)
+
+
+def _friendly_http_error(code: int, raw: str) -> None:
+    hints = {
+        403: "Kunde inte prissätta – kolla att personnumret är rätt och går att slå upp.",
+        400: "Fel body-schema (skicka bara icke-null fält).",
+        404: "Saknar/felaktig Authorization-header (app-id kan ha roterat).",
+    }
+    console.print(f"[bold red]HTTP {code}[/] – {hints.get(code, 'oväntat fel')}")
+    # Visa inte hela råsvaret om det kan innehålla känslig eko-data; bara ev. felkod
+    try:
+        errs = json.loads(raw).get("errors")
+        if errs:
+            console.print(errs)
+    except Exception:
+        pass
+
+
+def normalize_pnr(pnr: str) -> str:
+    digits = re.sub(r"\D", "", pnr)
+    if len(digits) == 10:  # YYMMDD-XXXX -> anta 19xx/20xx? kräv 12
+        console.print("[yellow]Ange personnumret med 12 siffror (ååååmmddxxxx).[/]")
+        raise SystemExit(2)
+    if len(digits) != 12:
+        console.print("[yellow]Personnumret ska vara 12 siffror utan bindestreck.[/]")
+        raise SystemExit(2)
+    return digits
+
+
+def price_all_products(pnr: str, regnr: str, initial: dict) -> list[dict]:
+    """Prisa varje produkt/nivå via ett anrop per produkt."""
+    rows = []
+    for prod in initial.get("products", []):
+        pid = prod.get("id") or prod.get("productId")
+        pname = prod.get("name", pid)
+        # coverageId -> nivånamn för den här produkten
+        id2name = {}
+        for ac in (prod.get("options", {}) or {}).get("availableCoverages", []):
+            id2name[ac.get("id")] = ac.get("name")
+        resp = fetch(pnr, regnr, product_id=str(pid)) if pid else initial
+        sel = resp.get("priceForSelectedProduct", {})
+        for p in sel.get("coveragePriceProposals", []):
+            cid = p.get("coverageId")
+            rows.append(
+                {
+                    "product": pname,
+                    "level": id2name.get(cid, cid),
+                    "monthly": p.get("monthlyPrice"),
+                    "yearly": p.get("yearlyPrice"),
+                }
+            )
+    return rows
+
+
+def _level_sort_key(name: str) -> int:
+    order = {"Trafikförsäkring": 0, "Halvförsäkring": 1, "Helförsäkring": 2}
+    return order.get(name, 9)
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description="LF bilförsäkringspris för ett regnr.")
+    ap.add_argument("regnr", help="Registreringsnummer, t.ex. WAW77J")
+    ap.add_argument("--pnr", default=os.environ.get("LF_PNR", "199010172436"),
+                    help="Personnummer (12 siffror). Default: env LF_PNR annars 199010172436")
+    args = ap.parse_args()
+
+    if not args.pnr:
+        console.print("[bold red]Inget personnummer.[/] Sätt env LF_PNR eller använd --pnr.")
+        raise SystemExit(2)
+
+    pnr = normalize_pnr(args.pnr)
+    regnr = args.regnr.strip().upper().replace(" ", "")
+
+    with console.status(f"Hämtar pris för {regnr}…"):
+        initial = fetch(pnr, regnr)
+        rows = price_all_products(pnr, regnr, initial)
+
+    v = initial.get("vehicle", {})
+    brand = v.get("brandAndModel", "okänt fordon")
+    year = v.get("modelYear", "")
+
+    console.print()
+    console.print(f"[bold]{brand}[/]  ·  årsmodell [bold]{year}[/]  ·  [dim]{regnr}[/]")
+    console.print()
+
+    table = Table(box=box.SIMPLE_HEAVY, header_style="bold cyan")
+    table.add_column("Produkt")
+    table.add_column("Nivå")
+    table.add_column("kr/mån", justify="right", style="bold")
+    table.add_column("kr/år", justify="right")
+
+    rows.sort(key=lambda r: (r["product"], _level_sort_key(r["level"])))
+    # produkter som har en Helförsäkring att visa -> deras lägre nivåer dämpas
+    products_with_hel = {r["product"] for r in rows if r["level"] == "Helförsäkring"}
+    last_product = None
+    for r in rows:
+        prod = r["product"] if r["product"] != last_product else ""
+        last_product = r["product"]
+        m = f"{r['monthly']:,}".replace(",", " ") if r["monthly"] is not None else "–"
+        y = f"{r['yearly']:,}".replace(",", " ") if r["yearly"] is not None else "–"
+        dim = (r["level"] in ("Trafikförsäkring", "Halvförsäkring")
+               and r["product"] in products_with_hel)
+        if dim:
+            # dämpa bara nivå + priser, inte produktnamnet
+            table.add_row(prod, f"[grey50]{r['level']}[/]",
+                          f"[grey50]{m}[/]", f"[grey50]{y}[/]")
+        else:
+            table.add_row(prod, r["level"], m, y)
+
+    console.print(table)
+
+
+if __name__ == "__main__":
+    main()
