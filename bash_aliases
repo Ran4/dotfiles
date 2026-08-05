@@ -188,9 +188,6 @@ alias :Qa='exit'
 alias python3='python3.13'
 alias p3='python3'
 
-# "pandas play"
-alias pp='source ~/src/pyy/play/pandas/.venv/bin/activate && python3 -i ~/src/pyy/play/pandas/go.py; deactivate'
-
 alias zath='zathura'
 alias prettyjson='python3 -m json.tool'
 alias glances='glances --percpu'
