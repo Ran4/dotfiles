@@ -8,7 +8,7 @@ If I say `tp`, that means "open the file in vim in a new pane" (`tp somefile.py`
 
 --
 
-Om jag säger ESPFEIT ('en subagent per featre, en i taget'),
+Om jag säger ESPFEIT ('en subagent per feature, en i taget'),
 t.ex. "ESPFEIT 3-5 i bugglista.md" betyder det
 "Lös problemen med en subagent per feature, en i taget" (så varje får tom kontext = best accuracy)
 
@@ -33,3 +33,14 @@ and after the first time generating it, open the pdf.
 ## Scraping websites (WebFetch-blocked sites like blocket.se)
 
 See ~/.claude/rules/scraping.md
+
+--
+
+## Running a Bevy app to check something
+
+Never let a window pop up over my work. Any Bevy app can run and screenshot itself with the
+window created but never mapped — no window on screen, no focus stolen, no cursor grab, no
+sound, and the frame still rendered on the real GPU.
+
+See ~/.claude/rules/bevy-headless-screenshots.md (cathedralbevy already has it, as
+`CATHEDRAL_HEADLESS=1`).
