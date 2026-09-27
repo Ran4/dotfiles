@@ -255,7 +255,13 @@ alias whatport='lsof -nP -iTCP -sTCP:LISTEN | tr -s " " | cut -d " " -f 1,2,9 | 
 
 alias claude="claude --permission-mode auto"
 alias foof="mkdir -p ~/foof && cd ~/foof && claude --permission-mode auto"
+quick() {
+    cd ~/foof && claude --permission-mode auto --model opus --effort low "$*"
+}
 
 if ! command_exists magick ; then
     alias magick='echo "magick requires ImageMagick v7+. This system has v6. Use convert instead."'
 fi
+
+alias show='gocryptfs --idle 120m "$HOME/.w" "$HOME/w" && echo "Now vault is open for 120m at ~/w"'
+alias hide='fusermount -u "$HOME/w" && echo "Now ~/w is hidden (encrypted at ~/.w)"'
