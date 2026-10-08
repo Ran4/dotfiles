@@ -6,10 +6,15 @@
 """Hämta bilförsäkringspris från Länsförsäkringar och skriv ut en tabell.
 
 Användning:
-    export LF_PNR=YYYYMMDD-XXXX      # ditt personnummer (12 siffror, ingen bindestreck)
+    export LF_PNR=ÅÅÅÅMMDDXXXX       # ditt personnummer (12 siffror, ingen bindestreck)
     ./pris.py WAW77J
-    ./pris.py WAW77J --pnr YYYYMMDD-XXXX
+    ./pris.py WAW77J --pnr ÅÅÅÅMMDDXXXX
 
+Utan --pnr och LF_PNR läses numret från ~/.config/bilforsakring/pnr, som måste
+vara chmod 600:
+    mkdir -p ~/.config/bilforsakring && (umask 077; echo ÅÅÅÅMMDDXXXX > ~/.config/bilforsakring/pnr)
+
+Lägg aldrig personnumret i repot (inte heller LF_PNR i zshrc, den ligger i dotfiles).
 Personnumret loggas aldrig och sparas inte någonstans.
 """
 import argparse
@@ -19,6 +24,7 @@ import re
 import sys
 import urllib.error
 import urllib.request
+from pathlib import Path
 
 from rich.console import Console
 from rich.table import Table
@@ -28,6 +34,7 @@ ENDPOINT = "https://api.lansforsakringar.se/insurance/nonlife/vehicle/v2/general
 # Hårdkodad i deras JS-bundle (apip.appId). Kan rotera – kolla då bundeln på
 # /kop/fordonsforsakring/js/index-*.js
 APP_ID = 'Atmosphere atmosphere_app_id="LFAB-Aroyo5AlYub4waVy9Lgj4b3j"'
+PNR_FILE = Path(os.environ.get("XDG_CONFIG_HOME") or Path.home() / ".config") / "bilforsakring" / "pnr"
 
 console = Console()
 
@@ -78,6 +85,18 @@ def _friendly_http_error(code: int, raw: str) -> None:
         pass
 
 
+def default_pnr() -> str | None:
+    """env LF_PNR, annars PNR_FILE. Vägrar läsa filen om andra kan läsa den (som ssh)."""
+    if env := os.environ.get("LF_PNR"):
+        return env
+    if not PNR_FILE.exists():
+        return None
+    if PNR_FILE.stat().st_mode & 0o077:
+        console.print(f"[bold red]{PNR_FILE} kan läsas av andra.[/] Kör: chmod 600 {PNR_FILE}")
+        raise SystemExit(2)
+    return PNR_FILE.read_text().strip()
+
+
 def normalize_pnr(pnr: str) -> str:
     digits = re.sub(r"\D", "", pnr)
     if len(digits) == 10:  # YYMMDD-XXXX -> anta 19xx/20xx? kräv 12
@@ -122,15 +141,17 @@ def _level_sort_key(name: str) -> int:
 def main() -> None:
     ap = argparse.ArgumentParser(description="LF bilförsäkringspris för ett regnr.")
     ap.add_argument("regnr", help="Registreringsnummer, t.ex. WAW77J")
-    ap.add_argument("--pnr", default=os.environ.get("LF_PNR", "YYYYMMDD-XXXX"),
-                    help="Personnummer (12 siffror). Default: env LF_PNR annars YYYYMMDD-XXXX")
+    ap.add_argument("--pnr",
+                    help=f"Personnummer (12 siffror). Default: env LF_PNR, annars {PNR_FILE}")
     args = ap.parse_args()
 
-    if not args.pnr:
-        console.print("[bold red]Inget personnummer.[/] Sätt env LF_PNR eller använd --pnr.")
+    raw_pnr = args.pnr or default_pnr()
+    if not raw_pnr:
+        console.print("[bold red]Inget personnummer.[/] Sätt env LF_PNR, använd --pnr "
+                      f"eller lägg det i {PNR_FILE} (chmod 600).")
         raise SystemExit(2)
 
-    pnr = normalize_pnr(args.pnr)
+    pnr = normalize_pnr(raw_pnr)
     regnr = args.regnr.strip().upper().replace(" ", "")
 
     with console.status(f"Hämtar pris för {regnr}…"):
