@@ -1,0 +1,131 @@
+#compdef fabric
+# Completion for fabric (danielmiessler/fabric).
+# Dynamic values come from fabric's own --shell-complete-list flag.
+
+_fabric_patterns() {
+  local -a p
+  p=(${(f)"$(fabric -l --shell-complete-list 2>/dev/null)"})
+  _describe -t patterns 'pattern' p
+}
+
+_fabric_models() {
+  local -a m
+  m=(${(f)"$(fabric -L --shell-complete-list 2>/dev/null)"})
+  _describe -t models 'model' m
+}
+
+_fabric_vendors() {
+  local -a v
+  # --listvendors still prints a header even with --shell-complete-list, so strip it
+  v=(${(f)"$(fabric --listvendors --shell-complete-list 2>/dev/null | grep -vE '^(Available Vendors:)?$')"})
+  _describe -t vendors 'vendor' v
+}
+
+_fabric_contexts() {
+  local -a c
+  c=(${(f)"$(fabric -x --shell-complete-list 2>/dev/null)"})
+  _describe -t contexts 'context' c
+}
+
+_fabric_sessions() {
+  local -a s
+  s=(${(f)"$(fabric -X --shell-complete-list 2>/dev/null)"})
+  _describe -t sessions 'session' s
+}
+
+_fabric_strategies() {
+  local -a s
+  s=(${(f)"$(fabric --liststrategies --shell-complete-list 2>/dev/null)"})
+  _describe -t strategies 'strategy' s
+}
+
+_fabric() {
+  _arguments -s -S \
+    '(-p --pattern)'{-p,--pattern}'[choose a pattern]:pattern:_fabric_patterns' \
+    '(-m --model)'{-m,--model}'[choose model]:model:_fabric_models' \
+    '(-V --vendor)'{-V,--vendor}'[specify vendor for the selected model]:vendor:_fabric_vendors' \
+    '(-C --context)'{-C,--context}'[choose a context]:context:_fabric_contexts' \
+    '--session[choose a session]:session:_fabric_sessions' \
+    '--strategy[choose a prompt strategy]:strategy:_fabric_strategies' \
+    '--readpattern[print the contents of a pattern]:pattern:_fabric_patterns' \
+    '*'{-v,--variable}'[pattern variable, e.g. -v=#role:expert]:variable:' \
+    '*'{-a,--attachment}'[attachment path or URL]:file:_files' \
+    '(-t --temperature)'{-t,--temperature}'[set temperature]:temperature:' \
+    '(-T --topp)'{-T,--topp}'[set top P]:top_p:' \
+    '(-P --presencepenalty)'{-P,--presencepenalty}'[set presence penalty]:penalty:' \
+    '(-F --frequencypenalty)'{-F,--frequencypenalty}'[set frequency penalty]:penalty:' \
+    '(-e --seed)'{-e,--seed}'[seed for generation]:seed:' \
+    '(-r --raw)'{-r,--raw}'[use model defaults, send no chat options]' \
+    '(-s --stream)'{-s,--stream}'[stream output]' \
+    '(-c --copy)'{-c,--copy}'[copy result to clipboard]' \
+    '(-o --output)'{-o,--output}'[output to file]:file:_files' \
+    '--output-session[output the entire session to the output file]' \
+    '(-g --language)'{-g,--language}'[language code, e.g. en, sv, zh]:lang:' \
+    '(-n --latest)'{-n,--latest}'[number of latest patterns to list]:count:' \
+    '--modelContextLength[model context length (ollama only)]:length:' \
+    '--thinking[reasoning level]:level:(off low medium high)' \
+    '--suppress-think[suppress text inside thinking tags]' \
+    '--think-start-tag[start tag for thinking sections]:tag:' \
+    '--think-end-tag[end tag for thinking sections]:tag:' \
+    '--search[enable web search tool]' \
+    '--search-location[location for web search results]:location:' \
+    '(-y --youtube)'{-y,--youtube}'[YouTube video or playlist URL]:url:' \
+    '--playlist[prefer playlist over video]' \
+    '--transcript[grab transcript from YouTube video]' \
+    '--transcript-with-timestamps[grab transcript with timestamps]' \
+    '--comments[grab YouTube comments]' \
+    '--metadata[output video metadata]' \
+    '--visual[extract visual data via OCR and FFmpeg]' \
+    '--visual-sensitivity[FFmpeg scene detection tolerance 0.0-1.0]:sensitivity:' \
+    '--visual-fps[extract N frames per second]:fps:' \
+    '--yt-dlp-args[extra args passed to yt-dlp]:args:' \
+    '--spotify[Spotify podcast or episode URL]:url:' \
+    '(-u --scrape_url)'{-u,--scrape_url}'[scrape website URL to markdown via Jina AI]:url:' \
+    '(-q --scrape_question)'{-q,--scrape_question}'[search question via Jina AI]:question:' \
+    '--readability[convert HTML input into a clean readable view]' \
+    '--transcribe-file[audio or video file to transcribe]:file:_files' \
+    '--transcribe-model[model to use for transcription]:model:' \
+    '--split-media-file[split media larger than 25MB using ffmpeg]' \
+    '--voice[TTS voice name]:voice:' \
+    '--image-file[save generated image to path]:file:_files' \
+    '--image-size[image dimensions]:size:(1024x1024 1536x1024 1024x1536 auto)' \
+    '--image-quality[image quality]:quality:(low medium high auto)' \
+    '--image-compression[compression level 0-100]:level:' \
+    '--image-background[background type]:background:(opaque transparent)' \
+    '(-w --wipecontext)'{-w,--wipecontext}'[wipe context]:context:_fabric_contexts' \
+    '(-W --wipesession)'{-W,--wipesession}'[wipe session]:session:_fabric_sessions' \
+    '--printcontext[print context]:context:_fabric_contexts' \
+    '--printsession[print session]:session:_fabric_sessions' \
+    '(-l --listpatterns)'{-l,--listpatterns}'[list all patterns]' \
+    '(-L --listmodels)'{-L,--listmodels}'[list all models]' \
+    '(-x --listcontexts)'{-x,--listcontexts}'[list all contexts]' \
+    '(-X --listsessions)'{-X,--listsessions}'[list all sessions]' \
+    '--liststrategies[list all strategies]' \
+    '--listvendors[list all vendors]' \
+    '--listextensions[list all registered extensions]' \
+    '--list-gemini-voices[list all Gemini TTS voices]' \
+    '--list-transcription-models[list all transcription models]' \
+    '--shell-complete-list[output raw list for shell completion]' \
+    '--addextension[register an extension]:file:_files' \
+    '--rmextension[remove a registered extension by name]:name:' \
+    '(-S --setup)'{-S,--setup}'[run setup]' \
+    '(-d --changeDefaultModel)'{-d,--changeDefaultModel}'[change default model]' \
+    '(-U --updatepatterns)'{-U,--updatepatterns}'[update patterns]' \
+    '--config[path to YAML config file]:file:_files -g "*.(yaml|yml)"' \
+    '--input-has-vars[apply variables to user input]' \
+    '--no-variable-replacement[disable pattern variable replacement]' \
+    '--dry-run[show what would be sent without sending]' \
+    '--serve[serve the Fabric REST API]' \
+    '--serveOllama[serve the REST API with ollama endpoints]' \
+    '--address[address to bind the REST API]:address:' \
+    '--api-key[API key used to secure server routes]:key:' \
+    '--notification[send desktop notification when done]' \
+    '--notification-command[custom notification command]:command:' \
+    '--show-metadata[print metadata to stderr]' \
+    '--debug[debug level]:level:(0 1 2 3 4)' \
+    '--version[print current version]' \
+    '(-h --help)'{-h,--help}'[show help]' \
+    '*::message:'
+}
+
+_fabric "$@"

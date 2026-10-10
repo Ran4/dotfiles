@@ -188,3 +188,40 @@ htmlpfast() {
     # google-chrome "$tmp" &;
     cat "$tmp"
 }
+
+opencodehere() {
+    # `opencodehere` lists opencode sessions with cwd matching cwd,
+    # `opencodehere 2` attaches to session (2) etc.
+    local json
+    json=$(opencode session list --format json | jq -c --arg cwd "$PWD" '
+      [.[] | select(.directory == $cwd)] | sort_by(-.updated)
+    ')
+
+    if [[ -n $1 ]]; then
+      local id
+      id=$(jq -r --argjson n "$1" '.[$n - 1].id // empty' <<< "$json")
+      if [[ -z $id ]]; then
+        print -u2 "No session $1"
+        return 1
+      fi
+      opencode --session "$id"
+      return
+    fi
+
+    jq -r --argjson now "$(date +%s)" '
+      def ago:
+        if . < 45 then "just now"
+        elif . < 90 then "1 minute ago"
+        elif . < 3600 then "\((. / 60) | floor) minutes ago"
+        elif . < 5400 then "1 hour ago"
+        elif . < 86400 then "\((. / 3600) | floor) hours ago"
+        elif . < 172800 then "1 day ago"
+        elif . < 604800 then "\((. / 86400) | floor) days ago"
+        elif . < 1209600 then "1 week ago"
+        else "\((. / 604800) | floor) weeks ago"
+        end;
+      to_entries
+      | map("(\(.key + 1)) \(.value.title) (\((($now) - (.value.updated / 1000)) | ago))\nopencode --session \(.value.id)")
+      | join("\n\n")
+    ' <<< "$json"
+}
