@@ -20,8 +20,6 @@ try to implement it, just discuss it with me. For example,
 `q a different colorscheme` means "I want to ask you about using a different color scheme",
 NOT "change the colorscheme".
 
-@RTK.md
-
 --
 
 Whenever I ask you to generate word documents, use python-docx (use an uv inline script),
