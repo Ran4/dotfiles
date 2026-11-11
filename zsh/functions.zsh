@@ -225,3 +225,6 @@ opencodehere() {
       | join("\n\n")
     ' <<< "$json"
 }
+
+# Machine-specific functions (gitignored)
+[ -f ~/.zsh/functions.local.zsh ] && source ~/.zsh/functions.local.zsh
