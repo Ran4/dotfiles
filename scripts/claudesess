@@ -1,0 +1,242 @@
+#!/usr/bin/env bash
+# claudesess — inspect Claude Code sessions.
+#
+#   claudesess                                              list running sessions as JSON
+#   claudesess list [--all] [--stale]                       same, explicitly
+#   claudesess <session-id> transcript [opts]               dump a session's conversation
+#   claudesess <session-id> path                            print the transcript file path
+#   claudesess <session-id> meta                            print the session's metadata as JSON
+#
+# transcript options:
+#   --full         don't truncate tool inputs/results
+#   --sidechains   include subagent (isSidechain) messages
+#   --width N      truncate tool text at N chars (default 300)
+#
+# list options:
+#   --all          include sessions whose pid is gone (stale registry files)
+#   --stale        only sessions whose pid is gone
+#
+# A <session-id> may be given in full or as a unique prefix.
+
+set -euo pipefail
+
+CLAUDE_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
+SESSIONS_DIR="$CLAUDE_DIR/sessions"
+PROJECTS_DIR="$CLAUDE_DIR/projects"
+
+die()   { echo "claudesess: $*" >&2; exit 1; }
+usage() { sed -n '2,22p' "$0" | sed 's/^# \?//'; }
+
+command -v jq >/dev/null || die "jq is required"
+
+# ---------------------------------------------------------------- list
+
+cmd_list() {
+  local filter="alive"
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --all)   filter="any";   shift ;;
+      --stale) filter="dead";  shift ;;
+      *) die "unknown option for list: $1" ;;
+    esac
+  done
+
+  [[ -d "$SESSIONS_DIR" ]] || { echo "[]"; return; }
+
+  local files=()
+  while IFS= read -r -d '' f; do files+=("$f"); done \
+    < <(find "$SESSIONS_DIR" -maxdepth 1 -type f -name '*.json' -print0 2>/dev/null)
+  [[ ${#files[@]} -gt 0 ]] || { echo "[]"; return; }
+
+  # The registry keeps a file per pid; a SIGKILLed session leaves one behind,
+  # so liveness is decided by probing the pid, not by the file existing.
+  local alive=() dead=() pid
+  for f in "${files[@]}"; do
+    pid=$(basename "$f" .json)
+    if [[ "$pid" =~ ^[0-9]+$ ]] && kill -0 "$pid" 2>/dev/null; then
+      alive+=("$pid")
+    else
+      dead+=("$pid")
+    fi
+  done
+
+  local live_json dead_json
+  live_json=$(printf '%s\n' "${alive[@]+"${alive[@]}"}" | jq -R 'select(length>0)|tonumber' | jq -s .)
+  dead_json=$(printf '%s\n' "${dead[@]+"${dead[@]}"}"  | jq -R 'select(length>0)|tonumber' | jq -s .)
+
+  jq -s \
+    --argjson alive "$live_json" \
+    --argjson dead "$dead_json" \
+    --arg filter "$filter" '
+    map(
+      . + {
+        alive: (.pid as $p | ($alive | index($p)) != null),
+        startedAtIso: (if .startedAt then (.startedAt/1000 | todate) else null end),
+        updatedAtIso: (if .updatedAt then (.updatedAt/1000 | todate) else null end)
+      }
+    )
+    | map(select(
+        $filter == "any"
+        or ($filter == "alive" and .alive)
+        or ($filter == "dead"  and (.alive | not))
+      ))
+    | sort_by(.startedAt // 0)
+  ' "${files[@]}"
+}
+
+# ------------------------------------------------------- id resolution
+
+# Resolve a full-or-prefix session id to the id recorded in the registry,
+# falling back to transcript filenames for sessions that are no longer running.
+resolve_id() {
+  local want="$1" matches
+  matches=$(
+    {
+      [[ -d "$SESSIONS_DIR" ]] && jq -r '.sessionId // empty' "$SESSIONS_DIR"/*.json 2>/dev/null
+      [[ -d "$PROJECTS_DIR" ]] && find "$PROJECTS_DIR" -type f -name '*.jsonl' \
+        -exec basename {} .jsonl \; 2>/dev/null
+    } | grep -i "^$want" | sort -u
+  )
+  local n; n=$(printf '%s' "$matches" | grep -c . || true)
+  case "$n" in
+    0) die "no session matching '$want'" ;;
+    1) printf '%s\n' "$matches" ;;
+    *) { echo "claudesess: '$want' is ambiguous:"; printf '  %s\n' $matches; } >&2; exit 1 ;;
+  esac
+}
+
+# A session id can appear under several project dirs (resume/fork changes cwd).
+find_transcripts() {
+  local sid="$1" files=()
+  while IFS= read -r f; do files+=("$f"); done \
+    < <(find "$PROJECTS_DIR" -type f -name "$sid.jsonl" 2>/dev/null | sort)
+  [[ ${#files[@]} -gt 0 ]] || die "no transcript found for session $sid under $PROJECTS_DIR"
+  printf '%s\n' "${files[@]}"
+}
+
+# ---------------------------------------------------------------- meta
+
+cmd_meta() {
+  local sid="$1"
+  [[ -d "$SESSIONS_DIR" ]] || die "no session registry at $SESSIONS_DIR"
+  local out
+  out=$(jq -s --arg sid "$sid" '
+    map(select(.sessionId == $sid))
+    | map(. + {
+        startedAtIso: (if .startedAt then (.startedAt/1000 | todate) else null end),
+        updatedAtIso: (if .updatedAt then (.updatedAt/1000 | todate) else null end)
+      })
+    | first // empty
+  ' "$SESSIONS_DIR"/*.json 2>/dev/null)
+  [[ -n "$out" ]] || die "session $sid is not in the running-session registry (it may have exited)"
+  printf '%s\n' "$out"
+}
+
+# ---------------------------------------------------------- transcript
+
+cmd_transcript() {
+  local sid="$1"; shift
+  local full=0 sidechains=0 width=300
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --full)       full=1; shift ;;
+      --sidechains) sidechains=1; shift ;;
+      --width)      width="${2:?--width needs a number}"; shift 2 ;;
+      *) die "unknown option for transcript: $1" ;;
+    esac
+  done
+
+  local files=(); while IFS= read -r f; do files+=("$f"); done < <(find_transcripts "$sid")
+  [[ ${#files[@]} -gt 1 ]] && echo "claudesess: note — ${#files[@]} transcripts match, concatenating" >&2
+
+  local F
+  for F in "${files[@]}"; do
+    jq -rs --arg f "$F" '
+      (map(select(.type=="assistant" or .type=="user")) | first) as $m
+      | (map(select(.type=="ai-title")) | last) as $t
+      | "=== session: \($m.sessionId // "?")",
+        "=== title:   \($t.aiTitle // "(untitled)")",
+        "=== cwd:     \($m.cwd // "?")   branch: \($m.gitBranch // "-")   version: \($m.version // "?")",
+        "=== started: \($m.timestamp // "?")",
+        "=== file:    \($f)",
+        ""
+    ' "$F"
+
+    jq -r --argjson full "$full" --argjson side "$sidechains" --argjson w "$width" '
+      def clip: if $full == 1 then .
+                else (if (.|length) > $w
+                      then .[0:$w] + " …[+" + (((.|length) - $w)|tostring) + " chars]"
+                      else . end) end;
+      def indent: split("\n") | map("    " + .) | join("\n");
+
+      select(.type=="user" or .type=="assistant" or .type=="system")
+      | select($side == 1 or (.isSidechain != true))
+      | (.timestamp // "")[11:19] as $ts
+      | (if .isSidechain == true then " (sidechain)" else "" end) as $sc
+
+      | if .type=="system" then
+          "[\($ts)] SYSTEM\($sc)\n" + ((.content // .subtype // "" | tostring) | clip | indent)
+
+        elif .type=="user" then
+          ( if (.message.content|type) == "string" then
+              "[\($ts)] USER\($sc)\n" + (.message.content | indent)
+            else
+              ( [ .message.content[]?
+                  | if .type=="text" then "[\($ts)] USER\($sc)\n" + (.text | indent)
+                    elif .type=="tool_result" then
+                      "[\($ts)]   ↳ result" +
+                      (if .is_error then " (ERROR)" else "" end) + "\n" +
+                      ( ( if (.content|type)=="string" then .content
+                          elif (.content|type)=="array" then
+                            ([.content[]? | if .type=="text" then .text
+                                            else "<"+(.type//"?")+">" end] | join("\n"))
+                          else (.content // "" | tostring) end ) | clip | indent )
+                    elif .type=="image" then "[\($ts)]   ↳ result <image>"
+                    else "[\($ts)]   ↳ <\(.type)>" end
+                ] | join("\n") )
+            end )
+
+        else
+          ( [ .message.content[]?
+              | if .type=="text" then "[\($ts)] ASSISTANT\($sc)\n" + (.text | indent)
+                elif .type=="thinking" then
+                  "[\($ts)] ASSISTANT thinking\($sc)\n" +
+                  ( (if (.thinking // "") == "" then "(not retained on disk)" else .thinking end)
+                    | clip | indent )
+                elif .type=="tool_use" then
+                  "[\($ts)]   → \(.name)\n" + ((.input | tostring) | clip | indent)
+                else "[\($ts)]   <\(.type)>" end
+            ] | join("\n") )
+        end
+      | select(. != "")
+    ' "$F"
+  done
+}
+
+# ------------------------------------------------------------ dispatch
+
+[[ $# -eq 0 ]] && { cmd_list; exit 0; }
+
+case "$1" in
+  -h|--help) usage; exit 0 ;;
+  list)      shift; cmd_list "$@"; exit 0 ;;
+esac
+
+SID_ARG="$1"; shift
+[[ "$SID_ARG" == -* ]] && die "unknown command '$SID_ARG' (try --help)"
+SUB="${1:-transcript}"; [[ $# -gt 0 ]] && shift
+
+case "$SUB" in
+  transcript|path|meta) ;;
+  *) die "unknown subcommand '$SUB' (want: transcript, path, meta)" ;;
+esac
+
+# Assign in its own statement: a command substitution used directly as an
+# argument swallows its exit status, so a failed resolve would sail through.
+SID=$(resolve_id "$SID_ARG") || exit 1
+
+case "$SUB" in
+  transcript) cmd_transcript "$SID" "$@" ;;
+  path)       find_transcripts "$SID" ;;
+  meta)       cmd_meta "$SID" ;;
+esac

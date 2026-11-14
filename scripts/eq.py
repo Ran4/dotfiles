@@ -24,12 +24,6 @@ MODES = {
 }
 NAMES = list(MODES)
 PRESETS = ["warm", "flat", "open"]  # the top row; "off" sits below it
-SINK_TO_MODE = {
-    "hd58x_warm": "warm",
-    "hd58x_flat": "flat",
-    "hd58x_open": "open",
-    "alsa_output.usb-Topping_DX5_II-00.analog-stereo": "off",
-}
 KEYS = {ord("w"): "warm", ord("f"): "flat", ord("o"): "off"}
 KEYS |= {ord(str(i)): name for i, name in enumerate(NAMES, 1)}
 
@@ -54,8 +48,7 @@ def tab(win, y: int, x: int, name: str, mode: str | None) -> None:
     put(win, y, x, f" {name} ", curses.A_REVERSE | curses.A_BOLD if name == mode else curses.A_DIM)
 
 
-def draw(win, sink: str, error: str) -> None:
-    mode = SINK_TO_MODE.get(sink)
+def draw(win, mode: str, error: str) -> None:
     win.erase()
     put(win, 1, 2, "HD 58X EQ", curses.A_BOLD)
     x = 2
@@ -64,7 +57,7 @@ def draw(win, sink: str, error: str) -> None:
         if name == "flat":
             tab(win, 4, x, "off", mode)
         x += len(name) + 4
-    put(win, 6, 2, MODES[mode] if mode else f"default output is something else: {sink}")
+    put(win, 6, 2, MODES.get(mode) or f"default output is something else: {mode}")
     if error:
         put(win, 7, 2, error, curses.A_BOLD)
     put(win, 9, 2, "←/→ preset · ↓ off · ↑ back · 1-4 · q quit", curses.A_DIM)
@@ -79,11 +72,11 @@ def main(win) -> None:
     error = ""
     last = "open"  # where ↑ goes from off until a preset has been seen
     while True:
-        _, sink = hd58x("status")
-        mode = SINK_TO_MODE.get(sink)
+        # warm/flat/open/off, or the default sink's name if it is none of them.
+        _, mode = hd58x("mode")
         if mode in PRESETS:
             last = mode
-        draw(win, sink, error)
+        draw(win, mode, error)
 
         key = win.getch()
         if key in (ord("q"), 27):
